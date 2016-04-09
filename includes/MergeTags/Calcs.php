@@ -31,10 +31,10 @@ final class NF_MergeTags_Calcs extends NF_Abstracts_MergeTags
         }
 
         $this->merge_tags[ $callback ] = array(
-            'id' => $key,
-            'tag' => "{calc:$key}",
+            'id'         => $key,
+            'tag'        => "{calc:$key}",
 //            'label' => __( '', 'ninja_forms' ),
-            'callback' => $callback,
+            'callback'   => $callback,
             'calc_value' => $calculated_value
         );
     }
