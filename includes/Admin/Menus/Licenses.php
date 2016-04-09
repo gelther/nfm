@@ -52,12 +52,12 @@ final class NF_Admin_Menus_Licenses
         $data = array();
         foreach( $this->licenses as $license ){
             $data[] = array(
-                'id' => $license->product_name,
-                'name' => $license->product_nice_name,
-                'version' => $license->version,
+                'id'       => $license->product_name,
+                'name'     => $license->product_nice_name,
+                'version'  => $license->version,
                 'is_valid' => $license->is_valid(),
-                'license' => $this->get_license( $license->product_name ),
-                'error' => Ninja_Forms()->get_setting( $license->product_name . '_license_error' ),
+                'license'  => $this->get_license( $license->product_name ),
+                'error'    => Ninja_Forms()->get_setting( $license->product_name . '_license_error' ),
             );
         }
 
