@@ -8,7 +8,7 @@ return apply_filters( 'ninja_forms_plugin_settings_advanced', array(
     |--------------------------------------------------------------------------
     */
 
-    'delete_on_uninstall' => array(
+    'delete_on_uninstall'        => array(
         'id'    => 'delete_on_uninstall',
         'type'  => 'checkbox',
         'label' => __( 'Remove ALL Ninja Forms data upon uninstall?', 'ninja-forms' ),
@@ -21,11 +21,11 @@ return apply_filters( 'ninja_forms_plugin_settings_advanced', array(
     |--------------------------------------------------------------------------
     */
 
-    'delete_prompt' => array(
-        'id'    => 'delete_prompt',
-        'type'  => 'prompt',
-        'desc'  => __( 'This setting will COMPLETELY remove anything Ninja Forms related upon plugin deletion. This includes SUBMISSIONS and FORMS. It cannot be undone.', 'ninja-forms' ),
-        'deps'  => array(
+    'delete_prompt'              => array(
+        'id'   => 'delete_prompt',
+        'type' => 'prompt',
+        'desc' => __( 'This setting will COMPLETELY remove anything Ninja Forms related upon plugin deletion. This includes SUBMISSIONS and FORMS. It cannot be undone.', 'ninja-forms' ),
+        'deps' => array(
             'delete_on_uninstall' => 'checked'
         )
     ),
@@ -36,7 +36,7 @@ return apply_filters( 'ninja_forms_plugin_settings_advanced', array(
     |--------------------------------------------------------------------------
     */
 
-    'disable_admin_notices' => array(
+    'disable_admin_notices'      => array(
         'id'    => 'disable_admin_notices',
         'type'  => 'checkbox',
         'label' => __( 'Disable Admin Notices', 'ninja-forms' ),
@@ -62,10 +62,10 @@ return apply_filters( 'ninja_forms_plugin_settings_advanced', array(
     |--------------------------------------------------------------------------
     */
 
-    'rollback' => array(
+    'rollback'                   => array(
         'id'    => 'rollback',
         'type'  => 'html',
-        'html' => '<a href="' . admin_url( 'admin.php?page=ninja-forms&nf-switcher=rollback' ) . '" class="button">' . __( 'Rollback', 'ninja-forms' ) . '</a>',
+        'html'  => '<a href="' . admin_url( 'admin.php?page=ninja-forms&nf-switcher=rollback' ) . '" class="button">' . __( 'Rollback', 'ninja-forms' ) . '</a>',
         'label' => __( 'Rollback to v2.9.x', 'ninja-forms' ),
         'desc'  => __( 'Rollback to the most recent 2.9.x release.', 'ninja-forms' ),
     ),
