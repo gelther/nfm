@@ -37,7 +37,7 @@ class NF_Fields_Shipping extends NF_Abstracts_Input
     public function add_setting_group( $groups )
     {
         $groups[ 'advanced_shipping' ] = array(
-            'id' => 'advanced_shipping',
+            'id'    => 'advanced_shipping',
             'label' => __( 'Advanced Shipping', 'ninja-forms' ),
         );
 
