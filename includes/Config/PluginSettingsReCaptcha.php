@@ -8,7 +8,7 @@ return apply_filters( 'ninja_forms_plugin_settings_recaptcha', array(
     |--------------------------------------------------------------------------
     */
 
-    'recaptcha_site_key' => array(
+    'recaptcha_site_key'   => array(
         'id'    => 'recaptcha_site_key',
         'type'  => 'textbox',
         'label' => __( 'reCAPTCHA Site Key', 'ninja-forms' ),
@@ -34,7 +34,7 @@ return apply_filters( 'ninja_forms_plugin_settings_recaptcha', array(
     |--------------------------------------------------------------------------
     */
 
-    'recaptcha_lang' => array(
+    'recaptcha_lang'       => array(
         'id'    => 'recaptcha_lang',
         'type'  => 'textbox',
         'label' => __( 'reCAPTCHA Language', 'ninja-forms' ),
@@ -47,14 +47,14 @@ return apply_filters( 'ninja_forms_plugin_settings_recaptcha', array(
     |--------------------------------------------------------------------------
     */
 
-    'recaptcha_theme' => array(
-        'id'    => 'recaptcha_theme',
-        'type'  => 'select',
-        'options'   => array(
+    'recaptcha_theme'      => array(
+        'id'      => 'recaptcha_theme',
+        'type'    => 'select',
+        'options' => array(
             array( 'label' => __( 'Light', 'ninja-forms' ), 'value' => 'light' ),
             array( 'label' => __( 'Dark', 'ninja-forms' ), 'value' => 'dark' ),
         ),
-        'label' => __( 'reCAPTCHA Theme', 'ninja-forms' ),
-        'desc'  => '',
+        'label'   => __( 'reCAPTCHA Theme', 'ninja-forms' ),
+        'desc'    => '',
     ),
 ));
