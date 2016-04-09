@@ -9,11 +9,11 @@ return apply_filters( 'ninja_forms_merge_tags_fields', array(
     */
 
     'all_fields' => array(
-        'id' => 'all_fields',
-        'tag' => '{field:all_fields}',
-        'label' => __( 'All Fields', 'ninja_forms' ),
+        'id'       => 'all_fields',
+        'tag'      => '{field:all_fields}',
+        'label'    => __( 'All Fields', 'ninja_forms' ),
         'callback' => 'all_fields',
-        'fields' => array()
+        'fields'   => array()
     ),
 
 ));
