@@ -75,9 +75,9 @@ final class NF_Admin_Menus_Settings extends NF_Abstracts_Submenu
             $saved_field_id = $saved_field->get_id();
 
             $grouped_settings[ 'saved_fields'][] = array(
-                'id' => '',
-                'type' => 'html',
-                'html' => '<a class="js-delete-saved-field button button-secondary" data-id="' . $saved_field_id . '">' . __( 'Delete' ) . '</a>',
+                'id'    => '',
+                'type'  => 'html',
+                'html'  => '<a class="js-delete-saved-field button button-secondary" data-id="' . $saved_field_id . '">' . __( 'Delete' ) . '</a>',
                 'label' => $saved_field->get_setting( 'label' ),
 
             );
@@ -139,9 +139,9 @@ final class NF_Admin_Menus_Settings extends NF_Abstracts_Submenu
     private function get_settings()
     {
         return apply_filters( 'ninja_forms_plugin_settings', array(
-            'general' => Ninja_Forms()->config( 'PluginSettingsGeneral' ),
+            'general'   => Ninja_Forms()->config( 'PluginSettingsGeneral' ),
             'recaptcha' => Ninja_Forms()->config( 'PluginSettingsReCaptcha' ),
-            'advanced' => Ninja_Forms()->config( 'PluginSettingsAdvanced' ),
+            'advanced'  => Ninja_Forms()->config( 'PluginSettingsAdvanced' ),
         ));
     }
 
