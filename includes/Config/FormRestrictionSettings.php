@@ -2,26 +2,26 @@
 
 return apply_filters( 'ninja_forms_from_restriction_settings', array(
 
-    'logged-in-set' => array(
-        'name'    => 'logged-in-set',
-        'type'    => 'fieldset',
-        'label'   => __( 'Logged In', 'ninja-forms' ),
-        'width' => 'full',
-        'group' => 'primary',
+    'logged-in-set'         => array(
+        'name'     => 'logged-in-set',
+        'type'     => 'fieldset',
+        'label'    => __( 'Logged In', 'ninja-forms' ),
+        'width'    => 'full',
+        'group'    => 'primary',
         'settings' => array(
 
             /*
              * REQUIRE USER TO BE LOGGED IN TO VIEW FORM?
              */
 
-            'logged_in' => array(
-                'name' => 'logged_in',
-                'type' => 'toggle',
+            'logged_in'         => array(
+                'name'  => 'logged_in',
+                'type'  => 'toggle',
                 'label' => __( 'Require user to be logged in to view form?', 'ninja-forms' ),
                 'width' => 'one-half',
                 'group' => 'primary',
                 'value' => FALSE,
-                'help' => __( 'Does apply to form preview.', 'ninja-forms' )
+                'help'  => __( 'Does apply to form preview.', 'ninja-forms' )
             ),
 
             /*
@@ -29,8 +29,8 @@ return apply_filters( 'ninja_forms_from_restriction_settings', array(
              */
 
             'not_logged_in_msg' => array(
-                'name' => 'not_logged_in_msg',
-                'type' => 'rte', //TODO: Add WYSIWYG
+                'name'  => 'not_logged_in_msg',
+                'type'  => 'rte', //TODO: Add WYSIWYG
                 'label' => __( 'Not Logged-In Message', 'ninja-forms' ),
                 'width' => 'full',
                 'group' => 'primary',
@@ -40,11 +40,11 @@ return apply_filters( 'ninja_forms_from_restriction_settings', array(
     ),
 
     'limit-submissions-set' => array(
-        'name'    => 'limit-submissions-set',
-        'type'    => 'fieldset',
-        'label'   => __( 'Limit Submissions', 'ninja-forms' ),
-        'width' => 'full',
-        'group' => 'primary',
+        'name'     => 'limit-submissions-set',
+        'type'     => 'fieldset',
+        'label'    => __( 'Limit Submissions', 'ninja-forms' ),
+        'width'    => 'full',
+        'group'    => 'primary',
         'settings' => array(
 
             /*
@@ -52,13 +52,13 @@ return apply_filters( 'ninja_forms_from_restriction_settings', array(
              */
 
             'sub_limit_number' => array(
-                'name' => 'sub_limit_number',
-                'type' => 'number',
+                'name'  => 'sub_limit_number',
+                'type'  => 'number',
                 'label' => __( 'Submission Limit', 'ninja-forms' ),
                 'width' => 'one-third',
                 'group' => 'primary',
                 'value' => NULL,
-                'help' => __( 'Does NOT apply to form preview.', 'ninja-forms' )
+                'help'  => __( 'Does NOT apply to form preview.', 'ninja-forms' )
 
                 //TODO: Add following text below the element.
                 //Select the number of submissions that this form will accept. Leave empty for no limit.
@@ -68,9 +68,9 @@ return apply_filters( 'ninja_forms_from_restriction_settings', array(
              * LIMIT REACHED MESSAGE
              */
 
-            'sub_limit_msg' => array(
-                'name' => 'sub_limit_msg',
-                'type' => 'rte',//TODO: Add WYSIWYG
+            'sub_limit_msg'    => array(
+                'name'  => 'sub_limit_msg',
+                'type'  => 'rte',//TODO: Add WYSIWYG
                 'label' => __( 'Limit Reached Message', 'ninja-forms' ),
                 'width' => 'full',
                 'group' => 'primary',
