@@ -8,7 +8,7 @@ return apply_filters( 'ninja_forms_plugin_settings_general', array(
     |--------------------------------------------------------------------------
     */
 
-    'version' => array(
+    'version'         => array(
         'id'    => 'version',
         'type'  => 'desc',
         'label' => __( 'Version', 'ninja-forms' ),
@@ -21,7 +21,7 @@ return apply_filters( 'ninja_forms_plugin_settings_general', array(
     |--------------------------------------------------------------------------
     */
 
-    'date_format' => array(
+    'date_format'     => array(
         'id'    => 'date_format',
         'type'  => 'textbox',
         'label' => __( 'Date Format', 'ninja-forms' ),
