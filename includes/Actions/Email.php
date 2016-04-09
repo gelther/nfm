@@ -114,8 +114,8 @@ final class NF_Actions_Email extends NF_Abstracts_Action
         $headers = array();
 
         $recipient_settings = array(
-            'Cc' => $settings[ 'cc' ],
-            'Bcc' => $settings[ 'bcc' ],
+            'Cc'       => $settings[ 'cc' ],
+            'Bcc'      => $settings[ 'bcc' ],
             'Reply-to' => $settings[ 'reply_to' ],
         );
 
