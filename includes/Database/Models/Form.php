@@ -154,8 +154,8 @@ final class NF_Database_Models_Form extends NF_Abstracts_Model
 
         $export = array(
             'settings' => $form->get_settings(),
-            'fields' => array(),
-            'actions' => array()
+            'fields'   => array(),
+            'actions'  => array()
         );
 
         $fields = Ninja_Forms()->form( $form_id )->get_fields();
@@ -245,8 +245,8 @@ final class NF_Database_Models_Form extends NF_Abstracts_Model
 
         if( ! $has_save_action ) {
             $import[ 'actions' ][] = array(
-                'type' => 'save',
-                'label' => 'Save Form',
+                'type'   => 'save',
+                'label'  => 'Save Form',
                 'active' => TRUE
             );
         }
