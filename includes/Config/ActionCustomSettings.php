@@ -7,13 +7,13 @@ return array(
      */
 
     'tag' => array(
-        'name' => 'tag',
-        'type' => 'textbox',
-        'group' => 'primary',
-        'label' => __( 'Hook Tag', 'ninja-forms' ),
-        'placeholder' => '',
-        'value' => '',
-        'width' => 'full',
+        'name'           => 'tag',
+        'type'           => 'textbox',
+        'group'          => 'primary',
+        'label'          => __( 'Hook Tag', 'ninja-forms' ),
+        'placeholder'    => '',
+        'value'          => '',
+        'width'          => 'full',
         'use_merge_tags' => TRUE,
     ),
     
