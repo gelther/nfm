@@ -201,9 +201,9 @@ final class NF_Database_Models_Submission
         $this->_form_id = $form_id;
 
         $args = array(
-            'post_type' => 'nf_sub',
+            'post_type'      => 'nf_sub',
             'posts_per_page' => -1,
-            'meta_query' => $this->format_meta_query( $where )
+            'meta_query'     => $this->format_meta_query( $where )
         );
 
         $subs = get_posts( $args );
@@ -238,7 +238,7 @@ final class NF_Database_Models_Submission
         if( ! $this->_id ){
 
             $sub = array(
-                'post_type' => 'nf_sub',
+                'post_type'   => 'nf_sub',
                 'post_status' => 'publish'
             );
 
@@ -267,7 +267,7 @@ final class NF_Database_Models_Submission
          */
 
         $field_labels = array(
-            '_seq_num' => '#',
+            '_seq_num'        => '#',
             '_date_submitted' => __( 'Date Submitted', 'ninja-forms' )
         );
 
@@ -405,7 +405,7 @@ final class NF_Database_Models_Submission
     {
         $return = array(
             array(
-                'key' => '_form_id',
+                'key'   => '_form_id',
                 'value' => $this->_form_id
             )
         );

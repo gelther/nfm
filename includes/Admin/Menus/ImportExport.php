@@ -86,7 +86,7 @@ final class NF_Admin_Menus_ImportExport extends NF_Abstracts_Submenu
     public function display()
     {
         $tabs = apply_filters( 'ninja_forms_import_export_tabs', array(
-            'forms' => __( 'Form', 'ninja-forms' ),
+            'forms'           => __( 'Form', 'ninja-forms' ),
             'favorite_fields' => __( 'Favorite Fields', 'ninja-forms' )
             )
         );
@@ -353,9 +353,9 @@ final class NF_Admin_Menus_ImportExport extends NF_Abstracts_Submenu
         }
 
         $args = array(
-            'title' => __( 'File Upload Error', 'ninja-forms' ),
+            'title'   => __( 'File Upload Error', 'ninja-forms' ),
             'message' => $error_message,
-            'debug' => $file,
+            'debug'   => $file,
         );
         $message = Ninja_Forms()->template( 'admin-wp-die.html.php', $args );
         wp_die( $message, $args[ 'title' ], array( 'back_link' => TRUE ) );

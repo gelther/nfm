@@ -6,14 +6,14 @@ return array(
      * Label
      */
 
-    'label' => array(
-        'name' => 'label',
-        'type' => 'textbox',
-        'group' => 'primary',
-        'label' => __( 'Action Name', 'ninja-forms' ),
+    'label'  => array(
+        'name'        => 'label',
+        'type'        => 'textbox',
+        'group'       => 'primary',
+        'label'       => __( 'Action Name', 'ninja-forms' ),
         'placeholder' => '',
-        'width' => 'full',
-        'value' => '',
+        'width'       => 'full',
+        'value'       => '',
         
     ),    
 
@@ -22,8 +22,8 @@ return array(
      */
 
     'active' => array(
-        'name' => 'active',
-        'type' => 'toggle',
+        'name'  => 'active',
+        'type'  => 'toggle',
         'label' => __( 'Active', 'ninja-forms' ),
         'value' => 1
     ),

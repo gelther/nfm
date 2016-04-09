@@ -104,12 +104,12 @@ abstract class NF_Abstracts_ActionNewsletter extends NF_Abstracts_Action
         if( empty( $lists ) ) return;
 
         $this->_settings[ $prefix . 'newsletter_list' ] = array(
-            'name' => 'newsletter_list',
-            'type' => 'select',
-            'label' => $labels[ 'list' ] . ' <a class="js-newsletter-list-update extra"><span class="dashicons dashicons-update"></span></a>',
-            'width' => 'full',
-            'group' => 'primary',
-            'value' => '0',
+            'name'    => 'newsletter_list',
+            'type'    => 'select',
+            'label'   => $labels[ 'list' ] . ' <a class="js-newsletter-list-update extra"><span class="dashicons dashicons-update"></span></a>',
+            'width'   => 'full',
+            'group'   => 'primary',
+            'value'   => '0',
             'options' => array(),
         );
 
@@ -120,10 +120,10 @@ abstract class NF_Abstracts_ActionNewsletter extends NF_Abstracts_Action
             foreach( $list[ 'fields' ] as $field ){
                 $name = $list[ 'value' ] . '_' . $field[ 'value' ];
                 $fields[] = array(
-                    'name' => $name,
-                    'type' => 'textbox',
-                    'label' => $field[ 'label' ],
-                    'width' => 'full',
+                    'name'           => $name,
+                    'type'           => 'textbox',
+                    'label'          => $field[ 'label' ],
+                    'width'          => 'full',
                     'use_merge_tags' => array(
                         'exclude' => array(
                             'user', 'post', 'system', 'querystrings'
@@ -134,18 +134,18 @@ abstract class NF_Abstracts_ActionNewsletter extends NF_Abstracts_Action
         }
 
         $this->_settings[ $prefix . 'newsletter_list_fields' ] = array(
-            'name' => 'newsletter_list_fields',
-            'label' => __( 'List Field Mapping', 'ninja-forms' ),
-            'type' => 'fieldset',
-            'group' => 'primary',
+            'name'     => 'newsletter_list_fields',
+            'label'    => __( 'List Field Mapping', 'ninja-forms' ),
+            'type'     => 'fieldset',
+            'group'    => 'primary',
             'settings' => array()
         );
 
         $this->_settings[ $prefix . 'newsletter_list_groups' ] = array(
-            'name' => 'newsletter_list_groups',
-            'label' => __( 'Interest Groups', 'ninja-forms' ),
-            'type' => 'fieldset',
-            'group' => 'primary',
+            'name'     => 'newsletter_list_groups',
+            'label'    => __( 'Interest Groups', 'ninja-forms' ),
+            'type'     => 'fieldset',
+            'group'    => 'primary',
             'settings' => array()
         );
     }

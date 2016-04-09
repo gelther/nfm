@@ -23,11 +23,11 @@ return apply_filters( 'ninja_forms_from_action_defaults', array(
     ),
 
     array(
-        'id'    => 'tmp-3',
-        'label' => 'Save Submission',
-        'type'  => 'save',
-        'order' => 3,
-        'active'=> TRUE,
+        'id'     => 'tmp-3',
+        'label'  => 'Save Submission',
+        'type'   => 'save',
+        'order'  => 3,
+        'active' => TRUE,
     ),
 
 ));

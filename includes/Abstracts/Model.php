@@ -386,7 +386,7 @@ class NF_Abstracts_Model
         $this->_db->delete(
             $this->_relationships_table,
             array(
-                'parent_id' => $this->_id,
+                'parent_id'   => $this->_id,
                 'parent_type' => $this->_type
             )
         );
@@ -564,7 +564,7 @@ class NF_Abstracts_Model
                     'value' => $value
                 ),
                 array(
-                    'key' => $key,
+                    'key'       => $key,
                     'parent_id' => $this->_id
                 )
             );
@@ -574,8 +574,8 @@ class NF_Abstracts_Model
             $result = $this->_db->insert(
                 $this->_meta_table_name,
                 array(
-                    'key' => $key,
-                    'value' => $value,
+                    'key'       => $key,
+                    'value'     => $value,
                     'parent_id' => $this->_id
                 ),
                 array(
@@ -637,9 +637,9 @@ class NF_Abstracts_Model
             $this->_db->insert(
                 $this->_relationships_table,
                 array(
-                    'child_id' => $this->_id,
-                    'child_type' => $this->_type,
-                    'parent_id' => $this->_parent_id,
+                    'child_id'    => $this->_id,
+                    'child_type'  => $this->_type,
+                    'parent_id'   => $this->_parent_id,
                     'parent_type' => $this->_parent_type
                 ),
                 array(

@@ -14,7 +14,7 @@ final class NF_MergeTags_QueryStrings extends NF_Abstracts_MergeTags
 
         $this->merge_tags = array(
             '' => array(
-                'tag' => '{query_string_key}',
+                'tag'   => '{query_string_key}',
                 'label' => __( 'Query String', 'ninja_forms' ),
             ),
         );
@@ -39,10 +39,10 @@ final class NF_MergeTags_QueryStrings extends NF_Abstracts_MergeTags
         $callback = ( is_numeric( $key ) ) ? 'querystring_' . $key : $key;
 
         $this->merge_tags[ $callback ] = array(
-            'id' => $key,
-            'tag' => "{" . $key . "}",
+            'id'       => $key,
+            'tag'      => "{" . $key . "}",
             'callback' => $callback,
-            'value' => $value
+            'value'    => $value
         );
     }
 

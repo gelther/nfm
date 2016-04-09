@@ -36,12 +36,12 @@ abstract class NF_Abstracts_FieldOptIn extends NF_Abstracts_Input
          */
         $this->_settings[ 'type' ][ 'options' ] = array(
             array(
-                'label'     => __( 'Single', 'ninja-forms' ),
-                'value'     => 'single',
+                'label' => __( 'Single', 'ninja-forms' ),
+                'value' => 'single',
             ),
             array(
-                'label'     => __( 'Multiple', 'ninja-forms' ),
-                'value'     => 'multiple',
+                'label' => __( 'Multiple', 'ninja-forms' ),
+                'value' => 'multiple',
             ),
         );
 
@@ -61,8 +61,8 @@ abstract class NF_Abstracts_FieldOptIn extends NF_Abstracts_Input
     protected function addList( $name, $label )
     {
         $this->_settings[ 'fieldset' ][ 'settings' ][] = array(
-            'name' => $name,
-            'type' => 'toggle',
+            'name'  => $name,
+            'type'  => 'toggle',
             'label' => $label,
             'width' => 'full',
             'value' => ''

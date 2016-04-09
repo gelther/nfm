@@ -48,12 +48,12 @@ class NF_Fields_Date extends NF_Fields_Textbox
     private function get_format( $format )
     {
         $lookup = array(
-            'DD/MM/YYYY' => 'm/d/Y',
-            'DD-MM-YYYY' => 'd-m-Y',
-            'MM/DD/YYYY' => 'm/d/Y',
-            'MM-DD-YYYY' => 'm-d-Y',
-            'YYYY-MM-DD' => 'Y-m-d',
-            'YYYY/MM/DD' => 'Y/m/d',
+            'DD/MM/YYYY'        => 'm/d/Y',
+            'DD-MM-YYYY'        => 'd-m-Y',
+            'MM/DD/YYYY'        => 'm/d/Y',
+            'MM-DD-YYYY'        => 'm-d-Y',
+            'YYYY-MM-DD'        => 'Y-m-d',
+            'YYYY/MM/DD'        => 'Y/m/d',
             'dddd, MMMM D YYYY' => 'l, F d Y'
         );
 

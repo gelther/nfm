@@ -34,11 +34,11 @@ class NF_Fields_ListState extends NF_Abstracts_List
         $options = array();
         foreach( Ninja_Forms()->config( 'StateList' ) as $label => $value ){
             $options[] = array(
-                'label'  => $label,
-                'value' => $value,
-                'calc' => '',
+                'label'    => $label,
+                'value'    => $value,
+                'calc'     => '',
                 'selected' => 0,
-                'order' => $order
+                'order'    => $order
             );
 
             $order++;

@@ -73,7 +73,7 @@ final class NF_Admin_Menus_Submissions extends NF_Abstracts_Submenu
         if( ! $form_id ) return array();
 
         $cols = array(
-            'cb'    => '<input type="checkbox" />',
+            'cb'      => '<input type="checkbox" />',
             'seq_num' => __( '#', 'ninja-forms' ),
         );
 
@@ -384,8 +384,8 @@ final class NF_Admin_Menus_Submissions extends NF_Abstracts_Submenu
         if ( ! isset ( $vars['meta_query'] ) ) {
             $vars['meta_query'] = array(
                 array(
-                    'key' => '_form_id',
-                    'value' => $form_id,
+                    'key'     => '_form_id',
+                    'value'   => $form_id,
                     'compare' => '=',
                 ),
             );
@@ -410,7 +410,7 @@ final class NF_Admin_Menus_Submissions extends NF_Abstracts_Submenu
         if ( ! isset ( $vars['date_query'] ) ) {
 
             $vars['date_query'] = array(
-                'after' => $begin_date,
+                'after'  => $begin_date,
                 'before' => $end_date
             );
         }

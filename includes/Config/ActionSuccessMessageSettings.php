@@ -7,13 +7,13 @@ return array(
     */
 
     'success_msg' => array(
-        'name' => 'success_msg',
-        'type' => 'rte',
-        'group' => 'primary',
-        'label' => __( 'Message', 'ninja-forms' ),
+        'name'        => 'success_msg',
+        'type'        => 'rte',
+        'group'       => 'primary',
+        'label'       => __( 'Message', 'ninja-forms' ),
         'placeholder' => '',
-        'width' => 'full',
-        'value' => '','use_merge_tags' => TRUE,
+        'width'       => 'full',
+        'value'       => '','use_merge_tags' => TRUE,
     ),
 
 );

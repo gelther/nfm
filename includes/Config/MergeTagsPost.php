@@ -8,10 +8,10 @@ return apply_filters( 'ninja_forms_merge_tags_post', array(
     |--------------------------------------------------------------------------
     */
 
-    'id' => array(
-        'id' => 'id',
-        'tag' => '{post:id}',
-        'label' => __( 'Post ID', 'ninja_forms' ),
+    'id'    => array(
+        'id'       => 'id',
+        'tag'      => '{post:id}',
+        'label'    => __( 'Post ID', 'ninja_forms' ),
         'callback' => 'post_id'
     ),
 
@@ -22,9 +22,9 @@ return apply_filters( 'ninja_forms_merge_tags_post', array(
     */
 
     'title' => array(
-        'id' => 'title',
-        'tag' => '{post:title}',
-        'label' => __( 'Post Title', 'ninja_forms' ),
+        'id'       => 'title',
+        'tag'      => '{post:title}',
+        'label'    => __( 'Post Title', 'ninja_forms' ),
         'callback' => 'post_title'
     ),
 
@@ -34,10 +34,10 @@ return apply_filters( 'ninja_forms_merge_tags_post', array(
     |--------------------------------------------------------------------------
     */
 
-    'url' => array(
-        'id' => 'url',
-        'tag' => '{post:url}',
-        'label' => __( 'Post URL', 'ninja_forms' ),
+    'url'   => array(
+        'id'       => 'url',
+        'tag'      => '{post:url}',
+        'label'    => __( 'Post URL', 'ninja_forms' ),
         'callback' => 'post_url'
     ),
 
