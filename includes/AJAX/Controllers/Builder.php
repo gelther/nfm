@@ -89,13 +89,13 @@ class NF_AJAX_Controllers_Builder extends NF_Abstracts_Controller
             $settings_defaults = $this->_setting_defaults( $unique_settings );
 
             $field_type_settings[ $name ] = array(
-                'id' =>  $name,
-                'nicename' => $field->get_nicename(),
-                'alias' => $field->get_aliases(),
-                'parentType' => $field->get_parent_type(),
-                'section' => $field->get_section(),
-                'type' => $field->get_type(),
-                'settingGroups' => $settings_groups,
+                'id'              =>  $name,
+                'nicename'        => $field->get_nicename(),
+                'alias'           => $field->get_aliases(),
+                'parentType'      => $field->get_parent_type(),
+                'section'         => $field->get_section(),
+                'type'            => $field->get_type(),
+                'settingGroups'   => $settings_groups,
                 'settingDefaults' => $settings_defaults
             );
         }
@@ -122,11 +122,11 @@ class NF_AJAX_Controllers_Builder extends NF_Abstracts_Controller
             $master_settings_list = array_merge( $master_settings_list, $settings );
 
             $action_type_settings[ $name ] = array(
-                'id' => $name,
-                'section' => $action->get_section(),
-                'nicename' => $action->get_nicename(),
-                'image' => $action->get_image(),
-                'settingGroups' => $settings_groups,
+                'id'              => $name,
+                'section'         => $action->get_section(),
+                'nicename'        => $action->get_nicename(),
+                'image'           => $action->get_image(),
+                'settingGroups'   => $settings_groups,
                 'settingDefaults' => $this->_setting_defaults( $master_settings_list )
             );
         }
@@ -143,12 +143,12 @@ class NF_AJAX_Controllers_Builder extends NF_Abstracts_Controller
             $link = ( isset( $action[ 'link' ] ) ) ? $action[ 'link' ] : '';
 
             $action_type_settings[ $name ] = array(
-                'id' => $name,
-                'section' => 'available',
-                'nicename' => $nicename,
-                'image' => $image,
-                'link' => $link,
-                'settingGroups' => array(),
+                'id'              => $name,
+                'section'         => 'available',
+                'nicename'        => $nicename,
+                'image'           => $image,
+                'link'            => $link,
+                'settingGroups'   => array(),
                 'settingDefaults' => array()
             );
         }
