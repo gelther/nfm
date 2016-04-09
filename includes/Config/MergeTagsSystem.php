@@ -9,9 +9,9 @@ return apply_filters( 'ninja_forms_merge_tags_system', array(
     */
 
     'date' => array(
-        'id' => 'date',
-        'tag' => '{system:date}',
-        'label' => __( 'Date', 'ninja_forms' ),
+        'id'       => 'date',
+        'tag'      => '{system:date}',
+        'label'    => __( 'Date', 'ninja_forms' ),
         'callback' => 'system_date'
     ),
 
@@ -21,10 +21,10 @@ return apply_filters( 'ninja_forms_merge_tags_system', array(
     |--------------------------------------------------------------------------
     */
 
-    'ip' => array(
-        'id' => 'ip',
-        'tag' => '{system:ip}',
-        'label' => __( 'IP Address', 'ninja_forms' ),
+    'ip'   => array(
+        'id'       => 'ip',
+        'tag'      => '{system:ip}',
+        'label'    => __( 'IP Address', 'ninja_forms' ),
         'callback' => 'system_ip'
     ),
 
