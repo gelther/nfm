@@ -67,9 +67,9 @@ class NF_Extension_Updater
 
         // data to send in our API request
         $api_params = array(
-            'edd_action'=> 'activate_license',
-            'license' 	=> $license_key,
-            'item_name' => urlencode( $this->product_nice_name ) // the name of our product in EDD
+            'edd_action' => 'activate_license',
+            'license'    => $license_key,
+            'item_name'  => urlencode( $this->product_nice_name ) // the name of our product in EDD
         );
 
         // Call the custom API.
@@ -109,9 +109,9 @@ class NF_Extension_Updater
 
         // data to send in our API request
         $api_params = array(
-            'edd_action'=> 'deactivate_license',
-            'license' 	=> $license,
-            'item_name' => urlencode( $this->product_nice_name ) // the name of our product in EDD
+            'edd_action' => 'deactivate_license',
+            'license'    => $license,
+            'item_name'  => urlencode( $this->product_nice_name ) // the name of our product in EDD
         );
 
         // Call the custom API.
