@@ -61,8 +61,8 @@ final class NF_Admin_Menus_Forms extends NF_Abstracts_Menu
             $this->table->prepare_items();
 
             Ninja_Forms::template( 'admin-menu-all-forms.html.php', array(
-                'table' => $this->table,
-                'add_new_url' => admin_url( 'admin.php?page=ninja-forms&form_id=new' ),
+                'table'        => $this->table,
+                'add_new_url'  => admin_url( 'admin.php?page=ninja-forms&form_id=new' ),
                 'add_new_text' => __( 'Add New Form', 'ninja-forms' )
             ) );
         }
@@ -122,12 +122,12 @@ final class NF_Admin_Menus_Forms extends NF_Abstracts_Menu
         wp_enqueue_script( 'nf-builder', Ninja_Forms::$url . 'assets/js/min/builder.js', array( 'jquery', 'jquery-ui-core', 'jquery-ui-draggable', 'jquery-ui-droppable', 'jquery-ui-sortable', 'jquery-effects-bounce' ) );
 
         wp_localize_script( 'nf-builder', 'nfAdmin', array(
-            'ajaxNonce'         => wp_create_nonce( 'ninja_forms_ajax_nonce' ),
-            'requireBaseUrl'    => Ninja_Forms::$url . 'assets/js/',
-            'previewurl'        => site_url() . '/?nf_preview_form=',
-            'wp_locale'         => $wp_locale->number_format,
-            'editFormText'      => __( 'Edit Form', 'ninja-forms' ),
-            'mobile'            => ( wp_is_mobile() ) ? 1: 0
+            'ajaxNonce'      => wp_create_nonce( 'ninja_forms_ajax_nonce' ),
+            'requireBaseUrl' => Ninja_Forms::$url . 'assets/js/',
+            'previewurl'     => site_url() . '/?nf_preview_form=',
+            'wp_locale'      => $wp_locale->number_format,
+            'editFormText'   => __( 'Edit Form', 'ninja-forms' ),
+            'mobile'         => ( wp_is_mobile() ) ? 1: 0
         ));
 
         do_action( 'nf_admin_enqueue_scripts' );
@@ -229,14 +229,14 @@ final class NF_Admin_Menus_Forms extends NF_Abstracts_Menu
             $settings_defaults = $this->_setting_defaults( $unique_settings );
 
             $field_type_settings[ $name ] = array(
-                'id' =>  $name,
-                'nicename' => $field->get_nicename(),
-                'alias' => $field->get_aliases(),
-                'parentType' => $field->get_parent_type(),
-                'section' => $field->get_section(),
-                'icon' => $field->get_icon(),
-                'type' => $field->get_type(),
-                'settingGroups' => $settings_groups,
+                'id'              =>  $name,
+                'nicename'        => $field->get_nicename(),
+                'alias'           => $field->get_aliases(),
+                'parentType'      => $field->get_parent_type(),
+                'section'         => $field->get_section(),
+                'icon'            => $field->get_icon(),
+                'type'            => $field->get_type(),
+                'settingGroups'   => $settings_groups,
                 'settingDefaults' => $settings_defaults
             );
         }
@@ -291,11 +291,11 @@ final class NF_Admin_Menus_Forms extends NF_Abstracts_Menu
             $master_settings_list = array_merge( $master_settings_list, $settings );
 
             $action_type_settings[ $name ] = array(
-                'id' => $name,
-                'section' => $action->get_section(),
-                'nicename' => $action->get_nicename(),
-                'image' => $action->get_image(),
-                'settingGroups' => $settings_groups,
+                'id'              => $name,
+                'section'         => $action->get_section(),
+                'nicename'        => $action->get_nicename(),
+                'image'           => $action->get_image(),
+                'settingGroups'   => $settings_groups,
                 'settingDefaults' => $this->_setting_defaults( $master_settings_list )
             );
         }
@@ -322,12 +322,12 @@ final class NF_Admin_Menus_Forms extends NF_Abstracts_Menu
             if( isset( $action_type_settings[ $name ] ) ) continue;
 
             $action_type_settings[ $name ] = array(
-                'id' => $name,
-                'section' => 'available',
-                'nicename' => $nicename,
-                'image' => $image,
-                'link' => $link,
-                'settingGroups' => array(),
+                'id'              => $name,
+                'section'         => 'available',
+                'nicename'        => $nicename,
+                'image'           => $image,
+                'link'            => $link,
+                'settingGroups'   => array(),
                 'settingDefaults' => array()
             );
         }
@@ -384,9 +384,9 @@ final class NF_Admin_Menus_Forms extends NF_Abstracts_Menu
         foreach( Ninja_Forms()->merge_tags as $key => $group ){
 
             $merge_tags[ $key ] = array(
-                'id'    => $group->get_id(),
-                'label' => $group->get_title(),
-                'tags'  => array_values( $group->get_merge_tags() ),
+                'id'            => $group->get_id(),
+                'label'         => $group->get_title(),
+                'tags'          => array_values( $group->get_merge_tags() ),
                 'default_group' => $group->is_default_group()
             );
         }
