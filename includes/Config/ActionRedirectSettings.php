@@ -7,13 +7,13 @@ return array(
     */
 
     'redirect_url' => array(
-        'name' => 'redirect_url',
-        'type' => 'textbox',
-        'group' => 'primary',
-        'label' => __( 'URL', 'ninja-forms' ),
-        'placeholder' => '',
-        'width' => 'full',
-        'value' => '',
+        'name'           => 'redirect_url',
+        'type'           => 'textbox',
+        'group'          => 'primary',
+        'label'          => __( 'URL', 'ninja-forms' ),
+        'placeholder'    => '',
+        'width'          => 'full',
+        'value'          => '',
         'use_merge_tags' => TRUE,
     ),
 
