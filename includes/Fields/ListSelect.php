@@ -19,8 +19,7 @@ class NF_Fields_ListSelect extends NF_Abstracts_List
 
     protected $_old_classname = 'list-select';
 
-    public function __construct()
-    {
+    public function __construct() {
         parent::__construct();
 
         $this->_nicename = __( 'Select', 'ninja-forms' );
