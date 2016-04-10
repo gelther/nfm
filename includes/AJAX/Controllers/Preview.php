@@ -15,7 +15,7 @@ class NF_AJAX_Controllers_Preview extends NF_Abstracts_Controller
     {
         check_ajax_referer( 'ninja_forms_ajax_nonce', 'security' );
 
-        $form = json_decode( stripslashes( $_POST['form'] ), ARRAY_A );
+        $form = json_decode( stripslashes( $_POST[ 'form' ] ), ARRAY_A );
 
         $form_id = $form[ 'id' ];
 
@@ -94,7 +94,7 @@ class NF_AJAX_Controllers_Preview extends NF_Abstracts_Controller
 
         $this->update_form_data( $form_data );
 
-        $this->_data['form'] = $form_data;
+        $this->_data[ 'form' ] = $form_data;
 
         $this->_respond();
     }
@@ -107,7 +107,7 @@ class NF_AJAX_Controllers_Preview extends NF_Abstracts_Controller
 
         if( isset( $form_data[ 'actions' ][ $action_id ] ) ){
 
-            $settings        = $form_data['actions'][$action_id]['settings'];
+            $settings        = $form_data[ 'actions' ][$action_id][ 'settings' ];
             $action_settings = array_merge( $action_settings, $settings );
         }
 
@@ -122,13 +122,13 @@ class NF_AJAX_Controllers_Preview extends NF_Abstracts_Controller
 
             if( is_string( $form_id ) ){
                 $form                    = Ninja_Forms()->form()->get();
-                $form_data['id']         = $form_id;
+                $form_data[ 'id' ]       = $form_id;
                 $form_data[ 'settings' ] = array();
                 $form_data[ 'fields' ]   = array();
                 $form_data[ 'actions' ]  = array();
             } else {
-                $form            = Ninja_Forms()->form( $form_id )->get();
-                $form_data['id'] = $form_id;
+                $form              = Ninja_Forms()->form( $form_id )->get();
+                $form_data[ 'id' ] = $form_id;
 
                 $form_data[ 'settings' ] = $form->get_settings();
 
@@ -153,14 +153,14 @@ class NF_AJAX_Controllers_Preview extends NF_Abstracts_Controller
 
     private function update_form_data( $form_data )
     {
-        $update = update_user_option( get_current_user_id(), self::$transient_prefix . $form_data['id'], $form_data );
+        $update = update_user_option( get_current_user_id(), self::$transient_prefix . $form_data[ 'id' ], $form_data );
 
         $this->_data[ 'updated' ] = $update;
 
         if( ! $update ){
             $this->_errors[ 'Form Preview Not Updated' ] = $form_data;
             $this->_errors[ 'Current User' ]             = get_current_user_id();
-            $this->_errors[ 'Option' ]                   = self::$transient_prefix . $form_data['id'];
+            $this->_errors[ 'Option' ]                   = self::$transient_prefix . $form_data[ 'id' ];
         }
     }
 }
