@@ -218,7 +218,7 @@ abstract class NF_Abstracts_Action
 
         foreach( $only_settings as $setting ){
 
-            if( isset( $all_settings[ $setting ]) ){
+            if( isset( $all_settings[ $setting ] ) ){
 
                 $settings[ $setting ] = $all_settings[ $setting ];
             }
