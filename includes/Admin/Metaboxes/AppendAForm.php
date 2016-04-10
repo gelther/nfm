@@ -34,7 +34,7 @@ final class NF_Admin_Metaboxes_AppendAForm extends NF_Abstracts_Metabox
 
         $form_id = absint( $_POST[ 'ninja_form_select' ] );
 
-        if ( empty ( $form_id ) ) {
+        if ( empty( $form_id ) ) {
             delete_post_meta( $post_id, 'ninja_forms_form' );
         } else {
             update_post_meta( $post_id, 'ninja_forms_form', $form_id );
@@ -52,4 +52,5 @@ final class NF_Admin_Metaboxes_AppendAForm extends NF_Abstracts_Metabox
 
         Ninja_Forms()->template( 'admin-metabox-append-a-form.html.php', compact( 'forms', 'form_id', 'none_text' ) );
     }
+
 }
