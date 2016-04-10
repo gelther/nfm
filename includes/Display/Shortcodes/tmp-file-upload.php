@@ -25,8 +25,7 @@ function nf_tmp_file_upload() {
             $('input[type=file]').on('change', prepareUpload);
 
             // Grab the files and set them to our variable
-            function prepareUpload(event)
-            {
+            function prepareUpload(event) {
                 files = event.target.files;
             }
 
@@ -37,8 +36,7 @@ function nf_tmp_file_upload() {
             $('form').on('submit', uploadFiles);
 
             // Catch the form submit and upload the files
-            function uploadFiles(event)
-            {
+            function uploadFiles(event) {
                 event.stopPropagation(); // Stop stuff happening
                 event.preventDefault(); // Totally stop stuff happening
 
