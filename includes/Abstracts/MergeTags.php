@@ -62,5 +62,4 @@ abstract class NF_Abstracts_MergeTags
         return $this->_default_group;
     }
 
-
 } // END CLASS NF_Abstracts_MergeTags
