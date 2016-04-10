@@ -4,7 +4,7 @@
  * It accepts two args: Product Name and Version.
  *
  * @param $product_name string
- * @param $version string
+ * @param $version      string
  * @since 2.2.47
  * @return void
  */
@@ -48,7 +48,7 @@ class NF_Extension_Updater
      * Function that adds the license entry fields to the license tab.
      *
      * @updated 3.0
-     * @param array $licenses
+     * @param  array $licenses
      * @return array $licenses
      */
     function register( $licenses ) {

@@ -185,8 +185,8 @@ abstract class NF_Abstracts_Action
      *
      * A static method for sorting two actions by timing, then priority.
      *
-     * @param $a
-     * @param $b
+     * @param      $a
+     * @param      $b
      * @return int
      */
     public static function sort_actions( $a, $b )

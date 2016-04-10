@@ -86,8 +86,8 @@ class NF_Session {
      *
      * @access public
      * @since 2.9.18
-     * @param string $key Session key
-     * @return string Session variable
+     * @param  string $key Session key
+     * @return string      Session variable
      */
     public function get( $key ) {
         $key = sanitize_key( $key );
@@ -97,9 +97,9 @@ class NF_Session {
      * Set a session variable
      *
      * @since 2.9.18
-     * @param string $key Session key
-     * @param integer $value Session variable
-     * @return string Session variable
+     * @param  string  $key   Session key
+     * @param  integer $value Session variable
+     * @return string         Session variable
      */
     public function set( $key, $value ) {
         $key = sanitize_key( $key );
@@ -115,7 +115,7 @@ class NF_Session {
      * Delete a session variable
      *
      * @since 2.9.28
-     * @param string $key
+     * @param  string $key
      * @return void
      */
     public function delete() {
@@ -128,7 +128,7 @@ class NF_Session {
      *
      * @access public
      * @since 2.9.18
-     * @param int $exp Default expiration (1 hour)
+     * @param  int $exp Default expiration (1 hour)
      * @return int
      */
     public function set_expiration_variant_time( $exp ) {
@@ -139,7 +139,7 @@ class NF_Session {
      *
      * @access public
      * @since 2.9.18
-     * @param int $exp Default expiration (1 hour)
+     * @param  int $exp Default expiration (1 hour)
      * @return int
      */
     public function set_expiration_time( $exp ) {

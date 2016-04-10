@@ -213,8 +213,8 @@ class NF_Abstracts_Model
     /**
      * Get a single setting with a default fallback
      *
-     * @param string $setting
-     * @param bool $default optional
+     * @param  string          $setting
+     * @param  bool            $default optional
      * @return string|int|bool
      */
     public function get_setting( $setting, $default = FALSE )
@@ -227,7 +227,7 @@ class NF_Abstracts_Model
     /**
      * Get Settings
      *
-     * @param string ...$only returns a subset of the object's settings
+     * @param  string ...$only returns a subset of the object's settings
      * @return array
      */
     public function get_settings()
@@ -310,8 +310,8 @@ class NF_Abstracts_Model
     /**
      * Update Setting
      *
-     * @param $key
-     * @param $value
+     * @param                 $key
+     * @param                 $value
      * @return bool|false|int
      */
     public function update_setting( $key, $value )
@@ -324,7 +324,7 @@ class NF_Abstracts_Model
     /**
      * Update Settings
      *
-     * @param $data
+     * @param       $data
      * @return bool
      */
     public function update_settings( $data )
@@ -398,8 +398,8 @@ class NF_Abstracts_Model
     /**
      * Find
      *
-     * @param string $parent_id
-     * @param array $where
+     * @param  string $parent_id
+     * @param  array  $where
      * @return array
      */
     public function find( $parent_id = '', array $where = array() )
@@ -484,9 +484,9 @@ class NF_Abstracts_Model
 
     /**
      * Cache Flag
-     * 
-     * @param string $cache
-     * @return $this
+     *
+     * @param  string $cache
+     * @return        $this
      */
     public function cache( $cache = '' )
     {
@@ -504,8 +504,8 @@ class NF_Abstracts_Model
      *
      * Set the Parent ID and Parent Type properties
      *
-     * @param $parent_id
-     * @param $parent_type
+     * @param  $parent_id
+     * @param  $parent_type
      * @return $this
      */
     public function add_parent( $parent_id, $parent_type )
@@ -527,8 +527,8 @@ class NF_Abstracts_Model
      *
      * Save a single setting.
      *
-     * @param $key
-     * @param $value
+     * @param                 $key
+     * @param                 $value
      * @return bool|false|int
      */
     protected function _save_setting( $key, $value )
@@ -658,8 +658,8 @@ class NF_Abstracts_Model
     /**
      * Build Meta Query
      *
-     * @param string $parent_id
-     * @param array $where
+     * @param  string $parent_id
+     * @param  array  $where
      * @return string
      */
     protected function build_meta_query( $parent_id = '', array $where = array() )

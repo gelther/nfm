@@ -14,9 +14,9 @@ final class NF_Database_Logger extends NF_Abstracts_Logger
     /**
      * Logs with an arbitrary level.
      *
-     * @param mixed $level
-     * @param string $message
-     * @param array $context
+     * @param  mixed  $level
+     * @param  string $message
+     * @param  array  $context
      * @return null
      */
     public function log( $level, $message, array $context = array() )
@@ -43,7 +43,7 @@ final class NF_Database_Logger extends NF_Abstracts_Logger
     /**
      * Get current logs for the request lifecycle
      *
-     * @param string $level
+     * @param  string $level
      * @return array
      */
     public function get_current( $level = '' )
@@ -54,8 +54,8 @@ final class NF_Database_Logger extends NF_Abstracts_Logger
     /**
      * Interpolates context values into the message placeholders.
      *
-     * @param $message
-     * @param array $context
+     * @param         $message
+     * @param  array  $context
      * @return string
      */
     protected function interpolate( $message, array $context = array() )

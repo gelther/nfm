@@ -123,7 +123,7 @@ class NF_Admin_AllFormsTable extends WP_List_Table
     /**
      * Define what data to show on each column of the table
      *
-     * @param  Array $item        Data
+     * @param  Array  $item        Data
      * @param  String $column_name - Current column name
      *
      * @return Mixed

@@ -413,7 +413,7 @@ if( get_option( 'ninja_forms_load_deprecated', FALSE )  && ! isset( $_POST[ 'nf2
         /**
          * Form Model Factory Wrapper
          *
-         * @param $id
+         * @param                            $id
          * @return NF_Abstracts_ModelFactory
          */
         public function form( $id = '' )
@@ -450,8 +450,8 @@ if( get_option( 'ninja_forms_load_deprecated', FALSE )  && ! isset( $_POST[ 'nf2
 	    /**
 	     * Get a setting
 	     *
-	     * @param string     $key
-	     * @param bool|false $default
+	     * @param  string     $key
+	     * @param  bool|false $default
 	     * @return bool
 	     */
         public function get_setting( $key = '', $default = false )
@@ -474,8 +474,8 @@ if( get_option( 'ninja_forms_load_deprecated', FALSE )  && ! isset( $_POST[ 'nf2
 	    /**
 	     * Update a setting
 	     *
-	     * @param string           $key
-	     * @param mixed           $value
+	     * @param string     $key
+	     * @param mixed      $value
 	     * @param bool|false $defer_update Defer the database update of all settings
 	     */
         public function update_setting( $key, $value, $defer_update = false )
@@ -533,7 +533,7 @@ if( get_option( 'ninja_forms_load_deprecated', FALSE )  && ! isset( $_POST[ 'nf2
         /**
          * Load Classes from Directory
          *
-         * @param string $prefix
+         * @param  string $prefix
          * @return array
          */
         private static function load_classes( $prefix = '' )
@@ -569,7 +569,7 @@ if( get_option( 'ninja_forms_load_deprecated', FALSE )  && ! isset( $_POST[ 'nf2
          * Template
          *
          * @param string $file_name
-         * @param array $data
+         * @param array  $data
          */
         public static function template( $file_name = '', array $data = array() )
         {
@@ -583,7 +583,7 @@ if( get_option( 'ninja_forms_load_deprecated', FALSE )  && ! isset( $_POST[ 'nf2
         /**
          * Config
          *
-         * @param $file_name
+         * @param        $file_name
          * @return mixed
          */
         public static function config( $file_name )
