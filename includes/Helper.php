@@ -26,7 +26,7 @@ final class WPN_Helper
      * @return array|string
      */
     public static function utf8_encode( $input ){
-        if ( is_array( $input ) )    {
+        if ( is_array( $input ) ) {
             return array_map( array( 'self', 'utf8_encode' ), $input );
         }else {
             return utf8_encode( $input );
@@ -40,7 +40,7 @@ final class WPN_Helper
      * @return mixed
      */
     public static function str_replace( $search, $replace, $subject ){
-        if( is_array( $subject ) ){
+        if( is_array( $subject ) ) {
             foreach( $subject as &$oneSubject ) {
                 $oneSubject = WPN_Helper::str_replace( $search, $replace, $oneSubject );
             }

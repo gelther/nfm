@@ -75,7 +75,7 @@ class NF_Admin_CPT_Submission
 
     public function post_row_actions( $actions )
     {
-        if( $this->cpt_slug == get_post_type() ){
+        if( $this->cpt_slug == get_post_type() ) {
             unset( $actions[ 'view' ] );
             unset( $actions[ 'inline hide-if-no-js' ] );
         }
@@ -120,7 +120,7 @@ class NF_Admin_CPT_Submission
             echo $sub->get_seq_num();
         }
 
-        if( is_numeric( $column ) ){
+        if( is_numeric( $column ) ) {
             $value = $sub->get_field_value( $column );
             $field = Ninja_Forms()->form()->get_field( $column );
             echo apply_filters( 'ninja_forms_custom_columns', $value, $field );

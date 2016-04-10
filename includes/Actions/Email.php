@@ -84,7 +84,7 @@ final class NF_Actions_Email extends NF_Abstracts_Action
     {
         $attachments = array();
 
-        if( $settings[ 'attach_csv' ] ){
+        if( $settings[ 'attach_csv' ] ) {
             $attachments[] = $this->_create_csv( $data[ 'fields' ] );
         }
 
@@ -118,7 +118,7 @@ final class NF_Actions_Email extends NF_Abstracts_Action
             'Reply-to' => $settings[ 'reply_to' ],
         );
 
-        foreach( $recipient_settings as $type => $emails ){
+        foreach( $recipient_settings as $type => $emails ) {
 
             $emails = explode( ',', $emails );
 
@@ -148,7 +148,7 @@ final class NF_Actions_Email extends NF_Abstracts_Action
     {
         $csv_array = array();
 
-        foreach( $fields as $field ){
+        foreach( $fields as $field ) {
 
             if( ! isset( $field[ 'label' ] ) ) continue;
 

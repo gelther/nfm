@@ -51,7 +51,7 @@ if( get_option( 'ninja_forms_load_deprecated', false )  && ! isset( $_POST[ 'nf2
 
         Ninja_Forms()->form()->import_form( $import, $form_id, true );
 
-        if( isset( $_POST[ 'flagged' ] ) && $_POST[ 'flagged' ] ){
+        if( isset( $_POST[ 'flagged' ] ) && $_POST[ 'flagged' ] ) {
             $form = Ninja_Forms()->form( $form_id )->get();
             $form->update_setting( 'lock', true );
             $form->save();
@@ -194,13 +194,13 @@ if( get_option( 'ninja_forms_load_deprecated', false )  && ! isset( $_POST[ 'nf2
                 self::$dir = plugin_dir_path( __FILE__ );
 
                 // Define old constants for backwards compatibility.
-                if( ! defined( 'NF_PLUGIN_DIR' ) ){
+                if( ! defined( 'NF_PLUGIN_DIR' ) ) {
                     define( 'NF_PLUGIN_DIR', self::$dir );
                     define( 'NINJA_FORMS_DIR', self::$dir );
                 }
 
                 self::$url = plugin_dir_url( __FILE__ );
-                if( ! defined( 'NF_PLUGIN_URL' ) ){
+                if( ! defined( 'NF_PLUGIN_URL' ) ) {
                     define( 'NF_PLUGIN_URL', self::$url );
                 }
 

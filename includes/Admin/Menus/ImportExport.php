@@ -38,7 +38,7 @@ final class NF_Admin_Menus_ImportExport extends NF_Abstracts_Submenu
 
     public function export_form_listener()
     {
-        if( isset( $_REQUEST[ 'nf_export_form' ] ) && $_REQUEST[ 'nf_export_form' ] ){
+        if( isset( $_REQUEST[ 'nf_export_form' ] ) && $_REQUEST[ 'nf_export_form' ] ) {
             $form_id = $_REQUEST[ 'nf_export_form' ];
             Ninja_Forms()->form( $form_id )->export_form();
         }
@@ -54,18 +54,18 @@ final class NF_Admin_Menus_ImportExport extends NF_Abstracts_Submenu
 
         $fields = unserialize( $import );
 
-        foreach( $fields as $settings ){
+        foreach( $fields as $settings ) {
             Ninja_Forms()->form()->import_field( $settings );
         }
     }
 
     public function export_fields_listener()
     {
-        if( isset( $_REQUEST[ 'nf_export_fields' ] ) && $_REQUEST[ 'nf_export_fields' ] ){
+        if( isset( $_REQUEST[ 'nf_export_fields' ] ) && $_REQUEST[ 'nf_export_fields' ] ) {
             $field_ids = $_REQUEST[ 'nf_export_fields' ];
 
             $fields = array();
-            foreach( $field_ids as $field_id ){
+            foreach( $field_ids as $field_id ) {
                 $field = Ninja_Forms()->form()->field( $field_id )->get();
 
                 $fields[] = $field->get_settings();
@@ -173,13 +173,13 @@ final class NF_Admin_Menus_ImportExport extends NF_Abstracts_Submenu
     {
         //TODO: This was copied over. Instead need to abstract backwards compatibility for re-use.
         // Flatten field settings array
-        if( isset( $field[ 'data' ] ) ){
+        if( isset( $field[ 'data' ] ) ) {
             $field = array_merge( $field, $field[ 'data' ] );
             unset( $field[ 'data' ] );
         }
 
         // Drop form_id in favor of parent_id, which is set by the form.
-        if( isset( $field[ 'form_id' ] ) ){
+        if( isset( $field[ 'form_id' ] ) ) {
             unset( $field[ 'form_id' ] );
         }
 
@@ -187,20 +187,20 @@ final class NF_Admin_Menus_ImportExport extends NF_Abstracts_Submenu
         $field[ 'type' ] = ltrim( $field[ 'type' ], '_' );
 
         // Type: `text` -> `textbox`
-        if( 'text' == $field[ 'type' ] ){
+        if( 'text' == $field[ 'type' ] ) {
             $field[ 'type' ] = 'textbox';
         }
 
-        if( 'submit' == $field[ 'type' ] ){
+        if( 'submit' == $field[ 'type' ] ) {
             $field[ 'processing_label' ] = 'Processing';
         }
 
-        if( 'calc' == $field[ 'type' ] ){
+        if( 'calc' == $field[ 'type' ] ) {
             $field[ 'type' ] = 'note';
 
             if( isset( $field[ 'calc_method' ] ) ) {
 
-                switch( $field[ 'calc_method' ] ){
+                switch( $field[ 'calc_method' ] ) {
                     case 'eq':
                         $method = __( 'Equation (Advanced)', 'ninja-forms' );
                         break;
@@ -233,7 +233,7 @@ final class NF_Admin_Menus_ImportExport extends NF_Abstracts_Submenu
             unset( $field[ 'calc_method' ] );
         }
 
-        if( isset( $field[ 'email' ] ) ){
+        if( isset( $field[ 'email' ] ) ) {
 
             if( 'textbox' == $field[ 'type' ] && $field[ 'email' ] ) {
                 $field[ 'type' ] = 'email';
@@ -241,17 +241,17 @@ final class NF_Admin_Menus_ImportExport extends NF_Abstracts_Submenu
             unset( $field[ 'email' ] );
         }
 
-        if( isset( $field[ 'class' ] ) ){
+        if( isset( $field[ 'class' ] ) ) {
             $field[ 'element_class' ] = $field[ 'class' ];
             unset( $field[ 'class' ] );
         }
 
-        if( isset( $field[ 'req' ] ) ){
+        if( isset( $field[ 'req' ] ) ) {
             $field[ 'required' ] = $field[ 'req' ];
             unset( $field[ 'req' ] );
         }
 
-        if( isset( $field[ 'default_value_type' ] ) ){
+        if( isset( $field[ 'default_value_type' ] ) ) {
 
             /* User Data */
             if( '_user_id' == $field[ 'default_value_type' ] )           $field[ 'default' ] = '{user:id}';
@@ -269,10 +269,10 @@ final class NF_Admin_Menus_ImportExport extends NF_Abstracts_Submenu
             if( 'today' == $field[ 'default_value_type' ] ) $field[ 'default' ] = '{system:date}';
 
             /* Miscellaneous */
-            if( '_custom' == $field[ 'default_value_type' ] && isset( $field[ 'default_value' ] ) ){
+            if( '_custom' == $field[ 'default_value_type' ] && isset( $field[ 'default_value' ] ) ) {
                 $field[ 'default' ] = $field[ 'default_value' ];
             }
-            if( 'querystring' == $field[ 'default_value_type' ] && isset( $field[ 'default_value' ] ) ){
+            if( 'querystring' == $field[ 'default_value_type' ] && isset( $field[ 'default_value' ] ) ) {
                 $field[ 'default' ] = '{' . $field[ 'default_value' ] . '}';
             }
 

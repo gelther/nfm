@@ -46,7 +46,7 @@ final class NF_Actions_Save extends NF_Abstracts_Action
     {
         $data[ 'extra' ][ 'foo' ] = 'bar';
 
-        if( isset( $data[ 'settings' ][ 'is_preview' ] ) && $data[ 'settings' ][ 'is_preview' ] ){
+        if( isset( $data[ 'settings' ][ 'is_preview' ] ) && $data[ 'settings' ][ 'is_preview' ] ) {
             return $data;
         }
 
@@ -54,7 +54,7 @@ final class NF_Actions_Save extends NF_Abstracts_Action
 
         $hidden_field_types = apply_filters( 'nf_sub_hidden_field_types', array() );
 
-        foreach( $data[ 'fields' ] as $field ){
+        foreach( $data[ 'fields' ] as $field ) {
 
             if( in_array( $field[ 'type' ], array_values( $hidden_field_types ) ) ) {
                 $data[ 'actions' ][ 'save' ][ 'hidden' ][] = $field[ 'type' ];

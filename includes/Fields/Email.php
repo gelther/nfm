@@ -35,7 +35,7 @@ class NF_Fields_Email extends NF_Abstracts_UserInfo
 
         $current_user = wp_get_current_user();
 
-        if( $current_user ){
+        if( $current_user ) {
             $default_value = $current_user->user_email;
         }
 

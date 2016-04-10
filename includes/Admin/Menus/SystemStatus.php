@@ -30,8 +30,8 @@ final class NF_Admin_Menus_SystemStatus extends NF_Abstracts_Submenu
          }
 
          //TODO: Possible refactor
-         foreach( $locale as $key => $val ){
-             if( is_string( $val ) ){
+         foreach( $locale as $key => $val ) {
+             if( is_string( $val ) ) {
                 $data = $key . ': ' . $val . '</br>';
              }
          }
@@ -40,7 +40,7 @@ final class NF_Admin_Menus_SystemStatus extends NF_Abstracts_Submenu
          //if ( function_exists( 'phpversion' ) ) echo esc_html( phpversion() );
 
          //WP_DEBUG
-         if ( defined( 'WP_DEBUG' ) && WP_DEBUG ){
+         if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
              $debug = __( 'Yes', 'ninja-forms' );
          } else {
             $debug =  __( 'No', 'ninja-forms' );

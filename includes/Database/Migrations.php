@@ -20,7 +20,7 @@ class NF_Database_Migrations
 
     public function migrate()
     {
-        foreach( $this->migrations as $migration ){
+        foreach( $this->migrations as $migration ) {
             $migration->_run();
         }
     }
@@ -31,7 +31,7 @@ class NF_Database_Migrations
 
         global $wpdb;
 
-        foreach( $this->migrations as $migration ){
+        foreach( $this->migrations as $migration ) {
 
             if( ! $migration->table_name ) continue;
 

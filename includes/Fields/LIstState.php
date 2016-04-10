@@ -32,7 +32,7 @@ class NF_Fields_ListState extends NF_Abstracts_List
     {
         $order   = 0;
         $options = array();
-        foreach( Ninja_Forms()->config( 'StateList' ) as $label => $value ){
+        foreach( Ninja_Forms()->config( 'StateList' ) as $label => $value ) {
             $options[] = array(
                 'label'    => $label,
                 'value'    => $value,

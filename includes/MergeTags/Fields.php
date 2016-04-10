@@ -22,7 +22,7 @@ final class NF_MergeTags_Fields extends NF_Abstracts_MergeTags
     public function all_fields()
     {
         $return = '<table>';
-        foreach( $this->merge_tags[ 'all_fields' ][ 'fields' ] as $field ){
+        foreach( $this->merge_tags[ 'all_fields' ][ 'fields' ] as $field ) {
             $field[ 'value' ] = apply_filters( 'ninja_forms_merge_tag_value_' . $field[ 'type' ], $field[ 'value' ], $field );
 
             if( is_array( $field[ 'value' ] ) ) $field[ 'value' ] = implode( ', ', $field[ 'value' ] );

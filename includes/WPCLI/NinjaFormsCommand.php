@@ -54,7 +54,7 @@ class NF_WPCLI_NinjaFormsCommand extends WP_CLI_Command
      */
     public function list_forms( $args, $assoc_args )
     {
-        foreach( Ninja_Forms()->form()->get_forms() as $form ){
+        foreach( Ninja_Forms()->form()->get_forms() as $form ) {
             WP_CLI::line( '#' . $form->get_id() . ' - ' . $form->get_setting( 'title' ) );
         }
     }
@@ -72,7 +72,7 @@ class NF_WPCLI_NinjaFormsCommand extends WP_CLI_Command
 
         WP_CLI::line( '#' . $form->get_id() . ' - ' . $form->get_setting( 'title' ) );
 
-        foreach( Ninja_Forms()->form( $id )->get_fields() as $field ){
+        foreach( Ninja_Forms()->form( $id )->get_fields() as $field ) {
 
             $key   = $field->get_setting( 'key' );
             $label = $field->get_setting( 'label' );

@@ -32,7 +32,7 @@ class NF_Fields_Date extends NF_Fields_Textbox
 
     public function process( $field, $data )
     {
-        foreach( $data[ 'fields' ] as $key => $field ){
+        foreach( $data[ 'fields' ] as $key => $field ) {
 
             if( 'date' != $field[ 'type' ] ) continue;
             if( ! isset( $field[ 'date_format' ] ) || ! $field[ 'date_format' ] ) continue;

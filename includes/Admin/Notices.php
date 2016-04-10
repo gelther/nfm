@@ -40,7 +40,7 @@ class NF_Admin_Notices
     // Checks to ensure notices aren't disabled and the user has the correct permissions.
     public function nf_admin_notice() {
         $nf_settings = get_option( 'ninja_forms_settings' );
-        if ( ! isset( $nf_settings[ 'disable_admin_notices' ] ) || ( isset( $nf_settings[ 'disable_admin_notices' ] ) && $nf_settings[ 'disable_admin_notices' ] == 0 ) ){
+        if ( ! isset( $nf_settings[ 'disable_admin_notices' ] ) || ( isset( $nf_settings[ 'disable_admin_notices' ] ) && $nf_settings[ 'disable_admin_notices' ] == 0 ) ) {
             if ( current_user_can( apply_filters( 'ninja_forms_admin_parent_menu_capabilities', 'manage_options' ) ) ) {
                 return true;
             }
