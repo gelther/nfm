@@ -119,7 +119,7 @@ return apply_filters( 'ninja_forms_from_display_settings', array(
     'key'            => array(
         'name'  => 'key',
         'type'  => 'textbox',
-        'label' => __( 'Form Key', 'ninja-forms'),
+        'label' => __( 'Form Key', 'ninja-forms' ),
         'width' => 'full',
         'group' => 'administration',
         'value' => '',
@@ -133,7 +133,7 @@ return apply_filters( 'ninja_forms_from_display_settings', array(
     'add_submit'     => array(
         'name'  => 'add_submit',
         'type'  => 'toggle',
-        'label' => __( 'Add Submit Button', 'ninja-forms'),
+        'label' => __( 'Add Submit Button', 'ninja-forms' ),
         'width' => 'full',
         'group' => '',
         'value' => 1,
@@ -142,4 +142,4 @@ return apply_filters( 'ninja_forms_from_display_settings', array(
 
 
 
-));
+) );
