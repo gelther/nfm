@@ -417,7 +417,7 @@ final class NF_Admin_Menus_Forms extends NF_Abstracts_Menu
             }
         }
 
-        unset( $groups[ "" ] );
+        unset( $groups[ '' ] );
 
         usort( $groups, array( $this, 'setting_group_priority' ) );
 
