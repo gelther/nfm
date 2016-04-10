@@ -35,7 +35,6 @@ class NF_Admin_CPT_Submission
      * Custom Post Type
      */
     function custom_post_type() {
-
         $labels = array(
             'name'               => _x( 'Submissions', 'Post Type General Name', 'ninja_forms' ),
             'singular_name'      => _x( 'Submission', 'Post Type Singular Name', 'ninja_forms' ),

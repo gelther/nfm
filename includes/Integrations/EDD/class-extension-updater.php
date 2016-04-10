@@ -63,7 +63,6 @@ class NF_Extension_Updater
      * @return void
      */
     function activate_license( $license_key ) {
-
         // data to send in our API request
         $api_params = array(
             'edd_action' => 'activate_license',
@@ -102,7 +101,6 @@ class NF_Extension_Updater
      * @return void
      */
     function deactivate_license() {
-
         $license = Ninja_Forms()->get_setting( $this->product_name . '_license' );
 
         // data to send in our API request
@@ -135,7 +133,6 @@ class NF_Extension_Updater
      * @return void
      */
     function auto_update() {
-
         $edd_updater = new EDD_SL_Plugin_Updater( $this->store_url, $this->file, array(
                 'author'    => $this->author,  // author of this plugin
                 'version'   => $this->version, // current version number

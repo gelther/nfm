@@ -44,7 +44,6 @@ final class NF_Actions_Redirect extends NF_Abstracts_Action
     */
     public function save( $action_settings )
     {
-
     }
 
     public function process( $action_settings, $form_id, $data )

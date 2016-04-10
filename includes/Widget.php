@@ -49,7 +49,6 @@ class NF_Widget extends WP_Widget {
      * @return array               Updated safe values to be saved.
      */
     public function update( $new_instance, $old_instance ) {
-
         $instance                    = array();
         $instance[ 'form_id' ]       = $new_instance[ 'form_id' ];
         $instance[ 'display_title' ] = $new_instance[ 'display_title' ];
@@ -67,13 +66,13 @@ class NF_Widget extends WP_Widget {
     public function form( $instance ) {
         if( isset( $instance[ 'form_id' ] ) ){
             $form_id = $instance[ 'form_id' ];
-        }else{
+        }else {
             $form_id = '';
         }
 
         if( isset( $instance[ 'display_title' ] ) ){
             $display_title = $instance[ 'display_title' ];
-        }else{
+        }else {
             $display_title = 0;
         }
 

@@ -90,7 +90,7 @@ final class NF_Display_Render
 
                 $field = apply_filters( 'ninja_forms_localize_fields', $field );
 
-                $field_class = Ninja_Forms()->fields[$field_type];
+                $field_class = Ninja_Forms()->fields[ $field_type ];
 
                 if ( self::$use_test_values ) {
                     $field->update_setting( 'value', $field_class->get_test_value() );
@@ -123,7 +123,7 @@ final class NF_Display_Render
                 $settings = $field->get_settings();
 
                 foreach ( $settings as $key => $setting ) {
-                    if ( is_numeric( $setting ) ) $settings[$key] = floatval( $setting );
+                    if ( is_numeric( $setting ) ) $settings[ $key ] = floatval( $setting );
                 }
 
                 $settings[ 'parentType' ] = $field_class->get_parent_type();
@@ -259,10 +259,10 @@ final class NF_Display_Render
                 $field[ 'settings' ][ 'afterField' ] = $display_after;
 
                 foreach ( $field[ 'settings' ] as $key => $setting ) {
-                    if ( is_numeric( $setting ) ) $field[ 'settings' ][$key] = floatval( $setting );
+                    if ( is_numeric( $setting ) ) $field[ 'settings' ][ $key ] = floatval( $setting );
                 }
 
-                $field_class = Ninja_Forms()->fields[$field_type];
+                $field_class = Ninja_Forms()->fields[ $field_type ];
 
                 $templates = $field_class->get_templates();
 

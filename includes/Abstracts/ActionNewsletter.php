@@ -49,12 +49,10 @@ abstract class NF_Abstracts_ActionNewsletter extends NF_Abstracts_Action
     */
     public function save( $action_settings )
     {
-
     }
 
     public function process( $action_settings, $form_id, $data )
     {
-
     }
 
     public function _get_lists()

@@ -14,7 +14,7 @@ class NF_Abstracts_ModelFactory
 
     /**
      * The last set object.
-     *   Used to create context between two objects in a chain.
+     * Used to create context between two objects in a chain.
      *
      * @var object
      */
@@ -314,7 +314,7 @@ class NF_Abstracts_ModelFactory
      * Submission
      *
      * Returns a single submission by ID,
-     *   or an empty submission.
+     * or an empty submission.
      *
      * @param  string $id
      * @return        $this

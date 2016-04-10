@@ -330,7 +330,6 @@ final class NF_Admin_Menus_Submissions extends NF_Abstracts_Submenu
     }
 
     public function hide_page_title_action() {
-
         if(
             ( isset( $_GET[ 'post_type' ] ) && 'nf_sub' == $_GET[ 'post_type' ] ) ||
             'nf_sub' == get_post_type()
