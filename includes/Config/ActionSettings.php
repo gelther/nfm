@@ -14,8 +14,8 @@ return array(
         'placeholder' => '',
         'width'       => 'full',
         'value'       => '',
-        
-    ),    
+
+    ),
 
     /*
      * Active
