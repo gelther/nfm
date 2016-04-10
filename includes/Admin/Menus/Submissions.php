@@ -224,8 +224,9 @@ final class NF_Admin_Menus_Submissions extends NF_Abstracts_Submenu
     public function bulk_admin_footer() {
         global $post_type;
 
-        if ( ! is_admin() )
+        if ( ! is_admin() ) {
             return false;
+        }
 
         if( $post_type == 'nf_sub' && isset ( $_REQUEST['post_status'] ) && $_REQUEST['post_status'] == 'all' ) {
             ?>
@@ -272,8 +273,9 @@ final class NF_Admin_Menus_Submissions extends NF_Abstracts_Submenu
     public function export_listen()
     {
         // Bail if we aren't in the admin
-        if ( ! is_admin() )
+        if ( ! is_admin() ) {
             return false;
+        }
 
         if ( ! isset ($_REQUEST['form_id']) || empty ($_REQUEST['form_id']) ) {
             return false;
