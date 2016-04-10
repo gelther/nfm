@@ -34,9 +34,9 @@ final class NF_Admin_Menus_Addons extends NF_Abstracts_Submenu
             if ( ! empty ( $version ) && $version < $item['version'] ) {
 
                 $notices[] = array(
-                    'title'       => $item[ 'title' ],
+                    'title'       => $item['title'],
                     'old_version' => $version,
-                    'new_version' => $item[ 'version' ]
+                    'new_version' => $item['version']
                 );
             }
         }
