@@ -27,8 +27,7 @@ abstract class NF_Abstracts_FieldOptIn extends NF_Abstracts_Input
 
     protected $_lists = array();
 
-    public function __construct()
-    {
+    public function __construct() {
         parent::__construct();
 
         /**
@@ -58,8 +57,7 @@ abstract class NF_Abstracts_FieldOptIn extends NF_Abstracts_Input
         $this->_settings[ 'fieldset' ][ 'group' ] = '';
     }
 
-    protected function addList( $name, $label )
-    {
+    protected function addList( $name, $label ) {
         $this->_settings[ 'fieldset' ][ 'settings' ][] = array(
             'name'  => $name,
             'type'  => 'toggle',
@@ -69,8 +67,7 @@ abstract class NF_Abstracts_FieldOptIn extends NF_Abstracts_Input
         );
     }
 
-    protected function addLists( array $lists = array() )
-    {
+    protected function addLists( array $lists = array() ) {
         if ( empty( $lists ) ) return;
 
         foreach ( $lists as $name => $label ) {
@@ -78,7 +75,7 @@ abstract class NF_Abstracts_FieldOptIn extends NF_Abstracts_Input
         }
     }
 
-    public function get_parent_type(){
+    public function get_parent_type() {
         return $this->_parent_type;
     }
 
