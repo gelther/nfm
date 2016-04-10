@@ -387,7 +387,6 @@ final class NF_Admin_Menus_Forms extends NF_Abstracts_Menu
         <?php
     }
 
-
     protected function _group_settings( $settings, $groups ) {
         foreach ( $settings as $setting ) {
 
@@ -467,6 +466,5 @@ final class NF_Admin_Menus_Forms extends NF_Abstracts_Menu
 
         return $priority[ 0 ] - $priority[ 1 ];
     }
-
 
 }
