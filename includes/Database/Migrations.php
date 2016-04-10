@@ -20,22 +20,22 @@ class NF_Database_Migrations
 
     public function migrate()
     {
-        foreach( $this->migrations as $migration ) {
+        foreach ( $this->migrations as $migration ) {
             $migration->_run();
         }
     }
 
     public function nuke( $areYouSure = false, $areYouReallySure = false )
     {
-        if( ! $areYouSure || ! $areYouReallySure ) return;
+        if ( ! $areYouSure || ! $areYouReallySure ) return;
 
         global $wpdb;
 
-        foreach( $this->migrations as $migration ) {
+        foreach ( $this->migrations as $migration ) {
 
-            if( ! $migration->table_name ) continue;
+            if ( ! $migration->table_name ) continue;
 
-            if( 0 == $wpdb->query( "SHOW TABLES LIKE '" . $migration->table_name . "'" ) ) continue;
+            if ( 0 == $wpdb->query( "SHOW TABLES LIKE '" . $migration->table_name . "'" ) ) continue;
 
             $wpdb->query( "DROP TABLE $migration->table_name" );
 
