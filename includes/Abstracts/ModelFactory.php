@@ -80,7 +80,7 @@ class NF_Abstracts_ModelFactory
      *
      * Returns an array of Form Model Objects.
      *
-     * @param array $where
+     * @param  array      $where
      * @return array|bool
      */
     public function get_forms( array $where = array() )
@@ -95,7 +95,7 @@ class NF_Abstracts_ModelFactory
      *
      * A wrapper for the Form Model export method.
      *
-     * @param bool|FALSE $return
+     * @param  bool|FALSE $return
      * @return array
      */
     public function export_form( $return = FALSE )
@@ -125,8 +125,8 @@ class NF_Abstracts_ModelFactory
     /**
      * Sets the parent object for chained methods as a Field.
      *
-     * @param string $id
-     * @return $this
+     * @param  string $id
+     * @return        $this
      */
     public function field( $id = '' )
     {
@@ -140,7 +140,7 @@ class NF_Abstracts_ModelFactory
     /**
      * Returns a field object.
      *
-     * @param $id
+     * @param                           $id
      * @return NF_Database_Models_Field
      */
     public function get_field( $id )
@@ -153,8 +153,8 @@ class NF_Abstracts_ModelFactory
     /**
      * Returns an array of field objects for the set form (object).
      *
-     * @param array $where
-     * @param bool|FALSE $fresh
+     * @param  array      $where
+     * @param  bool|FALSE $fresh
      * @return array
      */
     public function get_fields( $where = array(), $fresh = FALSE)
@@ -198,8 +198,8 @@ class NF_Abstracts_ModelFactory
     /**
      * Sets the parent object for chained methods as an Action.
      *
-     * @param string $id
-     * @return $this
+     * @param  string $id
+     * @return        $this
      */
     public function action( $id ='' )
     {
@@ -213,7 +213,7 @@ class NF_Abstracts_ModelFactory
     /**
      * Returns an action object.
      *
-     * @param $id
+     * @param                            $id
      * @return NF_Database_Models_Action
      */
     public function get_action( $id )
@@ -226,8 +226,8 @@ class NF_Abstracts_ModelFactory
     /**
      * Returns an array of action objects for the set form (object).
      *
-     * @param array $where
-     * @param bool|FALSE $fresh
+     * @param  array      $where
+     * @param  bool|FALSE $fresh
      * @return array
      */
     public function get_actions( $where = array(), $fresh = FALSE)
@@ -257,8 +257,8 @@ class NF_Abstracts_ModelFactory
     /**
      * Sets the parent object for chained methods as an Object.
      *
-     * @param string $id
-     * @return $this
+     * @param  string $id
+     * @return        $this
      */
     public function object( $id = '' )
     {
@@ -273,7 +273,7 @@ class NF_Abstracts_ModelFactory
     /**
      * Returns an object.
      *
-     * @param $id
+     * @param                            $id
      * @return NF_Database_Models_Object
      */
     public function get_object( $id )
@@ -284,8 +284,8 @@ class NF_Abstracts_ModelFactory
     /**
      * Returns an array of objects for the set object.
      *
-     * @param array $where
-     * @param bool|FALSE $fresh
+     * @param  array      $where
+     * @param  bool|FALSE $fresh
      * @return array
      */
     public function get_objects( $where = array(), $fresh = FALSE)
@@ -316,8 +316,8 @@ class NF_Abstracts_ModelFactory
      * Returns a single submission by ID,
      *   or an empty submission.
      *
-     * @param string $id
-     * @return $this
+     * @param  string $id
+     * @return        $this
      */
     public function sub( $id = '' )
     {
@@ -333,7 +333,7 @@ class NF_Abstracts_ModelFactory
      *
      * Returns a single submission by ID.
      *
-     * @param $id
+     * @param                                $id
      * @return NF_Database_Models_Submission
      */
     public function get_sub( $id )
@@ -348,8 +348,8 @@ class NF_Abstracts_ModelFactory
      *
      * Returns an array of Submission Model Objects.
      *
-     * @param array $where
-     * @param bool|FALSE $fresh
+     * @param  array      $where
+     * @param  bool|FALSE $fresh
      * @return array
      */
     public function get_subs( $where = array(), $fresh = FALSE )
@@ -375,8 +375,8 @@ class NF_Abstracts_ModelFactory
      *
      * A wrapper for the Submission Model export method.
      *
-     * @param array $sub_ids
-     * @param bool|FALSE $return
+     * @param  array      $sub_ids
+     * @param  bool|FALSE $return
      * @return string
      */
     public function export_subs( array $sub_ids = array(), $return = FALSE )
@@ -395,8 +395,8 @@ class NF_Abstracts_ModelFactory
      *
      * A generic method call for any object model type.
      *
-     * @param $id
-     * @param $type
+     * @param                                                                                                            $id
+     * @param                                                                                                            $type
      * @return bool|NF_Database_Models_Action|NF_Database_Models_Field|NF_Database_Models_Form|NF_Database_Models_Object
      */
     public function get_model( $id, $type )
