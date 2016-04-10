@@ -4,8 +4,7 @@ final class NF_Admin_Metaboxes_AppendAForm extends NF_Abstracts_Metabox
 {
     protected $_post_types = array( 'post', 'page' );
 
-    public function __construct()
-    {
+    public function __construct() {
         parent::__construct();
 
         $this->_title = __( 'Append a Ninja Forms', 'ninja-forms' );
@@ -13,8 +12,7 @@ final class NF_Admin_Metaboxes_AppendAForm extends NF_Abstracts_Metabox
         add_filter( 'the_content', array( $this, 'append_form' ) );
     }
 
-    public function append_form( $content )
-    {
+    public function append_form( $content ) {
         $post    = $GLOBALS[ 'post' ];
         $form_id = get_post_meta( $post->ID, 'ninja_forms_form', true );
 
@@ -23,8 +21,7 @@ final class NF_Admin_Metaboxes_AppendAForm extends NF_Abstracts_Metabox
         return $content . "[ninja_forms id=$form_id]";
     }
 
-    public function save_post( $post_id )
-    {
+    public function save_post( $post_id ) {
         if (
             defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE
             || ! isset( $_POST[ 'nf_append_form' ] )
@@ -44,8 +41,7 @@ final class NF_Admin_Metaboxes_AppendAForm extends NF_Abstracts_Metabox
         }
     }
 
-    public function render_metabox( $post, $metabox )
-    {
+    public function render_metabox( $post, $metabox ) {
         wp_nonce_field( 'ninja_forms_append_form', 'nf_append_form' );
 
         $forms = Ninja_Forms()->form()->get_forms();
