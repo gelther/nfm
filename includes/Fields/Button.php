@@ -20,7 +20,7 @@ class NF_Fields_Button extends NF_Abstracts_Field
     public function __construct() {
         parent::__construct();
 
-        $this->_settings[ 'label' ][ 'width' ] = 'full';
+        $this->_settings['label']['width'] = 'full';
 
         $this->_nicename = __( 'Button', 'ninja-forms' );
     }
