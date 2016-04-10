@@ -21,9 +21,9 @@ class NF_AJAX_Controllers_Form extends NF_Abstracts_Controller
 
         if( is_string( $form_data[ 'id' ] ) ) {
             $tmp_id = $form_data[ 'id' ];
-            $form = Ninja_Forms()->form()->get();
+            $form   = Ninja_Forms()->form()->get();
             $form->save();
-            $form_data[ 'id' ] = $form->get_id();
+            $form_data[ 'id' ]                              = $form->get_id();
             $this->_data[ 'new_ids' ][ 'forms' ][ $tmp_id ] = $form_data[ 'id' ];
         } else {
             $form = Ninja_Forms()->form($form_data['id'])->get();
@@ -42,7 +42,7 @@ class NF_AJAX_Controllers_Form extends NF_Abstracts_Controller
 
                 if ($field->get_tmp_id()) {
 
-                    $tmp_id = $field->get_tmp_id();
+                    $tmp_id                                    = $field->get_tmp_id();
                     $this->_data['new_ids']['fields'][$tmp_id] = $field->get_id();
                 }
 
@@ -86,7 +86,7 @@ class NF_AJAX_Controllers_Form extends NF_Abstracts_Controller
 
                 if ($action->get_tmp_id()) {
 
-                    $tmp_id = $action->get_tmp_id();
+                    $tmp_id                                     = $action->get_tmp_id();
                     $this->_data['new_ids']['actions'][$tmp_id] = $action->get_id();
                 }
 
