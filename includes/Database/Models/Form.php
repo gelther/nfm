@@ -174,7 +174,7 @@ final class NF_Database_Models_Form extends NF_Abstracts_Model
             return $export;
         } else {
 
-            $today = date( $date_format, current_time( 'timestamp' ) );
+            $today    = date( $date_format, current_time( 'timestamp' ) );
             $filename = apply_filters( 'ninja_forms_form_export_filename', 'nf_form_' . $today );
             $filename = $filename . ".nff";
 
@@ -231,13 +231,13 @@ final class NF_Database_Models_Form extends NF_Abstracts_Model
         // Combine Field and Field Data
         foreach( $import[ 'fields' ] as $key => $field ){
             // TODO: Split Credit Card field into multiple fields.
-            $field = $this->import_field_backwards_compatibility( $field );
+            $field                      = $this->import_field_backwards_compatibility( $field );
             $import[ 'fields' ][ $key ] = $field;
         }
 
         $has_save_action = FALSE;
         foreach( $import[ 'actions' ] as $key => $action ){
-            $action = $this->import_action_backwards_compatibility( $action );
+            $action                      = $this->import_action_backwards_compatibility( $action );
             $import[ 'actions' ][ $key ] = $action;
 
             if( 'save' == $action[ 'type' ] ) $has_save_action = TRUE;
@@ -261,8 +261,8 @@ final class NF_Database_Models_Form extends NF_Abstracts_Model
         $field_lookup = array();
 
         foreach( $import[ 'fields' ] as $key => $field ){
-            $field_id  = $field[ 'id' ];
-            $field_key = $field[ 'type' ] . '_' . $field_id;
+            $field_id                  = $field[ 'id' ];
+            $field_key                 = $field[ 'type' ] . '_' . $field_id;
             $field_lookup[ $field_id ] = $import[ 'fields' ][ $key ][ 'key' ] = $field_key;
         }
 
