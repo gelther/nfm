@@ -90,7 +90,7 @@ abstract class NF_Abstracts_ActionNewsletter extends NF_Abstracts_Action
             'fields' => 'List Field Mapping',
             'groups' => 'Interest Groups',
         );
-        $labels = array_merge( $label_defaults, $this->_setting_labels );
+        $labels         = array_merge( $label_defaults, $this->_setting_labels );
 
         $prefix = $this->get_name();
 
@@ -118,7 +118,7 @@ abstract class NF_Abstracts_ActionNewsletter extends NF_Abstracts_Action
             $this->_settings[ $prefix . 'newsletter_list' ][ 'options' ][] = $list;
 
             foreach( $list[ 'fields' ] as $field ){
-                $name = $list[ 'value' ] . '_' . $field[ 'value' ];
+                $name     = $list[ 'value' ] . '_' . $field[ 'value' ];
                 $fields[] = array(
                     'name'           => $name,
                     'type'           => 'textbox',
