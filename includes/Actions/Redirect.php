@@ -50,4 +50,5 @@ final class NF_Actions_Redirect extends NF_Abstracts_Action
 
         return $data;
     }
+
 }
