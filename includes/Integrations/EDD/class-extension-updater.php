@@ -36,8 +36,8 @@ class NF_Extension_Updater
         }
 
         $this->version = $version;
-        $this->file = $file;
-        $this->author = $author;
+        $this->file    = $file;
+        $this->author  = $author;
 
         $this->auto_update();
         
