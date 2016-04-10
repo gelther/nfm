@@ -14,7 +14,7 @@ final class NF_Admin_Menus_Forms extends NF_Abstracts_Menu
     {
         parent::__construct();
 
-        if( ! defined( 'DOING_AJAX' ) ) {
+        if ( ! defined( 'DOING_AJAX' ) ) {
             add_action( 'admin_init', array( $this, 'admin_init' ) );
             add_action( 'admin_init', array( 'NF_Admin_AllFormsTable', 'process_bulk_action' ) );
         }
@@ -22,10 +22,10 @@ final class NF_Admin_Menus_Forms extends NF_Abstracts_Menu
 
     public function display()
     {
-        if( isset( $_GET[ 'form_id' ] ) ) {
+        if ( isset( $_GET[ 'form_id' ] ) ) {
 
 
-            if( 'new' == $_GET[ 'form_id' ] ) {
+            if ( 'new' == $_GET[ 'form_id' ] ) {
                 $form_id = 'tmp-' . time();
             } else {
                 $form_id = (is_numeric( $_GET[ 'form_id' ] )) ? absint( $_GET[ 'form_id' ] ) : '';
@@ -41,7 +41,7 @@ final class NF_Admin_Menus_Forms extends NF_Abstracts_Menu
 
             delete_user_option( get_current_user_id(), 'nf_form_preview_' . $form_id );
 
-            if( ! isset( $_GET[ 'ajax' ] ) ) {
+            if ( ! isset( $_GET[ 'ajax' ] ) ) {
                 $this->_localize_form_data( $form_id );
 
                 $this->_localize_field_type_data();
@@ -137,7 +137,7 @@ final class NF_Admin_Menus_Forms extends NF_Abstracts_Menu
     {
         $form = Ninja_Forms()->form( $form_id )->get();
 
-        if( ! $form->get_tmp_id() ) {
+        if ( ! $form->get_tmp_id() ) {
             $fields  = ($form_id) ? Ninja_Forms()->form( $form_id )->get_fields() : array();
             $actions = ($form_id) ? Ninja_Forms()->form( $form_id )->get_actions() : array();
         } else {
@@ -152,12 +152,12 @@ final class NF_Admin_Menus_Forms extends NF_Abstracts_Menu
         // echo "</pre>";
         // die();
 
-        if( ! empty( $fields ) ) {
+        if ( ! empty( $fields ) ) {
             foreach ( $fields as $field ) {
 
                 $type = $field->get_setting( 'type' );
 
-                if( ! isset( Ninja_Forms()->fields[ $type ] ) ) continue;
+                if ( ! isset( Ninja_Forms()->fields[ $type ] ) ) continue;
 
                 $settings         = $field->get_settings();
                 $settings[ 'id' ] = $field->get_id();
@@ -172,12 +172,12 @@ final class NF_Admin_Menus_Forms extends NF_Abstracts_Menu
 
         $actions_settings = array();
 
-        if( ! empty( $actions ) ) {
+        if ( ! empty( $actions ) ) {
             foreach ( $actions as $action ) {
 
                 $type = $action->get_setting( 'type' );
 
-                if( ! isset( Ninja_Forms()->actions[ $type ] ) ) continue;
+                if ( ! isset( Ninja_Forms()->actions[ $type ] ) ) continue;
 
                 $settings         = $action->get_settings();
                 $settings[ 'id' ] = $action->get_id();
@@ -186,7 +186,7 @@ final class NF_Admin_Menus_Forms extends NF_Abstracts_Menu
             }
         }
 
-        if( $form->get_tmp_id() ) {
+        if ( $form->get_tmp_id() ) {
 
             $actions_settings = Ninja_Forms()->config( 'FormActionDefaults' );
         }
@@ -214,7 +214,7 @@ final class NF_Admin_Menus_Forms extends NF_Abstracts_Menu
 
         $setting_defaults = array();
 
-        foreach( Ninja_Forms()->fields as $field ) {
+        foreach ( Ninja_Forms()->fields as $field ) {
 
             $name     = $field->get_name();
             $settings = $field->get_settings();
@@ -243,7 +243,7 @@ final class NF_Admin_Menus_Forms extends NF_Abstracts_Menu
 
         $saved_fields = Ninja_Forms()->form()->get_fields( array( 'saved' => 1 ) );
 
-        foreach( $saved_fields as $saved_field ) {
+        foreach ( $saved_fields as $saved_field ) {
 
             $settings = $saved_field->get_settings();
 
@@ -280,7 +280,7 @@ final class NF_Admin_Menus_Forms extends NF_Abstracts_Menu
 
         $master_settings_list = array();
 
-        foreach( Ninja_Forms()->actions as $action ) {
+        foreach ( Ninja_Forms()->actions as $action ) {
 
             $name     = $action->get_name();
             $settings = $action->get_settings();
@@ -303,9 +303,9 @@ final class NF_Admin_Menus_Forms extends NF_Abstracts_Menu
         $external_actions = $this->_fetch_action_feed();
         $u_id             = get_option( 'nf_aff', false );
         if ( ! $u_id ) $u_id = apply_filters( 'ninja_forms_affiliate_id', false );
-        foreach( $external_actions as $action ) {
+        foreach ( $external_actions as $action ) {
 
-            if( ! isset( $action[ 'name' ] ) || ! $action[ 'name' ] ) continue;
+            if ( ! isset( $action[ 'name' ] ) || ! $action[ 'name' ] ) continue;
 
             $name     = $action[ 'name' ];
             $nicename = ( isset( $action[ 'nicename' ] ) ) ? $action[ 'nicename' ] : '';
@@ -319,7 +319,7 @@ final class NF_Admin_Menus_Forms extends NF_Abstracts_Menu
                 $link       = 'http://www.shareasale.com/r.cfm?u=' . $u_id . '&b=812237&m=63061&afftrack=&urllink=' . $link;
             }
 
-            if( isset( $action_type_settings[ $name ] ) ) continue;
+            if ( isset( $action_type_settings[ $name ] ) ) continue;
 
             $action_type_settings[ $name ] = array(
                 'id'              => $name,
@@ -356,7 +356,7 @@ final class NF_Admin_Menus_Forms extends NF_Abstracts_Menu
 
         $master_settings = array();
 
-        foreach( $form_settings_types as $id => $type ) {
+        foreach ( $form_settings_types as $id => $type ) {
 
             $unique_settings = $this->_unique_settings( $form_settings[ $id ] );
             $master_settings = array_merge( $master_settings, $unique_settings );
@@ -381,7 +381,7 @@ final class NF_Admin_Menus_Forms extends NF_Abstracts_Menu
             )
         );
 
-        foreach( Ninja_Forms()->merge_tags as $key => $group ) {
+        foreach ( Ninja_Forms()->merge_tags as $key => $group ) {
 
             $merge_tags[ $key ] = array(
                 'id'            => $group->get_id(),
@@ -400,18 +400,18 @@ final class NF_Admin_Menus_Forms extends NF_Abstracts_Menu
 
     protected function _group_settings( $settings, $groups )
     {
-        foreach( $settings as $setting ) {
+        foreach ( $settings as $setting ) {
 
             $group = ( isset( $setting[ 'group' ] ) ) ? $setting[ 'group' ] : '';
 
-            if( isset( $setting[ 'type' ] ) && 'fieldset' == $setting[ 'type' ] ) {
+            if ( isset( $setting[ 'type' ] ) && 'fieldset' == $setting[ 'type' ] ) {
                 $setting[ 'settings' ] = array_values( $setting[ 'settings' ] );
             }
 
             $groups[ $group ][ 'settings' ][] = $setting;
         }
 
-        foreach( $groups as $id => $group ) {
+        foreach ( $groups as $id => $group ) {
             if ( empty( $group[ 'settings' ] ) ) {
                 unset( $groups[ $id ] );
             }
@@ -428,9 +428,9 @@ final class NF_Admin_Menus_Forms extends NF_Abstracts_Menu
     {
         $unique_settings = array();
 
-        foreach( $settings as $setting ) {
+        foreach ( $settings as $setting ) {
 
-            if( 'fieldset' == $setting[ 'type' ] ) {
+            if ( 'fieldset' == $setting[ 'type' ] ) {
 
                 $unique_settings = array_merge( $unique_settings, $this->_unique_settings( $setting[ 'settings' ] ) );
             } else {
@@ -448,7 +448,7 @@ final class NF_Admin_Menus_Forms extends NF_Abstracts_Menu
     {
         $setting_defaults = array();
 
-        foreach( $settings as $setting ) {
+        foreach ( $settings as $setting ) {
 
             $name                      = ( isset( $setting[ 'name' ] ) ) ? $setting[ 'name' ] : '';
             $default                   = ( isset( $setting[ 'value' ] ) ) ? $setting[ 'value' ] : '';
@@ -464,7 +464,7 @@ final class NF_Admin_Menus_Forms extends NF_Abstracts_Menu
 
         $bust = ( isset( $_GET[ 'nf-bust-actions-feed' ] ) );
 
-        if( $bust || ! $actions ) {
+        if ( $bust || ! $actions ) {
             $actions = wp_remote_get( 'https://ninjaforms.com/?action_feed=true' );
             $actions = wp_remote_retrieve_body( $actions );
             $actions = json_decode( $actions, true );
