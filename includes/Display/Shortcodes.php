@@ -31,4 +31,5 @@ final class NF_Display_Shortcodes
 
         return "<div style='border: 3px solid red; padding: 1em; margin: 1em auto;'>$output</div>";
     }
+
 }
