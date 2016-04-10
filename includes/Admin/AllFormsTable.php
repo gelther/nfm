@@ -165,7 +165,7 @@ class NF_Admin_AllFormsTable extends WP_List_Table
         }
 
 
-        $result = strnatcmp( $a[$orderby], $b[$orderby] );
+        $result = strnatcmp( $a[ $orderby ], $b[ $orderby ] );
 
         if( $order === 'asc' )
         {
