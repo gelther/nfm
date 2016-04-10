@@ -21,7 +21,7 @@ class NF_AJAX_Controllers_Preview extends NF_Abstracts_Controller
 
         $form_data = $this->get_form_data( $form_id );
 
-        /*
+        /**
          * Form Settings
          */
 
@@ -32,7 +32,7 @@ class NF_AJAX_Controllers_Preview extends NF_Abstracts_Controller
             $form_data[ 'settings' ] = array_merge( $old_settings, $form[ 'settings' ] );
         }
 
-        /*
+        /**
          * Fields and Field Settings
          */
 
@@ -58,7 +58,7 @@ class NF_AJAX_Controllers_Preview extends NF_Abstracts_Controller
             }
         }
 
-        /*
+        /**
          * Actions and Action Settings
          */
 
