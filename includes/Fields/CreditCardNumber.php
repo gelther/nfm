@@ -29,7 +29,7 @@ class NF_Fields_CreditCardNumber extends NF_Abstracts_Input
 
     function hide_field_type( $field_types )
     {
-        $field_types[] = $this->_name;
+        $field_types[  ] = $this->_name;
 
         return $field_types;
     }
