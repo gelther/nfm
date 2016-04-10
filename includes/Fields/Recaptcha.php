@@ -40,7 +40,7 @@ class NF_Fields_Recaptcha extends NF_Abstracts_Field
         }
 
         $secret_key = Ninja_Forms()->get_setting( 'recaptcha_secret_key' );
-        $url        = 'https://www.google.com/recaptcha/api/siteverify?secret=' . $secret_key . '&response='.sanitize_text_field( $field['value'] );
+        $url        = 'https://www.google.com/recaptcha/api/siteverify?secret=' . $secret_key . '&response=' . sanitize_text_field( $field['value'] );
         $resp       = wp_remote_get( esc_url_raw( $url ) );
 
         if ( ! is_wp_error( $resp ) ) {
