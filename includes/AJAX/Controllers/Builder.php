@@ -2,13 +2,11 @@
 
 class NF_AJAX_Controllers_Builder extends NF_Abstracts_Controller
 {
-    public function __construct()
-    {
+    public function __construct() {
         add_action( 'wp_ajax_nf_builder', array( $this, 'builder' ) );
     }
 
-    public function builder()
-    {
+    public function builder() {
         check_ajax_referer( 'ninja_forms_ajax_nonce', 'builder' );
 
         if ( ! isset( $_POST[ 'form' ] ) ) {
@@ -27,8 +25,7 @@ class NF_AJAX_Controllers_Builder extends NF_Abstracts_Controller
         $this->_respond();
     }
 
-    private function _form_data( $form_id )
-    {
+    private function _form_data( $form_id ) {
         $form    = Ninja_Forms()->form( $form_id )->get();
         $fields  = Ninja_Forms()->form( $form_id )->get_fields();
         $actions = Ninja_Forms()->form( $form_id )->get_actions();
@@ -65,8 +62,7 @@ class NF_AJAX_Controllers_Builder extends NF_Abstracts_Controller
         $this->_data[ 'preloadedFormData' ] = wp_json_encode( $form_data );
     }
 
-    private function _field_type_data()
-    {
+    private function _field_type_data() {
         $field_type_sections = array_values( Ninja_Forms()->config( 'FieldTypeSections' ) );
         $field_type_settings = array();
 
@@ -105,8 +101,7 @@ class NF_AJAX_Controllers_Builder extends NF_Abstracts_Controller
         $this->_data[ 'fieldTypeSections' ] = wp_json_encode( $field_type_sections );
     }
 
-    private function _action_type_data()
-    {
+    private function _action_type_data() {
         $action_type_settings = array();
 
         $master_settings_list = array();
@@ -162,8 +157,7 @@ class NF_AJAX_Controllers_Builder extends NF_Abstracts_Controller
         <?php
     }
 
-    protected function _form_settings()
-    {
+    protected function _form_settings() {
         $form_settings_types = Ninja_Forms::config( 'FormSettingsTypes' );
 
         $form_settings[ 'display' ]      = Ninja_Forms::config( 'FormDisplaySettings' );
@@ -190,8 +184,7 @@ class NF_AJAX_Controllers_Builder extends NF_Abstracts_Controller
         <?php
     }
 
-    protected function _merge_tags()
-    {
+    protected function _merge_tags() {
         $merge_tags = array(
             'fields' => array(
                 'id'    => 'fields',
@@ -211,8 +204,7 @@ class NF_AJAX_Controllers_Builder extends NF_Abstracts_Controller
         $this->_data[ 'merge_tags' ] = wp_json_encode( array_values( $merge_tags ) );
     }
 
-    protected function _group_settings( $settings, $groups )
-    {
+    protected function _group_settings( $settings, $groups ) {
         foreach ( $settings as $setting ) {
 
             $group = ( isset( $setting[ 'group' ] ) ) ? $setting[ 'group' ] : '';
@@ -235,8 +227,7 @@ class NF_AJAX_Controllers_Builder extends NF_Abstracts_Controller
         return $groups;
     }
 
-    protected function _unique_settings( $settings )
-    {
+    protected function _unique_settings( $settings ) {
         $unique_settings = array();
 
         foreach ( $settings as $setting ) {
@@ -255,8 +246,7 @@ class NF_AJAX_Controllers_Builder extends NF_Abstracts_Controller
         return $unique_settings;
     }
 
-    protected function _setting_defaults( $settings )
-    {
+    protected function _setting_defaults( $settings ) {
         $setting_defaults = array();
 
         foreach ( $settings as $setting ) {
@@ -269,8 +259,7 @@ class NF_AJAX_Controllers_Builder extends NF_Abstracts_Controller
         return $setting_defaults;
     }
 
-    protected function _fetch_action_feed()
-    {
+    protected function _fetch_action_feed() {
         $actions = get_transient( 'ninja-forms-builder-actions-feed' );
 
         $bust = ( isset( $_GET[ 'nf-bust-actions-feed' ] ) );
