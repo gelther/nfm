@@ -331,7 +331,7 @@ final class NF_Admin_Menus_Submissions extends NF_Abstracts_Submenu
 
         if( 
             ( isset( $_GET[ 'post_type' ] ) && 'nf_sub' == $_GET[ 'post_type'] ) ||
-            'nf_sub' == get_post_type()  
+            'nf_sub' == get_post_type()   
         ){
             echo '<style type="text/css">.page-title-action{display: none;}</style>';
         }
