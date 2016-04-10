@@ -29,7 +29,7 @@ final class NF_Database_Logger extends NF_Abstracts_Logger
             ->update_setting( 'level', $level )
             ->update_setting( 'message', $message );
 
-        foreach ($context as $key => $value) {
+        foreach ( $context as $key => $value ) {
             $log->update_setting($key, maybe_serialize($value));
         }
 
@@ -62,7 +62,7 @@ final class NF_Database_Logger extends NF_Abstracts_Logger
     {
         // build a replacement array with braces around the context keys
         $replace = array();
-        foreach ($context as $key => $val) {
+        foreach ( $context as $key => $val ) {
 
             if( is_array( $val ) ) continue;
 
