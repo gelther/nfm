@@ -64,7 +64,7 @@ class NF_AJAX_Controllers_Uploads extends NF_Abstracts_Controller
     }
 
     /**
-     * @param $string
+     * @param         $string
      * @return string
      */
     protected function i_like_clean_slugs_and_i_cannot_lie( $string )
@@ -81,7 +81,7 @@ class NF_AJAX_Controllers_Uploads extends NF_Abstracts_Controller
      *
      * http://php.net/manual/en/features.file-upload.errors.php
      *
-     * @param $code
+     * @param         $code
      * @return string
      */
     private function code_to_message($code)
