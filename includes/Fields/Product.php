@@ -55,7 +55,7 @@ class NF_Fields_Product extends NF_Abstracts_Input
 
         if( isset( $related[ 'quantity' ][ 'value' ] ) && $related[ 'quantity' ][ 'value' ] ){
             $total = $total * $related[ 'quantity' ][ 'value' ];
-        } elseif( $product[ 'product_use_quantity'] && $product[ 'value' ] ){
+        } elseif( $product[ 'product_use_quantity' ] && $product[ 'value' ] ){
             $total = $total * $product[ 'value' ];
         }
 
@@ -63,7 +63,7 @@ class NF_Fields_Product extends NF_Abstracts_Input
             //TODO: Handle multiple modifiers.
         }
 
-        $data[ 'product_totals' ][] = number_format( $total, 2 );
+        $data[ 'product_totals' ][  ] = number_format( $total, 2 );
 
         return $data;
     }
