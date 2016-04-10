@@ -28,4 +28,4 @@ return apply_filters( 'ninja_forms_merge_tags_system', array(
         'callback' => 'system_ip'
     ),
 
-));
+) );
