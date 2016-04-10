@@ -40,7 +40,7 @@ final class NF_Admin_Menus_SystemStatus extends NF_Abstracts_Submenu
          //if ( function_exists( 'phpversion' ) ) echo esc_html( phpversion() );
 
          //WP_DEBUG
-         if ( defined('WP_DEBUG') && WP_DEBUG ){
+         if ( defined( 'WP_DEBUG' ) && WP_DEBUG ){
              $debug = __( 'Yes', 'ninja-forms' );
          } else {
             $debug =  __( 'No', 'ninja-forms' );
@@ -116,7 +116,7 @@ final class NF_Admin_Menus_SystemStatus extends NF_Abstracts_Submenu
             __( 'Home URL', 'ninja-forms' ) => home_url(),
             __( 'Site URL', 'ninja-forms' ) => site_url(),
             __( 'Ninja Forms Version', 'ninja-forms' ) => esc_html( Ninja_Forms::VERSION ),
-            __( 'WP Version', 'ninja-forms' ) => get_bloginfo('version'),
+            __( 'WP Version', 'ninja-forms' ) => get_bloginfo( 'version' ),
             __( 'WP Multisite Enabled', 'ninja-forms' ) => $multisite,
             __( 'Web Server Info', 'ninja-forms' ) => esc_html( $_SERVER['SERVER_SOFTWARE'] ),
             __( 'PHP Version', 'ninja-forms' ) => esc_html( phpversion() ),
@@ -128,15 +128,15 @@ final class NF_Admin_Menus_SystemStatus extends NF_Abstracts_Submenu
             __( 'WP Debug Mode', 'ninja-forms' ) => $debug,
             __( 'WP Language', 'ninja-forms' ) => $lang,
             __( 'WP Max Upload Size', 'ninja-forms' ) => size_format( wp_max_upload_size() ),
-            __('PHP Post Max Size', 'ninja-forms' ) => size_format( ini_get('post_max_size') ),
-            __('Max Input Nesting Level', 'ninja-forms' ) => ini_get('max_input_nesting_level'),
-            __('PHP Time Limit', 'ninja-forms' ) => ini_get('max_execution_time'),
-            __( 'PHP Max Input Vars', 'ninja-forms' ) => ini_get('max_input_vars'),
+            __( 'PHP Post Max Size', 'ninja-forms' ) => size_format( ini_get( 'post_max_size' ) ),
+            __( 'Max Input Nesting Level', 'ninja-forms' ) => ini_get( 'max_input_nesting_level' ),
+            __( 'PHP Time Limit', 'ninja-forms' ) => ini_get( 'max_execution_time' ),
+            __( 'PHP Max Input Vars', 'ninja-forms' ) => ini_get( 'max_input_vars' ),
             __( 'SUHOSIN Installed', 'ninja-forms' ) => $suhosin,
             __( 'Server IP Address', 'ninja-forms' ) => $server_ip,
             __( 'Host Name', 'ninja-forms' ) => $host_name,
-            __( 'SMTP', 'ninja-forms' ) => ini_get('SMTP'),
-            __( 'smtp_port', 'ninja-forms' ) => ini_get('smtp_port'),
+            __( 'SMTP', 'ninja-forms' ) => ini_get( 'SMTP' ),
+            __( 'smtp_port', 'ninja-forms' ) => ini_get( 'smtp_port' ),
             __( 'Default Timezone', 'ninja-forms' ) => $default_timezone,
         );
 
