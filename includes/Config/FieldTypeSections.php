@@ -74,4 +74,4 @@ return apply_filters( 'ninja_forms_field_type_sections', array(
         'nicename'   => __( 'Miscellaneous Fields', 'ninja-forms' ),
         'fieldTypes' => array(),
     ),
-));
+) );
