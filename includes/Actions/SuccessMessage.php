@@ -61,9 +61,9 @@ final class NF_Actions_SuccessMessage extends NF_Abstracts_Action
     {
         if( ! isset( $import[ 'actions' ] ) ) return $import;
 
-        foreach( $import[ 'actions' ] as &$action ){
+        foreach( $import[ 'actions' ] as &$action ) {
 
-            if( 'success_message' == $action[ 'type' ] ){
+            if( 'success_message' == $action[ 'type' ] ) {
 
                 $action[ 'type' ] = 'successmessage';
             }
