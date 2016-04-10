@@ -28,4 +28,5 @@ class NF_Fields_Quantity extends NF_Fields_Number
 
         $this->_nicename = __( 'Quantity', 'ninja-forms' );
     }
+
 }
