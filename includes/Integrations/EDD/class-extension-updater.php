@@ -122,9 +122,9 @@ class NF_Extension_Updater
             return false;
         }
 
-        Ninja_Forms()->update_setting( $this->product_name.'_license_error', '' );
-        Ninja_Forms()->update_setting( $this->product_name.'_license_status', 'invalid' );
-        Ninja_Forms()->update_setting( $this->product_name.'_license', '' );
+        Ninja_Forms()->update_setting( $this->product_name . '_license_error', '' );
+        Ninja_Forms()->update_setting( $this->product_name . '_license_status', 'invalid' );
+        Ninja_Forms()->update_setting( $this->product_name . '_license', '' );
     }
 
     /**
@@ -140,7 +140,7 @@ class NF_Extension_Updater
                 'author'    => $this->author,  // author of this plugin
                 'version'   => $this->version, // current version number
                 'item_name' => $this->product_nice_name,  // name of this plugin
-                'license'   => Ninja_Forms()->get_setting( $this->product_name.'_license' ),  // license key
+                'license'   => Ninja_Forms()->get_setting( $this->product_name . '_license' ),  // license key
             )
         );
     } // function auto_update
@@ -153,7 +153,7 @@ class NF_Extension_Updater
      * @return bool
      */
     public function is_valid() {
-         return ( 'valid' == Ninja_Forms()->get_setting( $this->product_name.'_license_status' ) );
+         return ( 'valid' == Ninja_Forms()->get_setting( $this->product_name . '_license_status' ) );
     }
 
     /**

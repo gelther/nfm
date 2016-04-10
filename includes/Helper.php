@@ -173,7 +173,7 @@ final class WPN_Helper
                     case "resource":
                     default:         $_spFormat = ''; break;
                 }
-                $returnString .= sprintf( '%2$s'.$_spFormat.'%2$s', $workArray[$i], $enclosure );
+                $returnString .= sprintf( '%2$s' . $_spFormat . '%2$s', $workArray[$i], $enclosure );
                 $returnString .= ($i < ($arraySize-1)) ? $delimiter : $terminator;
             }
         }
