@@ -19,8 +19,7 @@ class NF_Fields_Hr extends NF_Abstracts_Input
 
     protected $_settings_only = array( 'classes' );
 
-    public function __construct()
-    {
+    public function __construct() {
         parent::__construct();
 
         $this->_settings[ 'classes' ][ 'group' ] = 'primary';
@@ -31,8 +30,7 @@ class NF_Fields_Hr extends NF_Abstracts_Input
         unset( $this->_settings[ 'classes' ][ 'settings' ][ 'wrapper ' ] );
     }
 
-    function hide_field_type( $field_types )
-    {
+    function hide_field_type( $field_types ) {
         $field_types[] = $this->_name;
 
         return $field_types;
