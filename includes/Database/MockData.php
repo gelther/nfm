@@ -3,13 +3,11 @@
 final class NF_Database_MockData
 {
 
-    public function __construct()
-    {
+    public function __construct() {
         $this->_migrate();
     }
 
-    public function saved_fields()
-    {
+    public function saved_fields() {
         $field = Ninja_Forms()->form()->field()->get();
         $field->update_setting( 'label', 'Foo' );
         $field->update_setting( 'key', 'foo' );
@@ -32,8 +30,7 @@ final class NF_Database_MockData
         $field->save();
     }
 
-    public function form_blank_form()
-    {
+    public function form_blank_form() {
         /**
          * FORM
          */
@@ -43,8 +40,7 @@ final class NF_Database_MockData
         $form->save();
     }
 
-    public function form_contact_form_1()
-    {
+    public function form_contact_form_1() {
         /**
          * FORM
          */
@@ -229,8 +225,7 @@ final class NF_Database_MockData
         $sub->save();
     }
 
-    public function form_contact_form_2()
-    {
+    public function form_contact_form_2() {
         /**
          * FORM
          */
@@ -329,8 +324,7 @@ final class NF_Database_MockData
             ->save();
     }
 
-    public function form_kitchen_sink()
-    {
+    public function form_kitchen_sink() {
         /**
          * FORM
          */
@@ -480,8 +474,7 @@ final class NF_Database_MockData
             ->save();
     }
 
-    public function form_bathroom_sink()
-    {
+    public function form_bathroom_sink() {
         /**
          * FORM
          */
@@ -619,8 +612,7 @@ final class NF_Database_MockData
             ->save();
     }
 
-    public function form_long_form( $num_fields = 500 )
-    {
+    public function form_long_form( $num_fields = 500 ) {
         /**
          * FORM
          */
@@ -647,8 +639,7 @@ final class NF_Database_MockData
         }
     }
 
-    public function form_email_submission()
-    {
+    public function form_email_submission() {
         /**
          * FORM
          */
@@ -685,8 +676,7 @@ final class NF_Database_MockData
 
     }
 
-    public function form_product_1()
-    {
+    public function form_product_1() {
         /* FORM */
         $form = Ninja_Forms()->form()->get();
         $form->update_setting( 'title', 'Product Form (with Quantity Field)' );
@@ -758,8 +748,7 @@ final class NF_Database_MockData
             ->save();
     }
 
-    public function form_product_2()
-    {
+    public function form_product_2() {
         /* FORM */
         $form = Ninja_Forms()->form()->get();
         $form->update_setting( 'title', 'Product Form (Inline Quantity)' );
@@ -816,8 +805,7 @@ final class NF_Database_MockData
             ->save();
     }
 
-    public function form_product_3()
-    {
+    public function form_product_3() {
         /* FORM */
         $form = Ninja_Forms()->form()->get();
         $form->update_setting( 'title', 'Product Form (Multiple Products)' );
@@ -916,8 +904,7 @@ final class NF_Database_MockData
             ->save();
     }
 
-    public function form_calc_form()
-    {
+    public function form_calc_form() {
         /**
          * FORM
          */
@@ -951,8 +938,7 @@ final class NF_Database_MockData
             ->save();
     }
 
-    private function _migrate()
-    {
+    private function _migrate() {
         $migrations = new NF_Database_Migrations();
         $migrations->nuke( true, true );
 
