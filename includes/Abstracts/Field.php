@@ -136,8 +136,8 @@ abstract class NF_Abstracts_Field
     /**
      * Validate
      *
-     * @param $field
-     * @param $data
+     * @param        $field
+     * @param        $data
      * @return array $errors
      */
     public function validate( $field, $data )
@@ -160,8 +160,8 @@ abstract class NF_Abstracts_Field
      *
      * Returns the output for editing fields in a submission.
      *
-     * @param $id
-     * @param $value
+     * @param         $id
+     * @param         $value
      * @return string
      */
     public function admin_form_element( $id, $value )
