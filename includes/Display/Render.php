@@ -84,19 +84,19 @@ final class NF_Display_Render
         } else {
             foreach ( $form_fields as $field ) {
 
-                $field_type = $field->get_settings('type');
+                $field_type = $field->get_settings( 'type' );
 
                 if( ! isset( Ninja_Forms()->fields[ $field_type ] ) ) continue;
 
-                $field = apply_filters('ninja_forms_localize_fields', $field);
+                $field = apply_filters( 'ninja_forms_localize_fields', $field );
 
                 $field_class = Ninja_Forms()->fields[$field_type];
 
                 if ( self::$use_test_values ) {
-                    $field->update_setting('value', $field_class->get_test_value());
+                    $field->update_setting( 'value', $field_class->get_test_value() );
                 }
 
-                $field->update_setting('id', $field->get_id());
+                $field->update_setting( 'id', $field->get_id() );
 
                 /*
                  * TODO: For backwards compatibility, run the original action, get contents from the output buffer, and return the contents through the filter. Also display a PHP Notice for a deprecate filter.
@@ -112,18 +112,18 @@ final class NF_Display_Render
 
                 $templates = $field_class->get_templates();
 
-                if ( ! array($templates) ) {
-                    $templates = array($templates);
+                if ( ! array( $templates ) ) {
+                    $templates = array( $templates );
                 }
 
                 foreach ( $templates as $template ) {
-                    self::load_template('fields-' . $template);
+                    self::load_template( 'fields-' . $template );
                 }
 
                 $settings = $field->get_settings();
 
                 foreach ( $settings as $key => $setting ) {
-                    if ( is_numeric($setting) ) $settings[$key] = floatval($setting);
+                    if ( is_numeric( $setting ) ) $settings[$key] = floatval( $setting );
                 }
 
                 $settings[ 'parentType' ] = $field_class->get_parent_type();
@@ -132,8 +132,8 @@ final class NF_Display_Render
                     $settings[ 'options' ] = apply_filters( 'ninja_forms_render_options', $settings[ 'options' ], $settings );
                 }
 
-                if ( isset($settings['default']) ) {
-                    $default_value = apply_filters('ninja_forms_render_default_value', $settings['default'], $field_type, $settings);
+                if ( isset( $settings['default'] ) ) {
+                    $default_value = apply_filters( 'ninja_forms_render_default_value', $settings['default'], $field_type, $settings );
 
                     $default_value = preg_replace( '/{.*}/', '', $default_value );
 
@@ -153,16 +153,16 @@ final class NF_Display_Render
                 // TODO: Find a better way to do this.
                 if ( 'shipping' == $settings['type'] ) {
                     // TODO: Does the currency marker need to stripped here?
-                    $settings['shipping_cost'] = str_replace( array( '$', '£', '€' ), '', $settings['shipping_cost']);
-                    $settings['shipping_cost'] = str_replace( Ninja_Forms()->get_setting( 'currency_symbol' ), '', $settings['shipping_cost']);
-                    $settings['shipping_cost'] = number_format($settings['shipping_cost'], 2);
+                    $settings['shipping_cost'] = str_replace( array( '$', '£', '€' ), '', $settings['shipping_cost'] );
+                    $settings['shipping_cost'] = str_replace( Ninja_Forms()->get_setting( 'currency_symbol' ), '', $settings['shipping_cost'] );
+                    $settings['shipping_cost'] = number_format( $settings['shipping_cost'], 2 );
                 } elseif ( 'product' == $settings['type'] ) {
                     // TODO: Does the currency marker need to stripped here?
-                    $settings['product_price'] = str_replace( array( '$', '£', '€' ), '', $settings['product_price']);
-                    $settings['product_price'] = str_replace( Ninja_Forms()->get_setting( 'currency_symbol' ), '', $settings['product_price']);
-                    $settings['product_price'] = number_format($settings['product_price'], 2);
-                } elseif ( 'total' == $settings['type'] && isset($settings['value']) ) {
-                    $settings['value'] = number_format($settings['value'], 2);
+                    $settings['product_price'] = str_replace( array( '$', '£', '€' ), '', $settings['product_price'] );
+                    $settings['product_price'] = str_replace( Ninja_Forms()->get_setting( 'currency_symbol' ), '', $settings['product_price'] );
+                    $settings['product_price'] = number_format( $settings['product_price'], 2 );
+                } elseif ( 'total' == $settings['type'] && isset( $settings['value'] ) ) {
+                    $settings['value'] = number_format( $settings['value'], 2 );
                 }
 
                 $settings['element_templates'] = $templates;
@@ -248,7 +248,7 @@ final class NF_Display_Render
 
                 $field['settings']['id'] = $field_id;
 
-                $field = apply_filters('ninja_forms_localize_fields_preview', $field);
+                $field = apply_filters( 'ninja_forms_localize_fields_preview', $field );
 
                 $display_before                     = apply_filters( 'ninja_forms_display_before_field_type_' . $field['settings'][ 'type' ], '' );
                 $display_before                     = apply_filters( 'ninja_forms_display_before_field_key_' . $field['settings'][ 'key' ], $display_before );
@@ -259,19 +259,19 @@ final class NF_Display_Render
                 $field['settings'][ 'afterField' ] = $display_after;
 
                 foreach ( $field['settings'] as $key => $setting ) {
-                    if ( is_numeric($setting) ) $field['settings'][$key] = floatval($setting);
+                    if ( is_numeric( $setting ) ) $field['settings'][$key] = floatval( $setting );
                 }
 
                 $field_class = Ninja_Forms()->fields[$field_type];
 
                 $templates = $field_class->get_templates();
 
-                if ( ! array($templates) ) {
-                    $templates = array($templates);
+                if ( ! array( $templates ) ) {
+                    $templates = array( $templates );
                 }
 
                 foreach ( $templates as $template ) {
-                    self::load_template('fields-' . $template);
+                    self::load_template( 'fields-' . $template );
                 }
 
                 if ( self::$use_test_values ) {
@@ -284,8 +284,8 @@ final class NF_Display_Render
                     $field['settings'][ 'options' ] = apply_filters( 'ninja_forms_render_options', $field['settings'][ 'options' ], $field['settings'] );
                 }
 
-                if ( isset($field['settings']['default']) ) {
-                    $default_value = apply_filters('ninja_forms_render_default_value', $field['settings']['default'], $field_type, $field['settings']);
+                if ( isset( $field['settings']['default'] ) ) {
+                    $default_value = apply_filters( 'ninja_forms_render_default_value', $field['settings']['default'], $field_type, $field['settings'] );
 
                     $default_value = preg_replace( '/{.*}/', '', $default_value );
 
@@ -306,15 +306,15 @@ final class NF_Display_Render
                 if ( 'shipping' == $field['settings']['type'] ) {
                     $field['settings']['shipping_cost'] = str_replace( array( '$', '£', '€' ), '', $field['settings']['shipping_cost'] );
                     $field['settings']['shipping_cost'] = str_replace( Ninja_Forms()->get_setting( 'currency_symbol' ), '', $field['settings']['shipping_cost'] );
-                    $field['settings']['shipping_cost'] = number_format($field['settings']['shipping_cost'], 2);
+                    $field['settings']['shipping_cost'] = number_format( $field['settings']['shipping_cost'], 2 );
                 } elseif ( 'product' == $field['settings']['type'] ) {
                     // TODO: Does the currency marker need to stripped here?
                     $field['settings']['product_price'] = str_replace( array( '$', '£', '€' ), '', $field['settings']['product_price'] );
                     $field['settings']['product_price'] = str_replace( Ninja_Forms()->get_setting( 'currency_symbol' ), '', $field['settings']['product_price'] );
-                    $field['settings']['product_price'] = number_format($field['settings']['product_price'], 2);
+                    $field['settings']['product_price'] = number_format( $field['settings']['product_price'], 2 );
                 } elseif ( 'total' == $field['settings']['type'] ) {
                     if( ! isset( $field[ 'settings' ][ 'value' ] ) ) $field[ 'settings' ][ 'value' ] = 0;
-                    $field['settings']['value'] = number_format($field['settings']['value'], 2);
+                    $field['settings']['value'] = number_format( $field['settings']['value'], 2 );
                 }
 
                 $field['settings']['element_templates'] = $templates;
@@ -341,7 +341,7 @@ final class NF_Display_Render
             form.id = '<?php echo $form['id']; ?>';
             form.settings = JSON.parse( '<?php echo WPN_Helper::addslashes( wp_json_encode( $form['settings'] ) ); ?>' );
 
-            form.fields = JSON.parse( '<?php echo WPN_Helper::addslashes( wp_json_encode(  $fields ) ); ?>' );
+            form.fields = JSON.parse( '<?php echo WPN_Helper::addslashes( wp_json_encode( $fields ) ); ?>' );
 
             // Add Form Data to nfForms object
             nfForms.push( form );
@@ -363,7 +363,7 @@ final class NF_Display_Render
 
 
         if( ! Ninja_Forms()->get_setting( 'disable_opinionated_styles' ) ) {
-            wp_enqueue_style('nf-display-opinions', Ninja_Forms::$url . 'assets/css/display-opinions.css');
+            wp_enqueue_style( 'nf-display-opinions', Ninja_Forms::$url . 'assets/css/display-opinions.css' );
         }
 
         wp_enqueue_style( 'pikaday-responsive', Ninja_Forms::$url . 'assets/css/pikaday-package.css' );
@@ -395,7 +395,7 @@ final class NF_Display_Render
             'adminAjax'      => admin_url( 'admin-ajax.php' ),
             'requireBaseUrl' => Ninja_Forms::$url . 'assets/js/',
             'use_merge_tags' => array()
-        ));
+        ) );
 
         foreach( Ninja_Forms()->fields as $field ){
             foreach( $field->use_merge_tags() as $merge_tag ){
@@ -434,7 +434,7 @@ final class NF_Display_Render
         // Build File Path Hierarchy
         $file_paths = apply_filters( 'ninja_forms_field_template_file_paths', array(
             get_template_directory() . '/ninja-forms/templates/',
-        ));
+        ) );
 
         $file_paths[] = Ninja_Forms::$dir . 'includes/Templates/';
 
@@ -452,7 +452,7 @@ final class NF_Display_Render
 
         ?>
         <script>
-            var post_max_size = '<?php echo WPN_Helper::string_to_bytes( ini_get('post_max_size') ); ?>';
+            var post_max_size = '<?php echo WPN_Helper::string_to_bytes( ini_get( 'post_max_size' ) ); ?>';
             var upload_max_filesize = '<?php echo WPN_Helper::string_to_bytes( ini_get( 'upload_max_filesize' ) ); ?>';
             var wp_memory_limit = '<?php echo WPN_Helper::string_to_bytes( WP_MEMORY_LIMIT ); ?>';
         </script>
