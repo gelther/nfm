@@ -58,10 +58,10 @@ final class NF_Actions_Email extends NF_Abstracts_Action
             $attachments
         );
 
-        $data[ 'actions' ][ 'email' ][ 'to' ]          = $action_settings['to'];
-        $data[ 'actions' ][ 'email' ][ 'sent' ]        = $sent;
-        $data[ 'actions' ][ 'email' ][ 'headers' ]     = $headers;
-        $data[ 'actions' ][ 'email' ][ 'attachments' ] = $attachments;
+        $data['actions']['email']['to']          = $action_settings['to'];
+        $data['actions']['email']['sent']        = $sent;
+        $data['actions']['email']['headers']     = $headers;
+        $data['actions']['email']['attachments'] = $attachments;
 
         return $data;
     }
@@ -70,7 +70,7 @@ final class NF_Actions_Email extends NF_Abstracts_Action
     {
         $headers = array();
 
-        $headers[] = 'Content-Type: text/' . $settings[ 'email_format' ];
+        $headers[] = 'Content-Type: text/' . $settings['email_format'];
         $headers[] = 'charset=UTF-8';
 
         $headers[] = $this->_format_from( $settings );
@@ -84,11 +84,11 @@ final class NF_Actions_Email extends NF_Abstracts_Action
     {
         $attachments = array();
 
-        if( $settings[ 'attach_csv' ] ){
-            $attachments[] = $this->_create_csv( $data[ 'fields' ] );
+        if( $settings['attach_csv'] ){
+            $attachments[] = $this->_create_csv( $data['fields'] );
         }
 
-        if( ! isset( $settings[ 'id' ] ) ) $settings[ 'id' ] = '';
+        if( ! isset( $settings['id'] ) ) $settings['id'] = '';
 
         $attachments = apply_filters( 'ninja_forms_action_email_attachments', $attachments, $data, $settings );
 
@@ -99,11 +99,11 @@ final class NF_Actions_Email extends NF_Abstracts_Action
     {
         $from_name = get_bloginfo( 'name', 'raw' );
         $from_name = apply_filters( 'ninja_forms_action_email_from_name', $from_name );
-        $from_name = ( $settings[ 'from_name' ] ) ? $settings[ 'from_name' ] : $from_name;
+        $from_name = ( $settings['from_name'] ) ? $settings['from_name'] : $from_name;
 
         $from_address = get_bloginfo( 'admin_email' );
         $from_address = apply_filters( 'ninja_forms_action_email_from_address', $from_address );
-        $from_address = ( $settings[ 'from_address' ] ) ? $settings[ 'from_address' ] : $from_address;
+        $from_address = ( $settings['from_address'] ) ? $settings['from_address'] : $from_address;
 
         return $this->_format_recipient( 'from', $from_address, $from_name );
     }
@@ -113,9 +113,9 @@ final class NF_Actions_Email extends NF_Abstracts_Action
         $headers = array();
 
         $recipient_settings = array(
-            'Cc'       => $settings[ 'cc' ],
-            'Bcc'      => $settings[ 'bcc' ],
-            'Reply-to' => $settings[ 'reply_to' ],
+            'Cc'       => $settings['cc'],
+            'Bcc'      => $settings['bcc'],
+            'Reply-to' => $settings['reply_to'],
         );
 
         foreach( $recipient_settings as $type => $emails ){
@@ -150,10 +150,10 @@ final class NF_Actions_Email extends NF_Abstracts_Action
 
         foreach( $fields as $field ){
 
-            if( ! isset( $field[ 'label' ] ) ) continue;
+            if( ! isset( $field['label'] ) ) continue;
 
-            $csv_array[ 0 ][] = $field[ 'label' ];
-            $csv_array[ 1 ][] = WPN_Helper::stripslashes( $field[ 'value' ] );
+            $csv_array[0][] = $field['label'];
+            $csv_array[1][] = WPN_Helper::stripslashes( $field['value'] );
         }
 
         $csv_content = WPN_Helper::str_putcsv( $csv_array,
@@ -219,6 +219,6 @@ final class NF_Actions_Email extends NF_Abstracts_Action
 
     public function ninja_forms_action_email_attachments( $attachments, $form_data, $action_settings )
     {
-        return apply_filters( 'nf_email_notification_attachments', $attachments, $action_settings[ 'id' ] );
+        return apply_filters( 'nf_email_notification_attachments', $attachments, $action_settings['id'] );
     }
 }
