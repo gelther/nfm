@@ -246,7 +246,7 @@ class NF_Admin_CPT_Submission
         remove_meta_box( 'submitdiv', 'nf_sub', 'side' );
     }
 
-    /*
+    /**
      * PRIVATE METHODS
      */
     private function not_found_message()
