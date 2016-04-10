@@ -184,14 +184,14 @@ class NF_Admin_AllFormsTable extends WP_List_Table
 
     function column_title( $item )
     {
-        $title           = $item[ 'title' ];
-        $edit_url        = add_query_arg( 'form_id', $item[ 'id' ], admin_url( 'admin.php?page=ninja-forms' ) );
-        $delete_url      = add_query_arg( array( 'action' => 'delete', 'id' => $item[ 'id' ], '_wpnonce' => wp_create_nonce( 'nf_delete_form' ) ) );
-        $duplicate_url   = add_query_arg( array( 'action' => 'duplicate', 'id' => $item[ 'id' ], '_wpnonce' => wp_create_nonce( 'nf_duplicate_form' ) ) );
-        $preview_url     = add_query_arg( 'nf_preview_form', $item[ 'id' ], site_url() );
-        $submissions_url = add_query_arg( 'form_id', $item[ 'id' ], admin_url( 'edit.php?post_type=nf_sub' ) );
+        $title           = $item['title'];
+        $edit_url        = add_query_arg( 'form_id', $item['id'], admin_url( 'admin.php?page=ninja-forms' ) );
+        $delete_url      = add_query_arg( array( 'action' => 'delete', 'id' => $item['id'], '_wpnonce' => wp_create_nonce( 'nf_delete_form' ) ) );
+        $duplicate_url   = add_query_arg( array( 'action' => 'duplicate', 'id' => $item['id'], '_wpnonce' => wp_create_nonce( 'nf_duplicate_form' ) ) );
+        $preview_url     = add_query_arg( 'nf_preview_form', $item['id'], site_url() );
+        $submissions_url = add_query_arg( 'form_id', $item['id'], admin_url( 'edit.php?post_type=nf_sub' ) );
 
-        $form   = Ninja_Forms()->form( $item[ 'id' ] )->get();
+        $form   = Ninja_Forms()->form( $item['id'] )->get();
         $locked = $form->get_setting( 'lock' );
 
         Ninja_Forms::template( 'admin-menu-all-forms-column-title.html.php', compact( 'title', 'edit_url', 'delete_url', 'duplicate_url', 'preview_url', 'submissions_url', 'locked' ) );
@@ -199,7 +199,7 @@ class NF_Admin_AllFormsTable extends WP_List_Table
 
     public function single_row( $item )
     {
-        $form   = Ninja_Forms()->form( $item[ 'id' ] )->get();
+        $form   = Ninja_Forms()->form( $item['id'] )->get();
         $locked = $form->get_setting( 'lock' );
 
         if( $locked ) {
@@ -227,7 +227,7 @@ class NF_Admin_AllFormsTable extends WP_List_Table
 
     public static function process_bulk_action()
     {
-        if ( isset( $_REQUEST[ 'action' ] ) && 'duplicate' === $_REQUEST[ 'action' ] ) {
+        if ( isset( $_REQUEST['action'] ) && 'duplicate' === $_REQUEST['action'] ) {
 
             // In our file that handles the request, verify the nonce.
             $nonce = esc_attr( $_REQUEST['_wpnonce'] );
@@ -243,7 +243,7 @@ class NF_Admin_AllFormsTable extends WP_List_Table
             exit;
         }
 
-        if ( isset( $_REQUEST[ 'action' ] ) && 'delete' === $_REQUEST[ 'action' ] ) {
+        if ( isset( $_REQUEST['action'] ) && 'delete' === $_REQUEST['action'] ) {
 
             // In our file that handles the request, verify the nonce.
             $nonce = esc_attr( $_REQUEST['_wpnonce'] );
