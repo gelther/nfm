@@ -33,7 +33,6 @@ class NF_Admin_Notices
 
         // Runs the admin notice temp ignore function incase a temp dismiss link has been clicked
         add_action( 'admin_init', array( $this, 'admin_notice_temp_ignore' ) );
-
     }
 
     // Checks to ensure notices aren't disabled and the user has the correct permissions.
@@ -45,7 +44,6 @@ class NF_Admin_Notices
             }
         }
         return false;
-
     }
 
     // Primary notice function that can be called from an outside function sending necessary variables
