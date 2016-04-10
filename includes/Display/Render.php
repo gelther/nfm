@@ -465,7 +465,6 @@ final class NF_Display_Render
     /*
      * UTILITY
      */
-
     protected static function is_template_loaded( $template_name )
     {
         return ( in_array( $template_name, self::$loaded_templates ) ) ? TRUE : FALSE ;

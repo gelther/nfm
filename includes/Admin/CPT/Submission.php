@@ -244,7 +244,6 @@ class NF_Admin_CPT_Submission
     /*
      * PRIVATE METHODS
      */
-
     private function not_found_message()
     {
         if ( ! isset ( $_REQUEST['form_id'] ) || empty( $_REQUEST['form_id'] ) ) {

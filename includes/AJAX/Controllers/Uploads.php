@@ -19,7 +19,6 @@ class NF_AJAX_Controllers_Uploads extends NF_Abstracts_Controller
     /*
      * PUBLIC METHODS
      */
-
     public function upload()
     {
         check_ajax_referer( 'ninja_forms_ajax_nonce', 'security' );
@@ -39,7 +38,6 @@ class NF_AJAX_Controllers_Uploads extends NF_Abstracts_Controller
     /*
      * PROTECTED METHODS
      */
-
     protected function validate()
     {
         foreach( $this->_data['files'] as $key => $file ){

@@ -102,7 +102,6 @@ class NF_Extension_Updater
      * @since 2.2.47
      * @return void
      */
-
     function deactivate_license() {
 
         $license = Ninja_Forms()->get_setting( $this->product_name . '_license' );

@@ -44,7 +44,6 @@ final class NF_Actions_SuccessMessage extends NF_Abstracts_Action
     /*
     * PUBLIC METHODS
     */
-
     public function save( $action_settings )
     {
 

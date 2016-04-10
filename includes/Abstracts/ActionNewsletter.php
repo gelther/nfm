@@ -47,7 +47,6 @@ abstract class NF_Abstracts_ActionNewsletter extends NF_Abstracts_Action
     /*
     * PUBLIC METHODS
     */
-
     public function save( $action_settings )
     {
 
@@ -76,13 +75,11 @@ abstract class NF_Abstracts_ActionNewsletter extends NF_Abstracts_Action
     /*
      * PROTECTED METHODS
      */
-
     abstract protected function get_lists();
 
     /*
      * PRIVATE METHODS
      */
-
     private function get_list_settings()
     {
         $label_defaults = array(
