@@ -58,7 +58,7 @@ final class NF_Admin_Menus_Settings extends NF_Abstracts_Submenu
                 if( ! is_array( $grouped_settings[$group][$id][ 'errors' ] ) ) $grouped_settings[$group][$id][ 'errors' ] = array( $grouped_settings[$group][$id][ 'errors' ] );
 
                 foreach( $grouped_settings[$group][$id][ 'errors' ] as $old_key => $error ){
-                    $new_key                                               = $grouped_settings[$group][$id][ 'id' ] . "[" . $old_key . "]";
+                    $new_key                                               = $grouped_settings[$group][$id][ 'id' ] . '[' . $old_key . ']';
                     $errors[ $new_key ]                                    = $error;
                     $grouped_settings[$group][$id][ 'errors' ][ $new_key ] = $error;
                     unset( $grouped_settings[$group][$id][ 'errors' ][ $old_key ] );
@@ -97,7 +97,7 @@ final class NF_Admin_Menus_Settings extends NF_Abstracts_Submenu
         ?>
         <script type="text/javascript" >
             var ajaxurl = '<?php echo admin_url( 'admin-ajax.php' ); ?>';
-            var nf_ajax_nonce = '<?php echo wp_create_nonce( "ninja_forms_ajax_nonce" ); ?>';
+            var nf_ajax_nonce = '<?php echo wp_create_nonce( 'ninja_forms_ajax_nonce' ); ?>';
 
             jQuery(document).ready(function($) {
                 $( '.js-delete-saved-field' ).click( function(){
