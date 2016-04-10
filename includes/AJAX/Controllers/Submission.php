@@ -9,10 +9,10 @@ class NF_AJAX_Controllers_Submission extends NF_Abstracts_Controller
     public function __construct()
     {
         if( isset( $_POST['formData'] ) ) {
-            $this->_form_data = json_decode( $_POST['formData'], TRUE );
+            $this->_form_data = json_decode( $_POST['formData'], true );
 
             // php5.2 fallback
-            if( ! $this->_form_data ) $this->_form_data = json_decode( stripslashes( $_POST['formData'] ), TRUE );
+            if( ! $this->_form_data ) $this->_form_data = json_decode( stripslashes( $_POST['formData'] ), true );
         }
 
 
@@ -159,7 +159,7 @@ class NF_AJAX_Controllers_Submission extends NF_Abstracts_Controller
 
             $type = $action_settings['type'];
 
-            if( ! apply_filters( 'ninja_forms_run_action_type_' . $type, TRUE ) ) continue;
+            if( ! apply_filters( 'ninja_forms_run_action_type_' . $type, true ) ) continue;
 
             $action_settings[ 'id' ] = $action->get_id();
 
