@@ -12,31 +12,31 @@ class NF_AJAX_Controllers_Form extends NF_Abstracts_Controller
     {
         check_ajax_referer( 'ninja_forms_ajax_nonce', 'security' );
 
-        if( ! isset( $_POST[ 'form' ] ) ){
+        if( ! isset( $_POST['form'] ) ){
             $this->_errors[] = 'Form Not Found';
             $this->_respond();
         }
 
         $form_data = json_decode( stripslashes( $_POST['form'] ), ARRAY_A );
 
-        if( is_string( $form_data[ 'id' ] ) ) {
-            $tmp_id = $form_data[ 'id' ];
+        if( is_string( $form_data['id'] ) ) {
+            $tmp_id = $form_data['id'];
             $form   = Ninja_Forms()->form()->get();
             $form->save();
-            $form_data[ 'id' ]                              = $form->get_id();
-            $this->_data[ 'new_ids' ][ 'forms' ][ $tmp_id ] = $form_data[ 'id' ];
+            $form_data['id']                            = $form->get_id();
+            $this->_data['new_ids']['forms'][ $tmp_id ] = $form_data['id'];
         } else {
             $form = Ninja_Forms()->form( $form_data['id'] )->get();
         }
 
-        $form->update_settings( $form_data[ 'settings' ] )->save();
+        $form->update_settings( $form_data['settings'] )->save();
 
-        if( isset( $form_data[ 'fields' ] ) ) {
+        if( isset( $form_data['fields'] ) ) {
             foreach ( $form_data['fields'] as $field_data ) {
 
                 $id = $field_data['id'];
 
-                $field = Ninja_Forms()->form( $form_data[ 'id' ] )->get_field( $id );
+                $field = Ninja_Forms()->form( $form_data['id'] )->get_field( $id );
 
                 $field->update_settings( $field_data['settings'] )->save();
 
@@ -46,20 +46,20 @@ class NF_AJAX_Controllers_Form extends NF_Abstracts_Controller
                     $this->_data['new_ids']['fields'][$tmp_id] = $field->get_id();
                 }
 
-                $this->_data[ 'fields' ][ $id ] = $field->get_settings();
+                $this->_data['fields'][ $id ] = $field->get_settings();
             }
         }
 
-        if( isset( $form_data[ 'deleted_fields' ] ) ){
+        if( isset( $form_data['deleted_fields'] ) ){
 
-            foreach( $form_data[ 'deleted_fields' ] as  $deleted_field_id ){
+            foreach( $form_data['deleted_fields'] as  $deleted_field_id ){
 
                 $field = Ninja_Forms()->form()->get_field( $deleted_field_id );
                 $field->delete();
             }
         }
 
-        if( isset( $form_data[ 'actions' ] ) ) {
+        if( isset( $form_data['actions'] ) ) {
 
             /**
              * Loop Actions and fire Save() hooks.
@@ -68,7 +68,7 @@ class NF_AJAX_Controllers_Form extends NF_Abstracts_Controller
 
                 $id = $action_data['id'];
 
-                $action = Ninja_Forms()->form( $form_data[ 'id' ] )->get_action( $id );
+                $action = Ninja_Forms()->form( $form_data['id'] )->get_action( $id );
 
                 $action->update_settings( $action_data['settings'] )->save();
 
@@ -90,7 +90,7 @@ class NF_AJAX_Controllers_Form extends NF_Abstracts_Controller
                     $this->_data['new_ids']['actions'][$tmp_id] = $action->get_id();
                 }
 
-                $this->_data[ 'actions' ][ $id ] = $action->get_settings();
+                $this->_data['actions'][ $id ] = $action->get_settings();
             }
         }
 
@@ -99,7 +99,7 @@ class NF_AJAX_Controllers_Form extends NF_Abstracts_Controller
          */
         foreach ( $form_data['actions'] as $action_data ) {
 
-            $action = Ninja_Forms()->form( $form_data[ 'id' ] )->get_action( $action_data['id'] );
+            $action = Ninja_Forms()->form( $form_data['id'] )->get_action( $action_data['id'] );
 
             $action_type = $action->get_setting( 'type' );
 
@@ -115,9 +115,9 @@ class NF_AJAX_Controllers_Form extends NF_Abstracts_Controller
             }
         }
 
-        if( isset( $form_data[ 'deleted_actions' ] ) ){
+        if( isset( $form_data['deleted_actions'] ) ){
 
-            foreach( $form_data[ 'deleted_actions' ] as  $deleted_action_id ){
+            foreach( $form_data['deleted_actions'] as  $deleted_action_id ){
 
                 $action = Ninja_Forms()->form()->get_action( $deleted_action_id );
                 $action->delete();
