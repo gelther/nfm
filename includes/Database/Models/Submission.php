@@ -334,7 +334,7 @@ final class NF_Database_Models_Submission
             header( 'Content-Disposition: attachment; filename="'.$filename .'"' );
             header( 'Pragma: no-cache');
             header( 'Expires: 0' );
-            echo apply_filters( 'nf_sub_csv_bom',"\xEF\xBB\xBF" ) ; // Byte Order Mark
+            echo apply_filters( 'nf_sub_csv_bom', "\xEF\xBB\xBF" ) ; // Byte Order Mark
             echo WPN_Helper::str_putcsv( $csv_array,
                 apply_filters( 'nf_sub_csv_delimiter', ',' ),
                 apply_filters( 'nf_sub_csv_enclosure', '"' ),
