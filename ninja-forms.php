@@ -23,7 +23,7 @@ if ( get_option( 'ninja_forms_load_deprecated', false )  && ! isset( $_POST[ 'nf
     include 'deprecated/ninja-forms.php';
 
     register_activation_hook( __FILE__, 'ninja_forms_activation_deprecated' );
-    function ninja_forms_activation_deprecated( $network_wide ){
+    function ninja_forms_activation_deprecated( $network_wide ) {
         include_once 'deprecated/includes/activation.php';
 
         if ( ! get_option( 'nf_aff', false ) ) {
@@ -36,7 +36,7 @@ if ( get_option( 'ninja_forms_load_deprecated', false )  && ! isset( $_POST[ 'nf
 } else {
 
     add_action( 'wp_ajax_ninja_forms_ajax_migrate_database', 'ninja_forms_ajax_migrate_database' );
-    function ninja_forms_ajax_migrate_database(){
+    function ninja_forms_ajax_migrate_database() {
         $migrations = new NF_Database_Migrations();
         $migrations->nuke( true, true );
         $migrations->migrate();
@@ -45,7 +45,7 @@ if ( get_option( 'ninja_forms_load_deprecated', false )  && ! isset( $_POST[ 'nf
     }
 
     add_action( 'wp_ajax_ninja_forms_ajax_import_form', 'ninja_forms_ajax_import_form' );
-    function ninja_forms_ajax_import_form(){
+    function ninja_forms_ajax_import_form() {
         $import  = stripslashes( $_POST[ 'import' ] ); // TODO: How to sanitize serialized string?
         $form_id = ( isset( $_POST[ 'formID' ] ) ) ? absint( $_POST[ 'formID' ] ) : '';
 
@@ -63,7 +63,7 @@ if ( get_option( 'ninja_forms_load_deprecated', false )  && ! isset( $_POST[ 'nf
     }
 
     add_action( 'wp_ajax_ninja_forms_ajax_import_fields', 'ninja_forms_ajax_import_fields' );
-    function ninja_forms_ajax_import_fields(){
+    function ninja_forms_ajax_import_fields() {
         $fields = stripslashes( $_POST[ 'fields' ] ); // TODO: How to sanitize serialized string?
         $fields = maybe_unserialize( $fields );
 
@@ -186,8 +186,7 @@ if ( get_option( 'ninja_forms_load_deprecated', false )  && ! isset( $_POST[ 'nf
          * @staticvar array $instance
          * @return Ninja_Forms Highlander Instance
          */
-        public static function instance()
-        {
+        public static function instance() {
             if ( ! isset( self::$instance ) && ! ( self::$instance instanceof Ninja_Forms ) ) {
                 self::$instance = new Ninja_Forms;
 
@@ -343,15 +342,13 @@ if ( get_option( 'ninja_forms_load_deprecated', false )  && ! isset( $_POST[ 'nf
             return self::$instance;
         }
 
-        public function admin_notices()
-        {
+        public function admin_notices() {
             // Notices filter and run the notices function.
             $admin_notices = Ninja_Forms()->config( 'AdminNotices' );
             self::$instance->notices->admin_notice( apply_filters( 'nf_admin_notices', $admin_notices ) );
         }
 
-        public function plugins_loaded()
-        {
+        public function plugins_loaded() {
             /**
              * Field Class Registration
              */
@@ -381,8 +378,7 @@ if ( get_option( 'ninja_forms_load_deprecated', false )  && ! isset( $_POST[ 'nf
          *
          * @param $class_name
          */
-        public function autoloader( $class_name )
-        {
+        public function autoloader( $class_name ) {
             if ( class_exists( $class_name ) ) return;
 
             /* Ninja Forms Prefix */
@@ -416,8 +412,7 @@ if ( get_option( 'ninja_forms_load_deprecated', false )  && ! isset( $_POST[ 'nf
          * @param                            $id
          * @return NF_Abstracts_ModelFactory
          */
-        public function form( $id = '' )
-        {
+        public function form( $id = '' ) {
             global $wpdb;
 
             return new NF_Abstracts_ModelFactory( $wpdb, $id );
@@ -432,18 +427,15 @@ if ( get_option( 'ninja_forms_load_deprecated', false )  && ! isset( $_POST[ 'nf
          *
          * @return string
          */
-        public function logger()
-        {
+        public function logger() {
             return $this->_logger;
         }
 
-        public function eos()
-        {
+        public function eos() {
             return new Parser();
         }
 
-        public function session()
-        {
+        public function session() {
             return $this->session;
         }
 
@@ -454,8 +446,7 @@ if ( get_option( 'ninja_forms_load_deprecated', false )  && ! isset( $_POST[ 'nf
          * @param  bool|false $default
          * @return bool
          */
-        public function get_setting( $key = '', $default = false )
-        {
+        public function get_setting( $key = '', $default = false ) {
             if ( empty( $key ) || ! isset( $this->settings[ $key ] ) ) return $default;
 
             return $this->settings[ $key ];
@@ -466,8 +457,7 @@ if ( get_option( 'ninja_forms_load_deprecated', false )  && ! isset( $_POST[ 'nf
          *
          * @return array
          */
-        public function get_settings()
-        {
+        public function get_settings() {
             return ( is_array( $this->settings ) ) ? $this->settings : array();
         }
 
@@ -478,8 +468,7 @@ if ( get_option( 'ninja_forms_load_deprecated', false )  && ! isset( $_POST[ 'nf
          * @param mixed      $value
          * @param bool|false $defer_update Defer the database update of all settings
          */
-        public function update_setting( $key, $value, $defer_update = false )
-        {
+        public function update_setting( $key, $value, $defer_update = false ) {
             $this->settings[ $key ] = $value;
             if ( ! $defer_update ) {
                 $this->update_settings();
@@ -491,8 +480,7 @@ if ( get_option( 'ninja_forms_load_deprecated', false )  && ! isset( $_POST[ 'nf
          *
          * @param array $settings
          */
-        public function update_settings( $settings = array() )
-        {
+        public function update_settings( $settings = array() ) {
             if ( ! is_array( $this->settings ) ) $this->settings = array( $this->settings );
 
             if ( $settings && is_array( $settings ) ) {
@@ -508,8 +496,7 @@ if ( get_option( 'ninja_forms_load_deprecated', false )  && ! isset( $_POST[ 'nf
          *
          * @param $form_id
          */
-        public function display( $form_id, $preview = false )
-        {
+        public function display( $form_id, $preview = false ) {
             if ( ! $form_id ) return;
 
             $noscript_message = __( 'Notice: JavaScript is required for this content.', 'ninja-forms' );
@@ -536,8 +523,7 @@ if ( get_option( 'ninja_forms_load_deprecated', false )  && ! isset( $_POST[ 'nf
          * @param  string $prefix
          * @return array
          */
-        private static function load_classes( $prefix = '' )
-        {
+        private static function load_classes( $prefix = '' ) {
             $return = array();
 
             $subdirectory = str_replace( '_', DIRECTORY_SEPARATOR, str_replace( 'NF_', '', $prefix ) );
@@ -571,8 +557,7 @@ if ( get_option( 'ninja_forms_load_deprecated', false )  && ! isset( $_POST[ 'nf
          * @param string $file_name
          * @param array  $data
          */
-        public static function template( $file_name = '', array $data = array() )
-        {
+        public static function template( $file_name = '', array $data = array() ) {
             if ( ! $file_name ) return;
 
             extract( $data );
@@ -586,8 +571,7 @@ if ( get_option( 'ninja_forms_load_deprecated', false )  && ! isset( $_POST[ 'nf
          * @param        $file_name
          * @return mixed
          */
-        public static function config( $file_name )
-        {
+        public static function config( $file_name ) {
             return include self::$dir . 'includes/Config/' . $file_name . '.php';
         }
 
@@ -616,8 +600,7 @@ if ( get_option( 'ninja_forms_load_deprecated', false )  && ! isset( $_POST[ 'nf
      * @since 2.7
      * @return Ninja_Forms Highlander Instance
      */
-    function Ninja_Forms()
-    {
+    function Ninja_Forms() {
         return Ninja_Forms::instance();
     }
 
@@ -639,7 +622,7 @@ if ( get_option( 'ninja_forms_load_deprecated', false )  && ! isset( $_POST[ 'nf
         register_uninstall_hook( __FILE__, 'ninja_forms_uninstall' );
     }
 
-    function ninja_forms_uninstall(){
+    function ninja_forms_uninstall() {
         if ( Ninja_Forms()->get_setting( 'delete_on_uninstall ' ) ) {
             require_once plugin_dir_path( __FILE__ ) . '/includes/Database/Migrations.php';
             $migrations = new NF_Database_Migrations();
