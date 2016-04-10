@@ -6,7 +6,7 @@ return apply_filters( 'ninja_forms_plugin_settings_advanced', array(
     |--------------------------------------------------------------------------
     | Delete on Uninstall
     |--------------------------------------------------------------------------
-    */
+     */
 
     'delete_on_uninstall'        => array(
         'id'    => 'delete_on_uninstall',
@@ -19,7 +19,7 @@ return apply_filters( 'ninja_forms_plugin_settings_advanced', array(
     |--------------------------------------------------------------------------
     | Delete Prompt for Delete on Uninstall
     |--------------------------------------------------------------------------
-    */
+     */
 
     'delete_prompt'              => array(
         'id'   => 'delete_prompt',
@@ -34,7 +34,7 @@ return apply_filters( 'ninja_forms_plugin_settings_advanced', array(
     |--------------------------------------------------------------------------
     | Disable Admin Notices
     |--------------------------------------------------------------------------
-    */
+     */
 
     'disable_admin_notices'      => array(
         'id'    => 'disable_admin_notices',
@@ -47,7 +47,7 @@ return apply_filters( 'ninja_forms_plugin_settings_advanced', array(
     |--------------------------------------------------------------------------
     | Disable Opinionated Styles
     |--------------------------------------------------------------------------
-    */
+     */
 
     'disable_opinionated_styles' => array(
         'id'    => 'disable_opinionated_styles',
@@ -60,7 +60,7 @@ return apply_filters( 'ninja_forms_plugin_settings_advanced', array(
     |--------------------------------------------------------------------------
     | Rollback to v2.9.x
     |--------------------------------------------------------------------------
-    */
+     */
 
     'rollback'                   => array(
         'id'    => 'rollback',

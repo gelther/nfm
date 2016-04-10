@@ -9,7 +9,7 @@ return apply_filters( 'ninja_forms_example_settings', array(
     |
     | Section description here.
     |
-    */
+     */
 
     /**
      * SETTING NAME

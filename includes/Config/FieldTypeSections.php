@@ -6,7 +6,7 @@ return apply_filters( 'ninja_forms_field_type_sections', array(
     |--------------------------------------------------------------------------
     | Saved Fields
     |--------------------------------------------------------------------------
-    */
+     */
 
     'saved'    => array(
         'id'         => 'saved',
@@ -19,7 +19,7 @@ return apply_filters( 'ninja_forms_field_type_sections', array(
     |--------------------------------------------------------------------------
     | Common Fields
     |--------------------------------------------------------------------------
-    */
+     */
 
     'common'   => array(
         'id'         => 'common',
@@ -31,7 +31,7 @@ return apply_filters( 'ninja_forms_field_type_sections', array(
     |--------------------------------------------------------------------------
     | User Information Fields
     |--------------------------------------------------------------------------
-    */
+     */
 
     'userinfo' => array(
         'id'         => 'userinfo',
@@ -43,7 +43,7 @@ return apply_filters( 'ninja_forms_field_type_sections', array(
     |--------------------------------------------------------------------------
     | Pricing Fields
     |--------------------------------------------------------------------------
-    */
+     */
 
     'pricing'  => array(
         'id'         => 'pricing',
@@ -55,7 +55,7 @@ return apply_filters( 'ninja_forms_field_type_sections', array(
     |--------------------------------------------------------------------------
     | Layout Fields
     |--------------------------------------------------------------------------
-    */
+     */
 
     'layout'   => array(
         'id'         => 'layout',
@@ -67,7 +67,7 @@ return apply_filters( 'ninja_forms_field_type_sections', array(
     |--------------------------------------------------------------------------
     | Miscellaneous Fields
     |--------------------------------------------------------------------------
-    */
+     */
 
     'misc'     => array(
         'id'         => 'misc',

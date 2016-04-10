@@ -3,8 +3,8 @@
 return apply_filters( 'ninja_forms_from_display_settings', array(
 
     /**
-    * FORM TITLE
-    */
+     * FORM TITLE
+     */
 
     'title'          => array(
         'name'  => 'title',
@@ -17,8 +17,8 @@ return apply_filters( 'ninja_forms_from_display_settings', array(
     ),
 
     /**
-    * SHOW FORM TITLE
-    */
+     * SHOW FORM TITLE
+     */
 
     'show_title'     => array(
         'name'  => 'show_title',
@@ -31,8 +31,8 @@ return apply_filters( 'ninja_forms_from_display_settings', array(
     ),
 
     /**
-    * CLEAR SUCCESSFULLY COMPLETED FORM
-    */
+     * CLEAR SUCCESSFULLY COMPLETED FORM
+     */
 
     'clear_complete' => array(
         'name'  => 'clear_complete',
@@ -47,8 +47,8 @@ return apply_filters( 'ninja_forms_from_display_settings', array(
     ),
 
     /**
-    * HIDE SUCCESSFULLY COMPLETED FORMS
-    */
+     * HIDE SUCCESSFULLY COMPLETED FORMS
+     */
 
     'hide_complete'  => array(
         'name'  => 'hide_complete',

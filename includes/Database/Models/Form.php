@@ -60,8 +60,8 @@ final class NF_Database_Models_Form extends NF_Abstracts_Model
         $import = apply_filters( 'ninja_forms_before_import_form', $import );
 
         /**
-        * Create Form
-        */
+         * Create Form
+         */
         $form = Ninja_Forms()->form( $id )->get();
         $form->update_settings( $import[ 'settings' ] );
         $form->save();
@@ -193,7 +193,7 @@ final class NF_Database_Models_Form extends NF_Abstracts_Model
     |--------------------------------------------------------------------------
     | Backwards Compatibility
     |--------------------------------------------------------------------------
-    */
+     */
     public function import_form_backwards_compatibility( $import )
     {
         // Rename `data` to `settings`

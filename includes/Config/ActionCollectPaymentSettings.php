@@ -6,7 +6,7 @@ return apply_filters( 'ninja_forms_action_collect_payment_settings', array(
     |--------------------------------------------------------------------------
     | Payment Gateways
     |--------------------------------------------------------------------------
-    */
+     */
 
     'payment_gateways' => array(
         'name'    => 'payment_gateways',

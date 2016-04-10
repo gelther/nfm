@@ -1,8 +1,8 @@
 <?php if ( ! defined( 'ABSPATH' ) ) exit;
 
 /**
-* Describes log levels
-*/
+ * Describes log levels
+ */
 class LogLevel
 {
     const EMERGENCY = 'emergency';
