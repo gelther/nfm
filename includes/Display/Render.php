@@ -98,7 +98,7 @@ final class NF_Display_Render
 
                 $field->update_setting( 'id', $field->get_id() );
 
-                /*
+                /**
                  * TODO: For backwards compatibility, run the original action, get contents from the output buffer, and return the contents through the filter. Also display a PHP Notice for a deprecate filter.
                  */
 
@@ -462,7 +462,7 @@ final class NF_Display_Render
         do_action( 'ninja_forms_output_templates' );
     }
 
-    /*
+    /**
      * UTILITY
      */
     protected static function is_template_loaded( $template_name )
