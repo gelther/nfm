@@ -15,10 +15,10 @@ Copyright 2016 WP Ninjas.
 require_once dirname( __FILE__ ) . '/lib/NF_VersionSwitcher.php';
 
 if( version_compare( get_option( 'ninja_forms_version', '0.0.0' ), '3', '<' ) ) {
-    update_option( 'ninja_forms_load_deprecated', TRUE );
+    update_option( 'ninja_forms_load_deprecated', true );
 }
 
-if( get_option( 'ninja_forms_load_deprecated', FALSE )  && ! isset( $_POST[ 'nf2to3' ] ) ) {
+if( get_option( 'ninja_forms_load_deprecated', false )  && ! isset( $_POST[ 'nf2to3' ] ) ) {
 
     include 'deprecated/ninja-forms.php';
 
@@ -26,7 +26,7 @@ if( get_option( 'ninja_forms_load_deprecated', FALSE )  && ! isset( $_POST[ 'nf2
     function ninja_forms_activation_deprecated( $network_wide ){
         include_once 'deprecated/includes/activation.php';
 
-        if( ! get_option( 'nf_aff', FALSE ) ) {
+        if( ! get_option( 'nf_aff', false ) ) {
             update_option( 'ninja_forms_freemius', 1 );
         }
 
@@ -49,11 +49,11 @@ if( get_option( 'ninja_forms_load_deprecated', FALSE )  && ! isset( $_POST[ 'nf2
         $import  = stripslashes( $_POST[ 'import' ] ); // TODO: How to sanitize serialized string?
         $form_id = ( isset( $_POST[ 'formID' ] ) ) ? absint( $_POST[ 'formID' ] ) : '';
 
-        Ninja_Forms()->form()->import_form( $import, $form_id, TRUE );
+        Ninja_Forms()->form()->import_form( $import, $form_id, true );
 
         if( isset( $_POST[ 'flagged' ] ) && $_POST[ 'flagged' ] ){
             $form = Ninja_Forms()->form( $form_id )->get();
-            $form->update_setting( 'lock', TRUE );
+            $form->update_setting( 'lock', true );
             $form->save();
         }
 
@@ -68,7 +68,7 @@ if( get_option( 'ninja_forms_load_deprecated', FALSE )  && ! isset( $_POST[ 'nf2
         $fields = maybe_unserialize( $fields );
 
         foreach( $fields as $field ) {
-            Ninja_Forms()->form()->import_field( $field, $field[ 'id' ], TRUE );
+            Ninja_Forms()->form()->import_field( $field, $field[ 'id' ], true );
         }
 
         echo json_encode( array( 'export' => $_POST[ 'fields' ], 'import' => $fields ) );
@@ -508,7 +508,7 @@ if( get_option( 'ninja_forms_load_deprecated', FALSE )  && ! isset( $_POST[ 'nf2
          *
          * @param $form_id
          */
-        public function display( $form_id, $preview = FALSE )
+        public function display( $form_id, $preview = false )
         {
             if( ! $form_id ) return;
 
@@ -644,7 +644,7 @@ if( get_option( 'ninja_forms_load_deprecated', FALSE )  && ! isset( $_POST[ 'nf2
         if( Ninja_Forms()->get_setting( 'delete_on_uninstall ' ) ) {
             require_once plugin_dir_path( __FILE__ ) . '/includes/Database/Migrations.php';
             $migrations = new NF_Database_Migrations();
-            $migrations->nuke( TRUE, TRUE );
+            $migrations->nuke( true, true );
         }
     }
 
