@@ -30,7 +30,7 @@ class NF_Extension_Updater
         $this->product_nice_name = $product_name;
         if ( $slug == '' ) {
             $this->product_name = strtolower( $product_name );
-            $this->product_name = preg_replace( "/[^a-zA-Z]+/", "", $this->product_name );
+            $this->product_name = preg_replace( '/[^a-zA-Z]+/', '', $this->product_name );
         } else {
             $this->product_name = $slug;
         }
