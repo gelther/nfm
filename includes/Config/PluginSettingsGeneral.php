@@ -2,7 +2,7 @@
 
 return apply_filters( 'ninja_forms_plugin_settings_general', array(
 
-    /*
+    /**
     |--------------------------------------------------------------------------
     | Version
     |--------------------------------------------------------------------------
@@ -15,7 +15,7 @@ return apply_filters( 'ninja_forms_plugin_settings_general', array(
         'desc'  => ''
     ),
 
-    /*
+    /**
     |--------------------------------------------------------------------------
     | Date Format
     |--------------------------------------------------------------------------
@@ -28,7 +28,7 @@ return apply_filters( 'ninja_forms_plugin_settings_general', array(
         'desc'  => 'e.g. m/d/Y, d/m/Y - ' . sprintf( __( 'Tries to follow the %sPHP date() function%s specifications, but not every format is supported.', 'ninja-forms' ), '<a href="http://www.php.net/manual/en/function.date.php" target="_blank">', '</a>' ),
     ),
 
-    /*
+    /**
     |--------------------------------------------------------------------------
     | Currency Symbol
     |--------------------------------------------------------------------------
