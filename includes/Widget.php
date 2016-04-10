@@ -90,7 +90,7 @@ class NF_Widget extends WP_Widget {
                 <?php
                 $all_forms = Ninja_Forms()->form()->get_forms();
 
-                foreach($all_forms as $form){
+                foreach( $all_forms as $form ){
                     ?>
                     <option value="<?php echo $form->get_id();?>" <?php selected( $form->get_id(), $form_id );?>>
                         <?php echo $form->get_setting( 'title' );?>
