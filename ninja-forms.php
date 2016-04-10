@@ -206,12 +206,12 @@ if( get_option( 'ninja_forms_load_deprecated', FALSE )  && ! isset( $_POST[ 'nf2
 
                 update_option( 'ninja_forms_version', self::VERSION );
 
-                /*
+                /**
                  * Register our autoloader
                  */
                 spl_autoload_register( array( self::$instance, 'autoloader' ) );
 
-                /*
+                /**
                  * Admin Menus
                  */
                 self::$instance->menus[ 'forms' ]        = new NF_Admin_Menus_Forms();
@@ -224,7 +224,7 @@ if( get_option( 'ninja_forms_load_deprecated', FALSE )  && ! isset( $_POST[ 'nf2
                 self::$instance->menus[ 'import-export'] = new NF_Admin_Menus_ImportExport();
                 self::$instance->menus[ 'licenses']      = new NF_Admin_Menus_Licenses();
 
-                /*
+                /**
                  * Admin menus used for building out the admin UI
                  *
                  * TODO: removed once building is complete
@@ -238,7 +238,7 @@ if( get_option( 'ninja_forms_load_deprecated', FALSE )  && ! isset( $_POST[ 'nf2
                 self::$instance->menus[ 'mock-data'] = new NF_Admin_Menus_MockData();
                 // self::$instance->menus[ 'preview']          = new NF_Admin_Menus_Preview();
 
-                /*
+                /**
                  * AJAX Controllers
                  */
                 self::$instance->controllers[ 'form' ]        = new NF_AJAX_Controllers_Form();
@@ -247,24 +247,24 @@ if( get_option( 'ninja_forms_load_deprecated', FALSE )  && ! isset( $_POST[ 'nf2
                 self::$instance->controllers[ 'submission' ]  = new NF_AJAX_Controllers_Submission();
                 self::$instance->controllers[ 'savedfields' ] = new NF_AJAX_Controllers_SavedFields();
 
-                /*
+                /**
                  * WP-CLI Commands
                  */
                 if( class_exists( 'WP_CLI_Command' ) ) {
                     WP_CLI::add_command( 'ninja-forms', 'NF_WPCLI_NinjaFormsCommand' );
                 }
 
-                /*
+                /**
                  * Preview Page
                  */
                 self::$instance->preview = new NF_Display_Preview();
 
-                /*
+                /**
                  * Shortcodes
                  */
                 self::$instance->shortcodes = new NF_Display_Shortcodes();
 
-                /*
+                /**
                  * Temporary Shortcodes
                  *
                  * TODO: removed once building is complete
@@ -274,17 +274,17 @@ if( get_option( 'ninja_forms_load_deprecated', FALSE )  && ! isset( $_POST[ 'nf2
                 require_once( self::$dir . 'includes/Display/Shortcodes/tmp-frontendform.php' );
                 require_once( self::$dir . 'includes/Display/Shortcodes/tmp-file-upload.php' );
 
-                /*
+                /**
                  * Submission CPT
                  */
                 new NF_Admin_CPT_Submission();
 
-                /*
+                /**
                  * Logger
                  */
                 self::$instance->_logger = new NF_Database_Logger();
 
-                /*
+                /**
                  * Merge Tags
                  */
                 self::$instance->merge_tags[ 'user' ]         = new NF_MergeTags_User();
@@ -294,31 +294,31 @@ if( get_option( 'ninja_forms_load_deprecated', FALSE )  && ! isset( $_POST[ 'nf2
                 self::$instance->merge_tags[ 'calcs' ]        = new NF_MergeTags_Calcs();
                 self::$instance->merge_tags[ 'querystrings' ] = new NF_MergeTags_QueryStrings();
 
-                /*
+                /**
                  * Add Form Modal
                  */
                 self::$instance->add_form_modal = new NF_Admin_AddFormModal();
 
-                /*
+                /**
                  * EOS Parser
                  */
                 self::$instance->_eos[ 'parser' ] = require_once 'includes/Libraries/EOS/Parser.php';
 
                 self::$instance->session = new NF_Session();
 
-                /*
+                /**
                  * Plugin Settings
                  */
                 self::$instance->settings = get_option( 'ninja_forms_settings' );
 
-                /*
+                /**
                  * Admin Notices System
                  */
                 self::$instance->notices = new NF_Admin_Notices();
 
                 self::$instance->widgets[] = new NF_Widget();
 
-                /*
+                /**
                  * Activation Hook
                  * TODO: Move to a permanent home.
                  */
@@ -326,7 +326,7 @@ if( get_option( 'ninja_forms_load_deprecated', FALSE )  && ! isset( $_POST[ 'nf2
 
                 new NF_Admin_Metaboxes_AppendAForm();
 
-                /*
+                /**
                  * Require EDD auto-update file
                  */
                 if( ! class_exists( 'EDD_SL_Plugin_Updater' ) ) {
@@ -352,22 +352,22 @@ if( get_option( 'ninja_forms_load_deprecated', FALSE )  && ! isset( $_POST[ 'nf2
 
         public function plugins_loaded()
         {
-            /*
+            /**
              * Field Class Registration
              */
             self::$instance->fields = apply_filters( 'ninja_forms_register_fields', self::load_classes( 'Fields' ) );
 
-            /*
+            /**
              * Form Action Registration
              */
             self::$instance->actions = apply_filters( 'ninja_forms_register_actions', self::load_classes( 'Actions' ) );
 
-            /*
+            /**
              * Merge Tag Registration
              */
             self::$instance->merge_tags = apply_filters( 'ninja_forms_register_merge_tags', self::$instance->merge_tags );
 
-            /*
+            /**
              * It's Ninja Time: Hook for Extensions
              */
             do_action( 'ninja_forms_loaded' );
@@ -406,7 +406,7 @@ if( get_option( 'ninja_forms_load_deprecated', FALSE )  && ! isset( $_POST[ 'nf2
             }
         }
 
-        /*
+        /**
          * PUBLIC API WRAPPERS
          */
 
@@ -526,7 +526,7 @@ if( get_option( 'ninja_forms_load_deprecated', FALSE )  && ! isset( $_POST[ 'nf2
 
 
 
-        /*
+        /**
          * PRIVATE METHODS
          */
 
@@ -561,7 +561,7 @@ if( get_option( 'ninja_forms_load_deprecated', FALSE )  && ! isset( $_POST[ 'nf2
 
 
 
-        /*
+        /**
          * STATIC METHODS
          */
 
@@ -623,7 +623,7 @@ if( get_option( 'ninja_forms_load_deprecated', FALSE )  && ! isset( $_POST[ 'nf2
 
     Ninja_Forms();
 
-    /*
+    /**
     |--------------------------------------------------------------------------
     | Uninstall Hook
     |--------------------------------------------------------------------------
