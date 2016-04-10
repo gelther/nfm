@@ -12,4 +12,4 @@ return apply_filters( 'ninja_forms_plugin_settings_defaults', array(
     'delete_on_uninstall'   => 0,
     'disable_admin_notices' => 0,
 
-));
+) );
