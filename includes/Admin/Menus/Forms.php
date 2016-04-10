@@ -15,7 +15,7 @@ final class NF_Admin_Menus_Forms extends NF_Abstracts_Menu
         parent::__construct();
 
         if( ! defined( 'DOING_AJAX' ) ) {
-            add_action('admin_init', array($this, 'admin_init'));
+            add_action( 'admin_init', array( $this, 'admin_init' ) );
             add_action( 'admin_init', array( 'NF_Admin_AllFormsTable', 'process_bulk_action' ) );
         }
     }
@@ -28,7 +28,7 @@ final class NF_Admin_Menus_Forms extends NF_Abstracts_Menu
             if( 'new' == $_GET[ 'form_id' ] ){
                 $form_id = 'tmp-' . time();
             } else {
-                $form_id = (is_numeric($_GET['form_id'])) ? absint($_GET['form_id']) : '';
+                $form_id = (is_numeric( $_GET['form_id'] )) ? absint( $_GET['form_id'] ) : '';
             }
 
             /*
@@ -128,7 +128,7 @@ final class NF_Admin_Menus_Forms extends NF_Abstracts_Menu
             'wp_locale'      => $wp_locale->number_format,
             'editFormText'   => __( 'Edit Form', 'ninja-forms' ),
             'mobile'         => ( wp_is_mobile() ) ? 1: 0
-        ));
+        ) );
 
         do_action( 'nf_admin_enqueue_scripts' );
     }
@@ -138,8 +138,8 @@ final class NF_Admin_Menus_Forms extends NF_Abstracts_Menu
         $form = Ninja_Forms()->form( $form_id )->get();
 
         if( ! $form->get_tmp_id() ) {
-            $fields  = ($form_id) ? Ninja_Forms()->form($form_id)->get_fields() : array();
-            $actions = ($form_id) ? Ninja_Forms()->form($form_id)->get_actions() : array();
+            $fields  = ($form_id) ? Ninja_Forms()->form( $form_id )->get_fields() : array();
+            $actions = ($form_id) ? Ninja_Forms()->form( $form_id )->get_actions() : array();
         } else {
             $fields  = array();
             $actions = array();
@@ -163,7 +163,7 @@ final class NF_Admin_Menus_Forms extends NF_Abstracts_Menu
                 $settings['id'] = $field->get_id();
 
                 foreach ( $settings as $key => $setting ) {
-                    if ( is_numeric($setting) ) $settings[$key] = floatval($setting);
+                    if ( is_numeric( $setting ) ) $settings[$key] = floatval( $setting );
                 }
 
                 $fields_settings[] = $settings;
@@ -241,7 +241,7 @@ final class NF_Admin_Menus_Forms extends NF_Abstracts_Menu
             );
         }
 
-        $saved_fields = Ninja_Forms()->form()->get_fields( array( 'saved' => 1) );
+        $saved_fields = Ninja_Forms()->form()->get_fields( array( 'saved' => 1 ) );
 
         foreach( $saved_fields as $saved_field ){
 
@@ -361,8 +361,8 @@ final class NF_Admin_Menus_Forms extends NF_Abstracts_Menu
             $unique_settings = $this->_unique_settings( $form_settings[ $id ] );
             $master_settings = array_merge( $master_settings, $unique_settings );
 
-            $form_settings_types[ $id ]['settingGroups']   = $this->_group_settings($form_settings[ $id ], $groups);
-            $form_settings_types[ $id ]['settingDefaults'] = $this->_setting_defaults($unique_settings);
+            $form_settings_types[ $id ]['settingGroups']   = $this->_group_settings( $form_settings[ $id ], $groups );
+            $form_settings_types[ $id ]['settingDefaults'] = $this->_setting_defaults( $unique_settings );
         }
         ?>
         <script>
@@ -419,7 +419,7 @@ final class NF_Admin_Menus_Forms extends NF_Abstracts_Menu
 
         unset( $groups[ "" ] );
 
-        usort($groups, array( $this, 'setting_group_priority' ) );
+        usort( $groups, array( $this, 'setting_group_priority' ) );
 
         return $groups;
     }
@@ -465,9 +465,9 @@ final class NF_Admin_Menus_Forms extends NF_Abstracts_Menu
         $bust = ( isset( $_GET[ 'nf-bust-actions-feed' ] ) );
 
         if( $bust || ! $actions ) {
-            $actions = wp_remote_get('https://ninjaforms.com/?action_feed=true');
-            $actions = wp_remote_retrieve_body($actions);
-            $actions = json_decode($actions, true);
+            $actions = wp_remote_get( 'https://ninjaforms.com/?action_feed=true' );
+            $actions = wp_remote_retrieve_body( $actions );
+            $actions = json_decode( $actions, true );
 
             set_transient( 'ninja-forms-builder-actions-feed', $actions, WEEK_IN_SECONDS );
         }
