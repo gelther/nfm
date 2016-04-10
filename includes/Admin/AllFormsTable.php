@@ -31,8 +31,7 @@ class NF_Admin_AllFormsTable extends WP_List_Table
      *
      * @return Void
      */
-    public function prepare_items()
-    {
+    public function prepare_items() {
         $columns  = $this->get_columns();
         $hidden   = $this->get_hidden_columns();
         $sortable = $this->get_sortable_columns();
@@ -60,8 +59,7 @@ class NF_Admin_AllFormsTable extends WP_List_Table
      *
      * @return Array
      */
-    public function get_columns()
-    {
+    public function get_columns() {
         $columns = array(
             'cb'        => '<input type="checkbox" />',
             'title'     => 'Form Title',
@@ -77,8 +75,7 @@ class NF_Admin_AllFormsTable extends WP_List_Table
      *
      * @return Array
      */
-    public function get_hidden_columns()
-    {
+    public function get_hidden_columns() {
         return array();
     }
 
@@ -87,8 +84,7 @@ class NF_Admin_AllFormsTable extends WP_List_Table
      *
      * @return Array
      */
-    public function get_sortable_columns()
-    {
+    public function get_sortable_columns() {
         return array(
             'title' => array( 'title', true ),
             'date'  => array( 'updated', true ),
@@ -100,8 +96,7 @@ class NF_Admin_AllFormsTable extends WP_List_Table
      *
      * @return Array
      */
-    private function table_data()
-    {
+    private function table_data() {
         $data = array();
 
         $forms = Ninja_Forms()->form()->get_forms();
@@ -127,8 +122,7 @@ class NF_Admin_AllFormsTable extends WP_List_Table
      *
      * @return Mixed
      */
-    public function column_default( $item, $column_name )
-    {
+    public function column_default( $item, $column_name ) {
         switch ( $column_name ) {
             case 'title':
             case 'shortcode':
@@ -145,8 +139,7 @@ class NF_Admin_AllFormsTable extends WP_List_Table
      *
      * @return Mixed
      */
-    private function sort_data( $a, $b )
-    {
+    private function sort_data( $a, $b ) {
         // Set defaults
         $orderby = 'id';
         $order   = 'asc';
@@ -171,15 +164,13 @@ class NF_Admin_AllFormsTable extends WP_List_Table
         return -$result;
     }
 
-    function column_cb( $item )
-    {
+    function column_cb( $item ) {
         return sprintf(
             '<input type="checkbox" name="bulk-delete[]" value="%s" />', $item[ 'id' ]
         );
     }
 
-    function column_title( $item )
-    {
+    function column_title( $item ) {
         $title           = $item[ 'title' ];
         $edit_url        = add_query_arg( 'form_id', $item[ 'id' ], admin_url( 'admin.php?page=ninja-forms' ) );
         $delete_url      = add_query_arg( array( 'action' => 'delete', 'id' => $item[ 'id' ], '_wpnonce' => wp_create_nonce( 'nf_delete_form' ) ) );
@@ -193,8 +184,7 @@ class NF_Admin_AllFormsTable extends WP_List_Table
         Ninja_Forms::template( 'admin-menu-all-forms-column-title.html.php', compact( 'title', 'edit_url', 'delete_url', 'duplicate_url', 'preview_url', 'submissions_url', 'locked' ) );
     }
 
-    public function single_row( $item )
-    {
+    public function single_row( $item ) {
         $form   = Ninja_Forms()->form( $item[ 'id' ] )->get();
         $locked = $form->get_setting( 'lock' );
 
@@ -212,8 +202,7 @@ class NF_Admin_AllFormsTable extends WP_List_Table
      *
      * @return array
      */
-    public function get_bulk_actions()
-    {
+    public function get_bulk_actions() {
         $actions = array(
             'bulk-delete' => 'Delete'
         );
@@ -221,8 +210,7 @@ class NF_Admin_AllFormsTable extends WP_List_Table
         return $actions;
     }
 
-    public static function process_bulk_action()
-    {
+    public static function process_bulk_action() {
         if ( isset( $_REQUEST[ 'action' ] ) && 'duplicate' === $_REQUEST[ 'action' ] ) {
 
             // In our file that handles the request, verify the nonce.
@@ -271,8 +259,7 @@ class NF_Admin_AllFormsTable extends WP_List_Table
         }
     }
 
-    public static function delete_item( $id )
-    {
+    public static function delete_item( $id ) {
         $form = Ninja_Forms()->form( $id )->get();
         $form->delete();
     }
