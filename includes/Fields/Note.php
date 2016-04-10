@@ -23,9 +23,9 @@ class NF_Fields_Note extends NF_Fields_Hidden
     {
         parent::__construct();
 
-        $this->_settings[ 'label' ][ 'width' ] = 'full';
+        $this->_settings[ 'label' ][ 'width' ]   = 'full';
         $this->_settings[ 'default' ][ 'group' ] = 'primary';
-        $this->_settings[ 'default' ][ 'type' ] = 'textarea';
+        $this->_settings[ 'default' ][ 'type' ]  = 'textarea';
 
         $this->_nicename = __( 'Note', 'ninja-forms' );
 

@@ -25,13 +25,13 @@ final class NF_Database_Models_Submission
 
     public function __construct( $id = '', $form_id = '' )
     {
-        $this->_id = $id;
+        $this->_id      = $id;
         $this->_form_id = $form_id;
 
         if( $this->_id ){
-            $sub = get_post( $this->_id );
-            $this->_status = $sub->post_status;
-            $this->_user_id = $sub->post_author;
+            $sub             = get_post( $this->_id );
+            $this->_status   = $sub->post_status;
+            $this->_user_id  = $sub->post_author;
             $this->_sub_date = $sub->post_date;
             $this->_mod_date = $sub->post_modified;
         }
@@ -157,7 +157,7 @@ final class NF_Database_Models_Submission
     public function get_extra_value( $key )
     {
         if( ! isset( $this->_extra_values[ $key ] ) ||  ! $this->_extra_values[ $key ] ){
-            $id = ( $this->_id ) ? $this->_id : 0;
+            $id                          = ( $this->_id ) ? $this->_id : 0;
             $this->_extra_values[ $key ] = get_post_meta( $id, $key, TRUE );
         }
 
@@ -298,7 +298,7 @@ final class NF_Database_Models_Submission
 
             if( ! in_array( $sub->get_id(), $sub_ids ) ) continue;
 
-            $value[ '_seq_num' ] = $sub->get_seq_num();
+            $value[ '_seq_num' ]        = $sub->get_seq_num();
             $value[ '_date_submitted' ] = $sub->get_sub_date( $date_format );
 
             foreach( $field_labels as $field_id => $label ){
@@ -319,7 +319,7 @@ final class NF_Database_Models_Submission
         $csv_array[ 0 ][] = $field_labels;
         $csv_array[ 1 ][] = $value_array;
 
-        $today = date( $date_format, current_time( 'timestamp' ) );
+        $today    = date( $date_format, current_time( 'timestamp' ) );
         $filename = apply_filters( 'nf_subs_csv_filename', 'nf_subs_' . $today );
         $filename = $filename . ".csv";
 

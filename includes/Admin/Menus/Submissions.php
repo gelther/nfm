@@ -198,7 +198,7 @@ final class NF_Admin_Menus_Submissions extends NF_Abstracts_Submenu
             global $wpdb;
 
             $keywords = explode(' ', get_query_var('s'));
-            $query = "";
+            $query    = "";
 
             foreach ($keywords as $word) {
 
@@ -246,8 +246,8 @@ final class NF_Admin_Menus_Submissions extends NF_Abstracts_Submenu
 
                 if ( isset ( $_REQUEST['form_id'] ) && ! empty ( $_REQUEST['form_id'] ) ) {
                     $redirect = urlencode( remove_query_arg( array( 'download_all', 'download_file' ) ) );
-                    $url = admin_url( 'admin.php?page=nf-processing&action=download_all_subs&form_id=' . absint( $_REQUEST['form_id'] ) . '&redirect=' . $redirect );
-                    $url = esc_url( $url );
+                    $url      = admin_url( 'admin.php?page=nf-processing&action=download_all_subs&form_id=' . absint( $_REQUEST['form_id'] ) . '&redirect=' . $redirect );
+                    $url      = esc_url( $url );
                     ?>
                     var button = '<a href="<?php echo $url; ?>" class="button-secondary nf-download-all"><?php echo __( 'Download All Submissions', 'ninja-forms' ); ?></a>';
                     jQuery( '#doaction2' ).after( button );
@@ -399,12 +399,12 @@ final class NF_Admin_Menus_Submissions extends NF_Abstracts_Submenu
         if( empty( $_GET[ 'begin_date' ] ) || empty( $_GET[ 'end_date' ] ) ) return $vars;
 
         $begin_date = $_GET[ 'begin_date' ];
-        $end_date = $_GET[ 'end_date' ];
+        $end_date   = $_GET[ 'end_date' ];
 
         if( $begin_date > $end_date ){
-            $temp_date = $begin_date;
+            $temp_date  = $begin_date;
             $begin_date = $end_date;
-            $end_date = $temp_date;
+            $end_date   = $temp_date;
         }
 
         if ( ! isset ( $vars['date_query'] ) ) {

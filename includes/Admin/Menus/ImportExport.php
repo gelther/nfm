@@ -91,7 +91,7 @@ final class NF_Admin_Menus_ImportExport extends NF_Abstracts_Submenu
             )
         );
 
-        $tab_keys = array_keys( $tabs );
+        $tab_keys   = array_keys( $tabs );
         $active_tab = ( isset( $_GET[ 'tab' ] ) ) ? $_GET[ 'tab' ] : reset( $tab_keys );
 
         $this->add_meta_boxes();
@@ -352,7 +352,7 @@ final class NF_Admin_Menus_ImportExport extends NF_Abstracts_Submenu
                 break;
         }
 
-        $args = array(
+        $args    = array(
             'title'   => __( 'File Upload Error', 'ninja-forms' ),
             'message' => $error_message,
             'debug'   => $file,

@@ -53,7 +53,7 @@ class NF_Admin_CPT_Submission
             'not_found'          => $this->not_found_message(),
             'not_found_in_trash' => __( 'Not found in Trash', 'ninja_forms' ),
         );
-        $args = array(
+        $args   = array(
             'label'               => __( 'Submission', 'ninja_forms' ),
             'description'         => __( 'Form Submissions', 'ninja_forms' ),
             'labels'              => $labels,
@@ -101,8 +101,8 @@ class NF_Admin_CPT_Submission
             $hidden_field_types = apply_filters( 'nf_sub_hidden_field_types', array() );
             if( in_array( $field->get_setting( 'type' ), array_values( $hidden_field_types ) ) ) continue;
 
-            $id = $field->get_id();
-            $label = $field->get_setting( 'label' );
+            $id          = $field->get_id();
+            $label       = $field->get_setting( 'label' );
             $admin_label = $field->get_setting( 'admin_label' );
 
             $columns[ $id ] = ( $admin_label ) ? $admin_label : $label;

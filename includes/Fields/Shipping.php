@@ -59,8 +59,8 @@ class NF_Fields_Shipping extends NF_Abstracts_Input
 
                 $options = '<option>--</option>';
                 foreach( $field->get_setting( 'shipping_options' ) as $option ){
-                    $selected = ( $value == $option[ 'value' ] ) ? "selected" : '';
-                    $options .= "<option value='{$option[ 'value' ]}' $selected>{$option[ 'label' ]}</option>";
+                    $selected  = ( $value == $option[ 'value' ] ) ? "selected" : '';
+                    $options  .= "<option value='{$option[ 'value' ]}' $selected>{$option[ 'label' ]}</option>";
                 }
 
                 return "<select class='widefat' name='fields[$id]' id=''>$options</select>";

@@ -46,7 +46,7 @@ if( get_option( 'ninja_forms_load_deprecated', FALSE )  && ! isset( $_POST[ 'nf2
 
     add_action( 'wp_ajax_ninja_forms_ajax_import_form', 'ninja_forms_ajax_import_form' );
     function ninja_forms_ajax_import_form(){
-        $import = stripslashes( $_POST[ 'import' ] ); // TODO: How to sanitize serialized string?
+        $import  = stripslashes( $_POST[ 'import' ] ); // TODO: How to sanitize serialized string?
         $form_id = ( isset( $_POST[ 'formID' ] ) ) ? absint( $_POST[ 'formID' ] ) : '';
 
         Ninja_Forms()->form()->import_form( $import, $form_id, TRUE );
@@ -214,15 +214,15 @@ if( get_option( 'ninja_forms_load_deprecated', FALSE )  && ! isset( $_POST[ 'nf2
                 /*
                  * Admin Menus
                  */
-                self::$instance->menus[ 'forms' ]           = new NF_Admin_Menus_Forms();
-                self::$instance->menus[ 'all-forms' ]       = new NF_Admin_Menus_AllForms();
-                self::$instance->menus[ 'add-new' ]         = new NF_Admin_Menus_AddNew();
-                self::$instance->menus[ 'settings' ]        = new NF_Admin_Menus_Settings();
-                self::$instance->menus[ 'add-ons' ]         = new NF_Admin_Menus_Addons();
-                self::$instance->menus[ 'system_status']    = new NF_Admin_Menus_SystemStatus();
-                self::$instance->menus[ 'submissions']      = new NF_Admin_Menus_Submissions();
-                self::$instance->menus[ 'import-export']    = new NF_Admin_Menus_ImportExport();
-                self::$instance->menus[ 'licenses']         = new NF_Admin_Menus_Licenses();
+                self::$instance->menus[ 'forms' ]        = new NF_Admin_Menus_Forms();
+                self::$instance->menus[ 'all-forms' ]    = new NF_Admin_Menus_AllForms();
+                self::$instance->menus[ 'add-new' ]      = new NF_Admin_Menus_AddNew();
+                self::$instance->menus[ 'settings' ]     = new NF_Admin_Menus_Settings();
+                self::$instance->menus[ 'add-ons' ]      = new NF_Admin_Menus_Addons();
+                self::$instance->menus[ 'system_status'] = new NF_Admin_Menus_SystemStatus();
+                self::$instance->menus[ 'submissions']   = new NF_Admin_Menus_Submissions();
+                self::$instance->menus[ 'import-export'] = new NF_Admin_Menus_ImportExport();
+                self::$instance->menus[ 'licenses']      = new NF_Admin_Menus_Licenses();
 
                 /*
                  * Admin menus used for building out the admin UI
@@ -235,7 +235,7 @@ if( get_option( 'ninja_forms_load_deprecated', FALSE )  && ! isset( $_POST[ 'nf2
                 // self::$instance->menus[ 'edit-action']      = new NF_Admin_Menus_EditAction();
                 // self::$instance->menus[ 'edit-settings']    = new NF_Admin_Menus_EditSettings();
                 // self::$instance->menus[ 'fields-layout']    = new NF_Admin_Menus_FieldsLayout();
-                self::$instance->menus[ 'mock-data']        = new NF_Admin_Menus_MockData();
+                self::$instance->menus[ 'mock-data'] = new NF_Admin_Menus_MockData();
                 // self::$instance->menus[ 'preview']          = new NF_Admin_Menus_Preview();
 
                 /*
@@ -287,11 +287,11 @@ if( get_option( 'ninja_forms_load_deprecated', FALSE )  && ! isset( $_POST[ 'nf2
                 /*
                  * Merge Tags
                  */
-                self::$instance->merge_tags[ 'user' ] = new NF_MergeTags_User();
-                self::$instance->merge_tags[ 'post' ] = new NF_MergeTags_Post();
-                self::$instance->merge_tags[ 'system' ] = new NF_MergeTags_System();
-                self::$instance->merge_tags[ 'fields' ] = new NF_MergeTags_Fields();
-                self::$instance->merge_tags[ 'calcs' ] = new NF_MergeTags_Calcs();
+                self::$instance->merge_tags[ 'user' ]         = new NF_MergeTags_User();
+                self::$instance->merge_tags[ 'post' ]         = new NF_MergeTags_Post();
+                self::$instance->merge_tags[ 'system' ]       = new NF_MergeTags_System();
+                self::$instance->merge_tags[ 'fields' ]       = new NF_MergeTags_Fields();
+                self::$instance->merge_tags[ 'calcs' ]        = new NF_MergeTags_Calcs();
                 self::$instance->merge_tags[ 'querystrings' ] = new NF_MergeTags_QueryStrings();
 
                 /*
@@ -387,9 +387,9 @@ if( get_option( 'ninja_forms_load_deprecated', FALSE )  && ! isset( $_POST[ 'nf2
 
             /* Ninja Forms Prefix */
             if (false !== strpos($class_name, 'NF_')) {
-                $class_name = str_replace('NF_', '', $class_name);
+                $class_name  = str_replace('NF_', '', $class_name);
                 $classes_dir = realpath(plugin_dir_path(__FILE__)) . DIRECTORY_SEPARATOR . 'includes' . DIRECTORY_SEPARATOR;
-                $class_file = str_replace('_', DIRECTORY_SEPARATOR, $class_name) . '.php';
+                $class_file  = str_replace('_', DIRECTORY_SEPARATOR, $class_name) . '.php';
                 if (file_exists($classes_dir . $class_file)) {
                     require_once $classes_dir . $class_file;
                 }
@@ -397,9 +397,9 @@ if( get_option( 'ninja_forms_load_deprecated', FALSE )  && ! isset( $_POST[ 'nf2
 
             /* WP Ninjas Prefix */
             if (false !== strpos($class_name, 'WPN_')) {
-                $class_name = str_replace('WPN_', '', $class_name);
+                $class_name  = str_replace('WPN_', '', $class_name);
                 $classes_dir = realpath(plugin_dir_path(__FILE__)) . DIRECTORY_SEPARATOR . 'includes' . DIRECTORY_SEPARATOR;
-                $class_file = str_replace('_', DIRECTORY_SEPARATOR, $class_name) . '.php';
+                $class_file  = str_replace('_', DIRECTORY_SEPARATOR, $class_name) . '.php';
                 if (file_exists($classes_dir . $class_file)) {
                     require_once $classes_dir . $class_file;
                 }
@@ -546,7 +546,7 @@ if( get_option( 'ninja_forms_load_deprecated', FALSE )  && ! isset( $_POST[ 'nf2
 
             foreach (scandir( self::$dir . $directory ) as $path) {
 
-                $path = explode( DIRECTORY_SEPARATOR, str_replace( self::$dir, '', $path ) );
+                $path     = explode( DIRECTORY_SEPARATOR, str_replace( self::$dir, '', $path ) );
                 $filename = str_replace( '.php', '', end( $path ) );
 
                 $class_name = 'NF_' . $prefix . '_' . $filename;

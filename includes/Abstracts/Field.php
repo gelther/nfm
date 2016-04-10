@@ -231,13 +231,13 @@ abstract class NF_Abstracts_Field
         $templates = (array) $this->_templates;
 
         // Create a reflection for examining the parent
-        $reflection = new ReflectionClass( $this );
+        $reflection   = new ReflectionClass( $this );
         $parent_class = $reflection->getParentClass();
 
         if ( $parent_class->isAbstract() ) {
 
             $parent_class_name = $parent_class->getName();
-            $parent_templates = call_user_func( $parent_class_name . '::get_base_template' ); // Parent Class' Static Property
+            $parent_templates  = call_user_func( $parent_class_name . '::get_base_template' ); // Parent Class' Static Property
             return array_merge( $templates, (array) $parent_templates );
         }
 

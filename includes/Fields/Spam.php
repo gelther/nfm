@@ -24,11 +24,11 @@ class NF_Fields_Spam extends NF_Abstracts_Input
         $this->_nicename = __( 'Anti-Spam', 'ninja-forms' );
 
         // Rename Label setting to Question
-        $this->_settings[ 'label' ][ 'label' ] = __( 'Question', 'ninja-forms' );
+        $this->_settings[ 'label' ][ 'label' ]     = __( 'Question', 'ninja-forms' );
         $this->_settings[ 'label_pos' ][ 'label' ] = __( 'Question Position', 'ninja-forms' );
 
         // Manually set Field Key and stop tracking.
-        $this->_settings[ 'key' ][ 'value' ] = 'spam';
+        $this->_settings[ 'key' ][ 'value' ]        = 'spam';
         $this->_settings[ 'manual_key' ][ 'value' ] = TRUE;
 
 

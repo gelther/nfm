@@ -27,7 +27,7 @@ final class NF_Admin_Menus_Settings extends NF_Abstracts_Submenu
             )
         );
 
-        $tab_keys = array_keys( $tabs );
+        $tab_keys   = array_keys( $tabs );
         $active_tab = ( isset( $_GET[ 'tab' ] ) ) ? $_GET[ 'tab' ] : reset( $tab_keys );
 
         wp_enqueue_style( 'nf-admin-settings', Ninja_Forms::$url . 'assets/css/admin-settings.css' );
@@ -48,7 +48,7 @@ final class NF_Admin_Menus_Settings extends NF_Abstracts_Submenu
 
                 $value = ( isset( $setting_defaults[ $id ] ) ) ? $setting_defaults[$id] : '';
 
-                $grouped_settings[$group][$id]['id'] = $this->prefix( $grouped_settings[$group][$id]['id'] );
+                $grouped_settings[$group][$id]['id']    = $this->prefix( $grouped_settings[$group][$id]['id'] );
                 $grouped_settings[$group][$id]['value'] = $value;
 
                 $grouped_settings[$group][$id] = apply_filters( 'ninja_forms_check_setting_' . $id, $grouped_settings[$group][$id] );
@@ -58,8 +58,8 @@ final class NF_Admin_Menus_Settings extends NF_Abstracts_Submenu
                 if( ! is_array( $grouped_settings[$group][$id][ 'errors' ] ) ) $grouped_settings[$group][$id][ 'errors' ] = array( $grouped_settings[$group][$id][ 'errors' ] );
 
                 foreach( $grouped_settings[$group][$id][ 'errors' ] as $old_key => $error ){
-                    $new_key = $grouped_settings[$group][$id][ 'id' ] . "[" . $old_key . "]";
-                    $errors[ $new_key ] = $error;
+                    $new_key                                              = $grouped_settings[$group][$id][ 'id' ] . "[" . $old_key . "]";
+                    $errors[ $new_key ]                                   = $error;
                     $grouped_settings[$group][$id][ 'errors'][ $new_key ] = $error;
                     unset( $grouped_settings[$group][$id][ 'errors' ][ $old_key ] );
                 }

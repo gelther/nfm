@@ -262,7 +262,7 @@ class NF_Abstracts_ModelFactory
      */
     public function object( $id = '' )
     {
-        $parent_id = $this->_object->get_id();
+        $parent_id   = $this->_object->get_id();
         $parent_type = $this->_object->get_type();
 
         $this->_object = new NF_Database_Models_Object( $this->_db, $id, $parent_id, $parent_type );

@@ -82,32 +82,32 @@ class NF_Admin_Notices
             if ( ! $this->required_fields( $admin_notices[ $slug ] ) ) {
 
                 // Get the current date then set start date to either passed value or current date value and add interval
-                $current_date = current_time( "n/j/Y" );
-                $start = ( isset( $admin_notices[ $slug ][ 'start' ] ) ? $admin_notices[ $slug ][ 'start' ] : $current_date );
-                $start = date( "n/j/Y", strtotime( $start ) );
-                $date_array = explode( '/', $start );
-                $interval = ( isset( $admin_notices[ $slug ][ 'int' ] ) ? $admin_notices[ $slug ][ 'int' ] : 0 );
+                $current_date   = current_time( "n/j/Y" );
+                $start          = ( isset( $admin_notices[ $slug ][ 'start' ] ) ? $admin_notices[ $slug ][ 'start' ] : $current_date );
+                $start          = date( "n/j/Y", strtotime( $start ) );
+                $date_array     = explode( '/', $start );
+                $interval       = ( isset( $admin_notices[ $slug ][ 'int' ] ) ? $admin_notices[ $slug ][ 'int' ] : 0 );
                 $date_array[1] += $interval;
-                $start = date( "n/j/Y", mktime( 0, 0, 0, $date_array[0], $date_array[1], $date_array[2] ) );
+                $start          = date( "n/j/Y", mktime( 0, 0, 0, $date_array[0], $date_array[1], $date_array[2] ) );
 
                 // This is the main notices storage option
                 $admin_notices_option = get_option( 'nf_admin_notice', array() );
                 // Check if the message is already stored and if so just grab the key otherwise store the message and its associated date information
                 if ( ! array_key_exists( $slug, $admin_notices_option ) ) {
                     $admin_notices_option[ $slug ][ 'start' ] = $start;
-                    $admin_notices_option[ $slug ][ 'int' ] = $interval;
+                    $admin_notices_option[ $slug ][ 'int' ]   = $interval;
                     update_option( 'nf_admin_notice', $admin_notices_option );
                 }
 
                 // Sanity check to ensure we have accurate information
                 // New date information will not overwrite old date information
-                $admin_display_check = ( isset( $admin_notices_option[ $slug ][ 'dismissed' ] ) ? $admin_notices_option[ $slug ][ 'dismissed'] : 0 );
-                $admin_display_start = ( isset( $admin_notices_option[ $slug ][ 'start' ] ) ? $admin_notices_option[ $slug ][ 'start'] : $start );
+                $admin_display_check    = ( isset( $admin_notices_option[ $slug ][ 'dismissed' ] ) ? $admin_notices_option[ $slug ][ 'dismissed'] : 0 );
+                $admin_display_start    = ( isset( $admin_notices_option[ $slug ][ 'start' ] ) ? $admin_notices_option[ $slug ][ 'start'] : $start );
                 $admin_display_interval = ( isset( $admin_notices_option[ $slug ][ 'int' ] ) ? $admin_notices_option[ $slug ][ 'int'] : $interval );
-                $admin_display_msg = ( isset( $admin_notices[ $slug ][ 'msg' ] ) ? $admin_notices[ $slug ][ 'msg'] : '' );
-                $admin_display_title = ( isset( $admin_notices[ $slug ][ 'title' ] ) ? $admin_notices[ $slug ][ 'title'] : '' );
-                $admin_display_link = ( isset( $admin_notices[ $slug ][ 'link' ] ) ? $admin_notices[ $slug ][ 'link' ] : '' );
-                $output_css = false;
+                $admin_display_msg      = ( isset( $admin_notices[ $slug ][ 'msg' ] ) ? $admin_notices[ $slug ][ 'msg'] : '' );
+                $admin_display_title    = ( isset( $admin_notices[ $slug ][ 'title' ] ) ? $admin_notices[ $slug ][ 'title'] : '' );
+                $admin_display_link     = ( isset( $admin_notices[ $slug ][ 'link' ] ) ? $admin_notices[ $slug ][ 'link' ] : '' );
+                $output_css             = false;
 
                 // Ensure the notice hasn't been hidden and that the current date is after the start date
                 if ( $admin_display_check == 0 && strtotime( $admin_display_start ) <= strtotime( $current_date ) ) {
@@ -131,7 +131,7 @@ class NF_Admin_Notices
                     echo '</div>';
 
                     $this->notice_spam += 1;
-                    $output_css = true;
+                    $output_css         = true;
                 }
                 if ( $output_css ) {
                     wp_enqueue_style( 'nf-admin-notices', Ninja_Forms::$url .'assets/css/admin-notices.css?nf_ver=' . Ninja_Forms::VERSION );
@@ -156,7 +156,7 @@ class NF_Admin_Notices
         // If user clicks to ignore the notice, update the option to not show it again
         if ( isset($_GET['nf_admin_notice_ignore']) && current_user_can( apply_filters( 'ninja_forms_admin_parent_menu_capabilities', 'manage_options' ) ) ) {
 
-            $admin_notices_option = get_option( 'nf_admin_notice', array() );
+            $admin_notices_option                                                     = get_option( 'nf_admin_notice', array() );
             $admin_notices_option[ $_GET[ 'nf_admin_notice_ignore' ] ][ 'dismissed' ] = 1;
             update_option( 'nf_admin_notice', $admin_notices_option );
             $query_str = remove_query_arg( 'nf_admin_notice_ignore' );
@@ -173,13 +173,13 @@ class NF_Admin_Notices
 
             $admin_notices_option = get_option( 'nf_admin_notice', array() );
 
-            $current_date = current_time( "n/j/Y" );
-            $date_array = explode( '/', $current_date );
-            $interval = ( isset( $_GET[ 'nf_int' ] ) ? $_GET[ 'nf_int' ] : 14 );
+            $current_date   = current_time( "n/j/Y" );
+            $date_array     = explode( '/', $current_date );
+            $interval       = ( isset( $_GET[ 'nf_int' ] ) ? $_GET[ 'nf_int' ] : 14 );
             $date_array[1] += $interval;
-            $new_start = date( "n/j/Y", mktime( 0, 0, 0, $date_array[0], $date_array[1], $date_array[2] ) );
+            $new_start      = date( "n/j/Y", mktime( 0, 0, 0, $date_array[0], $date_array[1], $date_array[2] ) );
 
-            $admin_notices_option[ $_GET[ 'nf_admin_notice_temp_ignore' ] ][ 'start' ] = $new_start;
+            $admin_notices_option[ $_GET[ 'nf_admin_notice_temp_ignore' ] ][ 'start' ]     = $new_start;
             $admin_notices_option[ $_GET[ 'nf_admin_notice_temp_ignore' ] ][ 'dismissed' ] = 0;
             update_option( 'nf_admin_notice', $admin_notices_option );
             $query_str = remove_query_arg( array( 'nf_admin_notice_temp_ignore', 'nf_int' ) );

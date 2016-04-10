@@ -13,7 +13,7 @@ function nf_tmp_frontendform( $atts = array() ) {
 
 	switch( $form_id ) {
 		case 1:
-			$title = 'Contact Me';
+			$title  = 'Contact Me';
 			$fields = array(
 				array(
 					'id'        => 1,
@@ -67,7 +67,7 @@ function nf_tmp_frontendform( $atts = array() ) {
 			);
 			break;
 		case 2:
-			$title = 'Get Help';
+			$title  = 'Get Help';
 			$fields = array(
 				array(
 					'id'        => 4,

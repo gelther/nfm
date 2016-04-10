@@ -440,7 +440,7 @@ final class NF_Database_MockData
         );
 
         $order = 1;
-        $i = 1;
+        $i     = 1;
         foreach( array( 'above', 'right', 'below', 'left', 'hidden' ) as $label_pos ) {
 
 

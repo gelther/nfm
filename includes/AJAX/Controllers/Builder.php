@@ -29,14 +29,14 @@ class NF_AJAX_Controllers_Builder extends NF_Abstracts_Controller
 
     private function _form_data( $form_id )
     {
-        $form = Ninja_Forms()->form( $form_id )->get();
-        $fields = Ninja_Forms()->form( $form_id )->get_fields();
+        $form    = Ninja_Forms()->form( $form_id )->get();
+        $fields  = Ninja_Forms()->form( $form_id )->get_fields();
         $actions = Ninja_Forms()->form( $form_id )->get_actions();
 
         $fields_settings = array();
 
         foreach( $fields as $field ){
-            $settings = $field->get_settings();
+            $settings         = $field->get_settings();
             $settings[ 'id' ] = $field->get_id();
 
             foreach( $settings as $key => $setting ){
@@ -50,17 +50,17 @@ class NF_AJAX_Controllers_Builder extends NF_Abstracts_Controller
 
         foreach( $actions as $action ){
 
-            $settings = $action->get_settings();
+            $settings         = $action->get_settings();
             $settings[ 'id' ] = $action->get_id();
 
             $actions_settings[] = $settings;
         }
 
-        $form_data = array();
-        $form_data['id'] = $form_id;
+        $form_data             = array();
+        $form_data['id']       = $form_id;
         $form_data['settings'] = $form->get_settings();
-        $form_data['fields'] = $fields_settings;
-        $form_data['actions'] = $actions_settings;
+        $form_data['fields']   = $fields_settings;
+        $form_data['actions']  = $actions_settings;
 
         $this->_data[ 'preloadedFormData' ] = wp_json_encode( $form_data );
     }
@@ -76,9 +76,9 @@ class NF_AJAX_Controllers_Builder extends NF_Abstracts_Controller
 
         foreach( Ninja_Forms()->fields as $field ){
 
-            $name = $field->get_name();
+            $name     = $field->get_name();
             $settings = $field->get_settings();
-            $groups = Ninja_Forms::config( 'SettingsGroups' );
+            $groups   = Ninja_Forms::config( 'SettingsGroups' );
 
             $unique_settings = $this->_unique_settings( $settings );
 
@@ -113,9 +113,9 @@ class NF_AJAX_Controllers_Builder extends NF_Abstracts_Controller
 
         foreach( Ninja_Forms()->actions as $action ){
 
-            $name = $action->get_name();
+            $name     = $action->get_name();
             $settings = $action->get_settings();
-            $groups = Ninja_Forms::config( 'SettingsGroups' );
+            $groups   = Ninja_Forms::config( 'SettingsGroups' );
 
             $settings_groups = $this->_group_settings( $settings, $groups );
 
@@ -137,10 +137,10 @@ class NF_AJAX_Controllers_Builder extends NF_Abstracts_Controller
 
             if( ! isset( $action[ 'name' ] ) || ! $action[ 'name' ] ) continue;
 
-            $name = $action[ 'name' ];
+            $name     = $action[ 'name' ];
             $nicename = ( isset( $action[ 'nicename' ] ) ) ? $action[ 'nicename' ] : '';
-            $image = ( isset( $action[ 'image' ] ) ) ? $action[ 'image' ] : '';
-            $link = ( isset( $action[ 'link' ] ) ) ? $action[ 'link' ] : '';
+            $image    = ( isset( $action[ 'image' ] ) ) ? $action[ 'image' ] : '';
+            $link     = ( isset( $action[ 'link' ] ) ) ? $action[ 'link' ] : '';
 
             $action_type_settings[ $name ] = array(
                 'id'              => $name,
@@ -166,9 +166,9 @@ class NF_AJAX_Controllers_Builder extends NF_Abstracts_Controller
     {
         $form_settings_types = Ninja_Forms::config( 'FormSettingsTypes' );
 
-        $form_settings[ 'display' ] = Ninja_Forms::config( 'FormDisplaySettings' );
+        $form_settings[ 'display' ]      = Ninja_Forms::config( 'FormDisplaySettings' );
         $form_settings[ 'restrictions' ] = Ninja_Forms::config( 'FormRestrictionSettings' );
-        $form_settings = apply_filters( 'ninja_forms_localize_forms_settings', $form_settings );
+        $form_settings                   = apply_filters( 'ninja_forms_localize_forms_settings', $form_settings );
 
         $groups = Ninja_Forms::config( 'SettingsGroups' );
 
@@ -179,7 +179,7 @@ class NF_AJAX_Controllers_Builder extends NF_Abstracts_Controller
             $unique_settings = $this->_unique_settings( $form_settings[ $id ] );
             $master_settings = array_merge( $master_settings, $unique_settings );
 
-            $form_settings_types[ $id ]['settingGroups'] = $this->_group_settings($form_settings[ $id ], $groups);
+            $form_settings_types[ $id ]['settingGroups']   = $this->_group_settings($form_settings[ $id ], $groups);
             $form_settings_types[ $id ]['settingDefaults'] = $this->_setting_defaults($unique_settings);
         }
         ?>
@@ -246,7 +246,7 @@ class NF_AJAX_Controllers_Builder extends NF_Abstracts_Controller
                 $unique_settings = array_merge( $unique_settings, $this->_unique_settings( $setting[ 'settings' ] ) );
             } else {
 
-                $name = $setting[ 'name' ];
+                $name                     = $setting[ 'name' ];
                 $unique_settings[ $name ] = $setting;
             }
 
@@ -261,8 +261,8 @@ class NF_AJAX_Controllers_Builder extends NF_Abstracts_Controller
 
         foreach( $settings as $setting ){
 
-            $name = ( isset( $setting[ 'name' ] ) ) ? $setting[ 'name' ] : '';
-            $default = ( isset( $setting[ 'value' ] ) ) ? $setting[ 'value' ] : '';
+            $name                      = ( isset( $setting[ 'name' ] ) ) ? $setting[ 'name' ] : '';
+            $default                   = ( isset( $setting[ 'value' ] ) ) ? $setting[ 'value' ] : '';
             $setting_defaults[ $name ] = $default;
         }
 

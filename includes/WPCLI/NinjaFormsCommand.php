@@ -74,7 +74,7 @@ class NF_WPCLI_NinjaFormsCommand extends WP_CLI_Command
 
         foreach( Ninja_Forms()->form( $id )->get_fields() as $field ){
 
-            $key = $field->get_setting( 'key' );
+            $key   = $field->get_setting( 'key' );
             $label = $field->get_setting( 'label' );
 
             if( ! $key ) $key = strtolower( str_replace( ' ', '', $label ) );
