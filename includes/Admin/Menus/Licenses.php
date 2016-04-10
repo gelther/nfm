@@ -10,16 +10,16 @@ final class NF_Admin_Menus_Licenses
     public function __construct()
     {
         add_action( 'admin_init', array( $this, 'register_licenses' ), 10 );
-        add_action( 'admin_init', array( $this, 'submit_listener'   ), 11 );
-        add_action( 'admin_init', array( $this, 'add_meta_boxes'    ), 12 );
+        add_action( 'admin_init', array( $this, 'submit_listener' ), 11 );
+        add_action( 'admin_init', array( $this, 'add_meta_boxes' ), 12 );
     }
 
     public function submit_listener()
     {
         if( ! isset( $_POST[ 'ninja_forms_license' ] ) || ! $_POST[ 'ninja_forms_license' ] ) return;
 
-        $key    = sanitize_text_field( $_POST[ 'ninja_forms_license' ][ 'key' ]    );
-        $name   = sanitize_text_field( $_POST[ 'ninja_forms_license' ][ 'name' ]   );
+        $key    = sanitize_text_field( $_POST[ 'ninja_forms_license' ][ 'key' ] );
+        $name   = sanitize_text_field( $_POST[ 'ninja_forms_license' ][ 'name' ] );
         $action = sanitize_text_field( $_POST[ 'ninja_forms_license' ][ 'action' ] );
 
         switch( $action ){
