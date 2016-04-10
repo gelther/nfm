@@ -34,4 +34,5 @@ class NF_Fields_ListMultiselect extends NF_Abstracts_List
 
         return "<select class='widefat' name='fields[$id]' id='' multiple>$options</select>";
     }
+
 }
