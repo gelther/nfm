@@ -25,7 +25,7 @@ class NF_Database_Migrations
         }
     }
 
-    public function nuke( $areYouSure = FALSE, $areYouReallySure = FALSE )
+    public function nuke( $areYouSure = false, $areYouReallySure = false )
     {
         if( ! $areYouSure || ! $areYouReallySure ) return;
 
