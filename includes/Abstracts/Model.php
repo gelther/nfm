@@ -602,7 +602,7 @@ class NF_Abstracts_Model
         if( ! $this->_settings ) return;
 
         foreach( $this->_settings as $key => $value ){
-            $value = maybe_serialize( $value );
+            $value            = maybe_serialize( $value );
             $this->_results[] = $this->_save_setting( $key, $value );
         }
 
@@ -664,14 +664,14 @@ class NF_Abstracts_Model
      */
     protected function build_meta_query( $parent_id = '', array $where = array() )
     {
-        $join_statement = array();
+        $join_statement  = array();
         $where_statement = array();
 
         if( $where AND is_array( $where ) ) {
 
             $where_conditions = array();
             foreach ($where as $key => $value) {
-                $conditions['key'] = $key;
+                $conditions['key']   = $key;
                 $conditions['value'] = $value;
 
                 $where_conditions[] = $conditions;
@@ -680,7 +680,7 @@ class NF_Abstracts_Model
             $count = count($where);
             for ($i = 0; $i < $count; $i++) {
 
-                $join_statement[] = "INNER JOIN " . $this->_meta_table_name . " as meta$i on meta$i.parent_id = " . $this->_table_name . ".id";
+                $join_statement[]  = "INNER JOIN " . $this->_meta_table_name . " as meta$i on meta$i.parent_id = " . $this->_table_name . ".id";
                 $where_statement[] = "( meta$i.key = '" . $where_conditions[$i]['key'] . "' AND meta$i.value = '" . $where_conditions[$i]['value'] . "' )";
             }
 
