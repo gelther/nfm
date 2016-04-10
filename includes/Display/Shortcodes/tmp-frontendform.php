@@ -1,7 +1,7 @@
 <?php
 
 function nf_tmp_frontendform( $atts = array() ) {
-    $form_id = $atts['id'];
+    $form_id = $atts[ 'id' ];
 
     wp_enqueue_script( 'backbone-marionette', Ninja_Forms::$url . 'assets/js/lib/backbone.marionette.min.js', array( 'jquery', 'backbone' ) );
     wp_enqueue_script( 'backbone-radio', Ninja_Forms::$url . 'assets/js/lib/backbone.radio.min.js', array( 'jquery', 'backbone' ) );
@@ -144,7 +144,7 @@ function nf_tmp_frontendform( $atts = array() ) {
 
     ?>
 	<script type="text/javascript">
-		var nfForms = nfForms || [];
+		var nfForms = nfForms || [  ];
 		nfForms.push( <?php echo wp_json_encode( $form ); ?> );
 	</script>
 
