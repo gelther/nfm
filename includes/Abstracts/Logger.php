@@ -1,7 +1,7 @@
 <?php if ( ! defined( 'ABSPATH' ) ) exit;
 
-require_once Ninja_Forms::$dir . "includes/Abstracts/LogLevel.php";
-require_once Ninja_Forms::$dir . "includes/Abstracts/LoggerInterface.php";
+require_once Ninja_Forms::$dir . 'includes/Abstracts/LogLevel.php';
+require_once Ninja_Forms::$dir . 'includes/Abstracts/LoggerInterface.php';
 
 /**
  * This is a simple Logger implementation that other Loggers can inherit from.
