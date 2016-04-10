@@ -23,8 +23,7 @@ class NF_Fields_Quantity extends NF_Fields_Number
 
     protected $_settings_exclude = array( 'required', 'input_limit_set' );
 
-    public function __construct()
-    {
+    public function __construct() {
         parent::__construct();
 
         $this->_nicename = __( 'Quantity', 'ninja-forms' );
