@@ -118,7 +118,7 @@ class NF_Abstracts_Model
      *
      * @var bool
      */
-    protected $_cache = TRUE;
+    protected $_cache = true;
 
     //-----------------------------------------------------
     // Public Methods
@@ -217,7 +217,7 @@ class NF_Abstracts_Model
      * @param  bool            $default optional
      * @return string|int|bool
      */
-    public function get_setting( $setting, $default = FALSE )
+    public function get_setting( $setting, $default = false )
     {
         $return = $this->get_settings( $setting );
 
@@ -392,7 +392,7 @@ class NF_Abstracts_Model
         );
 
         // return False if there are no query errors.
-        return in_array( FALSE, $results );
+        return in_array( false, $results );
     }
 
     /**
