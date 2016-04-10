@@ -44,7 +44,7 @@ abstract class NF_Abstracts_ActionNewsletter extends NF_Abstracts_Action
         $this->get_list_settings();
     }
 
-    /*
+    /**
     * PUBLIC METHODS
     */
     public function save( $action_settings )
@@ -72,12 +72,12 @@ abstract class NF_Abstracts_ActionNewsletter extends NF_Abstracts_Action
         wp_die(); // this is required to terminate immediately and return a proper response
     }
 
-    /*
+    /**
      * PROTECTED METHODS
      */
     abstract protected function get_lists();
 
-    /*
+    /**
      * PRIVATE METHODS
      */
     private function get_list_settings()
