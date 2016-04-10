@@ -67,7 +67,7 @@ class NF_AJAX_Controllers_Uploads extends NF_Abstracts_Controller
      */
     protected function i_like_clean_slugs_and_i_cannot_lie( $string )
     {
-        return 'nftmp-' . strtolower( trim( str_replace(' ', '_', $string ) ) );
+        return 'nftmp-' . strtolower( trim( str_replace( ' ', '_', $string ) ) );
     }
 
     /*
@@ -82,7 +82,7 @@ class NF_AJAX_Controllers_Uploads extends NF_Abstracts_Controller
      * @param         $code
      * @return string
      */
-    private function code_to_message($code)
+    private function code_to_message( $code )
     {
         switch ( $code ) {
             case UPLOAD_ERR_INI_SIZE:
