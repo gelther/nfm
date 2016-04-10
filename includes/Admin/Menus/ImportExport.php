@@ -71,10 +71,10 @@ final class NF_Admin_Menus_ImportExport extends NF_Abstracts_Submenu
                 $fields[] = $field->get_settings();
             }
 
-            header("Content-type: application/csv");
-            header("Content-Disposition: attachment; filename=favorites-" . time() . ".nff");
-            header("Pragma: no-cache");
-            header("Expires: 0");
+            header( "Content-type: application/csv" );
+            header( "Content-Disposition: attachment; filename=favorites-" . time() . ".nff" );
+            header( "Pragma: no-cache" );
+            header( "Expires: 0" );
 
             echo serialize( $fields );
 
@@ -96,8 +96,8 @@ final class NF_Admin_Menus_ImportExport extends NF_Abstracts_Submenu
 
         $this->add_meta_boxes();
 
-        wp_enqueue_script('postbox');
-        wp_enqueue_script('jquery-ui-draggable');
+        wp_enqueue_script( 'postbox' );
+        wp_enqueue_script( 'jquery-ui-draggable' );
 
         wp_nonce_field( 'closedpostboxes', 'closedpostboxesnonce', false );
         wp_nonce_field( 'meta-box-order', 'meta-box-order-nonce', false );
@@ -160,7 +160,7 @@ final class NF_Admin_Menus_ImportExport extends NF_Abstracts_Submenu
 
     public function template_export_favorite_fields()
     {
-        $fields = Ninja_Forms()->form()->get_fields( array( 'saved' => 1) );
+        $fields = Ninja_Forms()->form()->get_fields( array( 'saved' => 1 ) );
         Ninja_Forms::template( 'admin-metabox-import-export-favorite-fields-export.html.php', compact( 'fields' ) );
     }
 
