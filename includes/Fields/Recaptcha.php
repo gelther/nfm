@@ -30,8 +30,8 @@ class NF_Fields_Recaptcha extends NF_Abstracts_Field
         $settings['site_key'] = Ninja_Forms()->get_setting( 'recaptcha_site_key' );
         $settings['theme']    = Ninja_Forms()->get_setting( 'recaptcha_theme' );
         $settings['theme']    = ( $settings['theme'] ) ? $settings['theme'] : 'light';
-    	$settings['lang']     = Ninja_Forms()->get_setting( 'recaptcha_lang' );
-    	return $settings;
+        $settings['lang']     = Ninja_Forms()->get_setting( 'recaptcha_lang' );
+        return $settings;
     }
 
     public function validate( $field, $data ) {
