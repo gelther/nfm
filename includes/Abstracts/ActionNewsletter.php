@@ -91,12 +91,12 @@ abstract class NF_Abstracts_ActionNewsletter extends NF_Abstracts_Action
 
         $lists = get_transient( $this->_transient );
 
-        if( ! $lists ) {
+        if ( ! $lists ) {
             $lists = $this->get_lists();
             $this->cache_lists( $lists );
         }
 
-        if( empty( $lists ) ) return;
+        if ( empty( $lists ) ) return;
 
         $this->_settings[ $prefix . 'newsletter_list' ] = array(
             'name'    => 'newsletter_list',
@@ -109,10 +109,10 @@ abstract class NF_Abstracts_ActionNewsletter extends NF_Abstracts_Action
         );
 
         $fields = array();
-        foreach( $lists as $list ) {
+        foreach ( $lists as $list ) {
             $this->_settings[ $prefix . 'newsletter_list' ][ 'options' ][] = $list;
 
-            foreach( $list[ 'fields' ] as $field ) {
+            foreach ( $list[ 'fields' ] as $field ) {
                 $name     = $list[ 'value' ] . '_' . $field[ 'value' ];
                 $fields[] = array(
                     'name'           => $name,
