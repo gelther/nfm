@@ -4,8 +4,7 @@ class NF_AJAX_Controllers_Uploads extends NF_Abstracts_Controller
 {
     protected $_blacklist = array();
 
-    public function __construct()
-    {
+    public function __construct() {
         parent::__construct();
 
         $this->_blacklist = apply_filters( 'ninja_forms_uploads_extension_blacklist', Ninja_Forms::config( 'UploadsExtensionBlacklist' ) );
@@ -19,8 +18,7 @@ class NF_AJAX_Controllers_Uploads extends NF_Abstracts_Controller
     /**
      * PUBLIC METHODS
      */
-    public function upload()
-    {
+    public function upload() {
         check_ajax_referer( 'ninja_forms_ajax_nonce', 'security' );
 
         $this->_data[ 'files' ] = $_FILES;
@@ -30,16 +28,14 @@ class NF_AJAX_Controllers_Uploads extends NF_Abstracts_Controller
         $this->_respond();
     }
 
-    public function delete_temporary_file( $file_path )
-    {
+    public function delete_temporary_file( $file_path ) {
         unlink( $file_path );
     }
 
     /**
      * PROTECTED METHODS
      */
-    protected function validate()
-    {
+    protected function validate() {
         foreach ( $this->_data[ 'files' ] as $key => $file ) {
 
             if ( $file[ 'error' ] ) {
@@ -65,8 +61,7 @@ class NF_AJAX_Controllers_Uploads extends NF_Abstracts_Controller
      * @param         $string
      * @return string
      */
-    protected function i_like_clean_slugs_and_i_cannot_lie( $string )
-    {
+    protected function i_like_clean_slugs_and_i_cannot_lie( $string ) {
         return 'nftmp-' . strtolower( trim( str_replace( ' ', '_', $string ) ) );
     }
 
@@ -82,8 +77,7 @@ class NF_AJAX_Controllers_Uploads extends NF_Abstracts_Controller
      * @param         $code
      * @return string
      */
-    private function code_to_message( $code )
-    {
+    private function code_to_message( $code ) {
         switch ( $code ) {
             case UPLOAD_ERR_INI_SIZE:
                 $message = 'The uploaded file exceeds the upload_max_filesize directive in php.ini';
