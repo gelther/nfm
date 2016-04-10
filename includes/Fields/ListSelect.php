@@ -24,4 +24,5 @@ class NF_Fields_ListSelect extends NF_Abstracts_List
 
         $this->_nicename = __( 'Select', 'ninja-forms' );
     }
+
 }
