@@ -46,7 +46,7 @@ class NF_Fields_Recaptcha extends NF_Abstracts_Field
         if ( ! is_wp_error( $resp ) ) {
             $body     = wp_remote_retrieve_body( $resp );
             $response = json_decode( $body );
-            if ( $response->success === false ) {
+            if ( $response->success === FALSE ) {
                 if ( ! empty( $response->{'error-codes'} ) && $response->{'error-codes'} != 'missing-input-response' ) {
                     return array( __( 'Please make sure you have entered your Site & Secret keys correctly', 'ninja-forms' ) );
                 }else {

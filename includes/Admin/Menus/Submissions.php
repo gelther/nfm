@@ -140,7 +140,7 @@ final class NF_Admin_Menus_Submissions extends NF_Abstracts_Submenu
         global $typenow;
 
         // Bail if we aren't in our submission custom post type.
-        if ( $typenow != 'nf_sub' ) return false;
+        if ( $typenow != 'nf_sub' ) return FALSE;
 
         $forms = Ninja_Forms()->form()->get_forms();
 
@@ -225,7 +225,7 @@ final class NF_Admin_Menus_Submissions extends NF_Abstracts_Submenu
         global $post_type;
 
         if ( ! is_admin() ) {
-            return false;
+            return FALSE;
         }
 
         if( $post_type == 'nf_sub' && isset ( $_REQUEST['post_status'] ) && $_REQUEST['post_status'] == 'all' ) {
@@ -274,11 +274,11 @@ final class NF_Admin_Menus_Submissions extends NF_Abstracts_Submenu
     {
         // Bail if we aren't in the admin
         if ( ! is_admin() ) {
-            return false;
+            return FALSE;
         }
 
         if ( ! isset ( $_REQUEST['form_id'] ) || empty ( $_REQUEST['form_id'] ) ) {
-            return false;
+            return FALSE;
         }
 
         if ( isset ( $_REQUEST['export_single'] ) && ! empty( $_REQUEST['export_single'] ) ) {

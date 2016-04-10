@@ -19,7 +19,7 @@ class NF_Admin_AllFormsTable extends WP_List_Table
         parent::__construct( array(
             'singular' => __( 'Form', 'ninja-forms' ), //singular name of the listed records
             'plural'   => __( 'Forms', 'ninja-forms' ), //plural name of the listed records
-            'ajax'     => false //should this table support ajax?
+            'ajax'     => FALSE //should this table support ajax?
         ) );
     }
 
@@ -137,7 +137,7 @@ class NF_Admin_AllFormsTable extends WP_List_Table
                 return $item[ $column_name ];
 
             default:
-                return print_r( $item, true ) ;
+                return print_r( $item, TRUE ) ;
         }
     }
 

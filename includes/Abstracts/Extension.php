@@ -95,7 +95,7 @@ final class NF_Abstracts_Extension
             $this->autoloader_prefix = $class[ 0 ];
         }
 
-        if ( false !== strpos( $class_name, $this->autoloader_prefix ) ) {
+        if ( FALSE !== strpos( $class_name, $this->autoloader_prefix ) ) {
             $class_name  = str_replace( $this->autoloader_prefix, '', $class_name );
             $classes_dir = realpath( plugin_dir_path( __FILE__ ) ) . DIRECTORY_SEPARATOR . 'includes' . DIRECTORY_SEPARATOR;
             $class_file  = str_replace( '_', DIRECTORY_SEPARATOR, $class_name ) . '.php';

@@ -91,7 +91,7 @@ class NF_Session {
      */
     public function get( $key ) {
         $key = sanitize_key( $key );
-        return isset( $this->session[ $key ] ) ? maybe_unserialize( $this->session[ $key ] ) : false;
+        return isset( $this->session[ $key ] ) ? maybe_unserialize( $this->session[ $key ] ) : FALSE;
     }
     /**
      * Set a session variable

@@ -38,7 +38,7 @@ if( get_option( 'ninja_forms_load_deprecated', FALSE )  && ! isset( $_POST[ 'nf2
     add_action( 'wp_ajax_ninja_forms_ajax_migrate_database', 'ninja_forms_ajax_migrate_database' );
     function ninja_forms_ajax_migrate_database(){
         $migrations = new NF_Database_Migrations();
-        $migrations->nuke( true, true );
+        $migrations->nuke( TRUE, TRUE );
         $migrations->migrate();
         echo json_encode( array( 'migrate' => 'true' ) );
         wp_die();
@@ -386,7 +386,7 @@ if( get_option( 'ninja_forms_load_deprecated', FALSE )  && ! isset( $_POST[ 'nf2
             if( class_exists( $class_name ) ) return;
 
             /* Ninja Forms Prefix */
-            if ( false !== strpos( $class_name, 'NF_' ) ) {
+            if ( FALSE !== strpos( $class_name, 'NF_' ) ) {
                 $class_name  = str_replace( 'NF_', '', $class_name );
                 $classes_dir = realpath( plugin_dir_path( __FILE__ ) ) . DIRECTORY_SEPARATOR . 'includes' . DIRECTORY_SEPARATOR;
                 $class_file  = str_replace( '_', DIRECTORY_SEPARATOR, $class_name ) . '.php';
@@ -396,7 +396,7 @@ if( get_option( 'ninja_forms_load_deprecated', FALSE )  && ! isset( $_POST[ 'nf2
             }
 
             /* WP Ninjas Prefix */
-            if ( false !== strpos( $class_name, 'WPN_' ) ) {
+            if ( FALSE !== strpos( $class_name, 'WPN_' ) ) {
                 $class_name  = str_replace( 'WPN_', '', $class_name );
                 $classes_dir = realpath( plugin_dir_path( __FILE__ ) ) . DIRECTORY_SEPARATOR . 'includes' . DIRECTORY_SEPARATOR;
                 $class_file  = str_replace( '_', DIRECTORY_SEPARATOR, $class_name ) . '.php';
@@ -454,7 +454,7 @@ if( get_option( 'ninja_forms_load_deprecated', FALSE )  && ! isset( $_POST[ 'nf2
          * @param  bool|false $default
          * @return bool
          */
-        public function get_setting( $key = '', $default = false )
+        public function get_setting( $key = '', $default = FALSE )
         {
             if( empty( $key ) || ! isset( $this->settings[ $key ] ) ) return $default;
 
@@ -478,7 +478,7 @@ if( get_option( 'ninja_forms_load_deprecated', FALSE )  && ! isset( $_POST[ 'nf2
          * @param mixed      $value
          * @param bool|false $defer_update Defer the database update of all settings
          */
-        public function update_setting( $key, $value, $defer_update = false )
+        public function update_setting( $key, $value, $defer_update = FALSE )
         {
             $this->settings[ $key ] = $value;
             if ( ! $defer_update ) {

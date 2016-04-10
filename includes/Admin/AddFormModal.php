@@ -96,7 +96,7 @@ class NF_Admin_AddFormModal {
                     },
                     closeButton: 'title',
                     closeOnClick: 'overlay',
-                    closeOnEsc: true,
+                    closeOnEsc: TRUE,
                     // theme: 'TooltipBorder',
                     content: jQuery( '#nf-insert-form-modal' ),
                     onOpen: function() {
