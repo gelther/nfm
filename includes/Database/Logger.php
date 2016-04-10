@@ -30,7 +30,7 @@ final class NF_Database_Logger extends NF_Abstracts_Logger
             ->update_setting( 'message', $message );
 
         foreach ( $context as $key => $value ) {
-            $log->update_setting($key, maybe_serialize($value));
+            $log->update_setting( $key, maybe_serialize( $value ) );
         }
 
         // Add to Database
@@ -70,6 +70,6 @@ final class NF_Database_Logger extends NF_Abstracts_Logger
         }
 
         // interpolate replacement values into the message and return
-        return strtr($message, $replace);
+        return strtr( $message, $replace );
     }
 }
