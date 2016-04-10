@@ -15,8 +15,7 @@ class NF_Fields_Password extends NF_Abstracts_Input
 
     protected $_templates = array( 'password', 'textbox', 'input' );
 
-    public function __construct()
-    {
+    public function __construct() {
         parent::__construct();
 
         $this->_nicename = __( 'Password', 'ninja-forms' );
