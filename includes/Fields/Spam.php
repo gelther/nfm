@@ -50,7 +50,7 @@ class NF_Fields_Spam extends NF_Abstracts_Input
     {
         $errors = parent::validate( $field, $data );
 
-        if(
+        if (
             ( isset( $field[ 'spam_answer' ] ) && isset( $field[ 'value' ] ) )
             && ( $field[ 'spam_answer' ] != $field[ 'value' ] )
         ) {
