@@ -65,9 +65,9 @@ final class NF_Actions_CollectPayment extends NF_Abstracts_Action
     {
         $this->payment_gateways = apply_filters( 'ninja_forms_register_payment_gateways', array() );
 
-        foreach( $this->payment_gateways as $gateway ) {
+        foreach ( $this->payment_gateways as $gateway ) {
 
-            if( ! is_subclass_of( $gateway, 'NF_Abstracts_PaymentGateway' ) ) {
+            if ( ! is_subclass_of( $gateway, 'NF_Abstracts_PaymentGateway' ) ) {
                 continue;
             }
 
@@ -82,7 +82,7 @@ final class NF_Actions_CollectPayment extends NF_Abstracts_Action
 
     public function maybe_remove_action( $action_type_settings )
     {
-        if( empty( $this->payment_gateways ) ) {
+        if ( empty( $this->payment_gateways ) ) {
             unset( $action_type_settings[ $this->_name ] );
         }
 
