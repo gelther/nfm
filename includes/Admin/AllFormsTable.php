@@ -1,6 +1,6 @@
 <?php if ( ! defined( 'ABSPATH' ) ) exit;
 
-if( ! class_exists( 'WP_List_Table' ) ){
+if( ! class_exists( 'WP_List_Table' ) ) {
 
     if( file_exists( ABSPATH . 'wp-admin/includes/class-wp-list-table.php' ) ) {
 
@@ -106,7 +106,7 @@ class NF_Admin_AllFormsTable extends WP_List_Table
 
         $forms = Ninja_Forms()->form()->get_forms();
 
-        foreach( $forms as $form ){
+        foreach( $forms as $form ) {
 
              $data[] = array(
                  'id'        => $form->get_id(),
@@ -152,22 +152,19 @@ class NF_Admin_AllFormsTable extends WP_List_Table
         $order   = 'asc';
 
         // If orderby is set, use this as the sort column
-        if( ! empty( $_GET[ 'orderby' ] ) )
-        {
+        if( ! empty( $_GET[ 'orderby' ] ) ) {
             $orderby = $_GET[ 'orderby' ];
         }
 
         // If order is set use this as the order
-        if( ! empty( $_GET[ 'order' ] ) )
-        {
+        if( ! empty( $_GET[ 'order' ] ) ) {
             $order = $_GET[ 'order' ];
         }
 
 
         $result = strnatcmp( $a[ $orderby ], $b[ $orderby ] );
 
-        if( $order === 'asc' )
-        {
+        if( $order === 'asc' ) {
             return $result;
         }
 
