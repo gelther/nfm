@@ -7,7 +7,7 @@ final class NF_MergeTags_Calcs extends NF_Abstracts_MergeTags
 {
     protected $id = 'calcs';
 
-    protected $_default_group = FALSE;
+    protected $_default_group = false;
 
     public function __construct()
     {
@@ -27,7 +27,7 @@ final class NF_MergeTags_Calcs extends NF_Abstracts_MergeTags
         try {
             $calculated_value = Ninja_Forms()->eos()->solve( $value );
         } catch( Exception $e ){
-            $calculated_value = FALSE;
+            $calculated_value = false;
         }
 
         $this->merge_tags[ $callback ] = array(
