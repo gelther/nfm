@@ -255,4 +255,3 @@ class NF_Admin_CPT_Submission
     }
 
 }
-
