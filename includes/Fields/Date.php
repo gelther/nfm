@@ -38,7 +38,7 @@ class NF_Fields_Date extends NF_Fields_Textbox
             if( 'date' != $field[ 'type' ] ) continue;
             if( ! isset( $field[ 'date_format' ] ) || ! $field[ 'date_format' ] ) continue;
 
-            $format = $this->get_format( $field[ 'date_format' ] );
+            $format                              = $this->get_format( $field[ 'date_format' ] );
             $data[ 'fields' ][ $key ][ 'value' ] = date( $format, strtotime( $field[ 'value' ] ) );
         }
 
