@@ -39,8 +39,8 @@ abstract class NF_Abstracts_List extends NF_Abstracts_Field
 
         $options = '<option>--</option>';
         foreach( $field->get_setting( 'options' ) as $option ){
-            $selected = ( $value == $option[ 'value' ] ) ? "selected" : '';
-            $options .= "<option value='{$option[ 'value' ]}' $selected>{$option[ 'label' ]}</option>";
+            $selected  = ( $value == $option[ 'value' ] ) ? "selected" : '';
+            $options  .= "<option value='{$option[ 'value' ]}' $selected>{$option[ 'label' ]}</option>";
         }
 
         return "<select class='widefat' name='fields[$id]' id=''>$options</select>";
@@ -52,7 +52,7 @@ abstract class NF_Abstracts_List extends NF_Abstracts_Field
 
         if( ! is_array( $value ) ) $value = array( $value );
 
-        $output = '';
+        $output  = '';
         $options = $field->get_setting( 'options' );
         foreach( $options as $option ){
 
