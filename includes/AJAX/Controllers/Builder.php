@@ -184,8 +184,8 @@ class NF_AJAX_Controllers_Builder extends NF_Abstracts_Controller
         }
         ?>
         <script>
-            var formSettingTypeData = <?php echo wp_json_encode( $form_settings_types )?>;
-            var formSettings = <?php echo wp_json_encode( array_values( $master_settings ) )?>;
+            var formSettingTypeData = <?php echo wp_json_encode( $form_settings_types );?>;
+            var formSettings = <?php echo wp_json_encode( array_values( $master_settings ) );?>;
         </script>
         <?php
     }
