@@ -119,7 +119,7 @@ final class NF_Admin_Menus_Submissions extends NF_Abstracts_Submenu
     /**
      * Remove Filter: Show All Dates
      *
-     * @param $months
+     * @param        $months
      * @return array
      */
     public function remove_filter_show_all_dates( $months )
@@ -344,7 +344,7 @@ final class NF_Admin_Menus_Submissions extends NF_Abstracts_Submenu
     /**
      * Custom Columns: ID
      *
-     * @param $sub
+     * @param        $sub
      * @return mixed
      */
     private function custom_columns_seq_num( $sub )
@@ -355,7 +355,7 @@ final class NF_Admin_Menus_Submissions extends NF_Abstracts_Submenu
     /**
      * Custom Columns: Submission Date
      *
-     * @param $sub
+     * @param        $sub
      * @return mixed
      */
     private function custom_columns_sub_date( $sub )
@@ -366,8 +366,8 @@ final class NF_Admin_Menus_Submissions extends NF_Abstracts_Submenu
     /**
      * Custom Columns: Field
      *
-     * @param $sub
-     * @param $column
+     * @param       $sub
+     * @param       $column
      * @return bool
      */
     private function custom_columns_field( $sub, $column )
