@@ -37,11 +37,11 @@ final class NF_Database_Models_Submission
         }
 
         if( $this->_id && ! $this->_form_id ){
-            $this->_form_id = get_post_meta( $this->_id, '_form_id', TRUE );
+            $this->_form_id = get_post_meta( $this->_id, '_form_id', true );
         }
 
         if( $this->_id && $this->_form_id ){
-            $this->_seq_num = get_post_meta( $this->_id, '_seq_num', TRUE );
+            $this->_seq_num = get_post_meta( $this->_id, '_seq_num', true );
         }
     }
 
@@ -107,7 +107,7 @@ final class NF_Database_Models_Submission
 
         if( isset( $this->_field_values[ $field ] ) ) return $this->_field_values[ $field ];
 
-        return $this->_field_values[ $field ] = get_post_meta( $this->_id, $field, TRUE );
+        return $this->_field_values[ $field ] = get_post_meta( $this->_id, $field, true );
     }
 
     /**
@@ -158,7 +158,7 @@ final class NF_Database_Models_Submission
     {
         if( ! isset( $this->_extra_values[ $key ] ) ||  ! $this->_extra_values[ $key ] ){
             $id                          = ( $this->_id ) ? $this->_id : 0;
-            $this->_extra_values[ $key ] = get_post_meta( $id, $key, TRUE );
+            $this->_extra_values[ $key ] = get_post_meta( $id, $key, true );
         }
 
         return $this->_extra_values[ $key ];
@@ -177,7 +177,7 @@ final class NF_Database_Models_Submission
 
     public function update_extra_value( $key, $value )
     {
-        if( property_exists( $this, $key ) ) return FALSE;
+        if( property_exists( $this, $key ) ) return false;
 
         return $this->_extra_values[ $key ] = $value;
     }
@@ -256,7 +256,7 @@ final class NF_Database_Models_Submission
         return $this->_save_field_values();
     }
 
-    public static function export( $form_id, array $sub_ids = array(), $return = FALSE )
+    public static function export( $form_id, array $sub_ids = array(), $return = false )
     {
         //TODO: Set Date Format from Plugin Settings
         $date_format = 'm/d/Y';
@@ -370,7 +370,7 @@ final class NF_Database_Models_Submission
      */
     protected function _save_field_values()
     {
-        if( ! $this->_field_values ) return FALSE;
+        if( ! $this->_field_values ) return false;
 
         foreach( $this->_field_values as $field_id => $value )
         {
