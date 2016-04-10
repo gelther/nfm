@@ -39,7 +39,7 @@ abstract class NF_Abstracts_List extends NF_Abstracts_Field
 
         $options = '<option>--</option>';
         foreach( $field->get_setting( 'options' ) as $option ){
-            $selected  = ( $value == $option[ 'value' ] ) ? "selected" : '';
+            $selected  = ( $value == $option['value'] ) ? "selected" : '';
             $options  .= "<option value='{$option[ 'value' ]}' $selected>{$option[ 'label' ]}</option>";
         }
 
@@ -56,9 +56,9 @@ abstract class NF_Abstracts_List extends NF_Abstracts_Field
         $options = $field->get_setting( 'options' );
         foreach( $options as $option ){
 
-            if( ! in_array( $option[ 'value'], $value ) ) continue;
+            if( ! in_array( $option['value'], $value ) ) continue;
 
-            $output .= $option[ 'label' ] . "<br />";
+            $output .= $option['label'] . "<br />";
         }
 
         return $output;
@@ -66,19 +66,19 @@ abstract class NF_Abstracts_List extends NF_Abstracts_Field
 
     public function query_string_default( $options, $settings )
     {
-        if( ! isset( $settings[ 'key' ] ) ) return $options;
+        if( ! isset( $settings['key'] ) ) return $options;
 
-        $field_key = $settings[ 'key' ];
+        $field_key = $settings['key'];
 
         if( ! isset( $_GET[ $field_key ] ) ) return $options;
 
         foreach( $options as $key => $option ){
 
-            if( ! isset( $option[ 'value' ] ) ) continue;
+            if( ! isset( $option['value'] ) ) continue;
 
-            if( $option[ 'value' ] != $_GET[ $field_key ] ) continue;
+            if( $option['value'] != $_GET[ $field_key ] ) continue;
 
-            $options[ $key ][ 'selected' ] = 1;
+            $options[ $key ]['selected'] = 1;
         }
 
         return $options;
