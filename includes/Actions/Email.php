@@ -182,13 +182,13 @@ final class NF_Actions_Email extends NF_Abstracts_Action
         $new_name = apply_filters( 'ninja_forms_submission_csv_name', 'ninja-forms-submission' );
 
         // remove a file if it already exists
-        if( file_exists( $dir.'/'.$new_name.'.csv' ) ) {
-            unlink( $dir.'/'.$new_name.'.csv' );
+        if( file_exists( $dir . '/' . $new_name . '.csv' ) ) {
+            unlink( $dir . '/' . $new_name . '.csv' );
         }
 
         // move file
-        rename( $dir.'/'.$basename, $dir.'/'.$new_name.'.csv' );
-        return $dir.'/'.$new_name.'.csv';
+        rename( $dir . '/' . $basename, $dir . '/' . $new_name . '.csv' );
+        return $dir . '/' . $new_name . '.csv';
     }
 
     /**
