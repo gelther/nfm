@@ -41,4 +41,4 @@ return apply_filters( 'ninja_forms_merge_tags_post', array(
         'callback' => 'post_url'
     ),
 
-));
+) );
