@@ -15,13 +15,11 @@ abstract class NF_Abstracts_Input extends NF_Abstracts_Field
         'key', 'label', 'label_pos', 'required', 'placeholder', 'default', 'classes', 'input_limit_set', 'manual_key', 'disable_input', 'admin_label', 'help', 'description'
     );
 
-    public function __construct()
-    {
+    public function __construct() {
         parent::__construct();
     }
 
-    public function get_parent_type()
-    {
+    public function get_parent_type() {
         return parent::get_type();
     }
 }
