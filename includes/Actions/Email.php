@@ -51,14 +51,14 @@ final class NF_Actions_Email extends NF_Abstracts_Action
         $attachments = $this->_get_attachments( $action_settings, $data );
 
         $sent = wp_mail(
-            $action_settings['to'],
-            $action_settings['email_subject'],
-            $action_settings['email_message'],
+            $action_settings[ 'to' ],
+            $action_settings[ 'email_subject' ],
+            $action_settings[ 'email_message' ],
             $headers,
             $attachments
         );
 
-        $data[ 'actions' ][ 'email' ][ 'to' ]          = $action_settings['to'];
+        $data[ 'actions' ][ 'email' ][ 'to' ]          = $action_settings[ 'to' ];
         $data[ 'actions' ][ 'email' ][ 'sent' ]        = $sent;
         $data[ 'actions' ][ 'email' ][ 'headers' ]     = $headers;
         $data[ 'actions' ][ 'email' ][ 'attachments' ] = $attachments;
@@ -163,7 +163,7 @@ final class NF_Actions_Email extends NF_Abstracts_Action
         );
 
         $upload_dir = wp_upload_dir();
-        $path       = trailingslashit( $upload_dir['path'] );
+        $path       = trailingslashit( $upload_dir[ 'path' ] );
 
         // create temporary file
         $path      = tempnam( $path, 'Sub' );
@@ -175,8 +175,8 @@ final class NF_Actions_Email extends NF_Abstracts_Action
 
         // find the directory we will be using for the final file
         $path     = pathinfo( $path );
-        $dir      = $path['dirname'];
-        $basename = $path['basename'];
+        $dir      = $path[ 'dirname' ];
+        $basename = $path[ 'basename' ];
 
         // create name for file
         $new_name = apply_filters( 'ninja_forms_submission_csv_name', 'ninja-forms-submission' );

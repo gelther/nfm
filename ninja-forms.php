@@ -214,15 +214,15 @@ if( get_option( 'ninja_forms_load_deprecated', false )  && ! isset( $_POST[ 'nf2
                 /**
                  * Admin Menus
                  */
-                self::$instance->menus[ 'forms' ]        = new NF_Admin_Menus_Forms();
-                self::$instance->menus[ 'all-forms' ]    = new NF_Admin_Menus_AllForms();
-                self::$instance->menus[ 'add-new' ]      = new NF_Admin_Menus_AddNew();
-                self::$instance->menus[ 'settings' ]     = new NF_Admin_Menus_Settings();
-                self::$instance->menus[ 'add-ons' ]      = new NF_Admin_Menus_Addons();
-                self::$instance->menus[ 'system_status'] = new NF_Admin_Menus_SystemStatus();
-                self::$instance->menus[ 'submissions']   = new NF_Admin_Menus_Submissions();
-                self::$instance->menus[ 'import-export'] = new NF_Admin_Menus_ImportExport();
-                self::$instance->menus[ 'licenses']      = new NF_Admin_Menus_Licenses();
+                self::$instance->menus[ 'forms' ]         = new NF_Admin_Menus_Forms();
+                self::$instance->menus[ 'all-forms' ]     = new NF_Admin_Menus_AllForms();
+                self::$instance->menus[ 'add-new' ]       = new NF_Admin_Menus_AddNew();
+                self::$instance->menus[ 'settings' ]      = new NF_Admin_Menus_Settings();
+                self::$instance->menus[ 'add-ons' ]       = new NF_Admin_Menus_Addons();
+                self::$instance->menus[ 'system_status' ] = new NF_Admin_Menus_SystemStatus();
+                self::$instance->menus[ 'submissions' ]   = new NF_Admin_Menus_Submissions();
+                self::$instance->menus[ 'import-export' ] = new NF_Admin_Menus_ImportExport();
+                self::$instance->menus[ 'licenses' ]      = new NF_Admin_Menus_Licenses();
 
                 /**
                  * Admin menus used for building out the admin UI
@@ -235,7 +235,7 @@ if( get_option( 'ninja_forms_load_deprecated', false )  && ! isset( $_POST[ 'nf2
                 // self::$instance->menus[ 'edit-action']      = new NF_Admin_Menus_EditAction();
                 // self::$instance->menus[ 'edit-settings']    = new NF_Admin_Menus_EditSettings();
                 // self::$instance->menus[ 'fields-layout']    = new NF_Admin_Menus_FieldsLayout();
-                self::$instance->menus[ 'mock-data'] = new NF_Admin_Menus_MockData();
+                self::$instance->menus[ 'mock-data' ] = new NF_Admin_Menus_MockData();
                 // self::$instance->menus[ 'preview']          = new NF_Admin_Menus_Preview();
 
                 /**

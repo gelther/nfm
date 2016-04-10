@@ -446,15 +446,15 @@ final class NF_Database_MockData
 
             foreach ( $fields as $settings ) {
 
-                unset( $settings['id'] );
+                unset( $settings[ 'id' ] );
 
                 $settings[ 'key' ] = $settings[ 'key' ] . '-' . $i;
 
-                if ( ! isset( $settings['label_pos'] ) ) $settings['label_pos'] = $label_pos;
+                if ( ! isset( $settings[ 'label_pos' ] ) ) $settings[ 'label_pos' ] = $label_pos;
 
-                if ( 'submit' != $settings['type'] ) $settings['label'] = $settings['label'] . ' - label ' . $label_pos;
+                if ( 'submit' != $settings[ 'type' ] ) $settings[ 'label' ] = $settings[ 'label' ] . ' - label ' . $label_pos;
 
-                if ( 'hidden' == $settings['label_pos'] && 'submit' != $settings['type'] ) $settings['placeholder'] = $settings['label'];
+                if ( 'hidden' == $settings[ 'label_pos' ] && 'submit' != $settings[ 'type' ] ) $settings[ 'placeholder' ] = $settings[ 'label' ];
 
                 $field = Ninja_Forms()->form( $form_id )->field()->get();
 
@@ -593,7 +593,7 @@ final class NF_Database_MockData
         $order = 1;
         foreach ( $fields as $settings ) {
 
-            unset( $settings['id'] );
+            unset( $settings[ 'id' ] );
 
             $field = Ninja_Forms()->form( $form_id )->field()->get();
 

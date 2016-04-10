@@ -2,7 +2,7 @@
 
 function nf_tmp_preview( $atts = array() ) {
     ob_start();
-    Ninja_Forms()->display( $atts['id'], true );
+    Ninja_Forms()->display( $atts[ 'id' ], true );
     return ob_get_clean();
 }
 
