@@ -77,7 +77,7 @@ return apply_filters( 'ninja_forms_from_display_settings', array(
             ),
         ),
         'value'          => 'usd',
-        'use_merge_tags' => FALSE
+        'use_merge_tags' => false
     ),
 
     /**
@@ -98,7 +98,7 @@ return apply_filters( 'ninja_forms_from_display_settings', array(
                 'label'          => __( 'Wrapper', 'ninja-forms' ),
                 'width'          => 'one-half',
                 'value'          => '',
-                'use_merge_tags' => FALSE,
+                'use_merge_tags' => false,
             ),
             array(
                 'name'           => 'element_class',
@@ -107,7 +107,7 @@ return apply_filters( 'ninja_forms_from_display_settings', array(
                 'placeholder'    => '',
                 'width'          => 'one-half',
                 'value'          => '',
-                'use_merge_tags' => FALSE,
+                'use_merge_tags' => false,
             ),
         ),
     ),
