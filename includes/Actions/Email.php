@@ -28,8 +28,7 @@ final class NF_Actions_Email extends NF_Abstracts_Action
     /**
      * Constructor
      */
-    public function __construct()
-    {
+    public function __construct() {
         parent::__construct();
 
         $this->_nicename = __( 'Email', 'ninja-forms' );
@@ -44,8 +43,7 @@ final class NF_Actions_Email extends NF_Abstracts_Action
     /**
      * PUBLIC METHODS
      */
-    public function process( $action_settings, $form_id, $data )
-    {
+    public function process( $action_settings, $form_id, $data ) {
         $headers = $this->_get_headers( $action_settings );
 
         $attachments = $this->_get_attachments( $action_settings, $data );
@@ -66,8 +64,7 @@ final class NF_Actions_Email extends NF_Abstracts_Action
         return $data;
     }
 
-    private function _get_headers( $settings )
-    {
+    private function _get_headers( $settings ) {
         $headers = array();
 
         $headers[] = 'Content-Type: text/' . $settings[ 'email_format' ];
@@ -80,8 +77,7 @@ final class NF_Actions_Email extends NF_Abstracts_Action
         return $headers;
     }
 
-    private function _get_attachments( $settings, $data )
-    {
+    private function _get_attachments( $settings, $data ) {
         $attachments = array();
 
         if ( $settings[ 'attach_csv' ] ) {
@@ -95,8 +91,7 @@ final class NF_Actions_Email extends NF_Abstracts_Action
         return $attachments;
     }
 
-    private function _format_from( $settings )
-    {
+    private function _format_from( $settings ) {
         $from_name = get_bloginfo( 'name', 'raw' );
         $from_name = apply_filters( 'ninja_forms_action_email_from_name', $from_name );
         $from_name = ( $settings[ 'from_name' ] ) ? $settings[ 'from_name' ] : $from_name;
@@ -108,8 +103,7 @@ final class NF_Actions_Email extends NF_Abstracts_Action
         return $this->_format_recipient( 'from', $from_address, $from_name );
     }
 
-    private function _format_recipients( $settings )
-    {
+    private function _format_recipients( $settings ) {
         $headers = array();
 
         $recipient_settings = array(
@@ -133,8 +127,7 @@ final class NF_Actions_Email extends NF_Abstracts_Action
         return $headers;
     }
 
-    private function _format_recipient( $type, $email, $name = '' )
-    {
+    private function _format_recipient( $type, $email, $name = '' ) {
         $type = ucfirst( $type );
 
         if ( ! $name ) $name = $email;
@@ -144,8 +137,7 @@ final class NF_Actions_Email extends NF_Abstracts_Action
         return $recipient;
     }
 
-    private function _create_csv( $fields )
-    {
+    private function _create_csv( $fields ) {
         $csv_array = array();
 
         foreach ( $fields as $field ) {
@@ -194,31 +186,26 @@ final class NF_Actions_Email extends NF_Abstracts_Action
     /**
      * Backwards Compatibility
      */
-    private function _backwards_compatibility()
-    {
+    private function _backwards_compatibility() {
         add_filter( 'ninja_forms_sub_csv_delimiter', array( $this, 'ninja_forms_sub_csv_delimiter' ), 10, 1 );
         add_filter( 'ninja_sub_csv_enclosure', array( $this, 'ninja_sub_csv_enclosure' ), 10, 1 );
         add_filter( 'ninja_sub_csv_terminator', array( $this, 'ninja_sub_csv_terminator' ), 10, 1 );
         add_filter( 'ninja_forms_action_email_attachments', array( $this, 'ninja_forms_action_email_attachments' ), 10, 3 );
     }
 
-    public function ninja_forms_sub_csv_delimiter( $delimiter )
-    {
+    public function ninja_forms_sub_csv_delimiter( $delimiter ) {
         return apply_filters( 'nf_sub_csv_delimiter', $delimiter );
     }
 
-    public function ninja_sub_csv_enclosure( $enclosure )
-    {
+    public function ninja_sub_csv_enclosure( $enclosure ) {
         return apply_filters( 'nf_sub_csv_enclosure', $enclosure );
     }
 
-    public function ninja_sub_csv_terminator( $terminator )
-    {
+    public function ninja_sub_csv_terminator( $terminator ) {
         return apply_filters( 'nf_sub_csv_terminator', $terminator );
     }
 
-    public function ninja_forms_action_email_attachments( $attachments, $form_data, $action_settings )
-    {
+    public function ninja_forms_action_email_attachments( $attachments, $form_data, $action_settings ) {
         return apply_filters( 'nf_email_notification_attachments', $attachments, $action_settings[ 'id' ] );
     }
 }
