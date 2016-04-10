@@ -70,7 +70,7 @@ final class NF_Admin_Menus_Submissions extends NF_Abstracts_Submenu
     {
         $form_id = ( isset( $_GET[ 'form_id' ] ) ) ? $_GET[ 'form_id' ] : false;
 
-        if( ! $form_id ) return array();
+        if ( ! $form_id ) return array();
 
         $cols = array(
             'cb'      => '<input type="checkbox" />',
@@ -81,9 +81,9 @@ final class NF_Admin_Menus_Submissions extends NF_Abstracts_Submenu
 
         $hidden_field_types = apply_filters( 'ninja_forms_sub_hidden_field_types', array() );
 
-        foreach( $fields as $field ) {
+        foreach ( $fields as $field ) {
 
-            if( in_array( $field->get_setting( 'type' ), $hidden_field_types ) ) continue;
+            if ( in_array( $field->get_setting( 'type' ), $hidden_field_types ) ) continue;
 
             // TODO: Add support for 'Admin Labels'
             $cols[ 'field_' . $field->get_id() ] = $field->get_setting( 'label' );
@@ -104,7 +104,7 @@ final class NF_Admin_Menus_Submissions extends NF_Abstracts_Submenu
     {
         $sub = Ninja_Forms()->form()->get_sub( $sub_id );
 
-        switch( $column ) {
+        switch ( $column ) {
             case 'seq_num':
                 echo $this->custom_columns_seq_num( $sub );
                 break;
@@ -124,7 +124,7 @@ final class NF_Admin_Menus_Submissions extends NF_Abstracts_Submenu
      */
     public function remove_filter_show_all_dates( $months )
     {
-        if( ! isset( $_GET[ 'post_type' ] ) || 'nf_sub' != $_GET[ 'post_type' ] ) return $months;
+        if ( ! isset( $_GET[ 'post_type' ] ) || 'nf_sub' != $_GET[ 'post_type' ] ) return $months;
 
         // Returning an empty array should hide the dropdown.
         return array();
@@ -145,24 +145,24 @@ final class NF_Admin_Menus_Submissions extends NF_Abstracts_Submenu
         $forms = Ninja_Forms()->form()->get_forms();
 
         $form_options = array();
-        foreach( $forms as $form ) {
+        foreach ( $forms as $form ) {
             $form_options[ $form->get_id() ] = $form->get_setting( 'title' );
         }
         $form_options = apply_filters( 'ninja_forms_submission_filter_form_options', $form_options );
 
-        if( isset( $_GET[ 'form_id' ] ) ) {
+        if ( isset( $_GET[ 'form_id' ] ) ) {
             $form_selected = $_GET[ 'form_id' ];
         } else {
             $form_selected = 0;
         }
 
-        if( isset( $_GET[ 'begin_date' ] ) ) {
+        if ( isset( $_GET[ 'begin_date' ] ) ) {
             $begin_date = $_GET[ 'begin_date' ];
         } else {
             $begin_date = '';
         }
 
-        if( isset( $_GET[ 'end_date' ] ) ) {
+        if ( isset( $_GET[ 'end_date' ] ) ) {
             $end_date = $_GET[ 'end_date' ];
         } else {
             $end_date = '';
@@ -178,7 +178,7 @@ final class NF_Admin_Menus_Submissions extends NF_Abstracts_Submenu
     {
         global $pagenow;
 
-        if( $pagenow != 'edit.php' || ! is_admin() || ! isset( $query->query[ 'post_type' ] ) || 'nf_sub' != $query->query[ 'post_type' ] || ! is_main_query() ) return;
+        if ( $pagenow != 'edit.php' || ! is_admin() || ! isset( $query->query[ 'post_type' ] ) || 'nf_sub' != $query->query[ 'post_type' ] || ! is_main_query() ) return;
 
         $vars = &$query->query_vars;
 
@@ -228,7 +228,7 @@ final class NF_Admin_Menus_Submissions extends NF_Abstracts_Submenu
             return false;
         }
 
-        if( $post_type == 'nf_sub' && isset ( $_REQUEST[ 'post_status' ] ) && $_REQUEST[ 'post_status' ] == 'all' ) {
+        if ( $post_type == 'nf_sub' && isset ( $_REQUEST[ 'post_status' ] ) && $_REQUEST[ 'post_status' ] == 'all' ) {
             ?>
             <script type="text/javascript">
                 jQuery(document).ready(function() {
@@ -330,7 +330,7 @@ final class NF_Admin_Menus_Submissions extends NF_Abstracts_Submenu
     }
 
     public function hide_page_title_action() {
-        if(
+        if (
             ( isset( $_GET[ 'post_type' ] ) && 'nf_sub' == $_GET[ 'post_type' ] ) ||
             'nf_sub' == get_post_type()
         ) {
@@ -373,7 +373,7 @@ final class NF_Admin_Menus_Submissions extends NF_Abstracts_Submenu
      */
     private function custom_columns_field( $sub, $column )
     {
-        if( false === strpos( $column, 'field_' ) ) return false;
+        if ( false === strpos( $column, 'field_' ) ) return false;
 
         $field_id = str_replace( 'field_', '', $column );
 
@@ -397,12 +397,12 @@ final class NF_Admin_Menus_Submissions extends NF_Abstracts_Submenu
 
     private function table_filter_by_date( $vars )
     {
-        if( empty( $_GET[ 'begin_date' ] ) || empty( $_GET[ 'end_date' ] ) ) return $vars;
+        if ( empty( $_GET[ 'begin_date' ] ) || empty( $_GET[ 'end_date' ] ) ) return $vars;
 
         $begin_date = $_GET[ 'begin_date' ];
         $end_date   = $_GET[ 'end_date' ];
 
-        if( $begin_date > $end_date ) {
+        if ( $begin_date > $end_date ) {
             $temp_date  = $begin_date;
             $begin_date = $end_date;
             $end_date   = $temp_date;
