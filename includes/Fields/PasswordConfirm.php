@@ -42,9 +42,9 @@ class NF_Fields_PasswordConfirm extends NF_Fields_Password
     {
         $password_fields = array();
 
-        foreach( $data[ 'fields' ] as $field ){
+        foreach( $data['fields'] as $field ){
 
-            if( 'password' != $field[ 'type' ] ) continue;
+            if( 'password' != $field['type'] ) continue;
 
             $password_fields[] = $field;
         }
@@ -54,7 +54,7 @@ class NF_Fields_PasswordConfirm extends NF_Fields_Password
 
     private function is_matching_values( $a, $b )
     {
-        return $a[ 'value' ] === $b[ 'value' ];
+        return $a['value'] === $b['value'];
     }
 
     private function get_error_message()
