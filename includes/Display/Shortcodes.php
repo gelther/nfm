@@ -8,10 +8,10 @@ final class NF_Display_Shortcodes
     }
 
     public function display_form_front_end( $atts = array() ) {
-        if ( ! isset( $atts[ 'id' ] ) ) return $this->display_no_id();
+        if ( ! isset( $atts['id'] ) ) return $this->display_no_id();
 
         ob_start();
-        Ninja_Forms()->display( $atts[ 'id' ] );
+        Ninja_Forms()->display( $atts['id'] );
         return ob_get_clean();
     }
 
