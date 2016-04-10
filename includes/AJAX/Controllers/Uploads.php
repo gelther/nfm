@@ -40,9 +40,9 @@ class NF_AJAX_Controllers_Uploads extends NF_Abstracts_Controller
      */
     protected function validate()
     {
-        foreach( $this->_data[ 'files' ] as $key => $file ) {
+        foreach ( $this->_data[ 'files' ] as $key => $file ) {
 
-            if( $file[ 'error' ] ) {
+            if ( $file[ 'error' ] ) {
                 $this->_errors[] = $this->code_to_message( $file[ 'error' ] );
             } else {
 
