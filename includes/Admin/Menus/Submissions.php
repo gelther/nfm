@@ -89,7 +89,7 @@ final class NF_Admin_Menus_Submissions extends NF_Abstracts_Submenu
             $cols[ 'field_' . $field->get_id() ] = $field->get_setting( 'label' );
         }
 
-        $cols[ 'sub_date' ] = __( 'Date', 'ninja-forms' );
+        $cols['sub_date'] = __( 'Date', 'ninja-forms' );
 
         return $cols;
     }
@@ -124,7 +124,7 @@ final class NF_Admin_Menus_Submissions extends NF_Abstracts_Submenu
      */
     public function remove_filter_show_all_dates( $months )
     {
-        if( ! isset( $_GET[ 'post_type' ] ) || 'nf_sub' != $_GET[ 'post_type' ] ) return $months;
+        if( ! isset( $_GET['post_type'] ) || 'nf_sub' != $_GET['post_type'] ) return $months;
 
         // Returning an empty array should hide the dropdown.
         return array();
@@ -150,20 +150,20 @@ final class NF_Admin_Menus_Submissions extends NF_Abstracts_Submenu
         }
         $form_options = apply_filters( 'ninja_forms_submission_filter_form_options', $form_options );
 
-        if( isset( $_GET[ 'form_id' ] ) ) {
-            $form_selected = $_GET[ 'form_id' ];
+        if( isset( $_GET['form_id'] ) ) {
+            $form_selected = $_GET['form_id'];
         } else {
             $form_selected = 0;
         }
 
-        if( isset( $_GET[ 'begin_date' ] ) ) {
-            $begin_date = $_GET[ 'begin_date' ];
+        if( isset( $_GET['begin_date'] ) ) {
+            $begin_date = $_GET['begin_date'];
         } else {
             $begin_date = '';
         }
 
-        if( isset( $_GET[ 'end_date' ] ) ) {
-            $end_date = $_GET[ 'end_date' ];
+        if( isset( $_GET['end_date'] ) ) {
+            $end_date = $_GET['end_date'];
         } else {
             $end_date = '';
         }
@@ -232,8 +232,8 @@ final class NF_Admin_Menus_Submissions extends NF_Abstracts_Submenu
             ?>
             <script type="text/javascript">
                 jQuery(document).ready(function() {
-                    jQuery('<option>').val('export').text('<?php _e( 'Export' )?>').appendTo("select[name='action']");
-                    jQuery('<option>').val('export').text('<?php _e( 'Export' )?>').appendTo("select[name='action2']");
+                    jQuery('<option>').val('export').text('<?php _e( 'Export' );?>').appendTo("select[name='action']");
+                    jQuery('<option>').val('export').text('<?php _e( 'Export' );?>').appendTo("select[name='action2']");
                     <?php
                     if ( ( isset ( $_POST['action'] ) && $_POST['action'] == 'export' ) || ( isset ( $_POST['action2'] ) && $_POST['action2'] == 'export' ) ) {
                         ?>
@@ -332,7 +332,7 @@ final class NF_Admin_Menus_Submissions extends NF_Abstracts_Submenu
     public function hide_page_title_action() {
 
         if(
-            ( isset( $_GET[ 'post_type' ] ) && 'nf_sub' == $_GET[ 'post_type'] ) ||
+            ( isset( $_GET['post_type'] ) && 'nf_sub' == $_GET['post_type'] ) ||
             'nf_sub' == get_post_type()
         ){
             echo '<style type="text/css">.page-title-action{display: none;}</style>';
@@ -398,10 +398,10 @@ final class NF_Admin_Menus_Submissions extends NF_Abstracts_Submenu
 
     private function table_filter_by_date( $vars )
     {
-        if( empty( $_GET[ 'begin_date' ] ) || empty( $_GET[ 'end_date' ] ) ) return $vars;
+        if( empty( $_GET['begin_date'] ) || empty( $_GET['end_date'] ) ) return $vars;
 
-        $begin_date = $_GET[ 'begin_date' ];
-        $end_date   = $_GET[ 'end_date' ];
+        $begin_date = $_GET['begin_date'];
+        $end_date   = $_GET['end_date'];
 
         if( $begin_date > $end_date ){
             $temp_date  = $begin_date;
