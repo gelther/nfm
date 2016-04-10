@@ -133,7 +133,7 @@ class NF_AJAX_Controllers_Builder extends NF_Abstracts_Controller
 
         $external_actions = $this->_fetch_action_feed();
 
-        foreach( $external_actions as $action){
+        foreach( $external_actions as $action ){
 
             if( ! isset( $action[ 'name' ] ) || ! $action[ 'name' ] ) continue;
 
