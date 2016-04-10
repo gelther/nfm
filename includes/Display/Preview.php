@@ -15,12 +15,12 @@ final class NF_Display_Preview
 
         add_action( 'pre_get_posts', array( $this, 'pre_get_posts' ) );
 
-        add_filter('the_title', array( $this, 'the_title' ) );
+        add_filter( 'the_title', array( $this, 'the_title' ) );
         remove_filter( 'the_content', 'wpautop' );
         remove_filter( 'the_excerpt', 'wpautop' );
-        add_filter('the_content', array( $this, 'the_content' ), 9001 );
-        add_filter('get_the_excerpt', array( $this, 'the_content' ) );
-        add_filter('template_include', array( $this, 'template_include' ) );
+        add_filter( 'the_content', array( $this, 'the_content' ), 9001 );
+        add_filter( 'get_the_excerpt', array( $this, 'the_content' ) );
+        add_filter( 'template_include', array( $this, 'template_include' ) );
     }
 
     public function pre_get_posts( $query )
