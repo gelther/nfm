@@ -10,13 +10,11 @@ final class NF_Admin_Menus_AllForms extends NF_Abstracts_Submenu
 
     public $priority = 1;
 
-    public function __construct()
-    {
+    public function __construct() {
         parent::__construct();
     }
 
-    public function display()
-    {
+    public function display() {
         // This section intentionally left blank.
     }
 

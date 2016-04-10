@@ -25,8 +25,7 @@ class NF_Fields_Product extends NF_Abstracts_Input
 
     protected $_settings_exclude = array( 'input_limit_set' );
 
-    public function __construct()
-    {
+    public function __construct() {
         parent::__construct();
 
         $this->_nicename = __( 'Product', 'ninja-forms' );
@@ -34,8 +33,7 @@ class NF_Fields_Product extends NF_Abstracts_Input
         add_filter( 'ninja_forms_merge_tag_value_product', array( $this, 'merge_tag_value' ), 10, 2 );
     }
 
-    public function process( $product, $data )
-    {
+    public function process( $product, $data ) {
         $related = array();
 
         foreach ( $data[ 'fields' ] as $key => $field ) {
@@ -68,8 +66,7 @@ class NF_Fields_Product extends NF_Abstracts_Input
         return $data;
     }
 
-    public function merge_tag_value( $value, $field )
-    {
+    public function merge_tag_value( $value, $field ) {
         if ( isset( $field[ 'product_price' ] ) ) {
             $value = $field[ 'product_price' ];
         }

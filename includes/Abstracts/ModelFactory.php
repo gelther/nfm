@@ -56,8 +56,7 @@ class NF_Abstracts_ModelFactory
      * @param $db
      * @param $id
      */
-    public function __construct( $db, $id )
-    {
+    public function __construct( $db, $id ) {
         $this->_db = $db;
 
         $this->_object = new NF_Database_Models_Form( $this->_db, $id );
@@ -70,8 +69,7 @@ class NF_Abstracts_ModelFactory
      *
      * @return object
      */
-    public function get()
-    {
+    public function get() {
         return $this->_object;
     }
 
@@ -83,8 +81,7 @@ class NF_Abstracts_ModelFactory
      * @param  array      $where
      * @return array|bool
      */
-    public function get_forms( array $where = array() )
-    {
+    public function get_forms( array $where = array() ) {
         if ( 'form' != $this->_object->get_type() ) return false;
 
         return $this->_object->find( NULL, $where );
@@ -98,8 +95,7 @@ class NF_Abstracts_ModelFactory
      * @param  bool|FALSE $return
      * @return array
      */
-    public function export_form( $return = false )
-    {
+    public function export_form( $return = false ) {
         $form_id = $this->_object->get_id();
 
         return NF_Database_Models_Form::export( $form_id, $return );
@@ -112,8 +108,7 @@ class NF_Abstracts_ModelFactory
      *
      * @param $import
      */
-    public function import_form( $import, $id = false, $is_conversion = false )
-    {
+    public function import_form( $import, $id = false, $is_conversion = false ) {
         $import = maybe_unserialize( $import );
         NF_Database_Models_Form::import( $import, $id, $is_conversion );
     }
@@ -128,8 +123,7 @@ class NF_Abstracts_ModelFactory
      * @param  string $id
      * @return        $this
      */
-    public function field( $id = '' )
-    {
+    public function field( $id = '' ) {
         $form_id = $this->_object->get_id();
 
         $this->_object = new NF_Database_Models_Field( $this->_db, $id, $form_id );
@@ -143,8 +137,7 @@ class NF_Abstracts_ModelFactory
      * @param                           $id
      * @return NF_Database_Models_Field
      */
-    public function get_field( $id )
-    {
+    public function get_field( $id ) {
         $form_id = $this->_object->get_id();
 
         return $this->_fields[ $id ] = new NF_Database_Models_Field( $this->_db, $id, $form_id );
@@ -157,8 +150,7 @@ class NF_Abstracts_ModelFactory
      * @param  bool|FALSE $fresh
      * @return array
      */
-    public function get_fields( $where = array(), $fresh = false )
-    {
+    public function get_fields( $where = array(), $fresh = false ) {
         if ( $where || $fresh || ! $this->_fields ) {
 
             $form_id = $this->_object->get_id();
@@ -184,8 +176,7 @@ class NF_Abstracts_ModelFactory
      *
      * @param $import
      */
-    public function import_field( $settings, $field_id = '', $is_conversion = false )
-    {
+    public function import_field( $settings, $field_id = '', $is_conversion = false ) {
         $settings = maybe_unserialize( $settings );
         NF_Database_Models_Field::import( $settings, $field_id, $is_conversion );
     }
@@ -201,8 +192,7 @@ class NF_Abstracts_ModelFactory
      * @param  string $id
      * @return        $this
      */
-    public function action( $id ='' )
-    {
+    public function action( $id ='' ) {
         $form_id = $this->_object->get_id();
 
         $this->_object = new NF_Database_Models_Action( $this->_db, $id, $form_id );
@@ -216,8 +206,7 @@ class NF_Abstracts_ModelFactory
      * @param                            $id
      * @return NF_Database_Models_Action
      */
-    public function get_action( $id )
-    {
+    public function get_action( $id ) {
         $form_id = $this->_object->get_id();
 
         return $this->_actions[ $id ] = new NF_Database_Models_Action( $this->_db, $id, $form_id );
@@ -230,8 +219,7 @@ class NF_Abstracts_ModelFactory
      * @param  bool|FALSE $fresh
      * @return array
      */
-    public function get_actions( $where = array(), $fresh = false )
-    {
+    public function get_actions( $where = array(), $fresh = false ) {
         if ( $where || $fresh || ! $this->_actions ) {
 
             $form_id = $this->_object->get_id();
@@ -260,8 +248,7 @@ class NF_Abstracts_ModelFactory
      * @param  string $id
      * @return        $this
      */
-    public function object( $id = '' )
-    {
+    public function object( $id = '' ) {
         $parent_id   = $this->_object->get_id();
         $parent_type = $this->_object->get_type();
 
@@ -276,8 +263,7 @@ class NF_Abstracts_ModelFactory
      * @param                            $id
      * @return NF_Database_Models_Object
      */
-    public function get_object( $id )
-    {
+    public function get_object( $id ) {
         return $this->_objects[ $id ] = new NF_Database_Models_Object( $this->_db, $id );
     }
 
@@ -288,8 +274,7 @@ class NF_Abstracts_ModelFactory
      * @param  bool|FALSE $fresh
      * @return array
      */
-    public function get_objects( $where = array(), $fresh = false )
-    {
+    public function get_objects( $where = array(), $fresh = false ) {
         if ( $where || $fresh || ! $this->_objects ) {
 
             $form_id = $this->_object->get_id();
@@ -319,8 +304,7 @@ class NF_Abstracts_ModelFactory
      * @param  string $id
      * @return        $this
      */
-    public function sub( $id = '' )
-    {
+    public function sub( $id = '' ) {
         $form_id = $this->_object->get_id();
 
         $this->_object = new NF_Database_Models_Submission( $id, $form_id );
@@ -336,8 +320,7 @@ class NF_Abstracts_ModelFactory
      * @param                                $id
      * @return NF_Database_Models_Submission
      */
-    public function get_sub( $id )
-    {
+    public function get_sub( $id ) {
         $parent_id = $this->_object->get_id();
 
         return $this->_objects[ $id ] = new NF_Database_Models_Submission( $id, $parent_id );
@@ -352,8 +335,7 @@ class NF_Abstracts_ModelFactory
      * @param  bool|FALSE $fresh
      * @return array
      */
-    public function get_subs( $where = array(), $fresh = false )
-    {
+    public function get_subs( $where = array(), $fresh = false ) {
         if ( $where || $fresh || ! $this->_objects ) {
 
             $form_id = $this->_object->get_id();
@@ -379,8 +361,7 @@ class NF_Abstracts_ModelFactory
      * @param  bool|FALSE $return
      * @return string
      */
-    public function export_subs( array $sub_ids = array(), $return = false )
-    {
+    public function export_subs( array $sub_ids = array(), $return = false ) {
         $form_id = $this->_object->get_id();
 
         return NF_Database_Models_Submission::export( $form_id, $sub_ids, $return );
@@ -399,8 +380,7 @@ class NF_Abstracts_ModelFactory
      * @param                                                                                                            $type
      * @return bool|NF_Database_Models_Action|NF_Database_Models_Field|NF_Database_Models_Form|NF_Database_Models_Object
      */
-    public function get_model( $id, $type )
-    {
+    public function get_model( $id, $type ) {
         global $wpdb;
 
         switch ( $type ) {

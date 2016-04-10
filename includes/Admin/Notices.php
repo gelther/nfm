@@ -15,8 +15,7 @@ class NF_Admin_Notices
     // Highlander the instance
     static $instance;
 
-    public static function instance()
-    {
+    public static function instance() {
         if ( ! isset( self::$instance ) ) {
             self::$instance = new NF_Notices();
         }
@@ -28,7 +27,7 @@ class NF_Admin_Notices
     public $notice_spam_max = 1;
 
     // Basic actions to run
-    public function __construct(){
+    public function __construct() {
         // Runs the admin notice ignore function incase a dismiss button has been clicked
         add_action( 'admin_init', array( $this, 'admin_notice_ignore' ) );
 

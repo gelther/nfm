@@ -54,8 +54,7 @@ abstract class NF_Abstracts_Submenu
      *
      * Translate text and add the 'admin_menu' action.
      */
-    public function __construct()
-    {
+    public function __construct() {
         if ( ! $this->menu_title ) {
             $this->menu_title = $this->page_title;
         }
@@ -72,8 +71,7 @@ abstract class NF_Abstracts_Submenu
     /**
      * Register the menu page.
      */
-    public function register()
-    {
+    public function register() {
         $function = ( $this->function ) ? array( $this, $this->function ) : NULL;
 
         add_submenu_page(
@@ -88,8 +86,7 @@ abstract class NF_Abstracts_Submenu
         add_filter( 'admin_body_class', array( $this, 'body_class' ) );
     }
 
-    public function body_class( $classes )
-    {
+    public function body_class( $classes ) {
         if ( isset( $_GET[ 'page' ] ) && $_GET[ 'page' ] == $this->menu_slug ) {
             $classes = "$classes ninja-forms-app";
         }

@@ -7,8 +7,7 @@ final class NF_Display_Preview
 {
     protected $form_id = '';
 
-    public function __construct()
-    {
+    public function __construct() {
         if ( ! isset( $_GET[ 'nf_preview_form' ] ) ) return;
 
         $this->_form_id = $_GET[ 'nf_preview_form' ];
@@ -23,16 +22,14 @@ final class NF_Display_Preview
         add_filter( 'template_include', array( $this, 'template_include' ) );
     }
 
-    public function pre_get_posts( $query )
-    {
+    public function pre_get_posts( $query ) {
         $query->set( 'posts_per_page', 1 );
     }
 
     /**
      * @return string
      */
-    function the_title( $title )
-    {
+    function the_title( $title ) {
         if ( ! in_the_loop() ) return $title;
 
         $form_title = Ninja_Forms()->form( $this->_form_id )->get()->get_setting( 'title' );
@@ -43,8 +40,7 @@ final class NF_Display_Preview
     /**
      * @return string
      */
-    function the_content()
-    {
+    function the_content() {
         if ( ! is_user_logged_in() ) return __( 'You must be logged in to preview a form.', 'ninja-forms' );
 
         return do_shortcode( "[nf_tmp_preview id='{$this->_form_id}']" );
@@ -53,8 +49,7 @@ final class NF_Display_Preview
     /**
      * @return string
      */
-    function template_include()
-    {
+    function template_include() {
         return locate_template( array( 'page.php', 'single.php', 'index.php' ) );
     }
 

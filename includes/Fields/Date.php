@@ -23,15 +23,13 @@ class NF_Fields_Date extends NF_Fields_Textbox
 
     protected $_settings_exclude = array( 'default', 'placeholder', 'input_limit_set', 'disable_input' );
 
-    public function __construct()
-    {
+    public function __construct() {
         parent::__construct();
 
         $this->_nicename = __( 'Date', 'ninja-forms' );
     }
 
-    public function process( $field, $data )
-    {
+    public function process( $field, $data ) {
         foreach ( $data[ 'fields' ] as $key => $field ) {
 
             if ( 'date' != $field[ 'type' ] ) continue;
@@ -44,8 +42,7 @@ class NF_Fields_Date extends NF_Fields_Textbox
         return $data;
     }
 
-    private function get_format( $format )
-    {
+    private function get_format( $format ) {
         $lookup = array(
             'DD/MM/YYYY'        => 'm/d/Y',
             'DD-MM-YYYY'        => 'd-m-Y',

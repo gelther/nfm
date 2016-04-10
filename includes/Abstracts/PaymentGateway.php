@@ -11,28 +11,23 @@ abstract class NF_Abstracts_PaymentGateway
 
     protected $_settings = array();
 
-    public function __construct()
-    {
+    public function __construct() {
         add_filter( 'ninja_forms_collect_payment_process', array( $this, '_process' ) );
     }
 
-    public function get_slug()
-    {
+    public function get_slug() {
         return $this->_slug;
     }
 
-    public function get_name()
-    {
+    public function get_name() {
         return $this->_name;
     }
 
-    public function get_settings()
-    {
+    public function get_settings() {
         return $this->_settings;
     }
 
-    public function _process( $action_settings, $form_id, $data )
-    {
+    public function _process( $action_settings, $form_id, $data ) {
         if ( $this->_slug == $action_settings[ 'payment_gateway' ] ) {
             return $this->process( $action_settings, $form_id, $data );
         }

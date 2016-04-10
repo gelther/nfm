@@ -21,15 +21,13 @@ class NF_Fields_Total extends NF_Abstracts_Input
 
     protected $_settings_exclude = array( 'placeholder', 'default', 'input_limit_set' );
 
-    public function __construct()
-    {
+    public function __construct() {
         parent::__construct();
 
         $this->_nicename = __( 'Total', 'ninja-forms' );
     }
 
-    public function process( $total, $data )
-    {
+    public function process( $total, $data ) {
         $subtotal = 0;
 
         foreach ( $data[ 'fields' ] as $key => $field ) {

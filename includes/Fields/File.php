@@ -15,8 +15,7 @@ class NF_Fields_File extends NF_Abstracts_Field
 
     protected $_templates = array( 'file', 'textbox', 'input' );
 
-    public function __construct()
-    {
+    public function __construct() {
         parent::__construct();
 
         $this->_nicename = __( 'File', 'ninja-forms' );

@@ -17,8 +17,7 @@ class NF_Fields_Spam extends NF_Abstracts_Input
 
     protected $_settings = array( 'spam_answer' );
 
-    public function __construct()
-    {
+    public function __construct() {
         parent::__construct();
 
         $this->_nicename = __( 'Anti-Spam', 'ninja-forms' );
@@ -46,8 +45,7 @@ class NF_Fields_Spam extends NF_Abstracts_Input
      * @param        $data
      * @return array $errors
      */
-    public function validate( $field, $data )
-    {
+    public function validate( $field, $data ) {
         $errors = parent::validate( $field, $data );
 
         if (
@@ -60,13 +58,11 @@ class NF_Fields_Spam extends NF_Abstracts_Input
         return $errors;
     }
 
-    public function get_parent_type()
-    {
+    public function get_parent_type() {
         return 'spam';
     }
 
-    function hide_field_type( $field_types )
-    {
+    function hide_field_type( $field_types ) {
         $field_types[] = $this->_name;
 
         return $field_types;

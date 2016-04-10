@@ -7,20 +7,17 @@ final class NF_MergeTags_Fields extends NF_Abstracts_MergeTags
 {
     protected $id = 'fields';
 
-    public function __construct()
-    {
+    public function __construct() {
         parent::__construct();
         $this->title      = __( 'Fields', 'ninja-forms' );
         $this->merge_tags = Ninja_Forms()->config( 'MergeTagsFields' );
     }
 
-    public function __call( $name, $arguments )
-    {
+    public function __call( $name, $arguments ) {
         return $this->merge_tags[ $name ][ 'field_value' ];
     }
 
-    public function all_fields()
-    {
+    public function all_fields() {
         $return = '<table>';
         foreach ( $this->merge_tags[ 'all_fields' ][ 'fields' ] as $field ) {
             $field[ 'value' ] = apply_filters( 'ninja_forms_merge_tag_value_' . $field[ 'type' ], $field[ 'value' ], $field );
@@ -33,8 +30,7 @@ final class NF_MergeTags_Fields extends NF_Abstracts_MergeTags
         return $return;
     }
 
-    public function add_field( $field )
-    {
+    public function add_field( $field ) {
         $hidden_field_types = apply_filters( 'nf_sub_hidden_field_types', array() );
         if ( in_array( $field[ 'type' ], $hidden_field_types ) ) return;
 

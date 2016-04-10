@@ -19,15 +19,13 @@ class NF_Fields_ListCheckbox extends NF_Abstracts_List
 
     protected $_old_classname = 'list-checkbox';
 
-    public function __construct()
-    {
+    public function __construct() {
         parent::__construct();
 
         $this->_nicename = __( 'Checkbox List', 'ninja-forms' );
     }
 
-    public function admin_form_element( $id, $value )
-    {
+    public function admin_form_element( $id, $value ) {
         $field = Ninja_Forms()->form()->get_field( $id );
 
         $list = '';

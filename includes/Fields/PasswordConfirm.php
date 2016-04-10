@@ -13,15 +13,13 @@ class NF_Fields_PasswordConfirm extends NF_Fields_Password
 
     protected $_error_message = '';
 
-    public function __construct()
-    {
+    public function __construct() {
         parent::__construct();
 
         $this->_nicename = __( 'Password Confirm', 'ninja-forms' );
     }
 
-    public function validate( $field, $data )
-    {
+    public function validate( $field, $data ) {
         $errors = parent::validate( $field, $data );
 
         $password_fields = $this->get_password_fields( $data );
@@ -38,8 +36,7 @@ class NF_Fields_PasswordConfirm extends NF_Fields_Password
         return $errors;
     }
 
-    private function get_password_fields( $data )
-    {
+    private function get_password_fields( $data ) {
         $password_fields = array();
 
         foreach ( $data[ 'fields' ] as $field ) {
@@ -52,13 +49,11 @@ class NF_Fields_PasswordConfirm extends NF_Fields_Password
         return $password_fields;
     }
 
-    private function is_matching_values( $a, $b )
-    {
+    private function is_matching_values( $a, $b ) {
         return $a[ 'value' ] === $b[ 'value' ];
     }
 
-    private function get_error_message()
-    {
+    private function get_error_message() {
         if ( $this->_error_message ) return $this->_error_message;
 
         $error_message = __( 'Passwords do not match', 'ninja-forms' );

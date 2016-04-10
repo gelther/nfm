@@ -18,8 +18,7 @@ abstract class NF_Abstracts_Metabox
 
     protected $_capability = 'edit_post';
 
-    public function __construct()
-    {
+    public function __construct() {
         $this->_id = strtolower( get_class( $this ) );
 
         $this->_title = __( 'Metabox', 'ninja-forms' );
@@ -29,8 +28,7 @@ abstract class NF_Abstracts_Metabox
         add_action( 'add_meta_boxes', array( $this, 'add_meta_boxes' ) );
     }
 
-    public function add_meta_boxes()
-    {
+    public function add_meta_boxes() {
         add_meta_box(
             $this->_id,
             $this->_title,
@@ -44,16 +42,14 @@ abstract class NF_Abstracts_Metabox
 
     abstract public function render_metabox( $post, $metabox );
 
-    public function _save_post( $post_id )
-    {
+    public function _save_post( $post_id ) {
         // If this is an autosave, our form has not been submitted, so we don't want to do anything.
         if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) return;
 
         $this->save_post( $post_id );
     }
 
-    protected function save_post( $post_id )
-    {
+    protected function save_post( $post_id ) {
         // This section intentionally left blank.
     }
 }

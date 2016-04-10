@@ -23,8 +23,7 @@ abstract class NF_Abstracts_Controller
     /**
      * NF_Abstracts_Controller constructor.
      */
-    public function __construct()
-    {
+    public function __construct() {
         //This section intentionally left blank.
     }
 
@@ -38,8 +37,7 @@ abstract class NF_Abstracts_Controller
      *
      * A wrapper for the WordPress AJAX response pattern.
      */
-    protected function _respond( $data = array() )
-    {
+    protected function _respond( $data = array() ) {
         if ( empty( $data ) ) {
             $data = $this->_data;
         }

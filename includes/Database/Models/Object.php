@@ -16,15 +16,13 @@ final class NF_Database_Models_Object extends NF_Abstracts_Model
         'created_at'
     );
 
-    public function __construct( $db, $id, $parent_id = '', $parent_type = '' )
-    {
+    public function __construct( $db, $id, $parent_id = '', $parent_type = '' ) {
         parent::__construct( $db, $id, $parent_id );
 
         $this->_parent_type = $parent_type;
     }
 
-    public function save()
-    {
+    public function save() {
         if ( ! $this->_id ) {
 
             $data = array( 'created_at' => time() );

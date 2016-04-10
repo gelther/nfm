@@ -19,8 +19,7 @@ class NF_Fields_StarRating extends NF_Abstracts_Input
 
     protected $_settings_only = array( 'label', 'label_pos', 'default', 'required', 'classes' );
 
-    public function __construct()
-    {
+    public function __construct() {
         parent::__construct();
 
         $this->_settings[ 'default' ][ 'group' ] = 'primary';

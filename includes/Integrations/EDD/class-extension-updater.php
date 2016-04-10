@@ -25,8 +25,7 @@ class NF_Extension_Updater
      * @updated 3.0
      * @return void
      */
-    public function __construct( $product_name, $version, $author, $file, $slug = '' )
-    {
+    public function __construct( $product_name, $version, $author, $file, $slug = '' ) {
         $this->product_nice_name = $product_name;
         if ( $slug == '' ) {
             $this->product_name = strtolower( $product_name );
@@ -164,8 +163,7 @@ class NF_Extension_Updater
         return Ninja_Forms()->get_setting( $this->product_name . '_license_error' );
     }
 
-    private function maybe_debug( $data, $key = 'debug' )
-    {
+    private function maybe_debug( $data, $key = 'debug' ) {
         if ( isset ( $_GET[ $key ] ) && 'true' == $_GET[ $key ] ) {
             echo '<pre>'; var_dump( $data ); echo '</pre>';
             die();

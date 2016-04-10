@@ -4,8 +4,7 @@ class NF_Database_Migrations
 {
     protected $migrations = array();
 
-    public function __construct()
-    {
+    public function __construct() {
         $this->migrations[ 'forms' ]         = new NF_Database_Migrations_Forms();
         $this->migrations[ 'form_meta' ]     = new NF_Database_Migrations_FormMeta();
         $this->migrations[ 'fields' ]        = new NF_Database_Migrations_Fields();
@@ -18,15 +17,13 @@ class NF_Database_Migrations
         $this->migrations[ 'settings' ]      = new NF_Database_Migrations_Settings();
     }
 
-    public function migrate()
-    {
+    public function migrate() {
         foreach ( $this->migrations as $migration ) {
             $migration->_run();
         }
     }
 
-    public function nuke( $areYouSure = false, $areYouReallySure = false )
-    {
+    public function nuke( $areYouSure = false, $areYouReallySure = false ) {
         if ( ! $areYouSure || ! $areYouReallySure ) return;
 
         global $wpdb;

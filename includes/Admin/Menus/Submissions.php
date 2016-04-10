@@ -28,8 +28,7 @@ final class NF_Admin_Menus_Submissions extends NF_Abstracts_Submenu
     /**
      * Constructor
      */
-    public function __construct()
-    {
+    public function __construct() {
         parent::__construct();
 
         add_filter( 'manage_nf_sub_posts_columns', array( $this, 'change_columns' ) );
@@ -56,8 +55,7 @@ final class NF_Admin_Menus_Submissions extends NF_Abstracts_Submenu
     /**
      * Display
      */
-    public function display()
-    {
+    public function display() {
         // This section intentionally left blank.
     }
 
@@ -66,8 +64,7 @@ final class NF_Admin_Menus_Submissions extends NF_Abstracts_Submenu
      *
      * @return array
      */
-    public function change_columns()
-    {
+    public function change_columns() {
         $form_id = ( isset( $_GET[ 'form_id' ] ) ) ? $_GET[ 'form_id' ] : false;
 
         if ( ! $form_id ) return array();
@@ -100,8 +97,7 @@ final class NF_Admin_Menus_Submissions extends NF_Abstracts_Submenu
      * @param $column
      * @param $sub_id
      */
-    public function custom_columns( $column, $sub_id )
-    {
+    public function custom_columns( $column, $sub_id ) {
         $sub = Ninja_Forms()->form()->get_sub( $sub_id );
 
         switch ( $column ) {
@@ -122,8 +118,7 @@ final class NF_Admin_Menus_Submissions extends NF_Abstracts_Submenu
      * @param        $months
      * @return array
      */
-    public function remove_filter_show_all_dates( $months )
-    {
+    public function remove_filter_show_all_dates( $months ) {
         if ( ! isset( $_GET[ 'post_type' ] ) || 'nf_sub' != $_GET[ 'post_type' ] ) return $months;
 
         // Returning an empty array should hide the dropdown.
@@ -135,8 +130,7 @@ final class NF_Admin_Menus_Submissions extends NF_Abstracts_Submenu
      *
      * @return bool
      */
-    public function add_filters()
-    {
+    public function add_filters() {
         global $typenow;
 
         // Bail if we aren't in our submission custom post type.
@@ -174,8 +168,7 @@ final class NF_Admin_Menus_Submissions extends NF_Abstracts_Submenu
         wp_enqueue_style( 'jquery-ui-datepicker', Ninja_Forms::$url . 'deprecated/assets/css/jquery-ui-fresh.min.css' );
     }
 
-    public function table_filter( $query )
-    {
+    public function table_filter( $query ) {
         global $pagenow;
 
         if ( $pagenow != 'edit.php' || ! is_admin() || ! isset( $query->query[ 'post_type' ] ) || 'nf_sub' != $query->query[ 'post_type' ] || ! is_main_query() ) return;
@@ -270,8 +263,7 @@ final class NF_Admin_Menus_Submissions extends NF_Abstracts_Submenu
         }
     }
 
-    public function export_listen()
-    {
+    public function export_listen() {
         // Bail if we aren't in the admin
         if ( ! is_admin() ) {
             return false;
@@ -348,8 +340,7 @@ final class NF_Admin_Menus_Submissions extends NF_Abstracts_Submenu
      * @param        $sub
      * @return mixed
      */
-    private function custom_columns_seq_num( $sub )
-    {
+    private function custom_columns_seq_num( $sub ) {
         return $sub->get_seq_num();
     }
 
@@ -359,8 +350,7 @@ final class NF_Admin_Menus_Submissions extends NF_Abstracts_Submenu
      * @param        $sub
      * @return mixed
      */
-    private function custom_columns_sub_date( $sub )
-    {
+    private function custom_columns_sub_date( $sub ) {
         return $sub->get_sub_date();
     }
 
@@ -371,8 +361,7 @@ final class NF_Admin_Menus_Submissions extends NF_Abstracts_Submenu
      * @param       $column
      * @return bool
      */
-    private function custom_columns_field( $sub, $column )
-    {
+    private function custom_columns_field( $sub, $column ) {
         if ( false === strpos( $column, 'field_' ) ) return false;
 
         $field_id = str_replace( 'field_', '', $column );
@@ -380,8 +369,7 @@ final class NF_Admin_Menus_Submissions extends NF_Abstracts_Submenu
         return $sub->get_field_value( $field_id );
     }
 
-    private function table_filter_by_form( $vars, $form_id )
-    {
+    private function table_filter_by_form( $vars, $form_id ) {
         if ( ! isset ( $vars[ 'meta_query' ] ) ) {
             $vars[ 'meta_query' ] = array(
                 array(
@@ -395,8 +383,7 @@ final class NF_Admin_Menus_Submissions extends NF_Abstracts_Submenu
         return $vars;
     }
 
-    private function table_filter_by_date( $vars )
-    {
+    private function table_filter_by_date( $vars ) {
         if ( empty( $_GET[ 'begin_date' ] ) || empty( $_GET[ 'end_date' ] ) ) return $vars;
 
         $begin_date = $_GET[ 'begin_date' ];

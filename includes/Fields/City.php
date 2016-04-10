@@ -18,8 +18,7 @@ class NF_Fields_City extends NF_Fields_Textbox
 
     protected $_test_value = 'Cleveland';
 
-    public function __construct()
-    {
+    public function __construct() {
         parent::__construct();
 
         $this->_nicename = __( 'City', 'ninja-forms' );

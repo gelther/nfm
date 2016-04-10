@@ -19,8 +19,7 @@ class NF_Fields_Submit extends NF_Fields_Button
 
     protected $_settings = array( 'label', 'timed_submit', 'processing_label', 'classes' );
 
-    public function __construct()
-    {
+    public function __construct() {
         parent::__construct();
 
         $this->_nicename = __( 'Submit', 'ninja-forms' );
@@ -30,8 +29,7 @@ class NF_Fields_Submit extends NF_Fields_Button
         add_filter( 'nf_sub_hidden_field_types', array( $this, 'hide_field_type' ) );
     }
 
-    function hide_field_type( $field_types )
-    {
+    function hide_field_type( $field_types ) {
         $field_types[] = $this->_name;
 
         return $field_types;

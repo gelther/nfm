@@ -17,8 +17,7 @@ class NF_Fields_Recaptcha extends NF_Abstracts_Field
 
     protected $_test_value = '';
 
-    public function __construct()
-    {
+    public function __construct() {
         parent::__construct();
 
         $this->_nicename = __( 'Recaptcha', 'ninja-forms' );
@@ -56,8 +55,7 @@ class NF_Fields_Recaptcha extends NF_Abstracts_Field
         }
     }
 
-    function hide_field_type( $field_types )
-    {
+    function hide_field_type( $field_types ) {
         $field_types[] = $this->_name;
         return $field_types;
     }

@@ -17,8 +17,7 @@ class NF_Fields_Phone extends NF_Fields_Textbox
 
     protected $_templates = 'tel';
 
-    public function __construct()
-    {
+    public function __construct() {
         parent::__construct();
 
         $this->_nicename = __( 'Phone', 'ninja-forms' );

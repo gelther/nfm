@@ -13,8 +13,7 @@ final class WPN_Helper
      * @param               $value
      * @return array|string
      */
-    public static function addslashes( $value )
-    {
+    public static function addslashes( $value ) {
         $value = is_array( $value ) ?
             array_map( array( 'self', 'addslashes' ), $value ) :
             addslashes( $value );
@@ -25,7 +24,7 @@ final class WPN_Helper
      * @param               $input
      * @return array|string
      */
-    public static function utf8_encode( $input ){
+    public static function utf8_encode( $input ) {
         if ( is_array( $input ) ) {
             return array_map( array( 'self', 'utf8_encode' ), $input );
         } else {
@@ -39,7 +38,7 @@ final class WPN_Helper
      * @param        $subject
      * @return mixed
      */
-    public static function str_replace( $search, $replace, $subject ){
+    public static function str_replace( $search, $replace, $subject ) {
         if ( is_array( $subject ) ) {
             foreach ( $subject as &$oneSubject ) {
                 $oneSubject = WPN_Helper::str_replace( $search, $replace, $oneSubject );
@@ -56,7 +55,7 @@ final class WPN_Helper
      * @param  int          $flag
      * @return array|string
      */
-    public static function html_entity_decode( $value, $flag = ENT_COMPAT ){
+    public static function html_entity_decode( $value, $flag = ENT_COMPAT ) {
         $value = is_array( $value ) ?
             array_map( array( 'self', 'html_entity_decode' ), $value ) :
             html_entity_decode( $value, $flag );
@@ -67,7 +66,7 @@ final class WPN_Helper
      * @param               $value
      * @return array|string
      */
-    public static function htmlspecialchars( $value ){
+    public static function htmlspecialchars( $value ) {
         $value = is_array( $value ) ?
             array_map( array( 'self', 'htmlspecialchars' ), $value ) :
             htmlspecialchars( $value );
@@ -78,7 +77,7 @@ final class WPN_Helper
      * @param               $value
      * @return array|string
      */
-    public static function stripslashes( $value ){
+    public static function stripslashes( $value ) {
         $value = is_array( $value ) ?
             array_map( array( 'self', 'stripslashes' ), $value ) :
             stripslashes( $value );
@@ -89,8 +88,7 @@ final class WPN_Helper
      * @param               $value
      * @return array|string
      */
-    public static function esc_html( $value )
-    {
+    public static function esc_html( $value ) {
         $value = is_array( $value ) ?
             array_map( array( 'self', 'esc_html' ), $value ) :
             esc_html( $value );
@@ -101,8 +99,7 @@ final class WPN_Helper
      * @param               $value
      * @return array|string
      */
-    public static function kses_post( $value )
-    {
+    public static function kses_post( $value ) {
         $value = is_array( $value ) ?
             array_map( array( 'self', 'kses_post' ), $value ) :
             wp_kses_post( $value );
@@ -113,8 +110,7 @@ final class WPN_Helper
      * @param               $value
      * @return array|string
      */
-    public static function strip_tags( $value )
-    {
+    public static function strip_tags( $value ) {
         $value = is_array( $value ) ?
             array_map( array( 'self', 'strip_tags' ), $value ) :
             strip_tags( $value );
@@ -129,8 +125,7 @@ final class WPN_Helper
      * @param        $size
      * @return float
      */
-    public static function string_to_bytes( $size )
-    {
+    public static function string_to_bytes( $size ) {
         // Remove the non-unit characters from the size.
         $unit = preg_replace( '/[^bkmgtpezy]/i', '', $size );
 
@@ -181,8 +176,7 @@ final class WPN_Helper
         return $returnString;
     }
 
-    public static function get_query_string( $key )
-    {
+    public static function get_query_string( $key ) {
         if ( ! isset( $_GET[ $key ] ) ) return '';
 
         $value = self::htmlspecialchars( $_GET[ $key ] );

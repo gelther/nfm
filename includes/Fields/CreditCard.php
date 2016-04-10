@@ -17,8 +17,7 @@ class NF_Fields_CreditCard extends NF_Abstracts_Field
 
     protected $_test_value = '';
 
-    public function __construct()
-    {
+    public function __construct() {
         parent::__construct();
 
         $this->_nicename = __( 'Credit Card', 'ninja-forms' );

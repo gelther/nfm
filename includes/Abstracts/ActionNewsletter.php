@@ -35,8 +35,7 @@ abstract class NF_Abstracts_ActionNewsletter extends NF_Abstracts_Action
     /**
      * Constructor
      */
-    public function __construct()
-    {
+    public function __construct() {
         parent::__construct();
 
         add_action( 'wp_ajax_nf_' . $this->_name . '_get_lists', array( $this, '_get_lists' ) );
@@ -55,8 +54,7 @@ abstract class NF_Abstracts_ActionNewsletter extends NF_Abstracts_Action
     {
     }
 
-    public function _get_lists()
-    {
+    public function _get_lists() {
         check_ajax_referer( 'ninja_forms_ajax_nonce', 'security' );
 
         $lists = $this->get_lists();
@@ -78,8 +76,7 @@ abstract class NF_Abstracts_ActionNewsletter extends NF_Abstracts_Action
     /**
      * PRIVATE METHODS
      */
-    private function get_list_settings()
-    {
+    private function get_list_settings() {
         $label_defaults = array(
             'list'   => 'List',
             'fields' => 'List Field Mapping',
@@ -145,8 +142,7 @@ abstract class NF_Abstracts_ActionNewsletter extends NF_Abstracts_Action
         );
     }
 
-    private function cache_lists( $lists )
-    {
+    private function cache_lists( $lists ) {
         set_transient( $this->_transient, $lists, $this->_transient_expiration );
     }
 }

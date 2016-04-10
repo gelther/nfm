@@ -25,8 +25,7 @@ final class NF_Display_Render
 
     protected static $use_test_values = false;
 
-    public static function localize( $form_id )
-    {
+    public static function localize( $form_id ) {
         if ( isset( $_GET[ 'ninja_forms_test_values' ] ) ) {
             self::$use_test_values = true;
         }
@@ -201,8 +200,7 @@ final class NF_Display_Render
         self::enqueue_scripts( $form_id );
     }
 
-    public static function localize_preview( $form_id )
-    {
+    public static function localize_preview( $form_id ) {
         if ( isset( $_GET[ 'ninja_forms_test_values' ] ) ) {
             self::$use_test_values = true;
         }
@@ -351,8 +349,7 @@ final class NF_Display_Render
         self::enqueue_scripts( $form_id );
     }
 
-    public static function enqueue_scripts( $form_id )
-    {
+    public static function enqueue_scripts( $form_id ) {
         wp_enqueue_media();
         wp_enqueue_style( 'nf-display-structure', Ninja_Forms::$url . 'assets/css/display-structure.css' );
         wp_enqueue_style( 'jBox', Ninja_Forms::$url . 'assets/css/jBox.css' );
@@ -420,8 +417,7 @@ final class NF_Display_Render
         */
     }
 
-    protected static function load_template( $file_name = '' )
-    {
+    protected static function load_template( $file_name = '' ) {
         if ( ! $file_name ) return;
 
         if ( self::is_template_loaded( $file_name ) ) return;
@@ -429,8 +425,7 @@ final class NF_Display_Render
         self::$loaded_templates[] = $file_name;
     }
 
-    public static function output_templates()
-    {
+    public static function output_templates() {
         // Build File Path Hierarchy
         $file_paths = apply_filters( 'ninja_forms_field_template_file_paths', array(
             get_template_directory() . '/ninja-forms/templates/',
@@ -465,8 +460,7 @@ final class NF_Display_Render
     /**
      * UTILITY
      */
-    protected static function is_template_loaded( $template_name )
-    {
+    protected static function is_template_loaded( $template_name ) {
         return ( in_array( $template_name, self::$loaded_templates ) ) ? true : false ;
     }
 

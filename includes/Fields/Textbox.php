@@ -21,8 +21,7 @@ class NF_Fields_Textbox extends NF_Abstracts_Input
 
     protected $_settings = array( 'disable_browser_autocomplete', 'mask', 'custom_mask' );
 
-    public function __construct()
-    {
+    public function __construct() {
         parent::__construct();
 
         $this->_nicename = __( 'Single Line Text', 'ninja-forms' );

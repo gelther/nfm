@@ -6,8 +6,7 @@ final class NF_Admin_Menus_ImportExport extends NF_Abstracts_Submenu
 
     public $page_title = 'Import / Export';
 
-    public function __construct()
-    {
+    public function __construct() {
         add_action( 'plugins_loaded', array( $this, 'import_form_listener' ) );
         add_action( 'plugins_loaded', array( $this, 'export_form_listener' ) );
 
@@ -19,8 +18,7 @@ final class NF_Admin_Menus_ImportExport extends NF_Abstracts_Submenu
         parent::__construct();
     }
 
-    public function import_form_listener()
-    {
+    public function import_form_listener() {
         if ( ! isset( $_FILES[ 'nf_import_form' ] ) || ! $_FILES[ 'nf_import_form' ] ) return;
 
         $this->upload_error_check( $_FILES[ 'nf_import_form' ] );
@@ -36,16 +34,14 @@ final class NF_Admin_Menus_ImportExport extends NF_Abstracts_Submenu
         Ninja_Forms()->form()->import_form( $data );
     }
 
-    public function export_form_listener()
-    {
+    public function export_form_listener() {
         if ( isset( $_REQUEST[ 'nf_export_form' ] ) && $_REQUEST[ 'nf_export_form' ] ) {
             $form_id = $_REQUEST[ 'nf_export_form' ];
             Ninja_Forms()->form( $form_id )->export_form();
         }
     }
 
-    public function import_fields_listener()
-    {
+    public function import_fields_listener() {
         if ( ! isset( $_FILES[ 'nf_import_fields' ] ) || ! $_FILES[ 'nf_import_fields' ] ) return;
 
         $this->upload_error_check( $_FILES[ 'nf_import_fields' ] );
@@ -59,8 +55,7 @@ final class NF_Admin_Menus_ImportExport extends NF_Abstracts_Submenu
         }
     }
 
-    public function export_fields_listener()
-    {
+    public function export_fields_listener() {
         if ( isset( $_REQUEST[ 'nf_export_fields' ] ) && $_REQUEST[ 'nf_export_fields' ] ) {
             $field_ids = $_REQUEST[ 'nf_export_fields' ];
 
@@ -83,8 +78,7 @@ final class NF_Admin_Menus_ImportExport extends NF_Abstracts_Submenu
     }
 
 
-    public function display()
-    {
+    public function display() {
         $tabs = apply_filters( 'ninja_forms_import_export_tabs', array(
             'forms'           => __( 'Form', 'ninja-forms' ),
             'favorite_fields' => __( 'Favorite Fields', 'ninja-forms' )
@@ -105,8 +99,7 @@ final class NF_Admin_Menus_ImportExport extends NF_Abstracts_Submenu
         Ninja_Forms::template( 'admin-menu-import-export.html.php', compact( 'tabs', 'active_tab' ) );
     }
 
-    public function add_meta_boxes()
-    {
+    public function add_meta_boxes() {
         /**
          * Forms
          */
@@ -142,24 +135,20 @@ final class NF_Admin_Menus_ImportExport extends NF_Abstracts_Submenu
         );
     }
 
-    public function template_import_forms()
-    {
+    public function template_import_forms() {
         Ninja_Forms::template( 'admin-metabox-import-export-forms-import.html.php' );
     }
 
-    public function template_export_forms()
-    {
+    public function template_export_forms() {
         $forms = Ninja_Forms()->form()->get_forms();
         Ninja_Forms::template( 'admin-metabox-import-export-forms-export.html.php', compact( 'forms' ) );
     }
 
-    public function template_import_favorite_fields()
-    {
+    public function template_import_favorite_fields() {
         Ninja_Forms::template( 'admin-metabox-import-export-favorite-fields-import.html.php' );
     }
 
-    public function template_export_favorite_fields()
-    {
+    public function template_export_favorite_fields() {
         $fields = Ninja_Forms()->form()->get_fields( array( 'saved' => 1 ) );
         Ninja_Forms::template( 'admin-metabox-import-export-favorite-fields-export.html.php', compact( 'fields' ) );
     }
@@ -169,8 +158,7 @@ final class NF_Admin_Menus_ImportExport extends NF_Abstracts_Submenu
     | Backwards Compatibility
     |--------------------------------------------------------------------------
      */
-    public function import_fields_backwards_compatibility( $field )
-    {
+    public function import_fields_backwards_compatibility( $field ) {
         //TODO: This was copied over. Instead need to abstract backwards compatibility for re-use.
         // Flatten field settings array
         if ( isset( $field[ 'data' ] ) ) {
@@ -320,8 +308,7 @@ final class NF_Admin_Menus_ImportExport extends NF_Abstracts_Submenu
         return $field;
     }
 
-    private function upload_error_check( $file )
-    {
+    private function upload_error_check( $file ) {
         if ( ! $file[ 'error' ] ) return;
 
         switch ( $file[ 'error' ] ) {

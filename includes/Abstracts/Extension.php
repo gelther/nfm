@@ -70,8 +70,7 @@ final class NF_Abstracts_Extension
      * @staticvar array $instance
      * @return Plugin Highlander Instance
      */
-    public static function instance()
-    {
+    public static function instance() {
         if ( ! isset( self::$instance ) && ! (self::$instance instanceof NF_Abstracts_Extension) ) {
             self::$instance = new NF_Abstracts_Extension();
 
@@ -86,8 +85,7 @@ final class NF_Abstracts_Extension
         }
     }
 
-    public function autoloader( $class_name )
-    {
+    public function autoloader( $class_name ) {
         if ( class_exists( $class_name ) ) return;
 
         if ( ! $this->autoloader_prefix ) {
@@ -118,8 +116,7 @@ final class NF_Abstracts_Extension
  * @since 3.0
  * @return Plugin Highlander Instance
  */
-function NF_Abstracts_Extension()
-{
+function NF_Abstracts_Extension() {
     return NF_Abstracts_Extension::instance();
 }
 

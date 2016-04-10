@@ -16,8 +16,7 @@ class NF_Fields_Address2 extends NF_Fields_Textbox
 
     protected $_templates = array( 'address2', 'address' );
 
-    public function __construct()
-    {
+    public function __construct() {
         parent::__construct();
 
         $this->_nicename = __( 'Address 2', 'ninja-forms' );

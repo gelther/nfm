@@ -17,8 +17,7 @@ class NF_Fields_Button extends NF_Abstracts_Field
 
     protected $_settings_only = array( 'label' );
 
-    public function __construct()
-    {
+    public function __construct() {
         parent::__construct();
 
         $this->_settings[ 'label' ][ 'width' ] = 'full';

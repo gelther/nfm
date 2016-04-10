@@ -25,8 +25,7 @@ class NF_Fields_Hidden extends NF_Abstracts_Input
 
     protected $_use_merge_tags_include = array( 'calculations' );
 
-    public function __construct()
-    {
+    public function __construct() {
         parent::__construct();
 
         $use_merge_tags = array( 'include' => array( 'calculations' ) );

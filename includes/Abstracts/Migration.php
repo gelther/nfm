@@ -10,8 +10,7 @@ abstract class NF_Abstracts_Migration
 
     public $flag = '';
 
-    public function __construct( $table_name, $flag )
-    {
+    public function __construct( $table_name, $flag ) {
         global $wpdb;
 
         $this->table_name = $wpdb->prefix . $table_name;
@@ -19,8 +18,7 @@ abstract class NF_Abstracts_Migration
         $this->charset_collate = $wpdb->get_charset_collate();
     }
 
-    public function _run()
-    {
+    public function _run() {
         // Check the flag
         if ( get_option( $this->flag, false ) ) return;
 

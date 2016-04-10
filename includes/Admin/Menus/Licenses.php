@@ -7,15 +7,13 @@ final class NF_Admin_Menus_Licenses
 {
     private $licenses = array();
 
-    public function __construct()
-    {
+    public function __construct() {
         add_action( 'admin_init', array( $this, 'register_licenses' ), 10 );
         add_action( 'admin_init', array( $this, 'submit_listener' ), 11 );
         add_action( 'admin_init', array( $this, 'add_meta_boxes' ), 12 );
     }
 
-    public function submit_listener()
-    {
+    public function submit_listener() {
         if ( ! isset( $_POST[ 'ninja_forms_license' ] ) || ! $_POST[ 'ninja_forms_license' ] ) return;
 
         $key    = sanitize_text_field( $_POST[ 'ninja_forms_license' ][ 'key' ] );
@@ -32,13 +30,11 @@ final class NF_Admin_Menus_Licenses
         }
     }
 
-    public function register_licenses()
-    {
+    public function register_licenses() {
         $this->licenses = apply_filters( 'ninja_forms_settings_licenses_addons', array() );
     }
 
-    public function add_meta_boxes()
-    {
+    public function add_meta_boxes() {
         add_meta_box(
             'nf_settings_licenses',
             __( 'Add-On Licenses', 'ninja-forms' ),
@@ -47,8 +43,7 @@ final class NF_Admin_Menus_Licenses
         );
     }
 
-    public function display()
-    {
+    public function display() {
         $data = array();
         foreach ( $this->licenses as $license ) {
             $data[] = array(
@@ -64,13 +59,11 @@ final class NF_Admin_Menus_Licenses
         Ninja_Forms()->template( 'admin-menu-settings-licenses.html.php', array( 'licenses' => $data ) );
     }
 
-    private function get_license( $name )
-    {
+    private function get_license( $name ) {
         return Ninja_Forms()->get_setting( $name . '_license' );
     }
 
-    private function activate_license( $name, $key )
-    {
+    private function activate_license( $name, $key ) {
         foreach ( $this->licenses as $license ) {
 
             if ( ! $name == $license->product_name ) continue;
@@ -79,8 +72,7 @@ final class NF_Admin_Menus_Licenses
         }
     }
 
-    private function deactivate_license( $name )
-    {
+    private function deactivate_license( $name ) {
         foreach ( $this->licenses as $license ) {
 
             if ( ! $name == $license->product_name ) continue;

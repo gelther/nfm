@@ -13,8 +13,7 @@ abstract class NF_Abstracts_MergeTags
 
     protected $_default_group = true;
 
-    public function __construct()
-    {
+    public function __construct() {
         add_filter( 'kbj_test', array( $this, 'replace' ) );
 
         add_filter( 'ninja_forms_render_default_value', array( $this, 'replace' ) );
@@ -28,8 +27,7 @@ abstract class NF_Abstracts_MergeTags
         add_filter( 'ninja_forms_run_action_settings_preview', array( $this, 'replace' ) );
     }
 
-    public function replace( $subject )
-    {
+    public function replace( $subject ) {
         foreach ( $this->merge_tags as $merge_tag ) {
 
             if ( is_array( $subject ) ) {
@@ -48,23 +46,19 @@ abstract class NF_Abstracts_MergeTags
         return $subject;
     }
 
-    public function get_id()
-    {
+    public function get_id() {
         return $this->id;
     }
 
-    public function get_title()
-    {
+    public function get_title() {
         return $this->title;
     }
 
-    public function get_merge_tags()
-    {
+    public function get_merge_tags() {
         return $this->merge_tags;
     }
 
-    public function is_default_group()
-    {
+    public function is_default_group() {
         return $this->_default_group;
     }
 

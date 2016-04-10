@@ -2,15 +2,13 @@
 
 class NF_AJAX_Controllers_SavedFields extends NF_Abstracts_Controller
 {
-    public function __construct()
-    {
+    public function __construct() {
         add_action( 'wp_ajax_nf_create_saved_field', array( $this, 'create' ) );
         add_action( 'wp_ajax_nf_update_saved_field', array( $this, 'update' ) );
         add_action( 'wp_ajax_nf_delete_saved_field', array( $this, 'delete' ) );
     }
 
-    public function create()
-    {
+    public function create() {
         check_ajax_referer( 'ninja_forms_ajax_nonce', 'security' );
 
         if ( ! isset( $_POST[ 'field' ] ) ) {
@@ -30,8 +28,7 @@ class NF_AJAX_Controllers_SavedFields extends NF_Abstracts_Controller
         $this->_respond();
     }
 
-    public function update()
-    {
+    public function update() {
         check_ajax_referer( 'ninja_forms_ajax_nonce', 'security' );
 
         if ( ! isset( $_POST[ 'field' ] ) ) {
@@ -42,8 +39,7 @@ class NF_AJAX_Controllers_SavedFields extends NF_Abstracts_Controller
         $this->_respond();
     }
 
-    public function delete()
-    {
+    public function delete() {
         check_ajax_referer( 'ninja_forms_ajax_nonce', 'security' );
 
         if ( ! isset( $_POST[ 'field' ] ) ) {
