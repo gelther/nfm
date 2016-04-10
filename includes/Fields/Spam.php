@@ -29,7 +29,7 @@ class NF_Fields_Spam extends NF_Abstracts_Input
 
         // Manually set Field Key and stop tracking.
         $this->_settings[ 'key' ][ 'value' ]        = 'spam';
-        $this->_settings[ 'manual_key' ][ 'value' ] = TRUE;
+        $this->_settings[ 'manual_key' ][ 'value' ] = true;
 
 
         // Default Required setting to TRUE and hide setting.
