@@ -29,7 +29,6 @@ class NF_Admin_Notices
 
     // Basic actions to run
     public function __construct(){
-
         // Runs the admin notice ignore function incase a dismiss button has been clicked
         add_action( 'admin_init', array( $this, 'admin_notice_ignore' ) );
 
@@ -40,7 +39,6 @@ class NF_Admin_Notices
 
     // Checks to ensure notices aren't disabled and the user has the correct permissions.
     public function nf_admin_notice() {
-
         $nf_settings = get_option( 'ninja_forms_settings' );
         if ( ! isset( $nf_settings[ 'disable_admin_notices' ] ) || ( isset( $nf_settings[ 'disable_admin_notices' ] ) && $nf_settings[ 'disable_admin_notices' ] == 0 ) ){
             if ( current_user_can( apply_filters( 'ninja_forms_admin_parent_menu_capabilities', 'manage_options' ) ) ) {
@@ -53,7 +51,6 @@ class NF_Admin_Notices
 
     // Primary notice function that can be called from an outside function sending necessary variables
     public function admin_notice( $admin_notices ) {
-
         // Check options
         if ( ! $this->nf_admin_notice() ) {
             return false;
@@ -142,7 +139,6 @@ class NF_Admin_Notices
 
     // Spam protection check
     public function anti_notice_spam() {
-
         if ( $this->notice_spam >= $this->notice_spam_max ) {
             return true;
         }
@@ -152,7 +148,6 @@ class NF_Admin_Notices
 
     // Ignore function that gets ran at admin init to ensure any messages that were dismissed get marked
     public function admin_notice_ignore() {
-
         // If user clicks to ignore the notice, update the option to not show it again
         if ( isset( $_GET[ 'nf_admin_notice_ignore' ] ) && current_user_can( apply_filters( 'ninja_forms_admin_parent_menu_capabilities', 'manage_options' ) ) ) {
 
@@ -167,7 +162,6 @@ class NF_Admin_Notices
 
     // Temp Ignore function that gets ran at admin init to ensure any messages that were temp dismissed get their start date changed
     public function admin_notice_temp_ignore() {
-
         // If user clicks to temp ignore the notice, update the option to change the start date - default interval of 14 days
         if ( isset( $_GET[ 'nf_admin_notice_temp_ignore' ] ) && current_user_can( apply_filters( 'ninja_forms_admin_parent_menu_capabilities', 'manage_options' ) ) ) {
 
@@ -189,7 +183,6 @@ class NF_Admin_Notices
     }
 
     public function admin_notice_pages_blacklist( $pages ) {
-
         foreach( $pages as $key => $page ) {
             if ( is_array( $page ) ) {
                 if ( isset( $_GET[ 'page' ] ) && $_GET[ 'page' ] == $page[ 0 ] && isset( $_GET[ 'tab' ] ) && $_GET[ 'tab' ] == $page[ 1 ] ) {
@@ -212,7 +205,6 @@ class NF_Admin_Notices
     // Function accepts dashboard as a special check and also whatever is passed to page or tab as parameters
     // The above example will display on dashboard and all of the pages that have page=ninja-forms and any page=ninja-forms&tab=builder which is redundant in the example
     public function admin_notice_pages( $pages ) {
-
         foreach( $pages as $key => $page ) {
             if ( is_array( $page ) ) {
                 if ( isset( $_GET[ 'page' ] ) && $_GET[ 'page' ] == $page[ 0 ] && isset( $_GET[ 'tab' ] ) && $_GET[ 'tab' ] == $page[ 1 ] ) {
@@ -235,7 +227,6 @@ class NF_Admin_Notices
 
     // Required fields check
     public function required_fields( $fields ) {
-
         if ( ! isset( $fields[ 'msg' ] ) || ( isset( $fields[ 'msg' ] ) && empty( $fields[ 'msg' ] ) ) ) {
             return true;
         }
