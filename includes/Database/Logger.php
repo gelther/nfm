@@ -64,7 +64,7 @@ final class NF_Database_Logger extends NF_Abstracts_Logger
         $replace = array();
         foreach ( $context as $key => $val ) {
 
-            if( is_array( $val ) ) continue;
+            if ( is_array( $val ) ) continue;
 
             $replace['{' . $key . '}'] = $val;
         }
