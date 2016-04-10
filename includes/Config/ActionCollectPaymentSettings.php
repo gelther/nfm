@@ -23,4 +23,4 @@ return apply_filters( 'ninja_forms_action_collect_payment_settings', array(
         'group'   => 'primary',
     ),
 
-));
+) );
