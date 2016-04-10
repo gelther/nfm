@@ -2,7 +2,7 @@
 
 return apply_filters( 'ninja_forms_from_display_settings', array(
 
-    /*
+    /**
     * FORM TITLE
     */
 
@@ -16,7 +16,7 @@ return apply_filters( 'ninja_forms_from_display_settings', array(
 
     ),
 
-    /*
+    /**
     * SHOW FORM TITLE
     */
 
@@ -30,7 +30,7 @@ return apply_filters( 'ninja_forms_from_display_settings', array(
 
     ),
 
-    /*
+    /**
     * CLEAR SUCCESSFULLY COMPLETED FORM
     */
 
@@ -46,7 +46,7 @@ return apply_filters( 'ninja_forms_from_display_settings', array(
         //If this box is checked, Ninja Forms will clear the form values after it has been successfully submitted.
     ),
 
-    /*
+    /**
     * HIDE SUCCESSFULLY COMPLETED FORMS
     */
 
@@ -60,7 +60,7 @@ return apply_filters( 'ninja_forms_from_display_settings', array(
         'help'  => __( 'If this box is checked, Ninja Forms will hide the form after it has been successfully submitted.', 'ninja-forms' ),
     ),
 
-    /*
+    /**
      * Currency
      */
 
@@ -80,7 +80,7 @@ return apply_filters( 'ninja_forms_from_display_settings', array(
         'use_merge_tags' => FALSE
     ),
 
-    /*
+    /**
      * Classes
      */
 
@@ -112,7 +112,7 @@ return apply_filters( 'ninja_forms_from_display_settings', array(
         ),
     ),
 
-    /*
+    /**
      * KEY
      */
 
@@ -126,7 +126,7 @@ return apply_filters( 'ninja_forms_from_display_settings', array(
         'help'  => __( 'Programmatic name that can be used to reference this form.', 'ninja-forms' ),
     ),
 
-    /*
+    /**
      * ADD SUBMIT CHECKBOX
      */
 
