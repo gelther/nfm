@@ -27,7 +27,6 @@ abstract class NF_Abstracts_Controller
         //This section intentionally left blank.
     }
 
-
     /**
      * PROTECTED METHODS
      */
@@ -48,4 +47,5 @@ abstract class NF_Abstracts_Controller
 
         wp_die(); // this is required to terminate immediately and return a proper response
     }
+
 }
