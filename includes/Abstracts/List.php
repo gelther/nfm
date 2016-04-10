@@ -78,4 +78,5 @@ abstract class NF_Abstracts_List extends NF_Abstracts_Field
 
         return $options;
     }
+
 }
