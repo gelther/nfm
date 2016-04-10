@@ -20,4 +20,5 @@ class NF_Fields_File extends NF_Abstracts_Field
 
         $this->_nicename = __( 'File', 'ninja-forms' );
     }
+
 }
