@@ -55,7 +55,7 @@ class NF_AJAX_Controllers_SavedFields extends NF_Abstracts_Controller
 
         $errors = Ninja_Forms()->form()->get_field( $id )->delete();
 
-        $this->_data[ 'id' ] = $id;
+        $this->_data[ 'id' ]     = $id;
         $this->_data[ 'errors' ] = $errors;
 
         $this->_respond();
