@@ -163,7 +163,7 @@ final class WPN_Helper
                 switch ( gettype( $workArray[$i] ) ) {
                     // Manually set some strings
                     case "NULL":     $_spFormat = ''; break;
-                    case "boolean":  $_spFormat = ($workArray[$i] == true) ? 'true': 'false'; break;
+                    case "boolean":  $_spFormat = ($workArray[$i] == TRUE) ? 'true': 'false'; break;
                     // Make sure sprintf has a good datatype to work with
                     case "integer":  $_spFormat = '%i'; break;
                     case "double":   $_spFormat = '%0.2f'; break;
