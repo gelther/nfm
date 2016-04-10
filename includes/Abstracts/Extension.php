@@ -102,6 +102,7 @@ final class NF_Abstracts_Extension
             }
         }
     }
+
 }
 
 /**
