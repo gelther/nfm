@@ -13,19 +13,19 @@ class NF_AJAX_Controllers_SavedFields extends NF_Abstracts_Controller
     {
         check_ajax_referer( 'ninja_forms_ajax_nonce', 'security' );
 
-        if( ! isset( $_POST[ 'field' ] ) ){
+        if( ! isset( $_POST['field'] ) ){
             $this->_errors[] = 'Field Not Found';
             $this->_respond();
         }
 
-        $field_settings = json_decode( stripslashes( $_POST[ 'field' ] ), ARRAY_A );
+        $field_settings = json_decode( stripslashes( $_POST['field'] ), ARRAY_A );
 
         $field = Ninja_Forms()->form()->field()->get();
         $field->update_settings( $field_settings );
         $field->update_setting( 'saved', 1 );
         $field->save();
 
-        $this->_data[ 'id' ] = $field->get_id();
+        $this->_data['id'] = $field->get_id();
 
         $this->_respond();
     }
@@ -34,7 +34,7 @@ class NF_AJAX_Controllers_SavedFields extends NF_Abstracts_Controller
     {
         check_ajax_referer( 'ninja_forms_ajax_nonce', 'security' );
 
-        if( ! isset( $_POST[ 'field' ] ) ){
+        if( ! isset( $_POST['field'] ) ){
             $this->_errors[] = 'Field Not Found';
             $this->_respond();
         }
@@ -46,17 +46,17 @@ class NF_AJAX_Controllers_SavedFields extends NF_Abstracts_Controller
     {
         check_ajax_referer( 'ninja_forms_ajax_nonce', 'security' );
 
-        if( ! isset( $_POST[ 'field' ] ) ){
+        if( ! isset( $_POST['field'] ) ){
             $this->_errors[] = 'Field Not Found';
             $this->_respond();
         }
 
-        $id = absint( $_POST[ 'field' ][ 'id' ] );
+        $id = absint( $_POST['field']['id'] );
 
         $errors = Ninja_Forms()->form()->get_field( $id )->delete();
 
-        $this->_data[ 'id' ]     = $id;
-        $this->_data[ 'errors' ] = $errors;
+        $this->_data['id']     = $id;
+        $this->_data['errors'] = $errors;
 
         $this->_respond();
     }
