@@ -629,7 +629,7 @@ return apply_filters( 'ninja_forms_field_settings', array(
                 'timed_submit_timer'             => array(
                     'name'  => 'timed_submit_timer',
                     'type'  => 'textbox',
-                    'label' => __( 'Label' , 'ninja-forms' ),
+                    'label' => __( 'Label', 'ninja-forms' ),
                     // This text was located below the element '%n will be used to signfify the number of seconds'
                     'value' => __( 'Please wait %n seconds', 'ninja-forms' ),
                     'width' => '',
