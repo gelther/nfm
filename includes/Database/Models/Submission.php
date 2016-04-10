@@ -23,8 +23,7 @@ final class NF_Database_Models_Submission
 
     protected $_extra_values = array();
 
-    public function __construct( $id = '', $form_id = '' )
-    {
+    public function __construct( $id = '', $form_id = '' ) {
         $this->_id      = $id;
         $this->_form_id = $form_id;
 
@@ -50,44 +49,36 @@ final class NF_Database_Models_Submission
      *
      * @return int
      */
-    public function get_id()
-    {
+    public function get_id() {
         return intval( $this->_id );
     }
 
-    public function get_status()
-    {
+    public function get_status() {
         return $this->_status;
     }
 
-    public function get_user()
-    {
+    public function get_user() {
         return get_user_by( 'id', $this->_user_id );
     }
 
-    public function get_form_id()
-    {
+    public function get_form_id() {
         return intval( $this->_form_id );
     }
 
-    public function get_form_title()
-    {
+    public function get_form_title() {
         $form = Ninja_Forms()->form( $this->_form_id )->get();
         return $form->get_setting( 'title' );
     }
 
-    public function get_seq_num()
-    {
+    public function get_seq_num() {
         return intval( $this->_seq_num );
     }
 
-    public function get_sub_date( $format = 'm/d/Y' )
-    {
+    public function get_sub_date( $format = 'm/d/Y' ) {
         return date( $format, strtotime( $this->_sub_date ) );
     }
 
-    public function get_mod_date( $format = 'm/d/Y' )
-    {
+    public function get_mod_date( $format = 'm/d/Y' ) {
         return date( $format, strtotime( $this->_mod_date ) );
     }
 
@@ -99,8 +90,7 @@ final class NF_Database_Models_Submission
      * @param  int|string $field_ref
      * @return string
      */
-    public function get_field_value( $field_ref )
-    {
+    public function get_field_value( $field_ref ) {
         $field_id = ( is_int( $field_ref ) ) ? $field_ref : $this->get_field_id_by_key( $field_ref );
 
         $field = '_field_' . $field_id;
@@ -115,8 +105,7 @@ final class NF_Database_Models_Submission
      *
      * @return array|mixed
      */
-    public function get_field_values()
-    {
+    public function get_field_values() {
         if ( ! empty( $this->_field_values ) ) return $this->_field_values;
 
         return $this->_field_values = get_post_meta( $this->_id );
@@ -129,8 +118,7 @@ final class NF_Database_Models_Submission
      * @param  $value
      * @return $this
      */
-    public function update_field_value( $field_ref, $value )
-    {
+    public function update_field_value( $field_ref, $value ) {
         $field_id = ( is_int( $field_ref ) ) ? $field_ref : $this->get_field_id_by_key( $field_ref );
 
         $this->_field_values[ $field_id ] = WPN_Helper::kses_post( $value );
@@ -144,8 +132,7 @@ final class NF_Database_Models_Submission
      * @param  $data
      * @return $this
      */
-    public function update_field_values( $data )
-    {
+    public function update_field_values( $data ) {
         foreach ( $data as $field_ref => $value ) {
             $this->update_field_value( $field_ref, $value );
         }
@@ -153,8 +140,7 @@ final class NF_Database_Models_Submission
         return $this;
     }
 
-    public function get_extra_value( $key )
-    {
+    public function get_extra_value( $key ) {
         if ( ! isset( $this->_extra_values[ $key ] ) ||  ! $this->_extra_values[ $key ] ) {
             $id                          = ( $this->_id ) ? $this->_id : 0;
             $this->_extra_values[ $key ] = get_post_meta( $id, $key, true );
@@ -163,8 +149,7 @@ final class NF_Database_Models_Submission
         return $this->_extra_values[ $key ];
     }
 
-    public function get_extra_values( $keys )
-    {
+    public function get_extra_values( $keys ) {
         $values = array();
 
         foreach ( $keys as $key ) {
@@ -174,15 +159,13 @@ final class NF_Database_Models_Submission
         return $values;
     }
 
-    public function update_extra_value( $key, $value )
-    {
+    public function update_extra_value( $key, $value ) {
         if ( property_exists( $this, $key ) ) return false;
 
         return $this->_extra_values[ $key ] = $value;
     }
 
-    public function update_extra_values( $values )
-    {
+    public function update_extra_values( $values ) {
         foreach ( $values as $key => $value ) {
             $this->update_extra_value( $key, $value );
         }
@@ -195,8 +178,7 @@ final class NF_Database_Models_Submission
      * @param  array $where
      * @return array
      */
-    public function find( $form_id, array $where = array() )
-    {
+    public function find( $form_id, array $where = array() ) {
         $this->_form_id = $form_id;
 
         $args = array(
@@ -220,8 +202,7 @@ final class NF_Database_Models_Submission
     /**
      * Delete Submission
      */
-    public function delete()
-    {
+    public function delete() {
         if ( ! $this->_id ) return;
 
         wp_delete_post( $this->_id );
@@ -232,8 +213,7 @@ final class NF_Database_Models_Submission
      *
      * @return $this |NF_Database_Models_Submission|void
      */
-    public function save()
-    {
+    public function save() {
         if ( ! $this->_id ) {
 
             $sub = array(
@@ -255,8 +235,7 @@ final class NF_Database_Models_Submission
         return $this->_save_field_values();
     }
 
-    public static function export( $form_id, array $sub_ids = array(), $return = false )
-    {
+    public static function export( $form_id, array $sub_ids = array(), $return = false ) {
         //TODO: Set Date Format from Plugin Settings
         $date_format = 'm/d/Y';
 
@@ -355,8 +334,7 @@ final class NF_Database_Models_Submission
      * @param  $value
      * @return $this
      */
-    protected function _save_field_value( $field_id, $value )
-    {
+    protected function _save_field_value( $field_id, $value ) {
         update_post_meta( $this->_id, '_field_' . $field_id, $value );
 
         return $this;
@@ -367,8 +345,7 @@ final class NF_Database_Models_Submission
      *
      * @return $this |void
      */
-    protected function _save_field_values()
-    {
+    protected function _save_field_values() {
         if ( ! $this->_field_values ) return false;
 
         foreach ( $this->_field_values as $field_id => $value ) {
@@ -398,8 +375,7 @@ final class NF_Database_Models_Submission
      * @param  array $where
      * @return array
      */
-    protected function format_meta_query( array $where = array() )
-    {
+    protected function format_meta_query( array $where = array() ) {
         $return = array(
             array(
                 'key'   => '_form_id',
@@ -423,8 +399,7 @@ final class NF_Database_Models_Submission
      * @param        $field_key
      * @return mixed
      */
-    protected function get_field_id_by_key( $field_key )
-    {
+    protected function get_field_id_by_key( $field_key ) {
         return $field_key;
     }
 
