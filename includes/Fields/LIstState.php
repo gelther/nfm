@@ -44,4 +44,5 @@ class NF_Fields_ListState extends NF_Abstracts_List
 
         return $options;
     }
+
 }
