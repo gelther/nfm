@@ -161,7 +161,7 @@ final class NF_Database_Models_Form extends NF_Abstracts_Model
         $fields = Ninja_Forms()->form( $form_id )->get_fields();
 
         foreach( $fields as $field ){
-            $export['fields'][] = $field->get_settings();
+            $export[ 'fields' ][] = $field->get_settings();
         }
 
         $actions = Ninja_Forms()->form( $form_id )->get_actions();
@@ -297,13 +297,13 @@ final class NF_Database_Models_Form extends NF_Abstracts_Model
     {
         // Remove `_` from type
         if( isset( $action[ 'type' ] ) ) {
-            $action['type'] = str_replace( '_', '', $action['type'] );
+            $action[ 'type' ] = str_replace( '_', '', $action[ 'type' ] );
         }
 
         // Convert `name` to `label`
         if( isset( $action[ 'name' ] ) ) {
-            $action['label'] = $action['name'];
-            unset( $action['name'] );
+            $action[ 'label' ] = $action[ 'name' ];
+            unset( $action[ 'name' ] );
         }
 
         return apply_filters( 'ninja_forms_upgrade_action_' . $action[ 'type' ], $action );
@@ -352,17 +352,17 @@ final class NF_Database_Models_Form extends NF_Abstracts_Model
                     default:
                         $method = '';
                 }
-                $field['default'] = $method . "\r\n";
+                $field[ 'default' ] = $method . "\r\n";
 
-                if ( 'eq' == $field['calc_method'] && isset( $field['calc_eq'] ) ) {
-                    $field['default'] .= $field['calc_eq'];
+                if ( 'eq' == $field[ 'calc_method' ] && isset( $field[ 'calc_eq' ] ) ) {
+                    $field[ 'default' ] .= $field[ 'calc_eq' ];
                 }
 
-                if ( 'fields' == $field['calc_method'] && isset( $field['calc'] ) ) {
+                if ( 'fields' == $field[ 'calc_method' ] && isset( $field[ 'calc' ] ) ) {
                     // TODO: Support 'operations and fields (advanced)' calculations.
                 }
 
-                if ( 'auto' == $field['calc_method'] && isset( $field['calc'] ) ) {
+                if ( 'auto' == $field[ 'calc_method' ] && isset( $field[ 'calc' ] ) ) {
                     // TODO: Support 'auto-totaling' calculations.
                 }
             }
@@ -375,7 +375,7 @@ final class NF_Database_Models_Form extends NF_Abstracts_Model
         if( isset( $field[ 'email' ] ) ){
 
             if( 'textbox' == $field[ 'type' ] && $field[ 'email' ] ) {
-                $field['type'] = 'email';
+                $field[ 'type' ] = 'email';
             }
             unset( $field[ 'email' ] );
         }
@@ -423,17 +423,17 @@ final class NF_Database_Models_Form extends NF_Abstracts_Model
 
             if ( isset( $field[ 'list_type' ] ) ) {
 
-                if ( 'dropdown' == $field['list_type'] ) {
-                    $field['type'] = 'listselect';
+                if ( 'dropdown' == $field[ 'list_type' ] ) {
+                    $field[ 'type' ] = 'listselect';
                 }
-                if ( 'radio' == $field['list_type'] ) {
-                    $field['type'] = 'listradio';
+                if ( 'radio' == $field[ 'list_type' ] ) {
+                    $field[ 'type' ] = 'listradio';
                 }
-                if ( 'checkbox' == $field['list_type'] ) {
-                    $field['type'] = 'listcheckbox';
+                if ( 'checkbox' == $field[ 'list_type' ] ) {
+                    $field[ 'type' ] = 'listcheckbox';
                 }
-                if ( 'multi' == $field['list_type'] ) {
-                    $field['type'] = 'listmultiselect';
+                if ( 'multi' == $field[ 'list_type' ] ) {
+                    $field[ 'type' ] = 'listmultiselect';
                 }
             }
 
