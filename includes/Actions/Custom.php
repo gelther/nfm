@@ -56,4 +56,5 @@ final class NF_Actions_Custom extends NF_Abstracts_Action
 
         return $data;
     }
+
 }
