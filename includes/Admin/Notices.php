@@ -68,7 +68,7 @@ class NF_Admin_Notices
                 || isset( $admin_notices[ $slug ][ 'blacklist' ] ) && is_array( $admin_notices[ $slug ][ 'blacklist' ] )
             ) {
 
-                if( ( isset( $admin_notices[ $slug ][ 'blacklist' ] ) && $this->admin_notice_pages_blacklist( $admin_notices[ $slug ][ 'blacklist' ] ) )
+                if ( ( isset( $admin_notices[ $slug ][ 'blacklist' ] ) && $this->admin_notice_pages_blacklist( $admin_notices[ $slug ][ 'blacklist' ] ) )
                     || ( isset( $admin_notices[ $slug ][ 'pages' ] ) && ! $this->admin_notice_pages( $admin_notices[ $slug ][ 'pages' ] ) )
                 ) {
                     return false;
@@ -183,7 +183,7 @@ class NF_Admin_Notices
     }
 
     public function admin_notice_pages_blacklist( $pages ) {
-        foreach( $pages as $key => $page ) {
+        foreach ( $pages as $key => $page ) {
             if ( is_array( $page ) ) {
                 if ( isset( $_GET[ 'page' ] ) && $_GET[ 'page' ] == $page[ 0 ] && isset( $_GET[ 'tab' ] ) && $_GET[ 'tab' ] == $page[ 1 ] ) {
                     return true;
@@ -205,7 +205,7 @@ class NF_Admin_Notices
     // Function accepts dashboard as a special check and also whatever is passed to page or tab as parameters
     // The above example will display on dashboard and all of the pages that have page=ninja-forms and any page=ninja-forms&tab=builder which is redundant in the example
     public function admin_notice_pages( $pages ) {
-        foreach( $pages as $key => $page ) {
+        foreach ( $pages as $key => $page ) {
             if ( is_array( $page ) ) {
                 if ( isset( $_GET[ 'page' ] ) && $_GET[ 'page' ] == $page[ 0 ] && isset( $_GET[ 'tab' ] ) && $_GET[ 'tab' ] == $page[ 1 ] ) {
                     return true;
