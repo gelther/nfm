@@ -3,8 +3,8 @@
 return apply_filters( 'ninja_forms_from_calculation_settings', array(
 
     /**
-    * Calculation
-    */
+     * Calculation
+     */
 
     'calculations' => array(
         'name'           => 'calculations',
