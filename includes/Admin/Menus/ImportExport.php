@@ -107,7 +107,7 @@ final class NF_Admin_Menus_ImportExport extends NF_Abstracts_Submenu
 
     public function add_meta_boxes()
     {
-        /*
+        /**
          * Forms
          */
         add_meta_box(
@@ -124,7 +124,7 @@ final class NF_Admin_Menus_ImportExport extends NF_Abstracts_Submenu
             'nf_import_export_forms'
         );
 
-        /*
+        /**
          * FAVORITE FIELDS
          */
         add_meta_box(
@@ -164,7 +164,7 @@ final class NF_Admin_Menus_ImportExport extends NF_Abstracts_Submenu
         Ninja_Forms::template( 'admin-metabox-import-export-favorite-fields-export.html.php', compact( 'fields' ) );
     }
 
-    /*
+    /**
     |--------------------------------------------------------------------------
     | Backwards Compatibility
     |--------------------------------------------------------------------------
