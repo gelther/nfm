@@ -36,4 +36,5 @@ class NF_Fields_Hidden extends NF_Abstracts_Input
 
         $this->_nicename = __( 'Hidden', 'ninja-forms' );
     }
+
 }
