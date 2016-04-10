@@ -1,7 +1,6 @@
 <?php
 /*
 function nf_tmp_file_upload() {
-
     if( $_FILES ) {
         $file = array_values($_FILES)[0];
 
