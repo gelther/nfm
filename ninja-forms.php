@@ -368,7 +368,6 @@ if ( get_option( 'ninja_forms_load_deprecated', false )  && ! isset( $_POST[ 'nf
              * It's Ninja Time: Hook for Extensions
              */
             do_action( 'ninja_forms_loaded' );
-
         }
 
         /**
@@ -490,7 +489,6 @@ if ( get_option( 'ninja_forms_load_deprecated', false )  && ! isset( $_POST[ 'nf
             update_option( 'ninja_forms_settings', $this->settings );
         }
 
-
         /**
          * Display Wrapper
          *
@@ -510,8 +508,6 @@ if ( get_option( 'ninja_forms_load_deprecated', false )  && ! isset( $_POST[ 'nf
                 NF_Display_Render::localize_preview( $form_id );
             }
         }
-
-
 
         /**
          * PRIVATE METHODS
@@ -544,8 +540,6 @@ if ( get_option( 'ninja_forms_load_deprecated', false )  && ! isset( $_POST[ 'nf
 
             return $return;
         }
-
-
 
         /**
          * STATIC METHODS
