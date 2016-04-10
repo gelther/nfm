@@ -116,7 +116,7 @@ class NF_AJAX_Controllers_Preview extends NF_Abstracts_Controller
 
     private function get_form_data( $form_id )
     {
-        $form_data = get_user_option( self::$transient_prefix . $form_id, FALSE );
+        $form_data = get_user_option( self::$transient_prefix . $form_id, false );
 
         if( ! $form_data ){
 
