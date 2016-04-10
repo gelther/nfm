@@ -63,8 +63,7 @@ abstract class NF_Abstracts_Action
     /**
      * Constructor
      */
-    public function __construct()
-    {
+    public function __construct() {
         if ( ! empty( $this->_settings_only ) ) {
 
             $this->_settings = array_merge( $this->_settings, $this->_settings_only );
@@ -84,8 +83,7 @@ abstract class NF_Abstracts_Action
     /**
      * Save
      */
-    public function save( $action_settings )
-    {
+    public function save( $action_settings ) {
         // This section intentionally left blank.
     }
 
@@ -101,8 +99,7 @@ abstract class NF_Abstracts_Action
      *
      * @return mixed
      */
-    public function get_timing()
-    {
+    public function get_timing() {
         $timing = array( 'early' => '1', 'normal' => '0', 'late' => '-1' );
 
         return $timing[ $this->_timing ];
@@ -115,8 +112,7 @@ abstract class NF_Abstracts_Action
      *
      * @return int
      */
-    public function get_priority()
-    {
+    public function get_priority() {
         return $this->_priority;
     }
 
@@ -127,8 +123,7 @@ abstract class NF_Abstracts_Action
      *
      * @return string
      */
-    public function get_name()
-    {
+    public function get_name() {
         return $this->_name;
     }
 
@@ -139,8 +134,7 @@ abstract class NF_Abstracts_Action
      *
      * @return string
      */
-    public function get_nicename()
-    {
+    public function get_nicename() {
         return $this->_nicename;
     }
 
@@ -151,8 +145,7 @@ abstract class NF_Abstracts_Action
      *
      * @return string
      */
-    public function get_section()
-    {
+    public function get_section() {
         return $this->_section;
     }
 
@@ -163,8 +156,7 @@ abstract class NF_Abstracts_Action
      *
      * @return string
      */
-    public function get_image()
-    {
+    public function get_image() {
         return $this->_image;
     }
 
@@ -175,8 +167,7 @@ abstract class NF_Abstracts_Action
      *
      * @return array|mixed
      */
-    public function get_settings()
-    {
+    public function get_settings() {
         return $this->_settings;
     }
 
@@ -189,8 +180,7 @@ abstract class NF_Abstracts_Action
      * @param      $b
      * @return int
      */
-    public static function sort_actions( $a, $b )
-    {
+    public static function sort_actions( $a, $b ) {
         if ( ! isset( Ninja_Forms()->actions[ $a->get_setting( 'type' ) ] ) ) return 1;
         if ( ! isset( Ninja_Forms()->actions[ $b->get_setting( 'type' ) ] ) ) return 1;
 
@@ -209,8 +199,7 @@ abstract class NF_Abstracts_Action
         return $a->timing < $b->timing ? 1 : -1;
     }
 
-    protected function load_settings( $only_settings = array() )
-    {
+    protected function load_settings( $only_settings = array() ) {
         $settings = array();
 
         // Loads a settings array from the FieldSettings configuration file.
