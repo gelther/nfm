@@ -37,11 +37,11 @@ abstract class NF_Abstracts_MergeTags
                 foreach( $subject as $i => $s ){
                     $subject[ $i ] = $this->replace( $s );
                 }
-            } elseif( FALSE !== strpos( $subject, $merge_tag[ 'tag' ] ) ){
+            } elseif( FALSE !== strpos( $subject, $merge_tag['tag'] ) ){
 
-                $replace = ( is_callable( array( $this, $merge_tag[ 'callback' ] ) ) ) ? $this->{$merge_tag[ 'callback' ]}() : '';
+                $replace = ( is_callable( array( $this, $merge_tag['callback'] ) ) ) ? $this->{$merge_tag['callback']}() : '';
 
-                $subject = str_replace( $merge_tag[ 'tag' ], $replace, $subject );
+                $subject = str_replace( $merge_tag['tag'], $replace, $subject );
             }
         }
 
