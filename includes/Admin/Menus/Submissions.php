@@ -65,7 +65,7 @@ final class NF_Admin_Menus_Submissions extends NF_Abstracts_Submenu
      * @return array
      */
     public function change_columns() {
-        $form_id = ( isset( $_GET[ 'form_id' ] ) ) ? $_GET[ 'form_id' ] : false;
+        $form_id = ( isset( $_GET['form_id'] ) ) ? $_GET['form_id'] : false;
 
         if ( ! $form_id ) return array();
 
@@ -86,7 +86,7 @@ final class NF_Admin_Menus_Submissions extends NF_Abstracts_Submenu
             $cols[ 'field_' . $field->get_id() ] = $field->get_setting( 'label' );
         }
 
-        $cols[ 'sub_date' ] = __( 'Date', 'ninja-forms' );
+        $cols['sub_date'] = __( 'Date', 'ninja-forms' );
 
         return $cols;
     }
@@ -119,7 +119,7 @@ final class NF_Admin_Menus_Submissions extends NF_Abstracts_Submenu
      * @return array
      */
     public function remove_filter_show_all_dates( $months ) {
-        if ( ! isset( $_GET[ 'post_type' ] ) || 'nf_sub' != $_GET[ 'post_type' ] ) return $months;
+        if ( ! isset( $_GET['post_type'] ) || 'nf_sub' != $_GET['post_type'] ) return $months;
 
         // Returning an empty array should hide the dropdown.
         return array();
@@ -144,20 +144,20 @@ final class NF_Admin_Menus_Submissions extends NF_Abstracts_Submenu
         }
         $form_options = apply_filters( 'ninja_forms_submission_filter_form_options', $form_options );
 
-        if ( isset( $_GET[ 'form_id' ] ) ) {
-            $form_selected = $_GET[ 'form_id' ];
+        if ( isset( $_GET['form_id'] ) ) {
+            $form_selected = $_GET['form_id'];
         } else {
             $form_selected = 0;
         }
 
-        if ( isset( $_GET[ 'begin_date' ] ) ) {
-            $begin_date = $_GET[ 'begin_date' ];
+        if ( isset( $_GET['begin_date'] ) ) {
+            $begin_date = $_GET['begin_date'];
         } else {
             $begin_date = '';
         }
 
-        if ( isset( $_GET[ 'end_date' ] ) ) {
-            $end_date = $_GET[ 'end_date' ];
+        if ( isset( $_GET['end_date'] ) ) {
+            $end_date = $_GET['end_date'];
         } else {
             $end_date = '';
         }
@@ -171,11 +171,11 @@ final class NF_Admin_Menus_Submissions extends NF_Abstracts_Submenu
     public function table_filter( $query ) {
         global $pagenow;
 
-        if ( $pagenow != 'edit.php' || ! is_admin() || ! isset( $query->query[ 'post_type' ] ) || 'nf_sub' != $query->query[ 'post_type' ] || ! is_main_query() ) return;
+        if ( $pagenow != 'edit.php' || ! is_admin() || ! isset( $query->query['post_type'] ) || 'nf_sub' != $query->query['post_type'] || ! is_main_query() ) return;
 
         $vars = &$query->query_vars;
 
-        $form_id = ( ! empty( $_GET[ 'form_id' ] ) ) ? $_GET[ 'form_id' ] : 0;
+        $form_id = ( ! empty( $_GET['form_id'] ) ) ? $_GET['form_id'] : 0;
 
         $vars = $this->table_filter_by_form( $vars, $form_id );
 
@@ -187,7 +187,7 @@ final class NF_Admin_Menus_Submissions extends NF_Abstracts_Submenu
     public function search( $pieces ) {
         global $typenow;
         // filter to select search query
-        if ( is_search() && is_admin() && $typenow == 'nf_sub' && isset( $_GET[ 's' ] ) ) {
+        if ( is_search() && is_admin() && $typenow == 'nf_sub' && isset( $_GET['s'] ) ) {
             global $wpdb;
 
             $keywords = explode( ' ', get_query_var( 's' ) );
@@ -200,9 +200,9 @@ final class NF_Admin_Menus_Submissions extends NF_Abstracts_Submenu
 
             if ( ! empty( $query ) ) {
                 // add to where clause
-                $pieces[ 'where' ] = str_replace( "((({$wpdb->posts}.post_title LIKE '%", "( {$query} (({$wpdb->posts}.post_title LIKE '%", $pieces[ 'where' ] );
+                $pieces['where'] = str_replace( "((({$wpdb->posts}.post_title LIKE '%", "( {$query} (({$wpdb->posts}.post_title LIKE '%", $pieces['where'] );
 
-                $pieces[ 'join' ] = $pieces[ 'join' ] . " INNER JOIN {$wpdb->postmeta} AS mypm1 ON ({$wpdb->posts}.ID = mypm1.post_id)";
+                $pieces['join'] = $pieces['join'] . " INNER JOIN {$wpdb->postmeta} AS mypm1 ON ({$wpdb->posts}.ID = mypm1.post_id)";
 
             }
         }
@@ -210,7 +210,7 @@ final class NF_Admin_Menus_Submissions extends NF_Abstracts_Submenu
     }
 
     public function remove_bulk_edit( $actions ) {
-        unset( $actions[ 'edit' ] );
+        unset( $actions['edit'] );
         return $actions;
     }
 
@@ -221,14 +221,14 @@ final class NF_Admin_Menus_Submissions extends NF_Abstracts_Submenu
             return false;
         }
 
-        if ( $post_type == 'nf_sub' && isset( $_REQUEST[ 'post_status' ] ) && $_REQUEST[ 'post_status' ] == 'all' ) {
+        if ( $post_type == 'nf_sub' && isset( $_REQUEST['post_status'] ) && $_REQUEST['post_status'] == 'all' ) {
             ?>
             <script type="text/javascript">
                 jQuery(document).ready(function() {
                     jQuery('<option>').val('export').text('<?php _e( 'Export' );?>').appendTo("select[name='action']");
                     jQuery('<option>').val('export').text('<?php _e( 'Export' );?>').appendTo("select[name='action2']");
                     <?php
-                    if ( ( isset( $_POST[ 'action' ] ) && $_POST[ 'action' ] == 'export' ) || ( isset( $_POST[ 'action2' ] ) && $_POST[ 'action2' ] == 'export' ) ) {
+                    if ( ( isset( $_POST['action'] ) && $_POST['action'] == 'export' ) || ( isset( $_POST['action2'] ) && $_POST['action2'] == 'export' ) ) {
                         ?>
                     setInterval(function(){
                         jQuery( "select[name='action'" ).val( '-1' );
@@ -238,9 +238,9 @@ final class NF_Admin_Menus_Submissions extends NF_Abstracts_Submenu
                     <?php
                 }
 
-                if ( isset( $_REQUEST[ 'form_id' ] ) && ! empty( $_REQUEST[ 'form_id' ] ) ) {
+                if ( isset( $_REQUEST['form_id'] ) && ! empty( $_REQUEST['form_id'] ) ) {
                     $redirect = urlencode( remove_query_arg( array( 'download_all', 'download_file' ) ) );
-                    $url      = admin_url( 'admin.php?page=nf-processing&action=download_all_subs&form_id=' . absint( $_REQUEST[ 'form_id' ] ) . '&redirect=' . $redirect );
+                    $url      = admin_url( 'admin.php?page=nf-processing&action=download_all_subs&form_id=' . absint( $_REQUEST['form_id'] ) . '&redirect=' . $redirect );
                     $url      = esc_url( $url );
                     ?>
                     var button = '<a href="<?php echo $url; ?>" class="button-secondary nf-download-all"><?php echo __( 'Download All Submissions', 'ninja-forms' ); ?></a>';
@@ -248,8 +248,8 @@ final class NF_Admin_Menus_Submissions extends NF_Abstracts_Submenu
                     <?php
                 }
 
-                if ( isset( $_REQUEST[ 'download_all' ] ) && $_REQUEST[ 'download_all' ] != '' ) {
-                    $redirect = esc_url_raw( add_query_arg( array( 'download_file' => esc_html( $_REQUEST[ 'download_all' ] ) ) ) );
+                if ( isset( $_REQUEST['download_all'] ) && $_REQUEST['download_all'] != '' ) {
+                    $redirect = esc_url_raw( add_query_arg( array( 'download_file' => esc_html( $_REQUEST['download_all'] ) ) ) );
                     $redirect = remove_query_arg( array( 'download_all' ), $redirect );
                     ?>
                     document.location.href = "<?php echo $redirect; ?>";
@@ -269,29 +269,29 @@ final class NF_Admin_Menus_Submissions extends NF_Abstracts_Submenu
             return false;
         }
 
-        if ( ! isset( $_REQUEST[ 'form_id' ] ) || empty( $_REQUEST[ 'form_id' ] ) ) {
+        if ( ! isset( $_REQUEST['form_id'] ) || empty( $_REQUEST['form_id'] ) ) {
             return false;
         }
 
-        if ( isset( $_REQUEST[ 'export_single' ] ) && ! empty( $_REQUEST[ 'export_single' ] ) ) {
-            Ninja_Forms()->sub( esc_html( $_REQUEST[ 'export_single' ] ) )->export();
+        if ( isset( $_REQUEST['export_single'] ) && ! empty( $_REQUEST['export_single'] ) ) {
+            Ninja_Forms()->sub( esc_html( $_REQUEST['export_single'] ) )->export();
         }
 
-        if ( (isset( $_REQUEST[ 'action' ] ) && $_REQUEST[ 'action' ] == 'export') || (isset( $_REQUEST[ 'action2' ] ) && $_REQUEST[ 'action2' ] == 'export') ) {
+        if ( (isset( $_REQUEST['action'] ) && $_REQUEST['action'] == 'export') || (isset( $_REQUEST['action2'] ) && $_REQUEST['action2'] == 'export') ) {
 
-            $sub_ids = WPN_Helper::esc_html( $_REQUEST[ 'post' ] );
+            $sub_ids = WPN_Helper::esc_html( $_REQUEST['post'] );
 
-            Ninja_Forms()->form( $_REQUEST[ 'form_id' ] )->export_subs( $sub_ids );
+            Ninja_Forms()->form( $_REQUEST['form_id'] )->export_subs( $sub_ids );
         }
 
-        if ( isset( $_REQUEST[ 'download_file' ] ) && ! empty( $_REQUEST[ 'download_file' ] ) ) {
+        if ( isset( $_REQUEST['download_file'] ) && ! empty( $_REQUEST['download_file'] ) ) {
 
             // Open our download all file
-            $filename = esc_html( $_REQUEST[ 'download_file' ] );
+            $filename = esc_html( $_REQUEST['download_file'] );
 
             $upload_dir = wp_upload_dir();
 
-            $file_path = trailingslashit( $upload_dir[ 'path' ] ) . $filename . '.csv';
+            $file_path = trailingslashit( $upload_dir['path'] ) . $filename . '.csv';
 
             if ( file_exists( $file_path ) ) {
                 $myfile = file_get_contents( $file_path );
@@ -303,7 +303,7 @@ final class NF_Admin_Menus_Submissions extends NF_Abstracts_Submenu
 
             unlink( $file_path );
 
-            $form_name = Ninja_Forms()->form( absint( $_REQUEST[ 'form_id' ] ) )->get_setting( 'title' );
+            $form_name = Ninja_Forms()->form( absint( $_REQUEST['form_id'] ) )->get_setting( 'title' );
             $form_name = sanitize_title( $form_name );
 
             $today = date( 'Y-m-d', current_time( 'timestamp' ) );
@@ -323,7 +323,7 @@ final class NF_Admin_Menus_Submissions extends NF_Abstracts_Submenu
 
     public function hide_page_title_action() {
         if (
-            ( isset( $_GET[ 'post_type' ] ) && 'nf_sub' == $_GET[ 'post_type' ] ) ||
+            ( isset( $_GET['post_type'] ) && 'nf_sub' == $_GET['post_type'] ) ||
             'nf_sub' == get_post_type()
         ) {
             echo '<style type="text/css">.page-title-action{display: none;}</style>';
@@ -370,8 +370,8 @@ final class NF_Admin_Menus_Submissions extends NF_Abstracts_Submenu
     }
 
     private function table_filter_by_form( $vars, $form_id ) {
-        if ( ! isset( $vars[ 'meta_query' ] ) ) {
-            $vars[ 'meta_query' ] = array(
+        if ( ! isset( $vars['meta_query'] ) ) {
+            $vars['meta_query'] = array(
                 array(
                     'key'     => '_form_id',
                     'value'   => $form_id,
@@ -384,10 +384,10 @@ final class NF_Admin_Menus_Submissions extends NF_Abstracts_Submenu
     }
 
     private function table_filter_by_date( $vars ) {
-        if ( empty( $_GET[ 'begin_date' ] ) || empty( $_GET[ 'end_date' ] ) ) return $vars;
+        if ( empty( $_GET['begin_date'] ) || empty( $_GET['end_date'] ) ) return $vars;
 
-        $begin_date = $_GET[ 'begin_date' ];
-        $end_date   = $_GET[ 'end_date' ];
+        $begin_date = $_GET['begin_date'];
+        $end_date   = $_GET['end_date'];
 
         if ( $begin_date > $end_date ) {
             $temp_date  = $begin_date;
@@ -395,9 +395,9 @@ final class NF_Admin_Menus_Submissions extends NF_Abstracts_Submenu
             $end_date   = $temp_date;
         }
 
-        if ( ! isset( $vars[ 'date_query' ] ) ) {
+        if ( ! isset( $vars['date_query'] ) ) {
 
-            $vars[ 'date_query' ] = array(
+            $vars['date_query'] = array(
                 'after'  => $begin_date,
                 'before' => $end_date
             );
