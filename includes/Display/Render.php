@@ -52,7 +52,7 @@ final class NF_Display_Render
             // TODO: Optimize Query
             global $wpdb;
             $count = 0;
-            $subs = $wpdb->get_results( "SELECT post_id FROM wp_postmeta WHERE `meta_key` = '_form_id' AND `meta_value` = $form_id" );
+            $subs  = $wpdb->get_results( "SELECT post_id FROM wp_postmeta WHERE `meta_key` = '_form_id' AND `meta_value` = $form_id" );
             foreach( $subs as $sub ){
                 if( 'publish' == get_post_status( $sub->post_id ) ) $count++;
             }
@@ -166,8 +166,8 @@ final class NF_Display_Render
                 }
 
                 $settings['element_templates'] = $templates;
-                $settings['old_classname'] = $field_class->get_old_classname();
-                $settings['wrap_template'] = $field_class->get_wrap_template();
+                $settings['old_classname']     = $field_class->get_old_classname();
+                $settings['wrap_template']     = $field_class->get_wrap_template();
 
                 $fields[] = apply_filters( 'ninja_forms_localize_field_settings_' . $field_type, $settings, $form );
             }
@@ -223,16 +223,16 @@ final class NF_Display_Render
 
         $form[ 'settings' ][ 'is_preview' ] = TRUE;
 
-        $before_form = apply_filters( 'ninja_forms_display_before_form', '', $form_id, TRUE );
+        $before_form                       = apply_filters( 'ninja_forms_display_before_form', '', $form_id, TRUE );
         $form[ 'settings' ][ 'beforeForm'] = $before_form;
 
-        $before_fields = apply_filters( 'ninja_forms_display_before_fields', '', $form_id, TRUE );
+        $before_fields                       = apply_filters( 'ninja_forms_display_before_fields', '', $form_id, TRUE );
         $form[ 'settings' ][ 'beforeFields'] = $before_fields;
 
-        $after_fields = apply_filters( 'ninja_forms_display_after_fields', '', $form_id, TRUE );
+        $after_fields                       = apply_filters( 'ninja_forms_display_after_fields', '', $form_id, TRUE );
         $form[ 'settings' ][ 'afterFields'] = $after_fields;
 
-        $after_form = apply_filters( 'ninja_forms_display_after_form', '', $form_id, TRUE );
+        $after_form                       = apply_filters( 'ninja_forms_display_after_form', '', $form_id, TRUE );
         $form[ 'settings' ][ 'afterForm'] = $after_form;
 
         $fields = array();
@@ -250,12 +250,12 @@ final class NF_Display_Render
 
                 $field = apply_filters('ninja_forms_localize_fields_preview', $field);
 
-                $display_before = apply_filters( 'ninja_forms_display_before_field_type_' . $field['settings'][ 'type' ], '' );
-                $display_before = apply_filters( 'ninja_forms_display_before_field_key_' . $field['settings'][ 'key' ], $display_before );
+                $display_before                     = apply_filters( 'ninja_forms_display_before_field_type_' . $field['settings'][ 'type' ], '' );
+                $display_before                     = apply_filters( 'ninja_forms_display_before_field_key_' . $field['settings'][ 'key' ], $display_before );
                 $field['settings'][ 'beforeField' ] = $display_before;
 
-                $display_after = apply_filters( 'ninja_forms_display_after_field_type_' . $field['settings'][ 'type' ], '' );
-                $display_after = apply_filters( 'ninja_forms_display_after_field_key_' . $field['settings'][ 'key' ], $display_after );
+                $display_after                     = apply_filters( 'ninja_forms_display_after_field_type_' . $field['settings'][ 'type' ], '' );
+                $display_after                     = apply_filters( 'ninja_forms_display_after_field_key_' . $field['settings'][ 'key' ], $display_after );
                 $field['settings'][ 'afterField' ] = $display_after;
 
                 foreach ($field['settings'] as $key => $setting) {
@@ -318,8 +318,8 @@ final class NF_Display_Render
                 }
 
                 $field['settings']['element_templates'] = $templates;
-                $field['settings']['old_classname'] = $field_class->get_old_classname();
-                $field['settings']['wrap_template'] = $field_class->get_wrap_template();
+                $field['settings']['old_classname']     = $field_class->get_old_classname();
+                $field['settings']['wrap_template']     = $field_class->get_wrap_template();
 
                 $fields[] = apply_filters( 'ninja_forms_localize_field_settings_' . $field_type, $field['settings'], $form );
             }
