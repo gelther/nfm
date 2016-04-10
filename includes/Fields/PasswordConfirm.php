@@ -32,7 +32,7 @@ class NF_Fields_PasswordConfirm extends NF_Fields_Password
 
             if( $this->is_matching_values( $field, $password_field ) ) continue;
 
-            $errors[] = $this->get_error_message();
+            $errors[  ] = $this->get_error_message();
         }
 
         return $errors;
@@ -46,7 +46,7 @@ class NF_Fields_PasswordConfirm extends NF_Fields_Password
 
             if( 'password' != $field[ 'type' ] ) continue;
 
-            $password_fields[] = $field;
+            $password_fields[  ] = $field;
         }
 
         return $password_fields;
