@@ -26,4 +26,5 @@ class NF_Fields_Textbox extends NF_Abstracts_Input
 
         $this->_nicename = __( 'Single Line Text', 'ninja-forms' );
     }
+
 }
