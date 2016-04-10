@@ -65,7 +65,7 @@ abstract class NF_Abstracts_Action
      */
     public function __construct()
     {
-        if( ! empty( $this->_settings_only ) ){
+        if( ! empty( $this->_settings_only ) ) {
 
             $this->_settings = array_merge( $this->_settings, $this->_settings_only );
         } else {
@@ -216,9 +216,9 @@ abstract class NF_Abstracts_Action
         // Loads a settings array from the FieldSettings configuration file.
         $all_settings = Ninja_Forms::config( 'ActionSettings' );
 
-        foreach( $only_settings as $setting ){
+        foreach( $only_settings as $setting ) {
 
-            if( isset( $all_settings[ $setting ] ) ){
+            if( isset( $all_settings[ $setting ] ) ) {
 
                 $settings[ $setting ] = $all_settings[ $setting ];
             }
