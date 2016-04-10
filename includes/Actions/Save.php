@@ -45,7 +45,7 @@ final class NF_Actions_Save extends NF_Abstracts_Action
 
     public function process( $action_settings, $form_id, $data )
     {
-        $data[ 'extra' ][ 'foo' ] = 'bar';
+        $data['extra']['foo'] = 'bar';
 
         if( isset( $data['settings']['is_preview'] ) && $data['settings']['is_preview'] ){
             return $data;
@@ -57,7 +57,7 @@ final class NF_Actions_Save extends NF_Abstracts_Action
 
         foreach( $data['fields'] as $field ){
 
-            if( in_array( $field[ 'type' ], array_values( $hidden_field_types ) ) ) {
+            if( in_array( $field['type'], array_values( $hidden_field_types ) ) ) {
                 $data['actions']['save']['hidden'][] = $field['type'];
                 continue;
             }
@@ -65,7 +65,7 @@ final class NF_Actions_Save extends NF_Abstracts_Action
             $sub->update_field_value( $field['id'], $field['value'] );
         }
 
-        if( isset( $data[ 'extra' ] ) ) {
+        if( isset( $data['extra'] ) ) {
             $sub->update_extra_values( $data['extra'] );
         }
 
@@ -74,7 +74,7 @@ final class NF_Actions_Save extends NF_Abstracts_Action
 
         $sub->save();
 
-        $data[ 'actions' ][ 'save' ][ 'id' ] = $sub->get_id();
+        $data['actions']['save']['id'] = $sub->get_id();
 
         return $data;
     }
