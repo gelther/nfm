@@ -627,7 +627,7 @@ if ( get_option( 'ninja_forms_load_deprecated', false )  && ! isset( $_POST[ 'nf
     |--------------------------------------------------------------------------
     | Uninstall Hook
     |--------------------------------------------------------------------------
-    */
+     */
 
     if ( nf_is_freemius_on() ) {
         // Override plugin's version, should be executed before Freemius init.
