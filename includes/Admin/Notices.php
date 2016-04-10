@@ -44,10 +44,10 @@ class NF_Admin_Notices
         $nf_settings = get_option( 'ninja_forms_settings' );
         if ( ! isset( $nf_settings[ 'disable_admin_notices' ] ) || ( isset( $nf_settings[ 'disable_admin_notices' ] ) && $nf_settings[ 'disable_admin_notices' ] == 0 ) ){
             if ( current_user_can( apply_filters( 'ninja_forms_admin_parent_menu_capabilities', 'manage_options' ) ) ) {
-                return true;
+                return TRUE;
             }
         }
-        return false;
+        return FALSE;
 
     }
 
@@ -56,13 +56,13 @@ class NF_Admin_Notices
 
         // Check options
         if ( ! $this->nf_admin_notice() ) {
-            return false;
+            return FALSE;
         }
 
         foreach ( $admin_notices as $slug => $admin_notice ) {
             // Call for spam protection
             if ( $this->anti_notice_spam() ) {
-                return false;
+                return FALSE;
             }
 
 
@@ -74,7 +74,7 @@ class NF_Admin_Notices
                 if( ( isset( $admin_notices[ $slug ][ 'blacklist' ] ) && $this->admin_notice_pages_blacklist( $admin_notices[ $slug ][ 'blacklist' ] ) )
                     || ( isset( $admin_notices[ $slug ][ 'pages' ] ) && ! $this->admin_notice_pages( $admin_notices[ $slug ][ 'pages' ] ) )
                 ) {
-                    return false;
+                    return FALSE;
                 }
             }
 
@@ -107,7 +107,7 @@ class NF_Admin_Notices
                 $admin_display_msg      = ( isset( $admin_notices[ $slug ][ 'msg' ] ) ? $admin_notices[ $slug ][ 'msg'] : '' );
                 $admin_display_title    = ( isset( $admin_notices[ $slug ][ 'title' ] ) ? $admin_notices[ $slug ][ 'title'] : '' );
                 $admin_display_link     = ( isset( $admin_notices[ $slug ][ 'link' ] ) ? $admin_notices[ $slug ][ 'link' ] : '' );
-                $output_css             = false;
+                $output_css             = FALSE;
 
                 // Ensure the notice hasn't been hidden and that the current date is after the start date
                 if ( $admin_display_check == 0 && strtotime( $admin_display_start ) <= strtotime( $current_date ) ) {
@@ -131,7 +131,7 @@ class NF_Admin_Notices
                     echo '</div>';
 
                     $this->notice_spam += 1;
-                    $output_css         = true;
+                    $output_css         = TRUE;
                 }
                 if ( $output_css ) {
                     wp_enqueue_style( 'nf-admin-notices', Ninja_Forms::$url . 'assets/css/admin-notices.css?nf_ver=' . Ninja_Forms::VERSION );
@@ -144,10 +144,10 @@ class NF_Admin_Notices
     public function anti_notice_spam() {
 
         if ( $this->notice_spam >= $this->notice_spam_max ) {
-            return true;
+            return TRUE;
         }
 
-        return false;
+        return FALSE;
     }
 
     // Ignore function that gets ran at admin init to ensure any messages that were dismissed get marked
@@ -193,18 +193,18 @@ class NF_Admin_Notices
         foreach( $pages as $key => $page ) {
             if ( is_array( $page ) ) {
                 if ( isset( $_GET[ 'page' ] ) && $_GET[ 'page'] == $page[0] && isset( $_GET[ 'tab' ] ) && $_GET[ 'tab' ] == $page[1] ) {
-                    return true;
+                    return TRUE;
                 }
             } else {
                 if ( get_current_screen()->id === $page ) {
-                    return true;
+                    return TRUE;
                 }
                 if ( isset( $_GET[ 'page' ] ) && $_GET[ 'page'] == $page ) {
-                    return true;
+                    return TRUE;
                 }
             }
         }
-        return false;
+        return FALSE;
     }
 
     // Page check function - This should be called from class extensions if the notice should only show on specific admin pages
@@ -216,35 +216,35 @@ class NF_Admin_Notices
         foreach( $pages as $key => $page ) {
             if ( is_array( $page ) ) {
                 if ( isset( $_GET[ 'page' ] ) && $_GET[ 'page'] == $page[0] && isset( $_GET[ 'tab' ] ) && $_GET[ 'tab' ] == $page[1] ) {
-                    return true;
+                    return TRUE;
                 }
             } else {
                 if ( $page == 'all' ) {
-                    return true;
+                    return TRUE;
                 }
                 if ( get_current_screen()->id === $page ) {
-                    return true;
+                    return TRUE;
                 }
                 if ( isset( $_GET[ 'page' ] ) && $_GET[ 'page'] == $page ) {
-                    return true;
+                    return TRUE;
                 }
             }
         }
-        return false;
+        return FALSE;
     }
 
     // Required fields check
     public function required_fields( $fields ) {
 
         if ( ! isset( $fields[ 'msg' ] ) || ( isset( $fields[ 'msg' ] ) && empty( $fields[ 'msg' ] ) ) ) {
-            return true;
+            return TRUE;
         }
 
         if ( ! isset( $fields[ 'title' ] ) || ( isset( $fields[ 'title' ] ) && empty( $fields[ 'title' ] ) ) ) {
-            return true;
+            return TRUE;
         }
 
-        return false;
+        return FALSE;
     }
 
     // Special parameters function that is to be used in any extension of this class
