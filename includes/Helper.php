@@ -147,7 +147,7 @@ final class WPN_Helper
     public static function str_putcsv( $array, $delimiter = ',', $enclosure = '"', $terminator = "\n" ) {
         // First convert associative array to numeric indexed array
         $workArray = array();
-        foreach ($array as $key => $value) {
+        foreach ( $array as $key => $value ) {
         $workArray[] = $value;
         }
 
