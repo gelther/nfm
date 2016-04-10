@@ -33,7 +33,7 @@ final class NF_Display_Preview
      */
     function the_title( $title )
     {
-        if( ! in_the_loop() ) return $title;
+        if ( ! in_the_loop() ) return $title;
 
         $form_title = Ninja_Forms()->form( $this->_form_id )->get()->get_setting( 'title' );
 
