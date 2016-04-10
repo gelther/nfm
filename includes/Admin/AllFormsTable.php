@@ -15,7 +15,6 @@ class NF_Admin_AllFormsTable extends WP_List_Table
 {
     /** Class constructor */
     public function __construct() {
-
         parent::__construct( array(
             'singular' => __( 'Form', 'ninja-forms' ), //singular name of the listed records
             'plural'   => __( 'Forms', 'ninja-forms' ), //plural name of the listed records
@@ -165,7 +164,7 @@ class NF_Admin_AllFormsTable extends WP_List_Table
         }
 
 
-        $result = strnatcmp( $a[$orderby], $b[$orderby] );
+        $result = strnatcmp( $a[ $orderby ], $b[ $orderby ] );
 
         if( $order === 'asc' )
         {
