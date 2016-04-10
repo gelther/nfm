@@ -44,7 +44,6 @@ final class NF_Actions_Email extends NF_Abstracts_Action
     /*
     * PUBLIC METHODS
     */
-
     public function process( $action_settings, $form_id, $data )
     {
         $headers = $this->_get_headers( $action_settings );
@@ -195,7 +194,6 @@ final class NF_Actions_Email extends NF_Abstracts_Action
     /*
      * Backwards Compatibility
      */
-
     private function _backwards_compatibility()
     {
         add_filter( 'ninja_forms_sub_csv_delimiter',        array( $this, 'ninja_forms_sub_csv_delimiter'        ), 10, 1 );
