@@ -112,8 +112,7 @@ abstract class NF_Abstracts_Field
     /**
      * Constructor
      */
-    public function __construct()
-    {
+    public function __construct() {
         // Translate the nicename property.
         $this->_nicename = __( $this->_nicename, 'ninja-forms' );
 
@@ -140,8 +139,7 @@ abstract class NF_Abstracts_Field
      * @param        $data
      * @return array $errors
      */
-    public function validate( $field, $data )
-    {
+    public function validate( $field, $data ) {
         $errors = array();
         // Required check.
         if ( isset( $field[ 'required' ] ) && $field[ 'required' ] && ! trim( $field[ 'value' ] ) ) {
@@ -150,8 +148,7 @@ abstract class NF_Abstracts_Field
         return $errors;
     }
 
-    public function process( $field, $data )
-    {
+    public function process( $field, $data ) {
         return $data;
     }
 
@@ -164,43 +161,35 @@ abstract class NF_Abstracts_Field
      * @param         $value
      * @return string
      */
-    public function admin_form_element( $id, $value )
-    {
+    public function admin_form_element( $id, $value ) {
         return "<input class='widefat' name='fields[$id]' value='$value' />";
     }
 
-    public function get_name()
-    {
+    public function get_name() {
         return $this->_name;
     }
 
-    public function get_nicename()
-    {
+    public function get_nicename() {
         return $this->_nicename;
     }
 
-    public function get_section()
-    {
+    public function get_section() {
         return $this->_section;
     }
 
-    public function get_icon()
-    {
+    public function get_icon() {
         return $this->_icon;
     }
 
-    public function get_aliases()
-    {
+    public function get_aliases() {
         return $this->_aliases;
     }
 
-    public function get_type()
-    {
+    public function get_type() {
         return $this->_type;
     }
 
-    public function get_parent_type()
-    {
+    public function get_parent_type() {
         if ( $this->_parent_type ) {
             return $this->_parent_type;
         }
@@ -208,26 +197,22 @@ abstract class NF_Abstracts_Field
         return ( get_parent_class() ) ? parent::$_type : 'textbox';
     }
 
-    public function get_settings()
-    {
+    public function get_settings() {
         return $this->_settings;
     }
 
-    public function use_merge_tags()
-    {
+    public function use_merge_tags() {
         $use_merge_tags = array_merge( $this->_use_merge_tags, $this->_use_merge_tags_include );
         $use_merge_tags = array_diff( $use_merge_tags, $this->_use_merge_tags_exclude );
 
         return $use_merge_tags;
     }
 
-    public function get_test_value()
-    {
+    public function get_test_value() {
         return $this->_test_value;
     }
 
-    public function get_templates()
-    {
+    public function get_templates() {
         $templates = (array) $this->_templates;
 
         // Create a reflection for examining the parent
@@ -250,18 +235,15 @@ abstract class NF_Abstracts_Field
 
     }
 
-    public function get_wrap_template()
-    {
+    public function get_wrap_template() {
         return $this->_wrap_template;
     }
 
-    public function get_old_classname()
-    {
+    public function get_old_classname() {
         return $this->_old_classname;
     }
 
-    protected function load_settings( $only_settings = array() )
-    {
+    protected function load_settings( $only_settings = array() ) {
         $settings = array();
 
         // Loads a settings array from the FieldSettings configuration file.
@@ -278,13 +260,11 @@ abstract class NF_Abstracts_Field
         return apply_filters( 'ninja_forms_field_' . $this->_name . '_settings', $settings );
     }
 
-    public static function get_base_template()
-    {
+    public static function get_base_template() {
         return self::$_base_template;
     }
 
-    public static function sort_by_order( $a, $b )
-    {
+    public static function sort_by_order( $a, $b ) {
         return strcmp( $a->get_setting( 'order' ), $b->get_setting( 'order' ) );
     }
 
