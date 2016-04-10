@@ -2,14 +2,12 @@
 
 final class NF_Display_Shortcodes
 {
-    public function __construct()
-    {
+    public function __construct() {
         add_shortcode( 'ninja_form', array( $this, 'display_form_front_end' ) );
         add_shortcode( 'ninja_forms', array( $this, 'display_form_front_end' ) );
     }
 
-    public function display_form_front_end( $atts = array() )
-    {
+    public function display_form_front_end( $atts = array() ) {
         if ( ! isset( $atts[ 'id' ] ) ) return $this->display_no_id();
 
         ob_start();
@@ -21,8 +19,7 @@ final class NF_Display_Shortcodes
      * TODO: Extract output to template files.
      * @return string
      */
-    private function display_no_id()
-    {
+    private function display_no_id() {
         $output = __( 'Notice: Ninja Forms shortcode used without specifying a form.', 'ninja-forms' );
 
         // TODO: Maybe support filterable permissions.
