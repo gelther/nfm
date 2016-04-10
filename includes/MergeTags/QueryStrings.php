@@ -7,8 +7,7 @@ final class NF_MergeTags_QueryStrings extends NF_Abstracts_MergeTags
 {
     protected $id = 'querystrings';
 
-    public function __construct()
-    {
+    public function __construct() {
         parent::__construct();
         $this->title = __( 'Query Strings', 'ninja-forms' );
 
@@ -29,13 +28,11 @@ final class NF_MergeTags_QueryStrings extends NF_Abstracts_MergeTags
         }
     }
 
-    public function __call( $name, $arguments )
-    {
+    public function __call( $name, $arguments ) {
         return $this->merge_tags[ $name ][ 'value' ];
     }
 
-    public function set_merge_tags( $key, $value )
-    {
+    public function set_merge_tags( $key, $value ) {
         $callback = ( is_numeric( $key ) ) ? 'querystring_' . $key : $key;
 
         $this->merge_tags[ $callback ] = array(
