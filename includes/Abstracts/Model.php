@@ -680,7 +680,7 @@ class NF_Abstracts_Model
             $count = count( $where );
             for ( $i = 0; $i < $count; $i++ ) {
 
-                $join_statement[]  = "INNER JOIN " . $this->_meta_table_name . " as meta$i on meta$i.parent_id = " . $this->_table_name . ".id";
+                $join_statement[]  = 'INNER JOIN ' . $this->_meta_table_name . " as meta$i on meta$i.parent_id = " . $this->_table_name . '.id';
                 $where_statement[] = "( meta$i.key = '" . $where_conditions[$i][ 'key' ] . "' AND meta$i.value = '" . $where_conditions[$i][ 'value' ] . "' )";
             }
 

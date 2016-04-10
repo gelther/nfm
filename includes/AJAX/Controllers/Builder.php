@@ -230,7 +230,7 @@ class NF_AJAX_Controllers_Builder extends NF_Abstracts_Controller
             }
         }
 
-        unset( $groups[ "" ] );
+        unset( $groups[ '' ] );
 
         return $groups;
     }

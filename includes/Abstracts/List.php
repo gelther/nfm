@@ -39,7 +39,7 @@ abstract class NF_Abstracts_List extends NF_Abstracts_Field
 
         $options = '<option>--</option>';
         foreach( $field->get_setting( 'options' ) as $option ){
-            $selected  = ( $value == $option[ 'value' ] ) ? "selected" : '';
+            $selected  = ( $value == $option[ 'value' ] ) ? 'selected' : '';
             $options  .= "<option value='{$option[ 'value' ]}' $selected>{$option[ 'label' ]}</option>";
         }
 
@@ -58,7 +58,7 @@ abstract class NF_Abstracts_List extends NF_Abstracts_Field
 
             if( ! in_array( $option[ 'value' ], $value ) ) continue;
 
-            $output .= $option[ 'label' ] . "<br />";
+            $output .= $option[ 'label' ] . '<br />';
         }
 
         return $output;

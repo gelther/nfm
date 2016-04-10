@@ -82,13 +82,13 @@ class NF_Admin_Notices
             if ( ! $this->required_fields( $admin_notices[ $slug ] ) ) {
 
                 // Get the current date then set start date to either passed value or current date value and add interval
-                $current_date     = current_time( "n/j/Y" );
+                $current_date     = current_time( 'n/j/Y' );
                 $start            = ( isset( $admin_notices[ $slug ][ 'start' ] ) ? $admin_notices[ $slug ][ 'start' ] : $current_date );
-                $start            = date( "n/j/Y", strtotime( $start ) );
+                $start            = date( 'n/j/Y', strtotime( $start ) );
                 $date_array       = explode( '/', $start );
                 $interval         = ( isset( $admin_notices[ $slug ][ 'int' ] ) ? $admin_notices[ $slug ][ 'int' ] : 0 );
                 $date_array[ 1 ] += $interval;
-                $start            = date( "n/j/Y", mktime( 0, 0, 0, $date_array[ 0 ], $date_array[ 1 ], $date_array[ 2 ] ) );
+                $start            = date( 'n/j/Y', mktime( 0, 0, 0, $date_array[ 0 ], $date_array[ 1 ], $date_array[ 2 ] ) );
 
                 // This is the main notices storage option
                 $admin_notices_option = get_option( 'nf_admin_notice', array() );
@@ -173,11 +173,11 @@ class NF_Admin_Notices
 
             $admin_notices_option = get_option( 'nf_admin_notice', array() );
 
-            $current_date     = current_time( "n/j/Y" );
+            $current_date     = current_time( 'n/j/Y' );
             $date_array       = explode( '/', $current_date );
             $interval         = ( isset( $_GET[ 'nf_int' ] ) ? $_GET[ 'nf_int' ] : 14 );
             $date_array[ 1 ] += $interval;
-            $new_start        = date( "n/j/Y", mktime( 0, 0, 0, $date_array[ 0 ], $date_array[ 1 ], $date_array[ 2 ] ) );
+            $new_start        = date( 'n/j/Y', mktime( 0, 0, 0, $date_array[ 0 ], $date_array[ 1 ], $date_array[ 2 ] ) );
 
             $admin_notices_option[ $_GET[ 'nf_admin_notice_temp_ignore' ] ][ 'start' ]     = $new_start;
             $admin_notices_option[ $_GET[ 'nf_admin_notice_temp_ignore' ] ][ 'dismissed' ] = 0;

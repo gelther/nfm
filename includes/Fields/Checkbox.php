@@ -36,7 +36,7 @@ class NF_Fields_Checkbox extends NF_Abstracts_Input
 
     public function admin_form_element( $id, $value )
     {
-        $checked = ( $value ) ? "checked" : "";
+        $checked = ( $value ) ? 'checked' : '';
 
         return "<input type='checkbox' name='fields[$id]' id='' $checked>";
     }

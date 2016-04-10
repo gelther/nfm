@@ -198,7 +198,7 @@ final class NF_Admin_Menus_Submissions extends NF_Abstracts_Submenu
             global $wpdb;
 
             $keywords = explode( ' ', get_query_var( 's' ) );
-            $query    = "";
+            $query    = '';
 
             foreach ( $keywords as $word ) {
 
