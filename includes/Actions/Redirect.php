@@ -6,28 +6,28 @@
 final class NF_Actions_Redirect extends NF_Abstracts_Action
 {
     /**
-    * @var string
-    */
+     * @var string
+     */
     protected $_name  = 'redirect';
 
     /**
-    * @var array
-    */
+     * @var array
+     */
     protected $_tags = array();
 
     /**
-    * @var string
-    */
+     * @var string
+     */
     protected $_timing = 'normal';
 
     /**
-    * @var int
-    */
+     * @var int
+     */
     protected $_priority = '10';
 
     /**
-    * Constructor
-    */
+     * Constructor
+     */
     public function __construct()
     {
         parent::__construct();
@@ -40,8 +40,8 @@ final class NF_Actions_Redirect extends NF_Abstracts_Action
     }
 
     /**
-    * PUBLIC METHODS
-    */
+     * PUBLIC METHODS
+     */
     public function save( $action_settings )
     {
     }
