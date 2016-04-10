@@ -21,15 +21,13 @@ class NF_Fields_Number extends NF_Abstracts_Input
 
     protected $_settings_exclude = array( 'input_limit_set', 'disable_input' );
 
-    public function __construct()
-    {
+    public function __construct() {
         parent::__construct();
 
         $this->_nicename = __( 'Number', 'ninja-forms' );
     }
 
-    public function get_parent_type()
-    {
+    public function get_parent_type() {
         return parent::get_type();
     }
 }
