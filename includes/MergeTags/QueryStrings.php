@@ -29,7 +29,7 @@ final class NF_MergeTags_QueryStrings extends NF_Abstracts_MergeTags
         }
     }
 
-    public function __call($name, $arguments)
+    public function __call( $name, $arguments )
     {
         return $this->merge_tags[ $name ][ 'value' ];
     }
