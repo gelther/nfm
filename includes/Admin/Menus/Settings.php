@@ -10,8 +10,7 @@ final class NF_Admin_Menus_Settings extends NF_Abstracts_Submenu
 
     protected $_prefix = 'ninja_forms';
 
-    public function __construct()
-    {
+    public function __construct() {
         parent::__construct();
 
         if ( isset( $_POST[ 'update_ninja_forms_settings' ] ) ) {
@@ -19,8 +18,7 @@ final class NF_Admin_Menus_Settings extends NF_Abstracts_Submenu
         }
     }
 
-    public function display()
-    {
+    public function display() {
         $tabs = apply_filters( 'ninja_forms_settings_tabs', array(
                 'settings' => __( 'Settings', 'ninja-forms' ),
                 'licenses' => __( 'Licenses', 'ninja-forms' )
@@ -91,8 +89,7 @@ final class NF_Admin_Menus_Settings extends NF_Abstracts_Submenu
 
     }
 
-    public function add_saved_field_javascript()
-    {
+    public function add_saved_field_javascript() {
         //TODO: Move this.
         ?>
         <script type="text/javascript" >
@@ -122,8 +119,7 @@ final class NF_Admin_Menus_Settings extends NF_Abstracts_Submenu
         <?php
     }
 
-    private function update_settings()
-    {
+    private function update_settings() {
         if ( ! isset( $_POST[ $this->_prefix ] ) ) return;
 
         $settings = $_POST[ 'ninja_forms' ];
@@ -136,8 +132,7 @@ final class NF_Admin_Menus_Settings extends NF_Abstracts_Submenu
         }
     }
 
-    private function get_settings()
-    {
+    private function get_settings() {
         return apply_filters( 'ninja_forms_plugin_settings', array(
             'general'   => Ninja_Forms()->config( 'PluginSettingsGeneral' ),
             'recaptcha' => Ninja_Forms()->config( 'PluginSettingsReCaptcha' ),
@@ -145,7 +140,7 @@ final class NF_Admin_Menus_Settings extends NF_Abstracts_Submenu
         ) );
     }
 
-    private function prefix( $value ){
+    private function prefix( $value ) {
         return "{$this->_prefix}[$value]";
     }
 
