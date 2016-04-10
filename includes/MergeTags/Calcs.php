@@ -15,7 +15,7 @@ final class NF_MergeTags_Calcs extends NF_Abstracts_MergeTags
         $this->title = __( 'Calculations', 'ninja-forms' );
     }
 
-    public function __call($name, $arguments)
+    public function __call( $name, $arguments )
     {
         return $this->merge_tags[ $name ][ 'calc_value' ];
     }
@@ -25,7 +25,7 @@ final class NF_MergeTags_Calcs extends NF_Abstracts_MergeTags
         $callback = ( is_numeric( $key ) ) ? 'calc_' . $key : $key;
 
         try {
-            $calculated_value = Ninja_Forms()->eos()->solve($value);
+            $calculated_value = Ninja_Forms()->eos()->solve( $value );
         } catch( Exception $e ){
             $calculated_value = FALSE;
         }

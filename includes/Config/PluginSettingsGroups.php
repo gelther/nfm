@@ -22,4 +22,4 @@ return apply_filters( 'ninja_forms_plugin_settings_groups', array(
         'label' => __( 'Saved Fields', 'ninja-forms' ),
     ),
 
-));
+) );

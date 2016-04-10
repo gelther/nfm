@@ -62,4 +62,4 @@ return apply_filters( 'ninja_forms_config_state_list', array(
     'ARMED FORCES AMERICA (EXCEPT CANADA)'                => 'AA',
     'ARMED FORCES PACIFIC'                                => 'AP'
 
-));
+) );

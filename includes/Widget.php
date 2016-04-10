@@ -87,7 +87,7 @@ class NF_Widget extends WP_Widget {
         </p>
         <p>
             <select id="<?php echo $this->get_field_id( 'form_id' ); ?>" name="<?php echo $this->get_field_name( 'form_id' ); ?>">
-                <option value="0">-- <?php _e('None', 'ninja-forms');?></option>
+                <option value="0">-- <?php _e( 'None', 'ninja-forms' );?></option>
                 <?php
                 $all_forms = Ninja_Forms()->form()->get_forms();
 

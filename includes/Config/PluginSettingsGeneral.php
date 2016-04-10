@@ -41,4 +41,4 @@ return apply_filters( 'ninja_forms_plugin_settings_general', array(
         'desc'  => 'e.g. $, &pound;, &euro;'
     ),
 
-));
+) );

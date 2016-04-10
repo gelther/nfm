@@ -26,7 +26,7 @@ final class NF_Admin_Metaboxes_AppendAForm extends NF_Abstracts_Metabox
     public function save_post( $post_id )
     {
         if (
-            defined('DOING_AUTOSAVE') && DOING_AUTOSAVE
+            defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE
             || ! isset( $_POST['nf_append_form'] )
             || ! wp_verify_nonce( $_POST['nf_append_form'], 'ninja_forms_append_form' )
             || ( 'page' == $_POST['post_type'] && ! current_user_can( 'edit_page', $post_id ) )

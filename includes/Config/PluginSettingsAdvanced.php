@@ -70,4 +70,4 @@ return apply_filters( 'ninja_forms_plugin_settings_advanced', array(
         'desc'  => __( 'Rollback to the most recent 2.9.x release.', 'ninja-forms' ),
     ),
 
-));
+) );

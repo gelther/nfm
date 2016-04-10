@@ -107,7 +107,7 @@ final class NF_Database_Models_Submission
 
         if( isset( $this->_field_values[ $field ] ) ) return $this->_field_values[ $field ];
 
-        return $this->_field_values[ $field ] = get_post_meta($this->_id, $field, TRUE);
+        return $this->_field_values[ $field ] = get_post_meta( $this->_id, $field, TRUE );
     }
 
     /**
@@ -330,9 +330,9 @@ final class NF_Database_Models_Submission
                 apply_filters( 'nf_sub_csv_terminator', "\n" )
             );
         }else{
-            header( 'Content-type: application/csv');
+            header( 'Content-type: application/csv' );
             header( 'Content-Disposition: attachment; filename="'.$filename .'"' );
-            header( 'Pragma: no-cache');
+            header( 'Pragma: no-cache' );
             header( 'Expires: 0' );
             echo apply_filters( 'nf_sub_csv_bom', "\xEF\xBB\xBF" ) ; // Byte Order Mark
             echo WPN_Helper::str_putcsv( $csv_array,
@@ -413,7 +413,7 @@ final class NF_Database_Models_Submission
         if( ! empty( $where ) ) {
             foreach ( $where as $key => $value ) {
 
-                $return[] = (is_array($value)) ? $value : array('key' => $key, 'value' => $value);
+                $return[] = (is_array( $value )) ? $value : array( 'key' => $key, 'value' => $value );
             }
         }
 

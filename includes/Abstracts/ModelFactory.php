@@ -157,7 +157,7 @@ class NF_Abstracts_ModelFactory
      * @param  bool|FALSE $fresh
      * @return array
      */
-    public function get_fields( $where = array(), $fresh = FALSE)
+    public function get_fields( $where = array(), $fresh = FALSE )
     {
         if( $where || $fresh || ! $this->_fields ){
 
@@ -230,7 +230,7 @@ class NF_Abstracts_ModelFactory
      * @param  bool|FALSE $fresh
      * @return array
      */
-    public function get_actions( $where = array(), $fresh = FALSE)
+    public function get_actions( $where = array(), $fresh = FALSE )
     {
         if( $where || $fresh || ! $this->_actions ){
 
@@ -288,7 +288,7 @@ class NF_Abstracts_ModelFactory
      * @param  bool|FALSE $fresh
      * @return array
      */
-    public function get_objects( $where = array(), $fresh = FALSE)
+    public function get_objects( $where = array(), $fresh = FALSE )
     {
         if( $where || $fresh || ! $this->_objects ){
 

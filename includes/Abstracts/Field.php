@@ -241,12 +241,12 @@ abstract class NF_Abstracts_Field
             return array_merge( $templates, (array) $parent_templates );
         }
 
-        $parent_class_name = strtolower( str_replace('NF_Fields_', '', $parent_class->getName() ) );
+        $parent_class_name = strtolower( str_replace( 'NF_Fields_', '', $parent_class->getName() ) );
 
         if( ! isset( Ninja_Forms()->fields[ $parent_class_name ] ) ) return $templates;
 
         $parent = Ninja_Forms()->fields[ $parent_class_name ];
-        return array_merge($templates, $parent->get_templates());
+        return array_merge( $templates, $parent->get_templates() );
 
     }
 
@@ -269,7 +269,7 @@ abstract class NF_Abstracts_Field
 
         foreach( $only_settings as $setting ){
 
-            if( isset( $all_settings[ $setting ]) ){
+            if( isset( $all_settings[ $setting ] ) ){
 
                 $settings[ $setting ] = $all_settings[ $setting ];
             }

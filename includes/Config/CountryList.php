@@ -251,4 +251,4 @@ return apply_filters( 'ninja_forms_config_country_list', array(
     __( 'Zambia', 'ninja-forms' ) => 'ZM',
     __( 'Zimbabwe', 'ninja-forms' ) => 'ZW'
 
-));
+) );

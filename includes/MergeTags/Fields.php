@@ -14,7 +14,7 @@ final class NF_MergeTags_Fields extends NF_Abstracts_MergeTags
         $this->merge_tags = Ninja_Forms()->config( 'MergeTagsFields' );
     }
 
-    public function __call($name, $arguments)
+    public function __call( $name, $arguments )
     {
         return $this->merge_tags[ $name ][ 'field_value' ];
     }

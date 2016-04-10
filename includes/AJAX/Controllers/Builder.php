@@ -4,7 +4,7 @@ class NF_AJAX_Controllers_Builder extends NF_Abstracts_Controller
 {
     public function __construct()
     {
-        add_action( 'wp_ajax_nf_builder', array( $this, 'builder' )   );
+        add_action( 'wp_ajax_nf_builder', array( $this, 'builder' ) );
     }
 
     public function builder()
@@ -179,8 +179,8 @@ class NF_AJAX_Controllers_Builder extends NF_Abstracts_Controller
             $unique_settings = $this->_unique_settings( $form_settings[ $id ] );
             $master_settings = array_merge( $master_settings, $unique_settings );
 
-            $form_settings_types[ $id ]['settingGroups']   = $this->_group_settings($form_settings[ $id ], $groups);
-            $form_settings_types[ $id ]['settingDefaults'] = $this->_setting_defaults($unique_settings);
+            $form_settings_types[ $id ]['settingGroups']   = $this->_group_settings( $form_settings[ $id ], $groups );
+            $form_settings_types[ $id ]['settingDefaults'] = $this->_setting_defaults( $unique_settings );
         }
         ?>
         <script>
@@ -276,9 +276,9 @@ class NF_AJAX_Controllers_Builder extends NF_Abstracts_Controller
         $bust = ( isset( $_GET[ 'nf-bust-actions-feed' ] ) );
 
         if( $bust || ! $actions ) {
-            $actions = wp_remote_get('https://ninjaforms.com/?action_feed=true');
-            $actions = wp_remote_retrieve_body($actions);
-            $actions = json_decode($actions, true);
+            $actions = wp_remote_get( 'https://ninjaforms.com/?action_feed=true' );
+            $actions = wp_remote_retrieve_body( $actions );
+            $actions = json_decode( $actions, true );
 
             set_transient( 'ninja-forms-builder-actions-feed', $actions, WEEK_IN_SECONDS );
         }

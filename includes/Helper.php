@@ -15,9 +15,9 @@ final class WPN_Helper
      */
     public static function addslashes( $value )
     {
-        $value = is_array($value) ?
-            array_map(array( 'self', 'addslashes' ), $value) :
-            addslashes($value);
+        $value = is_array( $value ) ?
+            array_map( array( 'self', 'addslashes' ), $value ) :
+            addslashes( $value );
         return $value;
     }
 
@@ -42,12 +42,12 @@ final class WPN_Helper
     public static function str_replace( $search, $replace, $subject ){
         if( is_array( $subject ) ){
             foreach( $subject as &$oneSubject ) {
-                $oneSubject = WPN_Helper::str_replace($search, $replace, $oneSubject);
+                $oneSubject = WPN_Helper::str_replace( $search, $replace, $oneSubject );
             }
-            unset($oneSubject);
+            unset( $oneSubject );
             return $subject;
         } else {
-            return str_replace($search, $replace, $subject);
+            return str_replace( $search, $replace, $subject );
         }
     }
 
@@ -57,8 +57,8 @@ final class WPN_Helper
      * @return array|string
      */
     public static function html_entity_decode( $value, $flag = ENT_COMPAT ){
-        $value = is_array($value) ?
-            array_map( array( 'self', 'html_entity_decode' ), $value) :
+        $value = is_array( $value ) ?
+            array_map( array( 'self', 'html_entity_decode' ), $value ) :
             html_entity_decode( $value, $flag );
         return $value;
     }
@@ -68,8 +68,8 @@ final class WPN_Helper
      * @return array|string
      */
     public static function htmlspecialchars( $value ){
-        $value = is_array($value) ?
-            array_map( array( 'self', 'htmlspecialchars' ), $value) :
+        $value = is_array( $value ) ?
+            array_map( array( 'self', 'htmlspecialchars' ), $value ) :
             htmlspecialchars( $value );
         return $value;
     }
@@ -79,9 +79,9 @@ final class WPN_Helper
      * @return array|string
      */
     public static function stripslashes( $value ){
-        $value = is_array($value) ?
-            array_map( array( 'self', 'stripslashes' ), $value) :
-            stripslashes($value);
+        $value = is_array( $value ) ?
+            array_map( array( 'self', 'stripslashes' ), $value ) :
+            stripslashes( $value );
         return $value;
     }
 
@@ -91,9 +91,9 @@ final class WPN_Helper
      */
     public static function esc_html( $value )
     {
-        $value = is_array($value) ?
-            array_map( array( 'self', 'esc_html' ), $value) :
-            esc_html($value);
+        $value = is_array( $value ) ?
+            array_map( array( 'self', 'esc_html' ), $value ) :
+            esc_html( $value );
         return $value;
     }
 
@@ -104,8 +104,8 @@ final class WPN_Helper
     public static function kses_post( $value )
     {
         $value = is_array( $value ) ?
-            array_map(  array( 'self', 'kses_post' ), $value ) :
-            wp_kses_post($value);
+            array_map( array( 'self', 'kses_post' ), $value ) :
+            wp_kses_post( $value );
         return $value;
     }
 
@@ -132,17 +132,17 @@ final class WPN_Helper
     public static function string_to_bytes( $size )
     {
         // Remove the non-unit characters from the size.
-        $unit = preg_replace('/[^bkmgtpezy]/i', '', $size);
+        $unit = preg_replace( '/[^bkmgtpezy]/i', '', $size );
 
         // Remove the non-numeric characters from the size.
-        $size = preg_replace('/[^0-9\.]/', '', $size);
+        $size = preg_replace( '/[^0-9\.]/', '', $size );
 
         if ( $unit && is_array( $unit ) ) {
             // Find the position of the unit in the ordered string which is the power of magnitude to multiply a kilobyte by.
             $size *= pow( 1024, stripos( 'bkmgtpezy', $unit[0] ) );
         }
 
-        return round($size);
+        return round( $size );
     }
 
     public static function str_putcsv( $array, $delimiter = ',', $enclosure = '"', $terminator = "\n" ) {
@@ -167,13 +167,13 @@ final class WPN_Helper
                     // Make sure sprintf has a good datatype to work with
                     case "integer":  $_spFormat = '%i'; break;
                     case "double":   $_spFormat = '%0.2f'; break;
-                    case "string":   $_spFormat = '%s'; $workArray[$i] = str_replace("$enclosure", "$enclosure$enclosure", $workArray[$i]); break;
+                    case "string":   $_spFormat = '%s'; $workArray[$i] = str_replace( "$enclosure", "$enclosure$enclosure", $workArray[$i] ); break;
                     // Unknown or invalid items for a csv - note: the datatype of array is already handled above, assuming the data is nested
                     case "object":
                     case "resource":
                     default:         $_spFormat = ''; break;
                 }
-                $returnString .= sprintf('%2$s'.$_spFormat.'%2$s', $workArray[$i], $enclosure);
+                $returnString .= sprintf( '%2$s'.$_spFormat.'%2$s', $workArray[$i], $enclosure );
                 $returnString .= ($i < ($arraySize-1)) ? $delimiter : $terminator;
             }
         }

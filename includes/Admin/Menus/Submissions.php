@@ -36,7 +36,7 @@ final class NF_Admin_Menus_Submissions extends NF_Abstracts_Submenu
 
         add_action( 'manage_posts_custom_column', array( $this, 'custom_columns' ), 10, 2 );
 
-        add_filter('months_dropdown_results', array( $this, 'remove_filter_show_all_dates' ), 9999 );
+        add_filter( 'months_dropdown_results', array( $this, 'remove_filter_show_all_dates' ), 9999 );
 
         add_action( 'restrict_manage_posts', array( $this, 'add_filters' ) );
 
@@ -50,7 +50,7 @@ final class NF_Admin_Menus_Submissions extends NF_Abstracts_Submenu
 
         add_action( 'load-edit.php', array( $this, 'export_listen' ) );
 
-        add_action('admin_head', array( $this, 'hide_page_title_action' ) );
+        add_action( 'admin_head', array( $this, 'hide_page_title_action' ) );
     }
 
     /**
@@ -170,7 +170,7 @@ final class NF_Admin_Menus_Submissions extends NF_Abstracts_Submenu
 
         Ninja_Forms::template( 'admin-menu-subs-filter.html.php', compact( 'form_options', 'form_selected', 'begin_date', 'end_date' ) );
 
-        wp_enqueue_script('jquery-ui-datepicker');
+        wp_enqueue_script( 'jquery-ui-datepicker' );
         wp_enqueue_style( 'jquery-ui-datepicker', Ninja_Forms::$url .'deprecated/assets/css/jquery-ui-fresh.min.css' );
     }
 
@@ -197,7 +197,7 @@ final class NF_Admin_Menus_Submissions extends NF_Abstracts_Submenu
         if ( is_search() && is_admin() && $typenow == 'nf_sub' && isset ( $_GET['s'] ) ) {
             global $wpdb;
 
-            $keywords = explode(' ', get_query_var('s'));
+            $keywords = explode( ' ', get_query_var( 's' ) );
             $query    = "";
 
             foreach ( $keywords as $word ) {
@@ -205,9 +205,9 @@ final class NF_Admin_Menus_Submissions extends NF_Abstracts_Submenu
                 $query .= " (mypm1.meta_value  LIKE '%{$word}%') OR ";
             }
 
-            if ( ! empty($query) ) {
+            if ( ! empty( $query ) ) {
                 // add to where clause
-                $pieces['where'] = str_replace("((({$wpdb->posts}.post_title LIKE '%", "( {$query} (({$wpdb->posts}.post_title LIKE '%", $pieces['where']);
+                $pieces['where'] = str_replace( "((({$wpdb->posts}.post_title LIKE '%", "( {$query} (({$wpdb->posts}.post_title LIKE '%", $pieces['where'] );
 
                 $pieces['join'] = $pieces['join'] . " INNER JOIN {$wpdb->postmeta} AS mypm1 ON ({$wpdb->posts}.ID = mypm1.post_id)";
 
@@ -232,8 +232,8 @@ final class NF_Admin_Menus_Submissions extends NF_Abstracts_Submenu
             ?>
             <script type="text/javascript">
                 jQuery(document).ready(function() {
-                    jQuery('<option>').val('export').text('<?php _e('Export')?>').appendTo("select[name='action']");
-                    jQuery('<option>').val('export').text('<?php _e('Export')?>').appendTo("select[name='action2']");
+                    jQuery('<option>').val('export').text('<?php _e( 'Export' )?>').appendTo("select[name='action']");
+                    jQuery('<option>').val('export').text('<?php _e( 'Export' )?>').appendTo("select[name='action2']");
                     <?php
                     if ( ( isset ( $_POST['action'] ) && $_POST['action'] == 'export' ) || ( isset ( $_POST['action2'] ) && $_POST['action2'] == 'export' ) ) {
                         ?>
@@ -277,51 +277,51 @@ final class NF_Admin_Menus_Submissions extends NF_Abstracts_Submenu
             return false;
         }
 
-        if ( ! isset ($_REQUEST['form_id']) || empty ($_REQUEST['form_id']) ) {
+        if ( ! isset ( $_REQUEST['form_id'] ) || empty ( $_REQUEST['form_id'] ) ) {
             return false;
         }
 
-        if ( isset ($_REQUEST['export_single']) && ! empty($_REQUEST['export_single']) ) {
-            Ninja_Forms()->sub(esc_html($_REQUEST['export_single']))->export();
+        if ( isset ( $_REQUEST['export_single'] ) && ! empty( $_REQUEST['export_single'] ) ) {
+            Ninja_Forms()->sub( esc_html( $_REQUEST['export_single'] ) )->export();
         }
 
-        if ( (isset ($_REQUEST['action']) && $_REQUEST['action'] == 'export') || (isset ($_REQUEST['action2']) && $_REQUEST['action2'] == 'export') ) {
+        if ( (isset ( $_REQUEST['action'] ) && $_REQUEST['action'] == 'export') || (isset ( $_REQUEST['action2'] ) && $_REQUEST['action2'] == 'export') ) {
 
-            $sub_ids = WPN_Helper::esc_html($_REQUEST['post']);
+            $sub_ids = WPN_Helper::esc_html( $_REQUEST['post'] );
 
             Ninja_Forms()->form( $_REQUEST['form_id'] )->export_subs( $sub_ids );
         }
 
-        if ( isset ($_REQUEST['download_file']) && ! empty($_REQUEST['download_file']) ) {
+        if ( isset ( $_REQUEST['download_file'] ) && ! empty( $_REQUEST['download_file'] ) ) {
 
             // Open our download all file
-            $filename = esc_html($_REQUEST['download_file']);
+            $filename = esc_html( $_REQUEST['download_file'] );
 
             $upload_dir = wp_upload_dir();
 
-            $file_path = trailingslashit($upload_dir['path']) . $filename . '.csv';
+            $file_path = trailingslashit( $upload_dir['path'] ) . $filename . '.csv';
 
-            if ( file_exists($file_path) ) {
-                $myfile = file_get_contents($file_path);
+            if ( file_exists( $file_path ) ) {
+                $myfile = file_get_contents( $file_path );
             } else {
-                $redirect = esc_url_raw(remove_query_arg(array('download_file', 'download_all')));
-                wp_redirect($redirect);
+                $redirect = esc_url_raw( remove_query_arg( array( 'download_file', 'download_all' ) ) );
+                wp_redirect( $redirect );
                 die();
             }
 
-            unlink($file_path);
+            unlink( $file_path );
 
-            $form_name = Ninja_Forms()->form(absint($_REQUEST['form_id']))->get_setting('title');
-            $form_name = sanitize_title($form_name);
+            $form_name = Ninja_Forms()->form( absint( $_REQUEST['form_id'] ) )->get_setting( 'title' );
+            $form_name = sanitize_title( $form_name );
 
-            $today = date('Y-m-d', current_time('timestamp'));
+            $today = date( 'Y-m-d', current_time( 'timestamp' ) );
 
-            $filename = apply_filters('ninja_forms_download_all_filename', $form_name . '-all-subs-' . $today);
+            $filename = apply_filters( 'ninja_forms_download_all_filename', $form_name . '-all-subs-' . $today );
 
-            header('Content-type: application/csv');
-            header('Content-Disposition: attachment; filename="' . $filename . '.csv"');
-            header('Pragma: no-cache');
-            header('Expires: 0');
+            header( 'Content-type: application/csv' );
+            header( 'Content-Disposition: attachment; filename="' . $filename . '.csv"' );
+            header( 'Pragma: no-cache' );
+            header( 'Expires: 0' );
 
             echo $myfile;
 

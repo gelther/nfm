@@ -27,7 +27,7 @@ if( get_option( 'ninja_forms_load_deprecated', FALSE )  && ! isset( $_POST[ 'nf2
         include_once 'deprecated/includes/activation.php';
 
         if( ! get_option( 'nf_aff', FALSE ) ) {
-            update_option('ninja_forms_freemius', 1);
+            update_option( 'ninja_forms_freemius', 1 );
         }
 
         ninja_forms_activation( $network_wide );
@@ -251,7 +251,7 @@ if( get_option( 'ninja_forms_load_deprecated', FALSE )  && ! isset( $_POST[ 'nf2
                  * WP-CLI Commands
                  */
                 if( class_exists( 'WP_CLI_Command' ) ) {
-                    WP_CLI::add_command('ninja-forms', 'NF_WPCLI_NinjaFormsCommand');
+                    WP_CLI::add_command( 'ninja-forms', 'NF_WPCLI_NinjaFormsCommand' );
                 }
 
                 /*
@@ -331,7 +331,7 @@ if( get_option( 'ninja_forms_load_deprecated', FALSE )  && ! isset( $_POST[ 'nf2
                  */
                 if( ! class_exists( 'EDD_SL_Plugin_Updater' ) ) {
                     // Load our custom updater if it doesn't already exist
-                    require_once( self::$dir . 'includes/Integrations/EDD/EDD_SL_Plugin_Updater.php');
+                    require_once( self::$dir . 'includes/Integrations/EDD/EDD_SL_Plugin_Updater.php' );
                 }
                 require_once self::$dir . 'includes/Integrations/EDD/class-extension-updater.php';
             }
@@ -386,21 +386,21 @@ if( get_option( 'ninja_forms_load_deprecated', FALSE )  && ! isset( $_POST[ 'nf2
             if( class_exists( $class_name ) ) return;
 
             /* Ninja Forms Prefix */
-            if ( false !== strpos($class_name, 'NF_') ) {
-                $class_name  = str_replace('NF_', '', $class_name);
-                $classes_dir = realpath(plugin_dir_path(__FILE__)) . DIRECTORY_SEPARATOR . 'includes' . DIRECTORY_SEPARATOR;
-                $class_file  = str_replace('_', DIRECTORY_SEPARATOR, $class_name) . '.php';
-                if ( file_exists($classes_dir . $class_file) ) {
+            if ( false !== strpos( $class_name, 'NF_' ) ) {
+                $class_name  = str_replace( 'NF_', '', $class_name );
+                $classes_dir = realpath( plugin_dir_path( __FILE__ ) ) . DIRECTORY_SEPARATOR . 'includes' . DIRECTORY_SEPARATOR;
+                $class_file  = str_replace( '_', DIRECTORY_SEPARATOR, $class_name ) . '.php';
+                if ( file_exists( $classes_dir . $class_file ) ) {
                     require_once $classes_dir . $class_file;
                 }
             }
 
             /* WP Ninjas Prefix */
-            if ( false !== strpos($class_name, 'WPN_') ) {
-                $class_name  = str_replace('WPN_', '', $class_name);
-                $classes_dir = realpath(plugin_dir_path(__FILE__)) . DIRECTORY_SEPARATOR . 'includes' . DIRECTORY_SEPARATOR;
-                $class_file  = str_replace('_', DIRECTORY_SEPARATOR, $class_name) . '.php';
-                if ( file_exists($classes_dir . $class_file) ) {
+            if ( false !== strpos( $class_name, 'WPN_' ) ) {
+                $class_name  = str_replace( 'WPN_', '', $class_name );
+                $classes_dir = realpath( plugin_dir_path( __FILE__ ) ) . DIRECTORY_SEPARATOR . 'includes' . DIRECTORY_SEPARATOR;
+                $class_file  = str_replace( '_', DIRECTORY_SEPARATOR, $class_name ) . '.php';
+                if ( file_exists( $classes_dir . $class_file ) ) {
                     require_once $classes_dir . $class_file;
                 }
             }
@@ -496,7 +496,7 @@ if( get_option( 'ninja_forms_load_deprecated', FALSE )  && ! isset( $_POST[ 'nf2
             if( ! is_array( $this->settings ) ) $this->settings = array( $this->settings );
 
             if( $settings && is_array( $settings ) ) {
-                $this->settings = array_merge($this->settings, $settings);
+                $this->settings = array_merge( $this->settings, $settings );
             }
 
             update_option( 'ninja_forms_settings', $this->settings );
@@ -518,9 +518,9 @@ if( get_option( 'ninja_forms_load_deprecated', FALSE )  && ! isset( $_POST[ 'nf2
             Ninja_Forms()->template( 'display-noscript-message.html.php', array( 'message' => $noscript_message ) );
 
             if( ! $preview ) {
-                NF_Display_Render::localize($form_id);
+                NF_Display_Render::localize( $form_id );
             } else {
-                NF_Display_Render::localize_preview($form_id);
+                NF_Display_Render::localize_preview( $form_id );
             }
         }
 
@@ -641,10 +641,10 @@ if( get_option( 'ninja_forms_load_deprecated', FALSE )  && ! isset( $_POST[ 'nf2
 
     function ninja_forms_uninstall(){
 
-        if( Ninja_Forms()->get_setting( 'delete_on_uninstall ') ) {
-            require_once plugin_dir_path(__FILE__) . '/includes/Database/Migrations.php';
+        if( Ninja_Forms()->get_setting( 'delete_on_uninstall ' ) ) {
+            require_once plugin_dir_path( __FILE__ ) . '/includes/Database/Migrations.php';
             $migrations = new NF_Database_Migrations();
-            $migrations->nuke(TRUE, TRUE);
+            $migrations->nuke( TRUE, TRUE );
         }
     }
 

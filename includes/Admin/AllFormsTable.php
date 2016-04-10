@@ -4,7 +4,7 @@ if( ! class_exists( 'WP_List_Table' ) ){
 
     if( file_exists( ABSPATH . 'wp-admin/includes/class-wp-list-table.php' ) ) {
 
-        require_once(ABSPATH . 'wp-admin/includes/class-wp-list-table.php');
+        require_once( ABSPATH . 'wp-admin/includes/class-wp-list-table.php' );
     } else {
 
         //TODO: Load local wp-list-table-class.php
@@ -43,16 +43,16 @@ class NF_Admin_AllFormsTable extends WP_List_Table
 
         $perPage     = 20;
         $currentPage = $this->get_pagenum();
-        $totalItems  = count($data);
+        $totalItems  = count( $data );
 
         $this->set_pagination_args( array(
             'total_items' => $totalItems,
             'per_page'    => $perPage
         ) );
 
-        $data = array_slice($data, (($currentPage-1)*$perPage), $perPage);
+        $data = array_slice( $data, (($currentPage-1)*$perPage), $perPage );
 
-        $this->_column_headers = array($columns, $hidden, $sortable);
+        $this->_column_headers = array( $columns, $hidden, $sortable );
         $this->items           = $data;
     }
 
@@ -153,13 +153,13 @@ class NF_Admin_AllFormsTable extends WP_List_Table
         $order   = 'asc';
 
         // If orderby is set, use this as the sort column
-        if( ! empty($_GET['orderby']) )
+        if( ! empty( $_GET['orderby'] ) )
         {
             $orderby = $_GET['orderby'];
         }
 
         // If order is set use this as the order
-        if( ! empty($_GET['order']) )
+        if( ! empty( $_GET['order'] ) )
         {
             $order = $_GET['order'];
         }
@@ -185,11 +185,11 @@ class NF_Admin_AllFormsTable extends WP_List_Table
     function column_title( $item )
     {
         $title           = $item[ 'title' ];
-        $edit_url        = add_query_arg( 'form_id', $item[ 'id' ], admin_url( 'admin.php?page=ninja-forms') );
-        $delete_url      = add_query_arg( array( 'action' => 'delete', 'id' => $item[ 'id' ], '_wpnonce' => wp_create_nonce( 'nf_delete_form' )));
-        $duplicate_url   = add_query_arg( array( 'action' => 'duplicate', 'id' => $item[ 'id' ], '_wpnonce' => wp_create_nonce( 'nf_duplicate_form' )));
+        $edit_url        = add_query_arg( 'form_id', $item[ 'id' ], admin_url( 'admin.php?page=ninja-forms' ) );
+        $delete_url      = add_query_arg( array( 'action' => 'delete', 'id' => $item[ 'id' ], '_wpnonce' => wp_create_nonce( 'nf_delete_form' ) ) );
+        $duplicate_url   = add_query_arg( array( 'action' => 'duplicate', 'id' => $item[ 'id' ], '_wpnonce' => wp_create_nonce( 'nf_duplicate_form' ) ) );
         $preview_url     = add_query_arg( 'nf_preview_form', $item[ 'id' ], site_url() );
-        $submissions_url = add_query_arg( 'form_id', $item[ 'id' ], admin_url( 'edit.php?post_type=nf_sub') );
+        $submissions_url = add_query_arg( 'form_id', $item[ 'id' ], admin_url( 'edit.php?post_type=nf_sub' ) );
 
         $form   = Ninja_Forms()->form( $item[ 'id' ] )->get();
         $locked = $form->get_setting( 'lock' );

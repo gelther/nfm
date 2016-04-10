@@ -73,9 +73,9 @@ final class NF_Database_Models_Form extends NF_Abstracts_Model
 
                 $field_id = $settings[ 'id' ];
 
-                $field = Ninja_Forms()->form($form_id)->field( $field_id )->get();
+                $field = Ninja_Forms()->form( $form_id )->field( $field_id )->get();
             } else {
-                $field = Ninja_Forms()->form($form_id)->field()->get();
+                $field = Ninja_Forms()->form( $form_id )->field()->get();
             }
 
             $settings[ 'parent_id' ] = $form_id;
@@ -85,7 +85,7 @@ final class NF_Database_Models_Form extends NF_Abstracts_Model
 
         foreach( $import[ 'actions' ] as $settings ){
 
-            $action = Ninja_Forms()->form($form_id)->action()->get();
+            $action = Ninja_Forms()->form( $form_id )->action()->get();
 
             $action->update_settings( $settings )->save();
         }
@@ -178,9 +178,9 @@ final class NF_Database_Models_Form extends NF_Abstracts_Model
             $filename = apply_filters( 'ninja_forms_form_export_filename', 'nf_form_' . $today );
             $filename = $filename . ".nff";
 
-            header( 'Content-type: application/nff');
+            header( 'Content-type: application/nff' );
             header( 'Content-Disposition: attachment; filename="'.$filename .'"' );
-            header( 'Pragma: no-cache');
+            header( 'Pragma: no-cache' );
             header( 'Expires: 0' );
             echo apply_filters( 'ninja_forms_form_export_bom', "\xEF\xBB\xBF" ) ; // Byte Order Mark
             echo base64_encode( maybe_serialize( $export ) );
@@ -297,13 +297,13 @@ final class NF_Database_Models_Form extends NF_Abstracts_Model
     {
         // Remove `_` from type
         if( isset( $action[ 'type' ] ) ) {
-            $action['type'] = str_replace('_', '', $action['type']);
+            $action['type'] = str_replace( '_', '', $action['type'] );
         }
 
         // Convert `name` to `label`
         if( isset( $action[ 'name' ] ) ) {
             $action['label'] = $action['name'];
-            unset($action['name']);
+            unset( $action['name'] );
         }
 
         return apply_filters( 'ninja_forms_upgrade_action_' . $action[ 'type' ], $action );

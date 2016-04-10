@@ -4,7 +4,7 @@ class NF_AJAX_Controllers_Form extends NF_Abstracts_Controller
 {
     public function __construct()
     {
-        add_action( 'wp_ajax_nf_save_form', array( $this, 'save' )   );
+        add_action( 'wp_ajax_nf_save_form', array( $this, 'save' ) );
         add_action( 'wp_ajax_nf_delete_form', array( $this, 'delete' ) );
     }
 
@@ -26,7 +26,7 @@ class NF_AJAX_Controllers_Form extends NF_Abstracts_Controller
             $form_data[ 'id' ]                              = $form->get_id();
             $this->_data[ 'new_ids' ][ 'forms' ][ $tmp_id ] = $form_data[ 'id' ];
         } else {
-            $form = Ninja_Forms()->form($form_data['id'])->get();
+            $form = Ninja_Forms()->form( $form_data['id'] )->get();
         }
 
         $form->update_settings( $form_data[ 'settings' ] )->save();
@@ -36,9 +36,9 @@ class NF_AJAX_Controllers_Form extends NF_Abstracts_Controller
 
                 $id = $field_data['id'];
 
-                $field = Ninja_Forms()->form( $form_data[ 'id' ] )->get_field($id);
+                $field = Ninja_Forms()->form( $form_data[ 'id' ] )->get_field( $id );
 
-                $field->update_settings($field_data['settings'])->save();
+                $field->update_settings( $field_data['settings'] )->save();
 
                 if ( $field->get_tmp_id() ) {
 
@@ -70,7 +70,7 @@ class NF_AJAX_Controllers_Form extends NF_Abstracts_Controller
 
                 $action = Ninja_Forms()->form( $form_data[ 'id' ] )->get_action( $id );
 
-                $action->update_settings($action_data['settings'])->save();
+                $action->update_settings( $action_data['settings'] )->save();
 
                 $action_type = $action->get_setting( 'type' );
 

@@ -282,9 +282,9 @@ class NF_Abstracts_Model
 
         // Check for passed arguments to limit the returned settings.
         $only = func_get_args();
-        if ( $only && is_array($only)
+        if ( $only && is_array( $only )
             // And if the array is NOT multidimensional
-            && (count($only) == count($only, COUNT_RECURSIVE)) ) {
+            && (count( $only ) == count( $only, COUNT_RECURSIVE )) ) {
 
             // If only one setting, return a single value
             if( 1 == count( $only ) ){
@@ -677,7 +677,7 @@ class NF_Abstracts_Model
                 $where_conditions[] = $conditions;
             }
 
-            $count = count($where);
+            $count = count( $where );
             for ( $i = 0; $i < $count; $i++ ) {
 
                 $join_statement[]  = "INNER JOIN " . $this->_meta_table_name . " as meta$i on meta$i.parent_id = " . $this->_table_name . ".id";

@@ -18,7 +18,7 @@ return apply_filters( 'ninja_forms_field_settings', array(
     'label'                          => array(
         'name'  => 'label',
         'type'  => 'textbox',
-        'label' => __( 'Label', 'ninja-forms'),
+        'label' => __( 'Label', 'ninja-forms' ),
         'width' => 'one-half',
         'group' => 'primary',
         'value' => '',
@@ -133,7 +133,7 @@ return apply_filters( 'ninja_forms_field_settings', array(
                 'value' => 'unchecked'
             ),
             array(
-                'label' => __( 'Checked', 'ninja-forms'),
+                'label' => __( 'Checked', 'ninja-forms' ),
                 'value' => 'checked',
             ),
         ),
@@ -197,7 +197,7 @@ return apply_filters( 'ninja_forms_field_settings', array(
     'mask'                           => array(
         'name'    => 'mask',
         'type'    => 'select',
-        'label'   => __( 'Input Mask', 'ninja-forms'),
+        'label'   => __( 'Input Mask', 'ninja-forms' ),
         'width'   => 'one-half',
         'group'   => 'restrictions',
         'help'    => __( 'Restricts the kind of input your users can put into this field.', 'ninja-forms' ),
@@ -228,7 +228,7 @@ return apply_filters( 'ninja_forms_field_settings', array(
     'custom_mask'                    => array(
         'name'        => 'custom_mask',
         'type'        => 'textbox',
-        'label'       => __( 'Custom Mask', 'ninja-forms'),
+        'label'       => __( 'Custom Mask', 'ninja-forms' ),
         'width'       => 'one-half',
         'group'       => 'restrictions',
         'value'       => '',
@@ -444,7 +444,7 @@ return apply_filters( 'ninja_forms_field_settings', array(
     'key'                            => array(
         'name'  => 'key',
         'type'  => 'textbox',
-        'label' => __( 'Field Key', 'ninja-forms'),
+        'label' => __( 'Field Key', 'ninja-forms' ),
         'width' => 'full',
         'group' => 'administration',
         'value' => '',
@@ -556,7 +556,7 @@ return apply_filters( 'ninja_forms_field_settings', array(
     'num_sort'                       => array(
         'name'  => 'num_sort',
         'type'  => 'toggle',
-        'label' => __( 'Sort as Numeric', 'ninja-forms'),
+        'label' => __( 'Sort as Numeric', 'ninja-forms' ),
         'width' => 'full',
         'group' => 'administration',
         'value' => '',
@@ -1006,7 +1006,7 @@ return apply_filters( 'ninja_forms_field_settings', array(
     'spam_answer'                    => array(
         'name'  => 'spam_answer',
         'type'  => 'textbox',
-        'label' => __( 'Answer', 'ninja-forms'),
+        'label' => __( 'Answer', 'ninja-forms' ),
         'width' => 'full',
         'group' => 'primary',
         'value' => '',
@@ -1029,7 +1029,7 @@ return apply_filters( 'ninja_forms_field_settings', array(
         'help'  => __( 'Used for marking a field for processing.', 'ninja-forms' ),
     ),
 
-));
+) );
 
 
 // Example of settings

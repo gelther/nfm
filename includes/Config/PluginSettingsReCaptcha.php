@@ -57,4 +57,4 @@ return apply_filters( 'ninja_forms_plugin_settings_recaptcha', array(
         'label'   => __( 'reCAPTCHA Theme', 'ninja-forms' ),
         'desc'    => '',
     ),
-));
+) );
