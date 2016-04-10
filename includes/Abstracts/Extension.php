@@ -72,7 +72,7 @@ final class NF_Abstracts_Extension
      */
     public static function instance()
     {
-        if ( !isset(self::$instance) && !(self::$instance instanceof NF_Abstracts_Extension) ) {
+        if ( ! isset(self::$instance) && ! (self::$instance instanceof NF_Abstracts_Extension) ) {
             self::$instance = new NF_Abstracts_Extension();
 
             self::$dir = plugin_dir_path(__FILE__);

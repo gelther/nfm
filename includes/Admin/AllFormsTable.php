@@ -153,13 +153,13 @@ class NF_Admin_AllFormsTable extends WP_List_Table
         $order   = 'asc';
 
         // If orderby is set, use this as the sort column
-        if( !empty($_GET['orderby']) )
+        if( ! empty($_GET['orderby']) )
         {
             $orderby = $_GET['orderby'];
         }
 
         // If order is set use this as the order
-        if( !empty($_GET['order']) )
+        if( ! empty($_GET['order']) )
         {
             $order = $_GET['order'];
         }
@@ -261,7 +261,7 @@ class NF_Admin_AllFormsTable extends WP_List_Table
 
         // If the delete bulk action is triggered
         if ( ( isset( $_POST['action'] ) && $_POST['action'] == 'bulk-delete' )
-            || ( isset( $_POST['action2'] ) && $_POST['action2'] == 'bulk-delete' )  
+            || ( isset( $_POST['action2'] ) && $_POST['action2'] == 'bulk-delete' )   
         ) {
 
             $delete_ids = esc_sql( $_POST['bulk-delete'] );

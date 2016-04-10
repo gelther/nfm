@@ -43,11 +43,11 @@ class NF_Fields_Recaptcha extends NF_Abstracts_Field
         $url        = 'https://www.google.com/recaptcha/api/siteverify?secret=' . $secret_key . '&response='.sanitize_text_field( $field['value'] );
         $resp       = wp_remote_get( esc_url_raw( $url ) );
 
-        if ( !is_wp_error( $resp ) ) {
+        if ( ! is_wp_error( $resp ) ) {
             $body     = wp_remote_retrieve_body( $resp );
             $response = json_decode( $body );
             if ( $response->success === false ) {
-                if ( !empty( $response->{'error-codes'} ) && $response->{'error-codes'} != 'missing-input-response' ) {
+                if ( ! empty( $response->{'error-codes'} ) && $response->{'error-codes'} != 'missing-input-response' ) {
                     return array( __( 'Please make sure you have entered your Site & Secret keys correctly', 'ninja-forms' ) );
                 }else {
                     return array( __( 'Captcha mismatch. Please enter the correct value in captcha field', 'ninja-forms' ) );

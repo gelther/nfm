@@ -112,7 +112,7 @@ final class NF_Display_Render
 
                 $templates = $field_class->get_templates();
 
-                if ( !array($templates) ) {
+                if ( ! array($templates) ) {
                     $templates = array($templates);
                 }
 
@@ -266,7 +266,7 @@ final class NF_Display_Render
 
                 $templates = $field_class->get_templates();
 
-                if ( !array($templates) ) {
+                if ( ! array($templates) ) {
                     $templates = array($templates);
                 }
 
