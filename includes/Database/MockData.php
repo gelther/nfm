@@ -173,7 +173,7 @@ final class NF_Database_MockData
         $action->update_setting( 'label', 'Mock Success Message Action' )
             ->update_setting( 'type', 'successmessage' )
             ->update_setting( 'message', 'Thank you {field:name} for filling out my form!' )
-            ->update_setting( 'active', TRUE )
+            ->update_setting( 'active', true )
             ->save();
 
 //        $action = Ninja_Forms()->form( $form_id )->action()->get();
@@ -189,7 +189,7 @@ final class NF_Database_MockData
             ->update_setting( 'to', 'myformbuildingbringsallthedeveloperstotheyard@wpninjas.com' )
             ->update_setting( 'subject', 'This is an email action.' )
             ->update_setting( 'message', 'Hello, Ninja Forms!' )
-            ->update_setting( 'active', FALSE )
+            ->update_setting( 'active', false )
             ->save();
 
 //        $action = Ninja_Forms()->form( $form_id )->action()->get();
@@ -202,7 +202,7 @@ final class NF_Database_MockData
         $action = Ninja_Forms()->form( $form_id )->action()->get();
         $action->update_setting( 'label', 'Mock Save Action' )
             ->update_setting( 'type', 'save' )
-            ->update_setting( 'active', TRUE )
+            ->update_setting( 'active', true )
             ->save();
 
         /**
@@ -954,11 +954,11 @@ final class NF_Database_MockData
     private function _migrate()
     {
         $migrations = new NF_Database_Migrations();
-        $migrations->nuke( TRUE, TRUE );
+        $migrations->nuke( true, true );
 
         $posts = get_posts( 'post_type=nf_sub&numberposts=-1' );
         foreach ( $posts as $post ) {
-            wp_delete_post( $post->ID, TRUE );
+            wp_delete_post( $post->ID, true );
         }
 
         $migrations->migrate();
