@@ -22,4 +22,5 @@ class NF_Fields_CreditCard extends NF_Abstracts_Field
 
         $this->_nicename = __( 'Credit Card', 'ninja-forms' );
     }
+
 }
