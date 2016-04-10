@@ -28,7 +28,7 @@ class NF_Fields_PasswordConfirm extends NF_Fields_Password
 
         if( ! is_array( $password_fields ) || empty( $password_fields ) ) return $errors;
 
-        foreach( $password_fields as $password_field ){
+        foreach( $password_fields as $password_field ) {
 
             if( $this->is_matching_values( $field, $password_field ) ) continue;
 
@@ -42,7 +42,7 @@ class NF_Fields_PasswordConfirm extends NF_Fields_Password
     {
         $password_fields = array();
 
-        foreach( $data[ 'fields' ] as $field ){
+        foreach( $data[ 'fields' ] as $field ) {
 
             if( 'password' != $field[ 'type' ] ) continue;
 
