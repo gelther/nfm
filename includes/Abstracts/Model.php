@@ -25,7 +25,7 @@ class NF_Abstracts_Model
      * Temporary ID
      *
      * The temporary ID is used to reference unsaved objects
-     *   before they are stored in the database.
+     * before they are stored in the database.
      *
      * @var string
      */
@@ -35,7 +35,7 @@ class NF_Abstracts_Model
      * Type
      *
      * The type is used to pragmatically identify the type
-     *   of an object without inspecting the class.
+     * of an object without inspecting the class.
      *
      * @var string
      */
@@ -87,7 +87,7 @@ class NF_Abstracts_Model
      * Columns
      *
      * A list of settings that are stored in the main table as columns.
-     *   These settings are NOT stored in the meta table.
+     * These settings are NOT stored in the meta table.
      *
      * @var array
      */
@@ -147,7 +147,7 @@ class NF_Abstracts_Model
 
         /**
          * Set the object ID
-         *   Check if the ID is Permanent (int) or Temporary (string)
+         * Check if the ID is Permanent (int) or Temporary (string)
          */
         if( is_numeric( $id ) ) {
             $this->_id = absint( $id );
@@ -252,11 +252,11 @@ class NF_Abstracts_Model
 
             /**
              * If the query returns results then
-             *   assign settings using the column name as the setting key.
+             * assign settings using the column name as the setting key.
              */
             if( $results ) {
                 foreach ( $this->_columns as $column ) {
-                    $this->_settings[$column] = $results->$column;
+                    $this->_settings[ $column ] = $results->$column;
                 }
             }
 
@@ -290,7 +290,7 @@ class NF_Abstracts_Model
             if( 1 == count( $only ) ){
 
                 if( isset( $this->_settings[ $only[ 0 ] ] ) ) {
-                    return $this->_settings[$only[ 0 ]];
+                    return $this->_settings[ $only[ 0 ] ];
                 } else {
                     return NULL;
                 }
@@ -681,7 +681,7 @@ class NF_Abstracts_Model
             for ( $i = 0; $i < $count; $i++ ) {
 
                 $join_statement[]  = 'INNER JOIN ' . $this->_meta_table_name . " as meta$i on meta$i.parent_id = " . $this->_table_name . '.id';
-                $where_statement[] = "( meta$i.key = '" . $where_conditions[$i][ 'key' ] . "' AND meta$i.value = '" . $where_conditions[$i][ 'value' ] . "' )";
+                $where_statement[] = "( meta$i.key = '" . $where_conditions[ $i ][ 'key' ] . "' AND meta$i.value = '" . $where_conditions[ $i ][ 'value' ] . "' )";
             }
 
         }
