@@ -10,7 +10,7 @@
 final class WPN_Helper
 {
     /**
-     * @param $value
+     * @param               $value
      * @return array|string
      */
     public static function addslashes( $value )
@@ -22,7 +22,7 @@ final class WPN_Helper
     }
 
     /**
-     * @param $input
+     * @param               $input
      * @return array|string
      */
     public static function utf8_encode( $input ){
@@ -34,9 +34,9 @@ final class WPN_Helper
     }
 
     /**
-     * @param $search
-     * @param $replace
-     * @param $subject
+     * @param        $search
+     * @param        $replace
+     * @param        $subject
      * @return mixed
      */
     public static function str_replace( $search, $replace, $subject ){
@@ -51,8 +51,8 @@ final class WPN_Helper
     }
 
     /**
-     * @param $value
-     * @param int $flag
+     * @param               $value
+     * @param  int          $flag
      * @return array|string
      */
     public static function html_entity_decode( $value, $flag = ENT_COMPAT ){
@@ -63,7 +63,7 @@ final class WPN_Helper
     }
 
     /**
-     * @param $value
+     * @param               $value
      * @return array|string
      */
     public static function htmlspecialchars( $value ){
@@ -74,7 +74,7 @@ final class WPN_Helper
     }
 
     /**
-     * @param $value
+     * @param               $value
      * @return array|string
      */
     public static function stripslashes( $value ){
@@ -85,7 +85,7 @@ final class WPN_Helper
     }
 
     /**
-     * @param $value
+     * @param               $value
      * @return array|string
      */
     public static function esc_html( $value )
@@ -97,7 +97,7 @@ final class WPN_Helper
     }
 
     /**
-     * @param $value
+     * @param               $value
      * @return array|string
      */
     public static function kses_post( $value )
@@ -109,7 +109,7 @@ final class WPN_Helper
     }
 
     /**
-     * @param $value
+     * @param               $value
      * @return array|string
      */
     public static function strip_tags( $value )
@@ -125,7 +125,7 @@ final class WPN_Helper
      *
      * Converts PHP settings from a string to bytes.
      *
-     * @param $size
+     * @param        $size
      * @return float
      */
     public static function string_to_bytes( $size )
