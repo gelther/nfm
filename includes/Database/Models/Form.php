@@ -145,7 +145,7 @@ final class NF_Database_Models_Form extends NF_Abstracts_Model
         return $new_form_id;
     }
 
-    public static function export( $form_id, $return = FALSE )
+    public static function export( $form_id, $return = false )
     {
         //TODO: Set Date Format from Plugin Settings
         $date_format = 'm/d/Y';
@@ -234,19 +234,19 @@ final class NF_Database_Models_Form extends NF_Abstracts_Model
             $import[ 'fields' ][ $key ] = $field;
         }
 
-        $has_save_action = FALSE;
+        $has_save_action = false;
         foreach( $import[ 'actions' ] as $key => $action ){
             $action                      = $this->import_action_backwards_compatibility( $action );
             $import[ 'actions' ][ $key ] = $action;
 
-            if( 'save' == $action[ 'type' ] ) $has_save_action = TRUE;
+            if( 'save' == $action[ 'type' ] ) $has_save_action = true;
         }
 
         if( ! $has_save_action ) {
             $import[ 'actions' ][] = array(
                 'type'   => 'save',
                 'label'  => 'Save Form',
-                'active' => TRUE
+                'active' => true
             );
         }
 
@@ -271,18 +271,18 @@ final class NF_Database_Models_Form extends NF_Abstracts_Model
 
                     // Convert Tokenizer
                     $token = 'field_' . $field_id;
-                    if( FALSE !== strpos( $value, $token ) ) {
+                    if( false !== strpos( $value, $token ) ) {
                         $value = str_replace( $token, '{field:' . $field_key . '}', $value );
                     }
 
                     // Convert Shortcodes
                     $shortcode = "[ninja_forms_field id=$field_id]";
-                    if( FALSE !== strpos( $value, $shortcode ) ){
+                    if( false !== strpos( $value, $shortcode ) ){
                         $value = str_replace( $shortcode, '{field:' . $field_key . '}', $value );
                     }
                 }
 
-                if( FALSE !== strpos( $value, '[ninja_forms_all_fields]' ) ) {
+                if( false !== strpos( $value, '[ninja_forms_all_fields]' ) ) {
                     $value = str_replace( '[ninja_forms_all_fields]', '{field:all_fields}', $value );
                 }
                 $action_settings[ $setting ] = $value;
