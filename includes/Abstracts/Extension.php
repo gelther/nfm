@@ -92,7 +92,7 @@ final class NF_Abstracts_Extension
 
         if( ! $this->autoloader_prefix ) {
             $class                   = explode( '_', __CLASS__ );
-            $this->autoloader_prefix = $class[ 0 ];
+            $this->autoloader_prefix = $class[0];
         }
 
         if ( false !== strpos( $class_name, $this->autoloader_prefix ) ) {
