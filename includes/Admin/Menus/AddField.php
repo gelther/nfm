@@ -8,13 +8,11 @@ final class NF_Admin_Menus_AddField extends NF_Abstracts_Submenu
 
     public $priority = 9001;
 
-    public function __construct()
-    {
+    public function __construct() {
         parent::__construct();
     }
 
-    public function display()
-    {
+    public function display() {
         Ninja_Forms::template( 'admin-menu-add-field.html.php' );
         wp_enqueue_style( 'nf-builder', Ninja_Forms::$url . 'assets/css/builder.css' );
         wp_enqueue_style( 'qtip2', Ninja_Forms::$url . 'assets/css/jquery.qtip.css' );
