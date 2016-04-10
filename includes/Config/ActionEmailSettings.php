@@ -116,7 +116,7 @@ return apply_filters( 'ninja_forms_action_email_settings', array(
         'group'   => 'advanced',
         'label'   => __( 'Format', 'ninja-forms' ),
         'value'   => 'html',
-        
+
     ),
 
     /*
