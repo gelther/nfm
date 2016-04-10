@@ -59,27 +59,27 @@ final class NF_Database_Models_Form extends NF_Abstracts_Model
          * Create Form
          */
         $form = Ninja_Forms()->form( $id )->get();
-        $form->update_settings( $import[ 'settings' ] );
+        $form->update_settings( $import['settings'] );
         $form->save();
         $form_id = $form->get_id();
 
-        foreach ( $import[ 'fields' ] as $settings ) {
+        foreach ( $import['fields'] as $settings ) {
 
             if ( $is_conversion ) {
 
-                $field_id = $settings[ 'id' ];
+                $field_id = $settings['id'];
 
                 $field = Ninja_Forms()->form( $form_id )->field( $field_id )->get();
             } else {
                 $field = Ninja_Forms()->form( $form_id )->field()->get();
             }
 
-            $settings[ 'parent_id' ] = $form_id;
+            $settings['parent_id'] = $form_id;
 
             $field->update_settings( $settings )->save();
         }
 
-        foreach ( $import[ 'actions' ] as $settings ) {
+        foreach ( $import['actions'] as $settings ) {
 
             $action = Ninja_Forms()->form( $form_id )->action()->get();
 
@@ -120,7 +120,7 @@ final class NF_Database_Models_Form extends NF_Abstracts_Model
 
             $field_settings = $field->get_settings();
 
-            $field_settings[ 'parent_id' ] = $new_form_id;
+            $field_settings['parent_id'] = $new_form_id;
 
             $new_field = Ninja_Forms()->form( $new_form_id )->field()->get();
             $new_field->update_settings( $field_settings )->save();
@@ -154,13 +154,13 @@ final class NF_Database_Models_Form extends NF_Abstracts_Model
         $fields = Ninja_Forms()->form( $form_id )->get_fields();
 
         foreach ( $fields as $field ) {
-            $export[ 'fields' ][] = $field->get_settings();
+            $export['fields'][] = $field->get_settings();
         }
 
         $actions = Ninja_Forms()->form( $form_id )->get_actions();
 
         foreach ( $actions as $action ) {
-            $export[ 'actions' ][] = $action->get_settings();
+            $export['actions'][] = $action->get_settings();
         }
 
         if ( $return ) {
@@ -189,53 +189,53 @@ final class NF_Database_Models_Form extends NF_Abstracts_Model
      */
     public function import_form_backwards_compatibility( $import ) {
         // Rename `data` to `settings`
-        if ( isset( $import[ 'data' ] ) ) {
-            $import[ 'settings' ] = $import[ 'data' ];
-            unset( $import[ 'data' ] );
+        if ( isset( $import['data'] ) ) {
+            $import['settings'] = $import['data'];
+            unset( $import['data'] );
         }
 
         // Rename `notifications` to `actions`
-        if ( isset( $import[ 'notifications' ] ) ) {
-            $import[ 'actions' ] = $import[ 'notifications' ];
-            unset( $import[ 'notifications' ] );
+        if ( isset( $import['notifications'] ) ) {
+            $import['actions'] = $import['notifications'];
+            unset( $import['notifications'] );
         }
 
         // Rename `form_title` to `title`
-        if ( isset( $import[ 'settings' ][ 'form_title' ] ) ) {
-            $import[ 'settings' ][ 'title' ] = $import[ 'settings' ][ 'form_title' ];
-            unset( $import[ 'settings' ][ 'form_title' ] );
+        if ( isset( $import['settings']['form_title'] ) ) {
+            $import['settings']['title'] = $import['settings']['form_title'];
+            unset( $import['settings']['form_title'] );
         }
 
         // Make sure
-        if ( ! isset( $import[ 'fields' ] ) ) {
-            $import[ 'fields' ] = array();
+        if ( ! isset( $import['fields'] ) ) {
+            $import['fields'] = array();
         }
 
         // `Field` to `Fields`
-        if ( isset( $import[ 'field' ] ) ) {
-            $import[ 'fields' ] = $import[ 'field' ];
-            unset( $import[ 'field' ] );
+        if ( isset( $import['field'] ) ) {
+            $import['fields'] = $import['field'];
+            unset( $import['field'] );
         }
 
         $import = apply_filters( 'ninja_forms_upgrade_settings', $import );
 
         // Combine Field and Field Data
-        foreach ( $import[ 'fields' ] as $key => $field ) {
+        foreach ( $import['fields'] as $key => $field ) {
             // TODO: Split Credit Card field into multiple fields.
-            $field                      = $this->import_field_backwards_compatibility( $field );
-            $import[ 'fields' ][ $key ] = $field;
+            $field                    = $this->import_field_backwards_compatibility( $field );
+            $import['fields'][ $key ] = $field;
         }
 
         $has_save_action = false;
-        foreach ( $import[ 'actions' ] as $key => $action ) {
-            $action                      = $this->import_action_backwards_compatibility( $action );
-            $import[ 'actions' ][ $key ] = $action;
+        foreach ( $import['actions'] as $key => $action ) {
+            $action                    = $this->import_action_backwards_compatibility( $action );
+            $import['actions'][ $key ] = $action;
 
-            if ( 'save' == $action[ 'type' ] ) $has_save_action = true;
+            if ( 'save' == $action['type'] ) $has_save_action = true;
         }
 
         if ( ! $has_save_action ) {
-            $import[ 'actions' ][] = array(
+            $import['actions'][] = array(
                 'type'   => 'save',
                 'label'  => 'Save Form',
                 'active' => true
@@ -250,13 +250,13 @@ final class NF_Database_Models_Form extends NF_Abstracts_Model
     public function import_merge_tags_backwards_compatibility( $import ) {
         $field_lookup = array();
 
-        foreach ( $import[ 'fields' ] as $key => $field ) {
-            $field_id                  = $field[ 'id' ];
-            $field_key                 = $field[ 'type' ] . '_' . $field_id;
-            $field_lookup[ $field_id ] = $import[ 'fields' ][ $key ][ 'key' ] = $field_key;
+        foreach ( $import['fields'] as $key => $field ) {
+            $field_id                  = $field['id'];
+            $field_key                 = $field['type'] . '_' . $field_id;
+            $field_lookup[ $field_id ] = $import['fields'][ $key ]['key'] = $field_key;
         }
 
-        foreach ( $import[ 'actions' ] as $key => $action_settings ) {
+        foreach ( $import['actions'] as $key => $action_settings ) {
             foreach ( $action_settings as $setting => $value ) {
                 foreach ( $field_lookup as $field_id => $field_key ) {
 
@@ -277,7 +277,7 @@ final class NF_Database_Models_Form extends NF_Abstracts_Model
                     $value = str_replace( '[ninja_forms_all_fields]', '{field:all_fields}', $value );
                 }
                 $action_settings[ $setting ] = $value;
-                $import[ 'actions' ][ $key ] = $action_settings;
+                $import['actions'][ $key ]   = $action_settings;
             }
         }
 
@@ -286,49 +286,49 @@ final class NF_Database_Models_Form extends NF_Abstracts_Model
 
     public function import_action_backwards_compatibility( $action ) {
         // Remove `_` from type
-        if ( isset( $action[ 'type' ] ) ) {
-            $action[ 'type' ] = str_replace( '_', '', $action[ 'type' ] );
+        if ( isset( $action['type'] ) ) {
+            $action['type'] = str_replace( '_', '', $action['type'] );
         }
 
         // Convert `name` to `label`
-        if ( isset( $action[ 'name' ] ) ) {
-            $action[ 'label' ] = $action[ 'name' ];
-            unset( $action[ 'name' ] );
+        if ( isset( $action['name'] ) ) {
+            $action['label'] = $action['name'];
+            unset( $action['name'] );
         }
 
-        return apply_filters( 'ninja_forms_upgrade_action_' . $action[ 'type' ], $action );
+        return apply_filters( 'ninja_forms_upgrade_action_' . $action['type'], $action );
     }
 
     public function import_field_backwards_compatibility( $field ) {
         // Flatten field settings array
-        if ( isset( $field[ 'data' ] ) && is_array( $field[ 'data' ] ) ) {
-            $field = array_merge( $field, $field[ 'data' ] );
+        if ( isset( $field['data'] ) && is_array( $field['data'] ) ) {
+            $field = array_merge( $field, $field['data'] );
         }
-        unset( $field[ 'data' ] );
+        unset( $field['data'] );
 
         // Drop form_id in favor of parent_id, which is set by the form.
-        if ( isset( $field[ 'form_id' ] ) ) {
-            unset( $field[ 'form_id' ] );
+        if ( isset( $field['form_id'] ) ) {
+            unset( $field['form_id'] );
         }
 
         // Remove `_` prefix from type setting
-        $field[ 'type' ] = ltrim( $field[ 'type' ], '_' );
+        $field['type'] = ltrim( $field['type'], '_' );
 
         // Type: `text` -> `textbox`
-        if ( 'text' == $field[ 'type' ] ) {
-            $field[ 'type' ] = 'textbox';
+        if ( 'text' == $field['type'] ) {
+            $field['type'] = 'textbox';
         }
 
-        if ( 'submit' == $field[ 'type' ] ) {
-            $field[ 'processing_label' ] = 'Processing';
+        if ( 'submit' == $field['type'] ) {
+            $field['processing_label'] = 'Processing';
         }
 
-        if ( 'calc' == $field[ 'type' ] ) {
-            $field[ 'type' ] = 'note';
+        if ( 'calc' == $field['type'] ) {
+            $field['type'] = 'note';
 
-            if ( isset( $field[ 'calc_method' ] ) ) {
+            if ( isset( $field['calc_method'] ) ) {
 
-                switch ( $field[ 'calc_method' ] ) {
+                switch ( $field['calc_method'] ) {
                     case 'eq':
                         $method = __( 'Equation (Advanced)', 'ninja-forms' );
                         break;
@@ -341,131 +341,131 @@ final class NF_Database_Models_Form extends NF_Abstracts_Model
                     default:
                         $method = '';
                 }
-                $field[ 'default' ] = $method . "\r\n";
+                $field['default'] = $method . "\r\n";
 
-                if ( 'eq' == $field[ 'calc_method' ] && isset( $field[ 'calc_eq' ] ) ) {
-                    $field[ 'default' ] .= $field[ 'calc_eq' ];
+                if ( 'eq' == $field['calc_method'] && isset( $field['calc_eq'] ) ) {
+                    $field['default'] .= $field['calc_eq'];
                 }
 
-                if ( 'fields' == $field[ 'calc_method' ] && isset( $field[ 'calc' ] ) ) {
+                if ( 'fields' == $field['calc_method'] && isset( $field['calc'] ) ) {
                     // TODO: Support 'operations and fields (advanced)' calculations.
                 }
 
-                if ( 'auto' == $field[ 'calc_method' ] && isset( $field[ 'calc' ] ) ) {
+                if ( 'auto' == $field['calc_method'] && isset( $field['calc'] ) ) {
                     // TODO: Support 'auto-totaling' calculations.
                 }
             }
 
-            unset( $field[ 'calc' ] );
-            unset( $field[ 'calc_eq' ] );
-            unset( $field[ 'calc_method' ] );
+            unset( $field['calc'] );
+            unset( $field['calc_eq'] );
+            unset( $field['calc_method'] );
         }
 
-        if ( isset( $field[ 'email' ] ) ) {
+        if ( isset( $field['email'] ) ) {
 
-            if ( 'textbox' == $field[ 'type' ] && $field[ 'email' ] ) {
-                $field[ 'type' ] = 'email';
+            if ( 'textbox' == $field['type'] && $field['email'] ) {
+                $field['type'] = 'email';
             }
-            unset( $field[ 'email' ] );
+            unset( $field['email'] );
         }
 
-        if ( isset( $field[ 'class' ] ) ) {
-            $field[ 'element_class' ] = $field[ 'class' ];
-            unset( $field[ 'class' ] );
+        if ( isset( $field['class'] ) ) {
+            $field['element_class'] = $field['class'];
+            unset( $field['class'] );
         }
 
-        if ( isset( $field[ 'req' ] ) ) {
-            $field[ 'required' ] = $field[ 'req' ];
-            unset( $field[ 'req' ] );
+        if ( isset( $field['req'] ) ) {
+            $field['required'] = $field['req'];
+            unset( $field['req'] );
         }
 
-        if ( isset( $field[ 'default_value_type' ] ) ) {
+        if ( isset( $field['default_value_type'] ) ) {
 
             /* User Data */
-            if ( '_user_id' == $field[ 'default_value_type' ] )           $field[ 'default' ] = '{user:id}';
-            if ( '_user_email' == $field[ 'default_value_type' ] )        $field[ 'default' ] = '{user:email}';
-            if ( '_user_lastname' == $field[ 'default_value_type' ] )     $field[ 'default' ] = '{user:last_name}';
-            if ( '_user_firstname' == $field[ 'default_value_type' ] )    $field[ 'default' ] = '{user:first_name}';
-            if ( '_user_display_name' == $field[ 'default_value_type' ] ) $field[ 'default' ] = '{user:display_name}';
+            if ( '_user_id' == $field['default_value_type'] )           $field['default'] = '{user:id}';
+            if ( '_user_email' == $field['default_value_type'] )        $field['default'] = '{user:email}';
+            if ( '_user_lastname' == $field['default_value_type'] )     $field['default'] = '{user:last_name}';
+            if ( '_user_firstname' == $field['default_value_type'] )    $field['default'] = '{user:first_name}';
+            if ( '_user_display_name' == $field['default_value_type'] ) $field['default'] = '{user:display_name}';
 
             /* Post Data */
-            if ( 'post_id' == $field[ 'default_value_type' ] )    $field[ 'default' ] = '{post:id}';
-            if ( 'post_url' == $field[ 'default_value_type' ] )   $field[ 'default' ] = '{post:url}';
-            if ( 'post_title' == $field[ 'default_value_type' ] ) $field[ 'default' ] = '{post:title}';
+            if ( 'post_id' == $field['default_value_type'] )    $field['default'] = '{post:id}';
+            if ( 'post_url' == $field['default_value_type'] )   $field['default'] = '{post:url}';
+            if ( 'post_title' == $field['default_value_type'] ) $field['default'] = '{post:title}';
 
             /* System Data */
-            if ( 'today' == $field[ 'default_value_type' ] ) $field[ 'default' ] = '{system:date}';
+            if ( 'today' == $field['default_value_type'] ) $field['default'] = '{system:date}';
 
             /* Miscellaneous */
-            if ( '_custom' == $field[ 'default_value_type' ] && isset( $field[ 'default_value' ] ) ) {
-                $field[ 'default' ] = $field[ 'default_value' ];
+            if ( '_custom' == $field['default_value_type'] && isset( $field['default_value'] ) ) {
+                $field['default'] = $field['default_value'];
             }
-            if ( 'querystring' == $field[ 'default_value_type' ] && isset( $field[ 'default_value' ] ) ) {
-                $field[ 'default' ] = '{' . $field[ 'default_value' ] . '}';
+            if ( 'querystring' == $field['default_value_type'] && isset( $field['default_value'] ) ) {
+                $field['default'] = '{' . $field['default_value'] . '}';
             }
 
-            unset( $field[ 'default_value' ] );
-            unset( $field[ 'default_value_type' ] );
+            unset( $field['default_value'] );
+            unset( $field['default_value_type'] );
         }
 
-        if ( 'list' == $field[ 'type' ] ) {
+        if ( 'list' == $field['type'] ) {
 
-            if ( isset( $field[ 'list_type' ] ) ) {
+            if ( isset( $field['list_type'] ) ) {
 
-                if ( 'dropdown' == $field[ 'list_type' ] ) {
-                    $field[ 'type' ] = 'listselect';
+                if ( 'dropdown' == $field['list_type'] ) {
+                    $field['type'] = 'listselect';
                 }
-                if ( 'radio' == $field[ 'list_type' ] ) {
-                    $field[ 'type' ] = 'listradio';
+                if ( 'radio' == $field['list_type'] ) {
+                    $field['type'] = 'listradio';
                 }
-                if ( 'checkbox' == $field[ 'list_type' ] ) {
-                    $field[ 'type' ] = 'listcheckbox';
+                if ( 'checkbox' == $field['list_type'] ) {
+                    $field['type'] = 'listcheckbox';
                 }
-                if ( 'multi' == $field[ 'list_type' ] ) {
-                    $field[ 'type' ] = 'listmultiselect';
+                if ( 'multi' == $field['list_type'] ) {
+                    $field['type'] = 'listmultiselect';
                 }
             }
 
-            if ( isset( $field[ 'list' ][ 'options' ] ) ) {
-                $field[ 'options' ] = $field[ 'list' ][ 'options' ];
-                unset( $field[ 'list' ][ 'options' ] );
+            if ( isset( $field['list']['options'] ) ) {
+                $field['options'] = $field['list']['options'];
+                unset( $field['list']['options'] );
             }
         }
 
         // Convert `textbox` to other field types
         foreach ( array( 'fist_name', 'last_name', 'user_zip', 'user_city', 'user_phone', 'user_email', 'user_address_1', 'user_address_2', 'datepicker' ) as $item ) {
             if ( isset( $field[ $item ] ) && $field[ $item ] ) {
-                $field[ 'type' ] = str_replace( array( '_', 'user', '1', '2', 'picker' ), '', $item );
+                $field['type'] = str_replace( array( '_', 'user', '1', '2', 'picker' ), '', $item );
 
                 unset( $field[ $item ] );
             }
         }
 
-        if ( 'timed_submit' == $field[ 'type' ] ) {
-            $field[ 'type' ] = 'submit';
+        if ( 'timed_submit' == $field['type'] ) {
+            $field['type'] = 'submit';
         }
 
-        if ( 'checkbox' == $field[ 'type' ] ) {
+        if ( 'checkbox' == $field['type'] ) {
 
-            if ( isset( $field[ 'calc_value' ] ) ) {
+            if ( isset( $field['calc_value'] ) ) {
 
-                if ( isset( $field[ 'calc_value' ][ 'checked' ] ) ) {
-                    $field[ 'checked_calc_value' ] = $field[ 'calc_value' ][ 'checked' ];
-                    unset( $field[ 'calc_value' ][ 'checked' ] );
+                if ( isset( $field['calc_value']['checked'] ) ) {
+                    $field['checked_calc_value'] = $field['calc_value']['checked'];
+                    unset( $field['calc_value']['checked'] );
                 }
-                if ( isset( $field[ 'calc_value' ][ 'unchecked' ] ) ) {
-                    $field[ 'unchecked_calc_value' ] = $field[ 'calc_value' ][ 'unchecked' ];
-                    unset( $field[ 'calc_value' ][ 'unchecked' ] );
+                if ( isset( $field['calc_value']['unchecked'] ) ) {
+                    $field['unchecked_calc_value'] = $field['calc_value']['unchecked'];
+                    unset( $field['calc_value']['unchecked'] );
                 }
             }
         }
 
-        if ( 'rating' == $field[ 'type' ] ) {
-            $field[ 'type' ] = 'starrating';
+        if ( 'rating' == $field['type'] ) {
+            $field['type'] = 'starrating';
 
-            if ( isset( $field[ 'rating_stars' ] ) ) {
-                $field[ 'default' ] = $field[ 'rating_stars' ];
-                unset( $field[ 'rating_stars' ] );
+            if ( isset( $field['rating_stars'] ) ) {
+                $field['default'] = $field['rating_stars'];
+                unset( $field['rating_stars'] );
             }
         }
 
