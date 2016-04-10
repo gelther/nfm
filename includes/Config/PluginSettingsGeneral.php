@@ -6,7 +6,7 @@ return apply_filters( 'ninja_forms_plugin_settings_general', array(
     |--------------------------------------------------------------------------
     | Version
     |--------------------------------------------------------------------------
-    */
+     */
 
     'version'         => array(
         'id'    => 'version',
@@ -19,7 +19,7 @@ return apply_filters( 'ninja_forms_plugin_settings_general', array(
     |--------------------------------------------------------------------------
     | Date Format
     |--------------------------------------------------------------------------
-    */
+     */
 
     'date_format'     => array(
         'id'    => 'date_format',
@@ -32,7 +32,7 @@ return apply_filters( 'ninja_forms_plugin_settings_general', array(
     |--------------------------------------------------------------------------
     | Currency Symbol
     |--------------------------------------------------------------------------
-    */
+     */
 
     'currency_symbol' => array(
         'id'    => 'currency_symbol',
