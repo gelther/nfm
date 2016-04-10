@@ -411,7 +411,7 @@ final class NF_Database_Models_Submission
         );
 
         if( ! empty( $where ) ) {
-            foreach ($where as $key => $value) {
+            foreach ( $where as $key => $value ) {
 
                 $return[] = (is_array($value)) ? $value : array('key' => $key, 'value' => $value);
             }

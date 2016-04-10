@@ -386,21 +386,21 @@ if( get_option( 'ninja_forms_load_deprecated', FALSE )  && ! isset( $_POST[ 'nf2
             if( class_exists( $class_name ) ) return;
 
             /* Ninja Forms Prefix */
-            if (false !== strpos($class_name, 'NF_')) {
+            if ( false !== strpos($class_name, 'NF_') ) {
                 $class_name  = str_replace('NF_', '', $class_name);
                 $classes_dir = realpath(plugin_dir_path(__FILE__)) . DIRECTORY_SEPARATOR . 'includes' . DIRECTORY_SEPARATOR;
                 $class_file  = str_replace('_', DIRECTORY_SEPARATOR, $class_name) . '.php';
-                if (file_exists($classes_dir . $class_file)) {
+                if ( file_exists($classes_dir . $class_file) ) {
                     require_once $classes_dir . $class_file;
                 }
             }
 
             /* WP Ninjas Prefix */
-            if (false !== strpos($class_name, 'WPN_')) {
+            if ( false !== strpos($class_name, 'WPN_') ) {
                 $class_name  = str_replace('WPN_', '', $class_name);
                 $classes_dir = realpath(plugin_dir_path(__FILE__)) . DIRECTORY_SEPARATOR . 'includes' . DIRECTORY_SEPARATOR;
                 $class_file  = str_replace('_', DIRECTORY_SEPARATOR, $class_name) . '.php';
-                if (file_exists($classes_dir . $class_file)) {
+                if ( file_exists($classes_dir . $class_file) ) {
                     require_once $classes_dir . $class_file;
                 }
             }
@@ -544,7 +544,7 @@ if( get_option( 'ninja_forms_load_deprecated', FALSE )  && ! isset( $_POST[ 'nf2
 
             $directory = 'includes/' . $subdirectory;
 
-            foreach (scandir( self::$dir . $directory ) as $path) {
+            foreach ( scandir( self::$dir . $directory ) as $path ) {
 
                 $path     = explode( DIRECTORY_SEPARATOR, str_replace( self::$dir, '', $path ) );
                 $filename = str_replace( '.php', '', end( $path ) );

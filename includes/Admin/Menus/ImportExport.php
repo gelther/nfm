@@ -216,15 +216,15 @@ final class NF_Admin_Menus_ImportExport extends NF_Abstracts_Submenu
                 }
                 $field['default'] = $method . "\r\n";
 
-                if ('eq' == $field['calc_method'] && isset( $field['calc_eq'] ) ) {
+                if ( 'eq' == $field['calc_method'] && isset( $field['calc_eq'] ) ) {
                     $field['default'] .= $field['calc_eq'];
                 }
 
-                if ('fields' == $field['calc_method'] && isset( $field['calc'] ) ) {
+                if ( 'fields' == $field['calc_method'] && isset( $field['calc'] ) ) {
                     // TODO: Support 'operations and fields (advanced)' calculations.
                 }
 
-                if ('auto' == $field['calc_method'] && isset( $field['calc'] ) ) {
+                if ( 'auto' == $field['calc_method'] && isset( $field['calc'] ) ) {
                     // TODO: Support 'auto-totaling' calculations.
                 }
             }
@@ -285,16 +285,16 @@ final class NF_Admin_Menus_ImportExport extends NF_Abstracts_Submenu
 
             if ( isset( $field[ 'list_type' ] ) ) {
 
-                if ('dropdown' == $field['list_type']) {
+                if ( 'dropdown' == $field['list_type'] ) {
                     $field['type'] = 'listselect';
                 }
-                if ('radio' == $field['list_type']) {
+                if ( 'radio' == $field['list_type'] ) {
                     $field['type'] = 'listradio';
                 }
-                if ('checkbox' == $field['list_type']) {
+                if ( 'checkbox' == $field['list_type'] ) {
                     $field['type'] = 'listcheckbox';
                 }
-                if ('multi' == $field['list_type']) {
+                if ( 'multi' == $field['list_type'] ) {
                     $field['type'] = 'listmultiselect';
                 }
             }

@@ -86,7 +86,7 @@ class NF_AJAX_Controllers_Uploads extends NF_Abstracts_Controller
      */
     private function code_to_message($code)
     {
-        switch ($code) {
+        switch ( $code ) {
             case UPLOAD_ERR_INI_SIZE:
                 $message = "The uploaded file exceeds the upload_max_filesize directive in php.ini";
                 break;

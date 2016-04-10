@@ -153,7 +153,7 @@ final class NF_Admin_Menus_Forms extends NF_Abstracts_Menu
         // die();
 
         if( ! empty( $fields ) ) {
-            foreach ($fields as $field) {
+            foreach ( $fields as $field ) {
 
                 $type = $field->get_setting( 'type' );
 
@@ -162,8 +162,8 @@ final class NF_Admin_Menus_Forms extends NF_Abstracts_Menu
                 $settings       = $field->get_settings();
                 $settings['id'] = $field->get_id();
 
-                foreach ($settings as $key => $setting) {
-                    if (is_numeric($setting)) $settings[$key] = floatval($setting);
+                foreach ( $settings as $key => $setting ) {
+                    if ( is_numeric($setting) ) $settings[$key] = floatval($setting);
                 }
 
                 $fields_settings[] = $settings;
@@ -173,7 +173,7 @@ final class NF_Admin_Menus_Forms extends NF_Abstracts_Menu
         $actions_settings = array();
 
         if( ! empty( $actions ) ) {
-            foreach ($actions as $action) {
+            foreach ( $actions as $action ) {
 
                 $type = $action->get_setting( 'type' );
 
@@ -303,7 +303,7 @@ final class NF_Admin_Menus_Forms extends NF_Abstracts_Menu
         $external_actions = $this->_fetch_action_feed();
         $u_id             = get_option( 'nf_aff', false );
         if ( !$u_id ) $u_id = apply_filters( 'ninja_forms_affiliate_id', false );
-        foreach( $external_actions as $action){
+        foreach( $external_actions as $action ){
 
             if( ! isset( $action[ 'name' ] ) || ! $action[ 'name' ] ) continue;
 

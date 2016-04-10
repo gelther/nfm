@@ -200,12 +200,12 @@ final class NF_Admin_Menus_Submissions extends NF_Abstracts_Submenu
             $keywords = explode(' ', get_query_var('s'));
             $query    = "";
 
-            foreach ($keywords as $word) {
+            foreach ( $keywords as $word ) {
 
                 $query .= " (mypm1.meta_value  LIKE '%{$word}%') OR ";
             }
 
-            if (!empty($query)) {
+            if ( !empty($query) ) {
                 // add to where clause
                 $pieces['where'] = str_replace("((({$wpdb->posts}.post_title LIKE '%", "( {$query} (({$wpdb->posts}.post_title LIKE '%", $pieces['where']);
 
@@ -272,25 +272,25 @@ final class NF_Admin_Menus_Submissions extends NF_Abstracts_Submenu
     public function export_listen()
     {
         // Bail if we aren't in the admin
-        if (!is_admin())
+        if ( !is_admin() )
             return false;
 
-        if (!isset ($_REQUEST['form_id']) || empty ($_REQUEST['form_id'])) {
+        if ( !isset ($_REQUEST['form_id']) || empty ($_REQUEST['form_id']) ) {
             return false;
         }
 
-        if (isset ($_REQUEST['export_single']) && !empty($_REQUEST['export_single'])) {
+        if ( isset ($_REQUEST['export_single']) && !empty($_REQUEST['export_single']) ) {
             Ninja_Forms()->sub(esc_html($_REQUEST['export_single']))->export();
         }
 
-        if ((isset ($_REQUEST['action']) && $_REQUEST['action'] == 'export') || (isset ($_REQUEST['action2']) && $_REQUEST['action2'] == 'export')) {
+        if ( (isset ($_REQUEST['action']) && $_REQUEST['action'] == 'export') || (isset ($_REQUEST['action2']) && $_REQUEST['action2'] == 'export') ) {
 
             $sub_ids = WPN_Helper::esc_html($_REQUEST['post']);
 
             Ninja_Forms()->form( $_REQUEST['form_id'] )->export_subs( $sub_ids );
         }
 
-        if (isset ($_REQUEST['download_file']) && !empty($_REQUEST['download_file'])) {
+        if ( isset ($_REQUEST['download_file']) && !empty($_REQUEST['download_file']) ) {
 
             // Open our download all file
             $filename = esc_html($_REQUEST['download_file']);
@@ -299,7 +299,7 @@ final class NF_Admin_Menus_Submissions extends NF_Abstracts_Submenu
 
             $file_path = trailingslashit($upload_dir['path']) . $filename . '.csv';
 
-            if (file_exists($file_path)) {
+            if ( file_exists($file_path) ) {
                 $myfile = file_get_contents($file_path);
             } else {
                 $redirect = esc_url_raw(remove_query_arg(array('download_file', 'download_all')));
@@ -329,9 +329,9 @@ final class NF_Admin_Menus_Submissions extends NF_Abstracts_Submenu
 
     public function hide_page_title_action() {
 
-        if(
+        if( 
             ( isset( $_GET[ 'post_type' ] ) && 'nf_sub' == $_GET[ 'post_type'] ) ||
-            'nf_sub' == get_post_type()
+            'nf_sub' == get_post_type() 
         ){
             echo '<style type="text/css">.page-title-action{display: none;}</style>';
         }

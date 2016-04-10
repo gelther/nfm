@@ -255,7 +255,7 @@ class NF_Abstracts_Model
              *   assign settings using the column name as the setting key.
              */
             if( $results ) {
-                foreach ($this->_columns as $column) {
+                foreach ( $this->_columns as $column ) {
                     $this->_settings[$column] = $results->$column;
                 }
             }
@@ -270,7 +270,7 @@ class NF_Abstracts_Model
             );
 
             // Assign settings to the settings property.
-            foreach ($meta_results as $meta) {
+            foreach ( $meta_results as $meta ) {
                 $this->_settings[ $meta->key ] = $meta->value;
             }
         }
@@ -284,7 +284,7 @@ class NF_Abstracts_Model
         $only = func_get_args();
         if ( $only && is_array($only)
             // And if the array is NOT multidimensional
-            && (count($only) == count($only, COUNT_RECURSIVE))) {
+            && (count($only) == count($only, COUNT_RECURSIVE)) ) {
 
             // If only one setting, return a single value
             if( 1 == count( $only ) ){
@@ -670,7 +670,7 @@ class NF_Abstracts_Model
         if( $where AND is_array( $where ) ) {
 
             $where_conditions = array();
-            foreach ($where as $key => $value) {
+            foreach ( $where as $key => $value ) {
                 $conditions['key']   = $key;
                 $conditions['value'] = $value;
 
@@ -678,7 +678,7 @@ class NF_Abstracts_Model
             }
 
             $count = count($where);
-            for ($i = 0; $i < $count; $i++) {
+            for ( $i = 0; $i < $count; $i++ ) {
 
                 $join_statement[]  = "INNER JOIN " . $this->_meta_table_name . " as meta$i on meta$i.parent_id = " . $this->_table_name . ".id";
                 $where_statement[] = "( meta$i.key = '" . $where_conditions[$i]['key'] . "' AND meta$i.value = '" . $where_conditions[$i]['value'] . "' )";

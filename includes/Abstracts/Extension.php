@@ -72,7 +72,7 @@ final class NF_Abstracts_Extension
      */
     public static function instance()
     {
-        if (!isset(self::$instance) && !(self::$instance instanceof NF_Abstracts_Extension)) {
+        if ( !isset(self::$instance) && !(self::$instance instanceof NF_Abstracts_Extension) ) {
             self::$instance = new NF_Abstracts_Extension();
 
             self::$dir = plugin_dir_path(__FILE__);
@@ -99,7 +99,7 @@ final class NF_Abstracts_Extension
             $class_name  = str_replace($this->autoloader_prefix, '', $class_name);
             $classes_dir = realpath(plugin_dir_path(__FILE__)) . DIRECTORY_SEPARATOR . 'includes' . DIRECTORY_SEPARATOR;
             $class_file  = str_replace('_', DIRECTORY_SEPARATOR, $class_name) . '.php';
-            if (file_exists($classes_dir . $class_file)) {
+            if ( file_exists($classes_dir . $class_file) ) {
                 require_once $classes_dir . $class_file;
             }
         }
