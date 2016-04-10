@@ -196,9 +196,9 @@ final class NF_Actions_Email extends NF_Abstracts_Action
      */
     private function _backwards_compatibility()
     {
-        add_filter( 'ninja_forms_sub_csv_delimiter',        array( $this, 'ninja_forms_sub_csv_delimiter'        ), 10, 1 );
-        add_filter( 'ninja_sub_csv_enclosure',              array( $this, 'ninja_sub_csv_enclosure'              ), 10, 1 );
-        add_filter( 'ninja_sub_csv_terminator',             array( $this, 'ninja_sub_csv_terminator'             ), 10, 1 );
+        add_filter( 'ninja_forms_sub_csv_delimiter', array( $this, 'ninja_forms_sub_csv_delimiter'        ), 10, 1 );
+        add_filter( 'ninja_sub_csv_enclosure', array( $this, 'ninja_sub_csv_enclosure'              ), 10, 1 );
+        add_filter( 'ninja_sub_csv_terminator', array( $this, 'ninja_sub_csv_terminator'             ), 10, 1 );
         add_filter( 'ninja_forms_action_email_attachments', array( $this, 'ninja_forms_action_email_attachments' ), 10, 3 );
     }
 
