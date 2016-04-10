@@ -21,8 +21,7 @@ final class NF_Database_Models_Action extends NF_Abstracts_Model
         'created_at'
     );
 
-    public function __construct( $db, $id, $parent_id = '' )
-    {
+    public function __construct( $db, $id, $parent_id = '' ) {
         parent::__construct( $db, $id, $parent_id );
     }
 
