@@ -50,7 +50,7 @@ class NF_Admin_AllFormsTable extends WP_List_Table
             'per_page'    => $perPage
         ) );
 
-        $data = array_slice($data,(($currentPage-1)*$perPage),$perPage);
+        $data = array_slice($data, (($currentPage-1)*$perPage), $perPage);
 
         $this->_column_headers = array($columns, $hidden, $sortable);
         $this->items           = $data;
@@ -91,7 +91,7 @@ class NF_Admin_AllFormsTable extends WP_List_Table
     public function get_sortable_columns()
     {
         return array(
-            'title' => array( 'title',   TRUE ),
+            'title' => array( 'title', TRUE ),
             'date'  => array( 'updated', TRUE ),
         );
     }
