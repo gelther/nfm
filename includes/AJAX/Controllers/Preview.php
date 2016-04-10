@@ -4,15 +4,13 @@ class NF_AJAX_Controllers_Preview extends NF_Abstracts_Controller
 {
     private static $transient_prefix = 'nf_form_preview_';
 
-    public function __construct()
-    {
+    public function __construct() {
         add_action( 'wp_ajax_nf_preview_update', array( $this, 'update' ) );
 
         add_filter( 'ninja_forms_run_action_settings', array( $this, 'filter_action_settings' ), 10, 4 );
     }
 
-    public function update()
-    {
+    public function update() {
         check_ajax_referer( 'ninja_forms_ajax_nonce', 'security' );
 
         $form = json_decode( stripslashes( $_POST[ 'form' ] ), ARRAY_A );
@@ -99,8 +97,7 @@ class NF_AJAX_Controllers_Preview extends NF_Abstracts_Controller
         $this->_respond();
     }
 
-    public function filter_action_settings( $action_settings, $form_id, $action_id, $form_settings )
-    {
+    public function filter_action_settings( $action_settings, $form_id, $action_id, $form_settings ) {
         if ( ! isset( $form_settings[ 'is_preview' ] ) ) return $action_settings;
 
         $form_data = $this->get_form_data( $form_id );
@@ -114,8 +111,7 @@ class NF_AJAX_Controllers_Preview extends NF_Abstracts_Controller
         return $action_settings;
     }
 
-    private function get_form_data( $form_id )
-    {
+    private function get_form_data( $form_id ) {
         $form_data = get_user_option( self::$transient_prefix . $form_id, false );
 
         if ( ! $form_data ) {
@@ -151,8 +147,7 @@ class NF_AJAX_Controllers_Preview extends NF_Abstracts_Controller
         return $form_data;
     }
 
-    private function update_form_data( $form_data )
-    {
+    private function update_form_data( $form_data ) {
         $update = update_user_option( get_current_user_id(), self::$transient_prefix . $form_data[ 'id' ], $form_data );
 
         $this->_data[ 'updated' ] = $update;
