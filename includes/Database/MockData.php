@@ -622,8 +622,8 @@ final class NF_Database_MockData
     public function form_long_form( $num_fields = 500 )
     {
         /**
-        * FORM
-        */
+         * FORM
+         */
 
         $form = Ninja_Forms()->form()->get();
         $form->update_setting( 'title', 'Long Form - ' . $num_fields . ' Fields' );
