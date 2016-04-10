@@ -73,7 +73,7 @@ abstract class NF_Abstracts_FieldOptIn extends NF_Abstracts_Input
     {
         if( empty( $lists ) ) return;
 
-        foreach( $lists as $name => $label ){
+        foreach( $lists as $name => $label ) {
             $this->addList( $name, $label );
         }
     }
