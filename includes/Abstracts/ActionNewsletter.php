@@ -103,7 +103,7 @@ abstract class NF_Abstracts_ActionNewsletter extends NF_Abstracts_Action
         $this->_settings[ $prefix . 'newsletter_list' ] = array(
             'name'    => 'newsletter_list',
             'type'    => 'select',
-            'label'   => $labels[ 'list' ] . ' <a class="js-newsletter-list-update extra"><span class="dashicons dashicons-update"></span></a>',
+            'label'   => $labels['list'] . ' <a class="js-newsletter-list-update extra"><span class="dashicons dashicons-update"></span></a>',
             'width'   => 'full',
             'group'   => 'primary',
             'value'   => '0',
@@ -112,14 +112,14 @@ abstract class NF_Abstracts_ActionNewsletter extends NF_Abstracts_Action
 
         $fields = array();
         foreach( $lists as $list ){
-            $this->_settings[ $prefix . 'newsletter_list' ][ 'options' ][] = $list;
+            $this->_settings[ $prefix . 'newsletter_list' ]['options'][] = $list;
 
-            foreach( $list[ 'fields' ] as $field ){
-                $name     = $list[ 'value' ] . '_' . $field[ 'value' ];
+            foreach( $list['fields'] as $field ){
+                $name     = $list['value'] . '_' . $field['value'];
                 $fields[] = array(
                     'name'           => $name,
                     'type'           => 'textbox',
-                    'label'          => $field[ 'label' ],
+                    'label'          => $field['label'],
                     'width'          => 'full',
                     'use_merge_tags' => array(
                         'exclude' => array(
