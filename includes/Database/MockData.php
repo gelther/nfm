@@ -313,7 +313,7 @@ final class NF_Database_MockData
             )
         );
 
-        foreach( $fields as $settings ) {
+        foreach ( $fields as $settings ) {
 
             $field = Ninja_Forms()->form( $form_id )->field()->get();
             $field->update_settings( $settings )->save();
@@ -441,7 +441,7 @@ final class NF_Database_MockData
 
         $order = 1;
         $i     = 1;
-        foreach( array( 'above', 'right', 'below', 'left', 'hidden' ) as $label_pos ) {
+        foreach ( array( 'above', 'right', 'below', 'left', 'hidden' ) as $label_pos ) {
 
 
             foreach ( $fields as $settings ) {
@@ -635,7 +635,7 @@ final class NF_Database_MockData
          * FIELDS
          */
 
-        for( $i = 1; $i <= $num_fields; $i++ ) {
+        for ( $i = 1; $i <= $num_fields; $i++ ) {
             $field = Ninja_Forms()->form( $form_id )->field()->get();
             $field->update_setting( 'type', 'textbox' )
                 ->update_setting( 'label', 'Field #' . $i )
