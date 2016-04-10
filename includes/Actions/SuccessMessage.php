@@ -41,7 +41,7 @@ final class NF_Actions_SuccessMessage extends NF_Abstracts_Action
         add_action( 'nf_before_import_form', array( $this, 'import_form_action_success_message' ), 11 );
     }
 
-    /*
+    /**
     * PUBLIC METHODS
     */
     public function save( $action_settings )
