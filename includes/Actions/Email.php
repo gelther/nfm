@@ -59,9 +59,9 @@ final class NF_Actions_Email extends NF_Abstracts_Action
             $attachments
         );
 
-        $data[ 'actions' ][ 'email' ][ 'to' ] = $action_settings['to'];
-        $data[ 'actions' ][ 'email' ][ 'sent' ] = $sent;
-        $data[ 'actions' ][ 'email' ][ 'headers' ] = $headers;
+        $data[ 'actions' ][ 'email' ][ 'to' ]          = $action_settings['to'];
+        $data[ 'actions' ][ 'email' ][ 'sent' ]        = $sent;
+        $data[ 'actions' ][ 'email' ][ 'headers' ]     = $headers;
         $data[ 'actions' ][ 'email' ][ 'attachments' ] = $attachments;
 
         return $data;
@@ -164,10 +164,10 @@ final class NF_Actions_Email extends NF_Abstracts_Action
         );
 
         $upload_dir = wp_upload_dir();
-        $path = trailingslashit( $upload_dir['path'] );
+        $path       = trailingslashit( $upload_dir['path'] );
 
         // create temporary file
-        $path = tempnam( $path, 'Sub' );
+        $path      = tempnam( $path, 'Sub' );
         $temp_file = fopen( $path, 'r+' );
 
         // write to temp file
@@ -175,8 +175,8 @@ final class NF_Actions_Email extends NF_Abstracts_Action
         fclose( $temp_file );
 
         // find the directory we will be using for the final file
-        $path = pathinfo( $path );
-        $dir = $path['dirname'];
+        $path     = pathinfo( $path );
+        $dir      = $path['dirname'];
         $basename = $path['basename'];
 
         // create name for file
