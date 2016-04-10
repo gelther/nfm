@@ -10,8 +10,7 @@ final class NF_Admin_Menus_Forms extends NF_Abstracts_Menu
 
     public $position = '35.1337';
 
-    public function __construct()
-    {
+    public function __construct() {
         parent::__construct();
 
         if ( ! defined( 'DOING_AJAX' ) ) {
@@ -20,8 +19,7 @@ final class NF_Admin_Menus_Forms extends NF_Abstracts_Menu
         }
     }
 
-    public function display()
-    {
+    public function display() {
         if ( isset( $_GET[ 'form_id' ] ) ) {
 
 
@@ -68,18 +66,15 @@ final class NF_Admin_Menus_Forms extends NF_Abstracts_Menu
         }
     }
 
-    public function admin_init()
-    {
+    public function admin_init() {
         $this->table = new NF_Admin_AllFormsTable();
     }
 
-    public function submenu_separators()
-    {
+    public function submenu_separators() {
         add_submenu_page( 'ninja-forms', '', '', 'read', '', '' );
     }
 
-    private function _enqueue_the_things( $form_id )
-    {
+    private function _enqueue_the_things( $form_id ) {
         global $wp_locale;
 
         wp_enqueue_media();
@@ -133,8 +128,7 @@ final class NF_Admin_Menus_Forms extends NF_Abstracts_Menu
         do_action( 'nf_admin_enqueue_scripts' );
     }
 
-    private function _localize_form_data( $form_id )
-    {
+    private function _localize_form_data( $form_id ) {
         $form = Ninja_Forms()->form( $form_id )->get();
 
         if ( ! $form->get_tmp_id() ) {
@@ -205,8 +199,7 @@ final class NF_Admin_Menus_Forms extends NF_Abstracts_Menu
         <?php
     }
 
-    private function _localize_field_type_data()
-    {
+    private function _localize_field_type_data() {
         $field_type_sections = array_values( Ninja_Forms()->config( 'FieldTypeSections' ) );
         $field_type_settings = array();
 
@@ -274,8 +267,7 @@ final class NF_Admin_Menus_Forms extends NF_Abstracts_Menu
         <?php
     }
 
-    private function _localize_action_type_data()
-    {
+    private function _localize_action_type_data() {
         $action_type_settings = array();
 
         $master_settings_list = array();
@@ -343,8 +335,7 @@ final class NF_Admin_Menus_Forms extends NF_Abstracts_Menu
         <?php
     }
 
-    protected function _localize_form_settings()
-    {
+    protected function _localize_form_settings() {
         $form_settings_types = Ninja_Forms::config( 'FormSettingsTypes' );
 
         $form_settings[ 'display' ]      = Ninja_Forms::config( 'FormDisplaySettings' );
@@ -372,8 +363,7 @@ final class NF_Admin_Menus_Forms extends NF_Abstracts_Menu
         <?php
     }
 
-    protected function _localize_merge_tags()
-    {
+    protected function _localize_merge_tags() {
         $merge_tags = array(
             'fields' => array(
                 'id'    => 'fields',
@@ -398,8 +388,7 @@ final class NF_Admin_Menus_Forms extends NF_Abstracts_Menu
     }
 
 
-    protected function _group_settings( $settings, $groups )
-    {
+    protected function _group_settings( $settings, $groups ) {
         foreach ( $settings as $setting ) {
 
             $group = ( isset( $setting[ 'group' ] ) ) ? $setting[ 'group' ] : '';
@@ -424,8 +413,7 @@ final class NF_Admin_Menus_Forms extends NF_Abstracts_Menu
         return $groups;
     }
 
-    protected function _unique_settings( $settings )
-    {
+    protected function _unique_settings( $settings ) {
         $unique_settings = array();
 
         foreach ( $settings as $setting ) {
@@ -444,8 +432,7 @@ final class NF_Admin_Menus_Forms extends NF_Abstracts_Menu
         return $unique_settings;
     }
 
-    protected function _setting_defaults( $settings )
-    {
+    protected function _setting_defaults( $settings ) {
         $setting_defaults = array();
 
         foreach ( $settings as $setting ) {
@@ -458,8 +445,7 @@ final class NF_Admin_Menus_Forms extends NF_Abstracts_Menu
         return $setting_defaults;
     }
 
-    protected function _fetch_action_feed()
-    {
+    protected function _fetch_action_feed() {
         $actions = get_transient( 'ninja-forms-builder-actions-feed' );
 
         $bust = ( isset( $_GET[ 'nf-bust-actions-feed' ] ) );
@@ -475,8 +461,7 @@ final class NF_Admin_Menus_Forms extends NF_Abstracts_Menu
         return $actions;
     }
 
-    protected function setting_group_priority( $a, $b )
-    {
+    protected function setting_group_priority( $a, $b ) {
         $priority[ 0 ] = ( isset( $a[ 'priority' ] ) ) ? $a[ 'priority' ] : 500;
         $priority[ 1 ] = ( isset( $b[ 'priority' ] ) ) ? $b[ 'priority' ] : 500;
 
