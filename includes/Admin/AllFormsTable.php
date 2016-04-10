@@ -261,7 +261,7 @@ class NF_Admin_AllFormsTable extends WP_List_Table
 
         // If the delete bulk action is triggered
         if ( ( isset( $_POST['action'] ) && $_POST['action'] == 'bulk-delete' )
-            || ( isset( $_POST['action2'] ) && $_POST['action2'] == 'bulk-delete' )   
+            || ( isset( $_POST['action2'] ) && $_POST['action2'] == 'bulk-delete' )
         ) {
 
             $delete_ids = esc_sql( $_POST['bulk-delete'] );
