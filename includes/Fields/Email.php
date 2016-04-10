@@ -23,7 +23,6 @@ class NF_Fields_Email extends NF_Abstracts_UserInfo
         parent::__construct();
 
         $this->_nicename = __( 'Email', 'ninja-forms' );
-
     }
 
     public function filter_default_value( $default_value, $field_class, $settings ) {
@@ -39,4 +38,5 @@ class NF_Fields_Email extends NF_Abstracts_UserInfo
 
         return $default_value;
     }
+
 }
