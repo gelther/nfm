@@ -278,7 +278,7 @@ class NF_AJAX_Controllers_Builder extends NF_Abstracts_Controller
         if( $bust || ! $actions ) {
             $actions = wp_remote_get( 'https://ninjaforms.com/?action_feed=true' );
             $actions = wp_remote_retrieve_body( $actions );
-            $actions = json_decode( $actions, true );
+            $actions = json_decode( $actions, TRUE );
 
             set_transient( 'ninja-forms-builder-actions-feed', $actions, WEEK_IN_SECONDS );
         }
