@@ -28,7 +28,7 @@ class NF_Fields_Checkbox extends NF_Abstracts_Input
 
         $this->_nicename = __( 'Single Checkbox', 'ninja-forms' );
 
-        $this->_settings[ 'label_pos' ][ 'value' ] = 'right';
+        $this->_settings['label_pos']['value'] = 'right';
 
         add_filter( 'ninja_forms_custom_columns', array( $this, 'custom_columns' ), 10, 2 );
     }
