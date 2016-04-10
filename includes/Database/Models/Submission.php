@@ -276,8 +276,8 @@ final class NF_Database_Models_Submission
 
             if ( ! in_array( $sub->get_id(), $sub_ids ) ) continue;
 
-            $value[ '_seq_num' ]        = $sub->get_seq_num();
-            $value[ '_date_submitted' ] = $sub->get_sub_date( $date_format );
+            $value['_seq_num']        = $sub->get_seq_num();
+            $value['_date_submitted'] = $sub->get_sub_date( $date_format );
 
             foreach ( $field_labels as $field_id => $label ) {
 
@@ -294,8 +294,8 @@ final class NF_Database_Models_Submission
         // Legacy Filter from 2.9.*
         $value_array = apply_filters( 'nf_subs_csv_value_array', $value_array, $sub_ids );
 
-        $csv_array[ 0 ][] = $field_labels;
-        $csv_array[ 1 ][] = $value_array;
+        $csv_array[0][] = $field_labels;
+        $csv_array[1][] = $value_array;
 
         $today    = date( $date_format, current_time( 'timestamp' ) );
         $filename = apply_filters( 'nf_subs_csv_filename', 'nf_subs_' . $today );
