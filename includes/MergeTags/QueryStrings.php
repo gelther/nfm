@@ -40,7 +40,7 @@ final class NF_MergeTags_QueryStrings extends NF_Abstracts_MergeTags
 
         $this->merge_tags[ $callback ] = array(
             'id'       => $key,
-            'tag'      => "{" . $key . "}",
+            'tag'      => '{' . $key . '}',
             'callback' => $callback,
             'value'    => $value
         );
