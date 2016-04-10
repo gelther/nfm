@@ -262,7 +262,7 @@ final class NF_Database_Models_Submission
         $date_format = 'm/d/Y';
 
 
-        /*
+        /**
          * Labels
          */
 
@@ -286,7 +286,7 @@ final class NF_Database_Models_Submission
         }
 
 
-        /*
+        /**
          * Submissions
          */
 
@@ -345,7 +345,7 @@ final class NF_Database_Models_Submission
         }
     }
 
-    /*
+    /**
      * PROTECTED METHODS
      */
 
@@ -391,7 +391,7 @@ final class NF_Database_Models_Submission
         return $this;
     }
 
-    /*
+    /**
      * UTILITIES
      */
 
