@@ -112,11 +112,11 @@ abstract class NF_Abstracts_ActionNewsletter extends NF_Abstracts_Action
 
         $fields = array();
         foreach( $lists as $list ){
-            $this->_settings[ $prefix . 'newsletter_list' ][ 'options' ][] = $list;
+            $this->_settings[ $prefix . 'newsletter_list' ][ 'options' ][  ] = $list;
 
             foreach( $list[ 'fields' ] as $field ){
-                $name     = $list[ 'value' ] . '_' . $field[ 'value' ];
-                $fields[] = array(
+                $name       = $list[ 'value' ] . '_' . $field[ 'value' ];
+                $fields[  ] = array(
                     'name'           => $name,
                     'type'           => 'textbox',
                     'label'          => $field[ 'label' ],

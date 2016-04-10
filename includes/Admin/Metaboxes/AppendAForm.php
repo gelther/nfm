@@ -15,7 +15,7 @@ final class NF_Admin_Metaboxes_AppendAForm extends NF_Abstracts_Metabox
 
     public function append_form( $content )
     {
-        $post    = $GLOBALS['post'];
+        $post    = $GLOBALS[ 'post' ];
         $form_id = get_post_meta( $post->ID, 'ninja_forms_form', TRUE );
 
         if( ! $form_id ) return $content;
@@ -27,15 +27,15 @@ final class NF_Admin_Metaboxes_AppendAForm extends NF_Abstracts_Metabox
     {
         if (
             defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE
-            || ! isset( $_POST['nf_append_form'] )
-            || ! wp_verify_nonce( $_POST['nf_append_form'], 'ninja_forms_append_form' )
-            || ( 'page' == $_POST['post_type'] && ! current_user_can( 'edit_page', $post_id ) )
-            || ( 'post' == $_POST['post_type'] && ! current_user_can( 'edit_post', $post_id ) )
+            || ! isset( $_POST[ 'nf_append_form' ] )
+            || ! wp_verify_nonce( $_POST[ 'nf_append_form' ], 'ninja_forms_append_form' )
+            || ( 'page' == $_POST[ 'post_type' ] && ! current_user_can( 'edit_page', $post_id ) )
+            || ( 'post' == $_POST[ 'post_type' ] && ! current_user_can( 'edit_post', $post_id ) )
         ) return $post_id;
 
         $post_id = absint( $post_id );
 
-        $form_id = absint( $_POST['ninja_form_select'] );
+        $form_id = absint( $_POST[ 'ninja_form_select' ] );
 
         if ( empty ( $form_id ) ) {
             delete_post_meta( $post_id, 'ninja_forms_form' );

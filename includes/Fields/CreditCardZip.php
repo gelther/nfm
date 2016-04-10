@@ -25,7 +25,7 @@ class NF_Fields_CreditCardZip extends NF_Fields_Zip
 
     function hide_field_type( $field_types )
     {
-        $field_types[] = $this->_name;
+        $field_types[  ] = $this->_name;
 
         return $field_types;
     }

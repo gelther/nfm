@@ -52,7 +52,7 @@ class NF_Extension_Updater
      * @return array $licenses
      */
     function register( $licenses ) {
-        $licenses[] = $this;
+        $licenses[  ] = $this;
         return $licenses;
     }
 

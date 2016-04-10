@@ -12,7 +12,7 @@ class NF_AJAX_Controllers_Builder extends NF_Abstracts_Controller
         check_ajax_referer( 'ninja_forms_ajax_nonce', 'builder' );
 
         if( ! isset( $_POST[ 'form' ] ) ){
-            $this->_errors[] = 'Form Not Found';
+            $this->_errors[  ] = 'Form Not Found';
             $this->_respond();
         }
 
@@ -43,7 +43,7 @@ class NF_AJAX_Controllers_Builder extends NF_Abstracts_Controller
                 if( is_numeric( $setting ) ) $settings[ $key ] = floatval( $setting );
             }
 
-            $fields_settings[] = $settings;
+            $fields_settings[  ] = $settings;
         }
 
         $actions_settings = array();
@@ -53,14 +53,14 @@ class NF_AJAX_Controllers_Builder extends NF_Abstracts_Controller
             $settings         = $action->get_settings();
             $settings[ 'id' ] = $action->get_id();
 
-            $actions_settings[] = $settings;
+            $actions_settings[  ] = $settings;
         }
 
-        $form_data             = array();
-        $form_data['id']       = $form_id;
-        $form_data['settings'] = $form->get_settings();
-        $form_data['fields']   = $fields_settings;
-        $form_data['actions']  = $actions_settings;
+        $form_data               = array();
+        $form_data[ 'id' ]       = $form_id;
+        $form_data[ 'settings' ] = $form->get_settings();
+        $form_data[ 'fields' ]   = $fields_settings;
+        $form_data[ 'actions' ]  = $actions_settings;
 
         $this->_data[ 'preloadedFormData' ] = wp_json_encode( $form_data );
     }
@@ -179,8 +179,8 @@ class NF_AJAX_Controllers_Builder extends NF_Abstracts_Controller
             $unique_settings = $this->_unique_settings( $form_settings[ $id ] );
             $master_settings = array_merge( $master_settings, $unique_settings );
 
-            $form_settings_types[ $id ]['settingGroups']   = $this->_group_settings( $form_settings[ $id ], $groups );
-            $form_settings_types[ $id ]['settingDefaults'] = $this->_setting_defaults( $unique_settings );
+            $form_settings_types[ $id ][ 'settingGroups' ]   = $this->_group_settings( $form_settings[ $id ], $groups );
+            $form_settings_types[ $id ][ 'settingDefaults' ] = $this->_setting_defaults( $unique_settings );
         }
         ?>
         <script>
@@ -217,11 +217,11 @@ class NF_AJAX_Controllers_Builder extends NF_Abstracts_Controller
 
             $group = ( isset( $setting[ 'group' ] ) ) ? $setting[ 'group' ] : '';
 
-            if( isset( $setting[ 'type'] ) && 'fieldset' == $setting[ 'type' ] ){
+            if( isset( $setting[ 'type' ] ) && 'fieldset' == $setting[ 'type' ] ){
                 $setting[ 'settings' ] = array_values( $setting[ 'settings' ] );
             }
 
-            $groups[ $group ][ 'settings'][] = $setting;
+            $groups[ $group ][ 'settings' ][  ] = $setting;
         }
 
         foreach( $groups as $id => $group ) {

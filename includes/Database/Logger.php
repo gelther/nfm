@@ -37,7 +37,7 @@ final class NF_Database_Logger extends NF_Abstracts_Logger
         $log->save();
 
         // Add to Current Property Array
-        $this->_current[ $level ][] = $log;
+        $this->_current[ $level ][  ] = $log;
     }
 
     /**

@@ -60,7 +60,7 @@ abstract class NF_Abstracts_FieldOptIn extends NF_Abstracts_Input
 
     protected function addList( $name, $label )
     {
-        $this->_settings[ 'fieldset' ][ 'settings' ][] = array(
+        $this->_settings[ 'fieldset' ][ 'settings' ][  ] = array(
             'name'  => $name,
             'type'  => 'toggle',
             'label' => $label,

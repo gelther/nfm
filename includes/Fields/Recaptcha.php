@@ -27,20 +27,20 @@ class NF_Fields_Recaptcha extends NF_Abstracts_Field
     }
 
     public function localize_settings( $settings, $form ) {
-        $settings['site_key'] = Ninja_Forms()->get_setting( 'recaptcha_site_key' );
-        $settings['theme']    = Ninja_Forms()->get_setting( 'recaptcha_theme' );
-        $settings['theme']    = ( $settings['theme'] ) ? $settings['theme'] : 'light';
-        $settings['lang']     = Ninja_Forms()->get_setting( 'recaptcha_lang' );
+        $settings[ 'site_key' ] = Ninja_Forms()->get_setting( 'recaptcha_site_key' );
+        $settings[ 'theme' ]    = Ninja_Forms()->get_setting( 'recaptcha_theme' );
+        $settings[ 'theme' ]    = ( $settings[ 'theme' ] ) ? $settings[ 'theme' ] : 'light';
+        $settings[ 'lang' ]     = Ninja_Forms()->get_setting( 'recaptcha_lang' );
         return $settings;
     }
 
     public function validate( $field, $data ) {
-        if ( empty( $field['value'] ) ) {
+        if ( empty( $field[ 'value' ] ) ) {
             return array( __( 'Please complete the recaptcha', 'ninja-forms' ) );
         }
 
         $secret_key = Ninja_Forms()->get_setting( 'recaptcha_secret_key' );
-        $url        = 'https://www.google.com/recaptcha/api/siteverify?secret=' . $secret_key . '&response='.sanitize_text_field( $field['value'] );
+        $url        = 'https://www.google.com/recaptcha/api/siteverify?secret=' . $secret_key . '&response='.sanitize_text_field( $field[ 'value' ] );
         $resp       = wp_remote_get( esc_url_raw( $url ) );
 
         if ( ! is_wp_error( $resp ) ) {
@@ -58,7 +58,7 @@ class NF_Fields_Recaptcha extends NF_Abstracts_Field
 
     function hide_field_type( $field_types )
     {
-        $field_types[] = $this->_name;
+        $field_types[  ] = $this->_name;
         return $field_types;
     }
 }

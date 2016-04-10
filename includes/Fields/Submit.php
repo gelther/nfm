@@ -32,7 +32,7 @@ class NF_Fields_Submit extends NF_Fields_Button
 
     function hide_field_type( $field_types )
     {
-        $field_types[] = $this->_name;
+        $field_types[  ] = $this->_name;
 
         return $field_types;
     }

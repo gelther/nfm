@@ -72,7 +72,7 @@ final class NF_Actions_CollectPayment extends NF_Abstracts_Action
                 continue;
             }
 
-            $this->_settings[ 'payment_gateways' ][ 'options' ][] = array(
+            $this->_settings[ 'payment_gateways' ][ 'options' ][  ] = array(
                 'label' => $gateway->get_name(),
                 'value' => $gateway->get_slug(),
             );

@@ -51,7 +51,7 @@ final class NF_Admin_Menus_Licenses
     {
         $data = array();
         foreach( $this->licenses as $license ){
-            $data[] = array(
+            $data[  ] = array(
                 'id'       => $license->product_name,
                 'name'     => $license->product_nice_name,
                 'version'  => $license->version,
