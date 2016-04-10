@@ -30,8 +30,8 @@ final class NF_Admin_Menus_SystemStatus extends NF_Abstracts_Submenu
          }
 
          //TODO: Possible refactor
-         foreach( $locale as $key => $val ) {
-             if( is_string( $val ) ) {
+         foreach ( $locale as $key => $val ) {
+             if ( is_string( $val ) ) {
                 $data = $key . ': ' . $val . '</br>';
              }
          }
