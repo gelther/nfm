@@ -30,11 +30,11 @@ abstract class NF_Abstracts_MergeTags
 
     public function replace( $subject )
     {
-        foreach( $this->merge_tags as $merge_tag ) {
+        foreach ( $this->merge_tags as $merge_tag ) {
 
-            if( is_array( $subject ) ) {
+            if ( is_array( $subject ) ) {
 
-                foreach( $subject as $i => $s ) {
+                foreach ( $subject as $i => $s ) {
                     $subject[ $i ] = $this->replace( $s );
                 }
             } elseif( false !== strpos( $subject, $merge_tag[ 'tag' ] ) ) {
