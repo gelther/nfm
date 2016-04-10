@@ -289,8 +289,8 @@ class NF_Abstracts_Model
             // If only one setting, return a single value
             if( 1 == count( $only ) ){
 
-                if( isset( $this->_settings[ $only[0] ] ) ) {
-                    return $this->_settings[$only[0]];
+                if( isset( $this->_settings[ $only[ 0 ] ] ) ) {
+                    return $this->_settings[$only[ 0 ]];
                 } else {
                     return NULL;
                 }
@@ -350,7 +350,7 @@ class NF_Abstracts_Model
         $results = array();
 
         // Delete the object from the model's table
-        $results[] = $this->_db->delete(
+        $results[  ] = $this->_db->delete(
             $this->_table_name,
             array(
                 'id' => $this->_id
@@ -358,7 +358,7 @@ class NF_Abstracts_Model
         );
 
         // Delete settings from the model's meta table.
-        $results[] = $this->_db->delete(
+        $results[  ] = $this->_db->delete(
             $this->_meta_table_name,
             array(
                 'parent_id' => $this->_id
@@ -417,7 +417,7 @@ class NF_Abstracts_Model
         foreach( $ids as $id ){
 
             // Instantiate a new object for each ID
-            $results[] = $object = new $class( $this->_db, $id, $parent_id );
+            $results[  ] = $object = new $class( $this->_db, $id, $parent_id );
         }
 
         // Return an array of objects
@@ -439,7 +439,7 @@ class NF_Abstracts_Model
             $data = array( 'created_at' => time() );
 
             if( $this->_parent_id ){
-                $data['parent_id'] = $this->_parent_id;
+                $data[ 'parent_id' ] = $this->_parent_id;
             }
 
             // Create a new row in the database
@@ -472,7 +472,7 @@ class NF_Abstracts_Model
         $data[ 'created_at' ] = time();
 
         if( $this->_parent_id ){
-            $data['parent_id'] = $this->_parent_id;
+            $data[ 'parent_id' ] = $this->_parent_id;
         }
 
         // Create a new row in the database
@@ -602,8 +602,8 @@ class NF_Abstracts_Model
         if( ! $this->_settings ) return;
 
         foreach( $this->_settings as $key => $value ){
-            $value            = maybe_serialize( $value );
-            $this->_results[] = $this->_save_setting( $key, $value );
+            $value              = maybe_serialize( $value );
+            $this->_results[  ] = $this->_save_setting( $key, $value );
         }
 
         $this->_save_parent_relationship();
@@ -671,17 +671,17 @@ class NF_Abstracts_Model
 
             $where_conditions = array();
             foreach ( $where as $key => $value ) {
-                $conditions['key']   = $key;
-                $conditions['value'] = $value;
+                $conditions[ 'key' ]   = $key;
+                $conditions[ 'value' ] = $value;
 
-                $where_conditions[] = $conditions;
+                $where_conditions[  ] = $conditions;
             }
 
             $count = count( $where );
             for ( $i = 0; $i < $count; $i++ ) {
 
-                $join_statement[]  = "INNER JOIN " . $this->_meta_table_name . " as meta$i on meta$i.parent_id = " . $this->_table_name . ".id";
-                $where_statement[] = "( meta$i.key = '" . $where_conditions[$i]['key'] . "' AND meta$i.value = '" . $where_conditions[$i]['value'] . "' )";
+                $join_statement[  ]  = "INNER JOIN " . $this->_meta_table_name . " as meta$i on meta$i.parent_id = " . $this->_table_name . ".id";
+                $where_statement[  ] = "( meta$i.key = '" . $where_conditions[$i][ 'key' ] . "' AND meta$i.value = '" . $where_conditions[$i][ 'value' ] . "' )";
             }
 
         }
