@@ -64,13 +64,13 @@ class NF_Widget extends WP_Widget {
      * @param array $instance Previously saved values from database.
      */
     public function form( $instance ) {
-        if( isset( $instance[ 'form_id' ] ) ){
+        if( isset( $instance[ 'form_id' ] ) ) {
             $form_id = $instance[ 'form_id' ];
         }else {
             $form_id = '';
         }
 
-        if( isset( $instance[ 'display_title' ] ) ){
+        if( isset( $instance[ 'display_title' ] ) ) {
             $display_title = $instance[ 'display_title' ];
         }else {
             $display_title = 0;
@@ -90,7 +90,7 @@ class NF_Widget extends WP_Widget {
                 <?php
                 $all_forms = Ninja_Forms()->form()->get_forms();
 
-                foreach( $all_forms as $form ){
+                foreach( $all_forms as $form ) {
                     ?>
                     <option value="<?php echo $form->get_id();?>" <?php selected( $form->get_id(), $form_id );?>>
                         <?php echo $form->get_setting( 'title' );?>
