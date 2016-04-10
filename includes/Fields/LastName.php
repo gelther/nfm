@@ -37,4 +37,5 @@ class NF_Fields_LastName extends NF_Abstracts_UserInfo
 
         return $default_value;
     }
+
 }
