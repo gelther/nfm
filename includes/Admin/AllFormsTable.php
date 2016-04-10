@@ -230,8 +230,7 @@ class NF_Admin_AllFormsTable extends WP_List_Table
 
             if ( ! wp_verify_nonce( $nonce, 'nf_duplicate_form' ) ) {
                 die( 'Go get a life, script kiddies' );
-            }
-            else {
+            } else {
                 NF_Database_Models_Form::duplicate( absint( $_GET[ 'id' ] ) );
             }
 
@@ -246,8 +245,7 @@ class NF_Admin_AllFormsTable extends WP_List_Table
 
             if ( ! wp_verify_nonce( $nonce, 'nf_delete_form' ) ) {
                 die( 'Go get a life, script kiddies' );
-            }
-            else {
+            } else {
                 self::delete_item( absint( $_GET[ 'id' ] ) );
             }
 
