@@ -357,6 +357,6 @@ final class NF_Admin_Menus_ImportExport extends NF_Abstracts_Submenu
             'debug'   => $file,
         );
         $message = Ninja_Forms()->template( 'admin-wp-die.html.php', $args );
-        wp_die( $message, $args[ 'title' ], array( 'back_link' => TRUE ) );
+        wp_die( $message, $args[ 'title' ], array( 'back_link' => true ) );
     }
 }
