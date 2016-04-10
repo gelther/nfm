@@ -71,10 +71,10 @@ final class NF_Admin_Menus_ImportExport extends NF_Abstracts_Submenu
                 $fields[] = $field->get_settings();
             }
 
-            header( "Content-type: application/csv" );
-            header( "Content-Disposition: attachment; filename=favorites-" . time() . ".nff" );
-            header( "Pragma: no-cache" );
-            header( "Expires: 0" );
+            header( 'Content-type: application/csv' );
+            header( 'Content-Disposition: attachment; filename=favorites-' . time() . '.nff' );
+            header( 'Pragma: no-cache' );
+            header( 'Expires: 0' );
 
             echo serialize( $fields );
 
