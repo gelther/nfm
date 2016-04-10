@@ -469,7 +469,7 @@ class NF_Abstracts_Model
 
     public function _insert_row( $data = array() )
     {
-        $data[ 'created_at' ] = time();
+        $data['created_at'] = time();
 
         if( $this->_parent_id ){
             $data['parent_id'] = $this->_parent_id;
