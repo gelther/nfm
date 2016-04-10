@@ -2,7 +2,7 @@
 
 return array(
 
-    /*
+    /**
      * Label
      */
 
@@ -17,7 +17,7 @@ return array(
 
     ),
 
-    /*
+    /**
      * Active
      */
 
