@@ -28,7 +28,7 @@ final class NF_Admin_Menus_Forms extends NF_Abstracts_Menu
             if( 'new' == $_GET[ 'form_id' ] ){
                 $form_id = 'tmp-' . time();
             } else {
-                $form_id = (is_numeric( $_GET['form_id'] )) ? absint( $_GET['form_id'] ) : '';
+                $form_id = (is_numeric( $_GET[ 'form_id' ] )) ? absint( $_GET[ 'form_id' ] ) : '';
             }
 
             /**
@@ -159,8 +159,8 @@ final class NF_Admin_Menus_Forms extends NF_Abstracts_Menu
 
                 if( ! isset( Ninja_Forms()->fields[ $type ] ) ) continue;
 
-                $settings       = $field->get_settings();
-                $settings['id'] = $field->get_id();
+                $settings         = $field->get_settings();
+                $settings[ 'id' ] = $field->get_id();
 
                 foreach ( $settings as $key => $setting ) {
                     if ( is_numeric( $setting ) ) $settings[$key] = floatval( $setting );
@@ -179,8 +179,8 @@ final class NF_Admin_Menus_Forms extends NF_Abstracts_Menu
 
                 if( ! isset( Ninja_Forms()->actions[ $type ] ) ) continue;
 
-                $settings       = $action->get_settings();
-                $settings['id'] = $action->get_id();
+                $settings         = $action->get_settings();
+                $settings[ 'id' ] = $action->get_id();
 
                 $actions_settings[] = $settings;
             }
@@ -191,11 +191,11 @@ final class NF_Admin_Menus_Forms extends NF_Abstracts_Menu
             $actions_settings = Ninja_Forms()->config( 'FormActionDefaults' );
         }
 
-        $form_data             = array();
-        $form_data['id']       = $form_id;
-        $form_data['settings'] = $form->get_settings();
-        $form_data['fields']   = $fields_settings;
-        $form_data['actions']  = $actions_settings;
+        $form_data               = array();
+        $form_data[ 'id' ]       = $form_id;
+        $form_data[ 'settings' ] = $form->get_settings();
+        $form_data[ 'fields' ]   = $fields_settings;
+        $form_data[ 'actions' ]  = $actions_settings;
 
         ?>
         <script>
@@ -361,8 +361,8 @@ final class NF_Admin_Menus_Forms extends NF_Abstracts_Menu
             $unique_settings = $this->_unique_settings( $form_settings[ $id ] );
             $master_settings = array_merge( $master_settings, $unique_settings );
 
-            $form_settings_types[ $id ]['settingGroups']   = $this->_group_settings( $form_settings[ $id ], $groups );
-            $form_settings_types[ $id ]['settingDefaults'] = $this->_setting_defaults( $unique_settings );
+            $form_settings_types[ $id ][ 'settingGroups' ]   = $this->_group_settings( $form_settings[ $id ], $groups );
+            $form_settings_types[ $id ][ 'settingDefaults' ] = $this->_setting_defaults( $unique_settings );
         }
         ?>
         <script>
@@ -404,11 +404,11 @@ final class NF_Admin_Menus_Forms extends NF_Abstracts_Menu
 
             $group = ( isset( $setting[ 'group' ] ) ) ? $setting[ 'group' ] : '';
 
-            if( isset( $setting[ 'type'] ) && 'fieldset' == $setting[ 'type' ] ){
+            if( isset( $setting[ 'type' ] ) && 'fieldset' == $setting[ 'type' ] ){
                 $setting[ 'settings' ] = array_values( $setting[ 'settings' ] );
             }
 
-            $groups[ $group ][ 'settings'][] = $setting;
+            $groups[ $group ][ 'settings' ][] = $setting;
         }
 
         foreach( $groups as $id => $group ) {
