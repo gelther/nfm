@@ -10,7 +10,7 @@ final class NF_Display_Shortcodes
 
     public function display_form_front_end( $atts = array() )
     {
-        if( ! isset( $atts[ 'id' ] ) ) return $this->display_no_id();
+        if ( ! isset( $atts[ 'id' ] ) ) return $this->display_no_id();
 
         ob_start();
         Ninja_Forms()->display( $atts[ 'id' ] );
@@ -26,7 +26,7 @@ final class NF_Display_Shortcodes
         $output = __( 'Notice: Ninja Forms shortcode used without specifying a form.', 'ninja-forms' );
 
         // TODO: Maybe support filterable permissions.
-        if( ! current_user_can( 'manage_options' ) ) return "<!-- $output -->";
+        if ( ! current_user_can( 'manage_options' ) ) return "<!-- $output -->";
 
         // TODO: Log error for support reference.
         // TODO: Maybe display notice if not logged in.
