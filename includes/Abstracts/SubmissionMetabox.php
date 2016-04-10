@@ -12,8 +12,7 @@ abstract class NF_Abstracts_SubmissionMetabox extends NF_Abstracts_Metabox
      */
     protected $sub;
 
-    public function __construct()
-    {
+    public function __construct() {
         parent::__construct();
 
         if ( ! isset( $_GET[ 'post' ] ) ) return;
