@@ -151,7 +151,7 @@ class NF_Admin_CPT_Submission
         $post_type = get_post_type_object( $nf_sub->post_type );
 
         /* Check if the current user has permission to edit the post. */
-        if ( !current_user_can( $post_type->cap->edit_post, $nf_sub_id ) )
+        if ( ! current_user_can( $post_type->cap->edit_post, $nf_sub_id ) )
             return $nf_sub_id;
 
         $sub = Ninja_Forms()->form()->sub( $nf_sub_id )->get();
