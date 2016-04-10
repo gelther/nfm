@@ -202,7 +202,7 @@ class NF_Admin_CPT_Submission
      */
     public function fields_meta_box( $post )
     {
-        $form_id = get_post_meta( $post->ID, '_form_id', TRUE );
+        $form_id = get_post_meta( $post->ID, '_form_id', true );
 
         $sub = Ninja_Forms()->form()->get_sub( $post->ID );
 

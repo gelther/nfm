@@ -20,7 +20,7 @@ return apply_filters( 'ninja_forms_from_restriction_settings', array(
                 'label' => __( 'Require user to be logged in to view form?', 'ninja-forms' ),
                 'width' => 'one-half',
                 'group' => 'primary',
-                'value' => FALSE,
+                'value' => false,
                 'help'  => __( 'Does apply to form preview.', 'ninja-forms' )
             ),
 

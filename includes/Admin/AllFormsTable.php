@@ -91,8 +91,8 @@ class NF_Admin_AllFormsTable extends WP_List_Table
     public function get_sortable_columns()
     {
         return array(
-            'title' => array( 'title', TRUE ),
-            'date'  => array( 'updated', TRUE ),
+            'title' => array( 'title', true ),
+            'date'  => array( 'updated', true ),
         );
     }
 

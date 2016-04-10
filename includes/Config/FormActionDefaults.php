@@ -8,7 +8,7 @@ return apply_filters( 'ninja_forms_from_action_defaults', array(
         'type'    => 'successmessage',
         'message' => 'Your form has been successfully submitted.',
         'order'   => 1,
-        'active'  => TRUE,
+        'active'  => true,
     ),
 
     array(
@@ -19,7 +19,7 @@ return apply_filters( 'ninja_forms_from_action_defaults', array(
         'subject' => 'Ninja Forms Submission',
         'message' => '{field:all_fields}',
         'order'   => 2,
-        'active'  => TRUE,
+        'active'  => true,
     ),
 
     array(
@@ -27,7 +27,7 @@ return apply_filters( 'ninja_forms_from_action_defaults', array(
         'label'  => 'Save Submission',
         'type'   => 'save',
         'order'  => 3,
-        'active' => TRUE,
+        'active' => true,
     ),
 
 ) );

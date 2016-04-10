@@ -5,7 +5,7 @@ return apply_filters( 'ninja_forms_field_settings_groups', array(
     'primary'        => array(
         'id'       => 'primary',
         'label'    => '',
-        'display'  => TRUE,
+        'display'  => true,
         'priority' => 100
     ),
 

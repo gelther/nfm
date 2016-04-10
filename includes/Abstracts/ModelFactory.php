@@ -85,7 +85,7 @@ class NF_Abstracts_ModelFactory
      */
     public function get_forms( array $where = array() )
     {
-        if( 'form' != $this->_object->get_type() ) return FALSE;
+        if( 'form' != $this->_object->get_type() ) return false;
 
         return $this->_object->find( NULL, $where );
     }
@@ -98,7 +98,7 @@ class NF_Abstracts_ModelFactory
      * @param  bool|FALSE $return
      * @return array
      */
-    public function export_form( $return = FALSE )
+    public function export_form( $return = false )
     {
         $form_id = $this->_object->get_id();
 
@@ -112,7 +112,7 @@ class NF_Abstracts_ModelFactory
      *
      * @param $import
      */
-    public function import_form( $import, $id = FALSE, $is_conversion = FALSE )
+    public function import_form( $import, $id = false, $is_conversion = false )
     {
         $import = maybe_unserialize( $import );
         NF_Database_Models_Form::import( $import, $id, $is_conversion );
@@ -157,7 +157,7 @@ class NF_Abstracts_ModelFactory
      * @param  bool|FALSE $fresh
      * @return array
      */
-    public function get_fields( $where = array(), $fresh = FALSE )
+    public function get_fields( $where = array(), $fresh = false )
     {
         if( $where || $fresh || ! $this->_fields ){
 
@@ -184,7 +184,7 @@ class NF_Abstracts_ModelFactory
      *
      * @param $import
      */
-    public function import_field( $settings, $field_id = '', $is_conversion = FALSE )
+    public function import_field( $settings, $field_id = '', $is_conversion = false )
     {
         $settings = maybe_unserialize( $settings );
         NF_Database_Models_Field::import( $settings, $field_id, $is_conversion );
@@ -230,7 +230,7 @@ class NF_Abstracts_ModelFactory
      * @param  bool|FALSE $fresh
      * @return array
      */
-    public function get_actions( $where = array(), $fresh = FALSE )
+    public function get_actions( $where = array(), $fresh = false )
     {
         if( $where || $fresh || ! $this->_actions ){
 
@@ -288,7 +288,7 @@ class NF_Abstracts_ModelFactory
      * @param  bool|FALSE $fresh
      * @return array
      */
-    public function get_objects( $where = array(), $fresh = FALSE )
+    public function get_objects( $where = array(), $fresh = false )
     {
         if( $where || $fresh || ! $this->_objects ){
 
@@ -352,7 +352,7 @@ class NF_Abstracts_ModelFactory
      * @param  bool|FALSE $fresh
      * @return array
      */
-    public function get_subs( $where = array(), $fresh = FALSE )
+    public function get_subs( $where = array(), $fresh = false )
     {
         if( $where || $fresh || ! $this->_objects ){
 
@@ -379,7 +379,7 @@ class NF_Abstracts_ModelFactory
      * @param  bool|FALSE $return
      * @return string
      */
-    public function export_subs( array $sub_ids = array(), $return = FALSE )
+    public function export_subs( array $sub_ids = array(), $return = false )
     {
         $form_id = $this->_object->get_id();
 
@@ -417,7 +417,7 @@ class NF_Abstracts_ModelFactory
                 return new NF_Database_Models_Object( $wpdb, $id );
                 break;
             default:
-                return FALSE;
+                return false;
         }
     }
 

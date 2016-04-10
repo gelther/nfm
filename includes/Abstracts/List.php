@@ -11,7 +11,7 @@ abstract class NF_Abstracts_List extends NF_Abstracts_Field
 
     protected $_type = 'list';
 
-    protected $_test_value = FALSE;
+    protected $_test_value = false;
 
     protected $_settings_all_fields = array(
         'key', 'label', 'label_pos', 'required', 'options', 'classes', 'admin_label', 'help', 'description'

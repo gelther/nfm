@@ -29,7 +29,7 @@ class NF_Fields_StarRating extends NF_Abstracts_Input
 
         $this->_settings[ 'default' ][ 'width' ] = 'one-half';
 
-        $this->_settings[ 'default' ][ 'use_merge_tags' ] = FALSE;
+        $this->_settings[ 'default' ][ 'use_merge_tags' ] = false;
 
         $this->_settings[ 'default' ][ 'value' ] = 5;
 

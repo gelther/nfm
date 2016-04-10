@@ -16,7 +16,7 @@ final class NF_Admin_Metaboxes_AppendAForm extends NF_Abstracts_Metabox
     public function append_form( $content )
     {
         $post    = $GLOBALS['post'];
-        $form_id = get_post_meta( $post->ID, 'ninja_forms_form', TRUE );
+        $form_id = get_post_meta( $post->ID, 'ninja_forms_form', true );
 
         if( ! $form_id ) return $content;
 

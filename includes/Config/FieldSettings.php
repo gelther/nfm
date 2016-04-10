@@ -76,7 +76,7 @@ return apply_filters( 'ninja_forms_field_settings', array(
         'label' => __( 'Required Field', 'ninja-forms' ),
         'width' => 'one-half',
         'group' => 'primary',
-        'value' => FALSE,
+        'value' => false,
         'help'  => __( 'Ensure that this field is completed before allowing the form to be submitted.', 'ninja-forms' ),
     ),
 
@@ -313,7 +313,7 @@ return apply_filters( 'ninja_forms_field_settings', array(
         'group'          => 'advanced',
         'value'          => '',
         'help'           => __( 'Enter text you would like displayed in the field before a user enters any data.', 'ninja-forms' ),
-        'use_merge_tags' => FALSE,
+        'use_merge_tags' => false,
     ),
 
 
@@ -352,7 +352,7 @@ return apply_filters( 'ninja_forms_field_settings', array(
                 'label'          => __( 'Wrapper', 'ninja-forms' ),
                 'width'          => 'one-half',
                 'value'          => '',
-                'use_merge_tags' => FALSE,
+                'use_merge_tags' => false,
                 'help'           => __( 'Adds an extra class to your field wrapper.', 'ninja-forms' ),
             ),
             array(
@@ -362,7 +362,7 @@ return apply_filters( 'ninja_forms_field_settings', array(
                 'placeholder'    => '',
                 'width'          => 'one-half',
                 'value'          => '',
-                'use_merge_tags' => FALSE,
+                'use_merge_tags' => false,
                 'help'           => __( 'Adds an extra class to your field element.', 'ninja-forms' ),
             ),
         ),
@@ -433,7 +433,7 @@ return apply_filters( 'ninja_forms_field_settings', array(
         'label' => __( 'Number of seconds for timed submit.', 'ninja-forms' ),
         'width' => 'full',
         'group' => 'advanced',
-        'value' => FALSE,
+        'value' => false,
 
     ),
 
@@ -575,7 +575,7 @@ return apply_filters( 'ninja_forms_field_settings', array(
     'manual_key'                     => array(
         'name'  => 'manual_key',
         'type'  => 'bool',
-        'value' => FALSE,
+        'value' => false,
     ),
 
    /**
@@ -619,7 +619,7 @@ return apply_filters( 'ninja_forms_field_settings', array(
                     'width'          => '',
                     'group'          => '',
                     'value'          => '',
-                    'use_merge_tags' => TRUE,
+                    'use_merge_tags' => true,
                 ),
 
                /**
@@ -732,7 +732,7 @@ return apply_filters( 'ninja_forms_field_settings', array(
         'label' => __( 'Custom first option', 'ninja-forms' ),
         'width' => '',
         'group' => '',
-        'value' => FALSE,
+        'value' => false,
 
     ),
 
@@ -877,7 +877,7 @@ return apply_filters( 'ninja_forms_field_settings', array(
         'label' => __( 'Use Quantity', 'ninja-forms' ),
         'width' => 'one-half',
         'group' => 'primary',
-        'value' => TRUE,
+        'value' => true,
         'help'  => __( 'Allows users to choose more than one of this product.', 'ninja-forms' ),
 
     ),
@@ -915,7 +915,7 @@ return apply_filters( 'ninja_forms_field_settings', array(
             ),
         ),
         'value'          => 'single',
-        'use_merge_tags' => FALSE
+        'use_merge_tags' => false
     ),
 
     'shipping_cost'                  => array(
@@ -1025,7 +1025,7 @@ return apply_filters( 'ninja_forms_field_settings', array(
         'label' => __( 'This is a user\'s state.', 'ninja-forms' ),
         'width' => 'full',
         'group' => 'administration',
-        'value' => FALSE,
+        'value' => false,
         'help'  => __( 'Used for marking a field for processing.', 'ninja-forms' ),
     ),
 

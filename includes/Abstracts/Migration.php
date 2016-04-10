@@ -22,13 +22,13 @@ abstract class NF_Abstracts_Migration
     public function _run()
     {
         // Check the flag
-        if( get_option( $this->flag, FALSE ) ) return;
+        if( get_option( $this->flag, false ) ) return;
 
         // Run the migration
         $this->run();
 
         // Set the Flag
-        update_option( $this->flag, TRUE );
+        update_option( $this->flag, true );
     }
 
     protected abstract function run();

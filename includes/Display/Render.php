@@ -23,12 +23,12 @@ final class NF_Display_Render
         'field-input-limit'
     );
 
-    protected static $use_test_values = FALSE;
+    protected static $use_test_values = false;
 
     public static function localize( $form_id )
     {
         if( isset( $_GET[ 'ninja_forms_test_values' ] ) ){
-            self::$use_test_values = TRUE;
+            self::$use_test_values = true;
         }
 
         if( ! has_action( 'wp_footer', 'NF_Display_Render::output_templates', 9999 ) ){
@@ -204,7 +204,7 @@ final class NF_Display_Render
     public static function localize_preview( $form_id )
     {
         if( isset( $_GET[ 'ninja_forms_test_values' ] ) ){
-            self::$use_test_values = TRUE;
+            self::$use_test_values = true;
         }
 
         add_action( 'wp_footer', 'NF_Display_Render::output_templates', 9999 );
@@ -221,18 +221,18 @@ final class NF_Display_Render
             return;
         }
 
-        $form[ 'settings' ][ 'is_preview' ] = TRUE;
+        $form[ 'settings' ][ 'is_preview' ] = true;
 
-        $before_form                       = apply_filters( 'ninja_forms_display_before_form', '', $form_id, TRUE );
+        $before_form                       = apply_filters( 'ninja_forms_display_before_form', '', $form_id, true );
         $form[ 'settings' ][ 'beforeForm'] = $before_form;
 
-        $before_fields                       = apply_filters( 'ninja_forms_display_before_fields', '', $form_id, TRUE );
+        $before_fields                       = apply_filters( 'ninja_forms_display_before_fields', '', $form_id, true );
         $form[ 'settings' ][ 'beforeFields'] = $before_fields;
 
-        $after_fields                       = apply_filters( 'ninja_forms_display_after_fields', '', $form_id, TRUE );
+        $after_fields                       = apply_filters( 'ninja_forms_display_after_fields', '', $form_id, true );
         $form[ 'settings' ][ 'afterFields'] = $after_fields;
 
-        $after_form                       = apply_filters( 'ninja_forms_display_after_form', '', $form_id, TRUE );
+        $after_form                       = apply_filters( 'ninja_forms_display_after_form', '', $form_id, true );
         $form[ 'settings' ][ 'afterForm'] = $after_form;
 
         $fields = array();
@@ -467,7 +467,7 @@ final class NF_Display_Render
      */
     protected static function is_template_loaded( $template_name )
     {
-        return ( in_array( $template_name, self::$loaded_templates ) ) ? TRUE : FALSE ;
+        return ( in_array( $template_name, self::$loaded_templates ) ) ? true : false ;
     }
 
 } // End Class NF_Display_Render

@@ -68,7 +68,7 @@ final class NF_Admin_Menus_Submissions extends NF_Abstracts_Submenu
      */
     public function change_columns()
     {
-        $form_id = ( isset( $_GET['form_id'] ) ) ? $_GET['form_id'] : FALSE;
+        $form_id = ( isset( $_GET['form_id'] ) ) ? $_GET['form_id'] : false;
 
         if( ! $form_id ) return array();
 
@@ -374,7 +374,7 @@ final class NF_Admin_Menus_Submissions extends NF_Abstracts_Submenu
      */
     private function custom_columns_field( $sub, $column )
     {
-        if( FALSE === strpos( $column, 'field_' ) ) return FALSE;
+        if( false === strpos( $column, 'field_' ) ) return false;
 
         $field_id = str_replace( 'field_', '', $column );
 

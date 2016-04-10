@@ -20,7 +20,7 @@ return apply_filters( 'ninja_forms_action_email_settings', array(
         'placeholder'    => __( 'Email address or search for a field', 'ninja-forms' ),
         'value'          => '',
         'width'          => 'full',
-        'use_merge_tags' => TRUE,
+        'use_merge_tags' => true,
     ),
 
     /**
@@ -35,7 +35,7 @@ return apply_filters( 'ninja_forms_action_email_settings', array(
         'placeholder'    => __( 'Subject Text or seach for a field', 'ninja-forms' ),
         'value'          => '',
         'width'          => 'full',
-        'use_merge_tags' => TRUE,
+        'use_merge_tags' => true,
     ),
 
     /**
@@ -50,7 +50,7 @@ return apply_filters( 'ninja_forms_action_email_settings', array(
         'placeholder'    => '',
         'value'          => '',
         'width'          => 'full',
-        'use_merge_tags' => TRUE,
+        'use_merge_tags' => true,
     ),
 
     /**
@@ -71,7 +71,7 @@ return apply_filters( 'ninja_forms_action_email_settings', array(
         'placeholder'    => __( 'Name or fields', 'ninja-forms' ),
         'value'          => '',
         'width'          => 'one-half',
-        'use_merge_tags' => TRUE,
+        'use_merge_tags' => true,
     ),
 
     /**
@@ -85,7 +85,7 @@ return apply_filters( 'ninja_forms_action_email_settings', array(
         'label'          => __( 'From Address', 'ninja-forms' ),
         'placeholder'    => __( 'One email address or field', 'ninja-forms' ),
         'value'          => '',
-        'use_merge_tags' => TRUE,
+        'use_merge_tags' => true,
     ),
 
     /**
@@ -99,7 +99,7 @@ return apply_filters( 'ninja_forms_action_email_settings', array(
         'label'          => __( 'Reply To', 'ninja-forms' ),
         'placeholder'    => '',
         'value'          => '',
-        'use_merge_tags' => TRUE,
+        'use_merge_tags' => true,
     ),
 
     /**
@@ -130,7 +130,7 @@ return apply_filters( 'ninja_forms_action_email_settings', array(
         'label'          => __( 'Cc', 'ninja-forms' ),
         'placeholder'    => '',
         'value'          => '',
-        'use_merge_tags' => TRUE,
+        'use_merge_tags' => true,
     ),
 
     /**
@@ -144,7 +144,7 @@ return apply_filters( 'ninja_forms_action_email_settings', array(
         'label'          => __( 'Bcc', 'ninja-forms' ),
         'placeholder'    => '',
         'value'          => '',
-        'use_merge_tags' => TRUE,
+        'use_merge_tags' => true,
     ),
 
     /**
