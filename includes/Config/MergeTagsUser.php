@@ -67,4 +67,4 @@ return apply_filters( 'ninja_forms_merge_tags_user', array(
         'callback' => 'user_email'
     ),
 
-));
+) );
