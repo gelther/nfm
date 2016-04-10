@@ -45,8 +45,8 @@ abstract class NF_Abstracts_ActionNewsletter extends NF_Abstracts_Action
     }
 
     /**
-    * PUBLIC METHODS
-    */
+     * PUBLIC METHODS
+     */
     public function save( $action_settings )
     {
     }
