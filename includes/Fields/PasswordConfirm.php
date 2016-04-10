@@ -26,11 +26,11 @@ class NF_Fields_PasswordConfirm extends NF_Fields_Password
 
         $password_fields = $this->get_password_fields( $data );
 
-        if( ! is_array( $password_fields ) || empty( $password_fields ) ) return $errors;
+        if ( ! is_array( $password_fields ) || empty( $password_fields ) ) return $errors;
 
-        foreach( $password_fields as $password_field ) {
+        foreach ( $password_fields as $password_field ) {
 
-            if( $this->is_matching_values( $field, $password_field ) ) continue;
+            if ( $this->is_matching_values( $field, $password_field ) ) continue;
 
             $errors[] = $this->get_error_message();
         }
@@ -42,9 +42,9 @@ class NF_Fields_PasswordConfirm extends NF_Fields_Password
     {
         $password_fields = array();
 
-        foreach( $data[ 'fields' ] as $field ) {
+        foreach ( $data[ 'fields' ] as $field ) {
 
-            if( 'password' != $field[ 'type' ] ) continue;
+            if ( 'password' != $field[ 'type' ] ) continue;
 
             $password_fields[] = $field;
         }
@@ -59,7 +59,7 @@ class NF_Fields_PasswordConfirm extends NF_Fields_Password
 
     private function get_error_message()
     {
-        if( $this->_error_message ) return $this->_error_message;
+        if ( $this->_error_message ) return $this->_error_message;
 
         $error_message = __( 'Passwords do not match', 'ninja-forms' );
 
