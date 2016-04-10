@@ -19,8 +19,7 @@ final class NF_Database_Logger extends NF_Abstracts_Logger
      * @param  array  $context
      * @return null
      */
-    public function log( $level, $message, array $context = array() )
-    {
+    public function log( $level, $message, array $context = array() ) {
         $message = $this->interpolate( $message, $context );
 
         // Create Log Object
@@ -46,8 +45,7 @@ final class NF_Database_Logger extends NF_Abstracts_Logger
      * @param  string $level
      * @return array
      */
-    public function get_current( $level = '' )
-    {
+    public function get_current( $level = '' ) {
         return ( $level ) ? $this->_current[ $level ] : $this->_current;
     }
 
@@ -58,8 +56,7 @@ final class NF_Database_Logger extends NF_Abstracts_Logger
      * @param  array  $context
      * @return string
      */
-    protected function interpolate( $message, array $context = array() )
-    {
+    protected function interpolate( $message, array $context = array() ) {
         // build a replacement array with braces around the context keys
         $replace = array();
         foreach ( $context as $key => $val ) {
