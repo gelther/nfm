@@ -65,7 +65,7 @@ abstract class NF_Abstracts_Action
      */
     public function __construct()
     {
-        if( ! empty( $this->_settings_only ) ) {
+        if ( ! empty( $this->_settings_only ) ) {
 
             $this->_settings = array_merge( $this->_settings, $this->_settings_only );
         } else {
@@ -191,8 +191,8 @@ abstract class NF_Abstracts_Action
      */
     public static function sort_actions( $a, $b )
     {
-        if( ! isset( Ninja_Forms()->actions[ $a->get_setting( 'type' ) ] ) ) return 1;
-        if( ! isset( Ninja_Forms()->actions[ $b->get_setting( 'type' ) ] ) ) return 1;
+        if ( ! isset( Ninja_Forms()->actions[ $a->get_setting( 'type' ) ] ) ) return 1;
+        if ( ! isset( Ninja_Forms()->actions[ $b->get_setting( 'type' ) ] ) ) return 1;
 
         $a->timing   = Ninja_Forms()->actions[ $a->get_setting( 'type' ) ]->get_timing();
         $a->priority = Ninja_Forms()->actions[ $a->get_setting( 'type' ) ]->get_priority();
@@ -201,7 +201,7 @@ abstract class NF_Abstracts_Action
         $b->priority = Ninja_Forms()->actions[ $b->get_setting( 'type' ) ]->get_priority();
 
         // Compare Priority if Timing is the same
-        if( $a->timing == $b->timing ) {
+        if ( $a->timing == $b->timing ) {
             return $a->priority > $b->priority ? 1 : -1;
         }
 
@@ -216,9 +216,9 @@ abstract class NF_Abstracts_Action
         // Loads a settings array from the FieldSettings configuration file.
         $all_settings = Ninja_Forms::config( 'ActionSettings' );
 
-        foreach( $only_settings as $setting ) {
+        foreach ( $only_settings as $setting ) {
 
-            if( isset( $all_settings[ $setting ] ) ) {
+            if ( isset( $all_settings[ $setting ] ) ) {
 
                 $settings[ $setting ] = $all_settings[ $setting ];
             }
