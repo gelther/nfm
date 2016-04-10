@@ -131,8 +131,7 @@ class NF_Abstracts_Model
      * @param $id
      * @param $parent_id
      */
-    public function __construct( $db, $id = NULL, $parent_id = '' )
-    {
+    public function __construct( $db, $id = NULL, $parent_id = '' ) {
         /**
          * Injected the Database Dependency
          */
@@ -185,8 +184,7 @@ class NF_Abstracts_Model
      *
      * @return int
      */
-    public function get_id()
-    {
+    public function get_id() {
         return intval( $this->_id );
     }
 
@@ -195,8 +193,7 @@ class NF_Abstracts_Model
      *
      * @return null|string
      */
-    public function get_tmp_id()
-    {
+    public function get_tmp_id() {
         return $this->_tmp_id;
     }
 
@@ -205,8 +202,7 @@ class NF_Abstracts_Model
      *
      * @return string
      */
-    public function get_type()
-    {
+    public function get_type() {
         return $this->_type;
     }
 
@@ -217,8 +213,7 @@ class NF_Abstracts_Model
      * @param  bool            $default optional
      * @return string|int|bool
      */
-    public function get_setting( $setting, $default = false )
-    {
+    public function get_setting( $setting, $default = false ) {
         $return = $this->get_settings( $setting );
 
         return ( $return ) ? $return : $default;
@@ -230,8 +225,7 @@ class NF_Abstracts_Model
      * @param  string ...$only returns a subset of the object's settings
      * @return array
      */
-    public function get_settings()
-    {
+    public function get_settings() {
         // If the ID is not set, then we cannot pull settings from the Database.
         if ( ! $this->_id ) return $this->_settings;
 
@@ -314,8 +308,7 @@ class NF_Abstracts_Model
      * @param                 $value
      * @return bool|false|int
      */
-    public function update_setting( $key, $value )
-    {
+    public function update_setting( $key, $value ) {
         $this->_settings[ $key ] = $value;
 
         return $this;
@@ -327,8 +320,7 @@ class NF_Abstracts_Model
      * @param       $data
      * @return bool
      */
-    public function update_settings( $data )
-    {
+    public function update_settings( $data ) {
         foreach ( $data as $key => $value ) {
             $this->update_setting( $key, $value );
         }
@@ -343,8 +335,7 @@ class NF_Abstracts_Model
      *
      * @return bool
      */
-    public function delete()
-    {
+    public function delete() {
         if ( ! $this->get_id() ) return;
 
         $results = array();
@@ -402,8 +393,7 @@ class NF_Abstracts_Model
      * @param  array  $where
      * @return array
      */
-    public function find( $parent_id = '', array $where = array() )
-    {
+    public function find( $parent_id = '', array $where = array() ) {
         // Build the query using the $where argument
         $query = $this->build_meta_query( $parent_id, $where );
 
@@ -431,8 +421,7 @@ class NF_Abstracts_Model
     /**
      * Save
      */
-    public function save()
-    {
+    public function save() {
         // If the ID is not set, assign an ID
         if ( ! $this->_id ) {
 
@@ -467,8 +456,7 @@ class NF_Abstracts_Model
         }
     }
 
-    public function _insert_row( $data = array() )
-    {
+    public function _insert_row( $data = array() ) {
         $data[ 'created_at' ] = time();
 
         if ( $this->_parent_id ) {
@@ -488,8 +476,7 @@ class NF_Abstracts_Model
      * @param  string $cache
      * @return        $this
      */
-    public function cache( $cache = '' )
-    {
+    public function cache( $cache = '' ) {
         // Set the Cache Flag Property.
         if ( $cache !== '' ) {
             $this->_cache = $cache;
@@ -508,8 +495,7 @@ class NF_Abstracts_Model
      * @param  $parent_type
      * @return $this
      */
-    public function add_parent( $parent_id, $parent_type )
-    {
+    public function add_parent( $parent_id, $parent_type ) {
         $this->_parent_id = $parent_id;
 
         $this->_parent_type = $parent_type;
@@ -531,8 +517,7 @@ class NF_Abstracts_Model
      * @param                 $value
      * @return bool|false|int
      */
-    protected function _save_setting( $key, $value )
-    {
+    protected function _save_setting( $key, $value ) {
         // If the setting is a column, save the settings to the model's table.
         if ( in_array( $key, $this->_columns ) ) {
 
@@ -597,8 +582,7 @@ class NF_Abstracts_Model
      *
      * @return bool
      */
-    protected function _save_settings()
-    {
+    protected function _save_settings() {
         if ( ! $this->_settings ) return;
 
         foreach ( $this->_settings as $key => $value ) {
@@ -616,8 +600,7 @@ class NF_Abstracts_Model
      *
      * @return $this
      */
-    protected function _save_parent_relationship()
-    {
+    protected function _save_parent_relationship() {
         // ID, Type, Parent ID, and Parent Type are required for creating a relationship.
         if ( ! $this->_id || ! $this->_type || ! $this->_parent_id || ! $this->_parent_type ) return $this;
 
@@ -662,8 +645,7 @@ class NF_Abstracts_Model
      * @param  array  $where
      * @return string
      */
-    protected function build_meta_query( $parent_id = '', array $where = array() )
-    {
+    protected function build_meta_query( $parent_id = '', array $where = array() ) {
         $join_statement  = array();
         $where_statement = array();
 
