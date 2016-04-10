@@ -30,4 +30,4 @@ return apply_filters( 'ninja_forms_from_action_defaults', array(
         'active' => TRUE,
     ),
 
-));
+) );
