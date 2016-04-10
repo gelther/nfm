@@ -25,7 +25,7 @@ class NF_Admin_AddFormModal {
         if ( 'post.php' != $pagenow ) {
             return $context;
         }
-        $html = '<style>
+        $html  = '<style>
             span.nf-insert-form {
                 color:#888;
                 font: 400 18px/1 dashicons;
@@ -51,13 +51,13 @@ class NF_Admin_AddFormModal {
          <div id="nf-insert-form-modal" style="display:none;">
             <p>
                 <?php
-                $all_forms = Ninja_Forms()->form()->get_forms();
+                $all_forms    = Ninja_Forms()->form()->get_forms();
                 $first_option = __( 'Select a form or type to search', 'ninja-forms' );
                 echo '<select class="nf-forms-combobox" id="nf-form-select" data-first-option="">';
                 echo '<option value=""></option>';
                 foreach( $all_forms as $form ) {
                     // $form = Ninja_Forms()->form( $form_id )->get();
-                    $label = $form->get_setting( 'title' );
+                    $label   = $form->get_setting( 'title' );
                     $form_id = $form->get_id();
                     if ( strlen( $label ) > 30 )
                         $label = substr( $label, 0, 30 ) . '...';
