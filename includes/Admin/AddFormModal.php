@@ -123,4 +123,5 @@ class NF_Admin_AddFormModal {
 
         <?php
     }
+
 }
