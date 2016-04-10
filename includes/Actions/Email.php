@@ -51,14 +51,14 @@ final class NF_Actions_Email extends NF_Abstracts_Action
         $attachments = $this->_get_attachments( $action_settings, $data );
 
         $sent = wp_mail(
-            $action_settings['to'],
-            $action_settings['email_subject'],
-            $action_settings['email_message'],
+            $action_settings[ 'to' ],
+            $action_settings[ 'email_subject' ],
+            $action_settings[ 'email_message' ],
             $headers,
             $attachments
         );
 
-        $data[ 'actions' ][ 'email' ][ 'to' ]          = $action_settings['to'];
+        $data[ 'actions' ][ 'email' ][ 'to' ]          = $action_settings[ 'to' ];
         $data[ 'actions' ][ 'email' ][ 'sent' ]        = $sent;
         $data[ 'actions' ][ 'email' ][ 'headers' ]     = $headers;
         $data[ 'actions' ][ 'email' ][ 'attachments' ] = $attachments;
@@ -70,10 +70,10 @@ final class NF_Actions_Email extends NF_Abstracts_Action
     {
         $headers = array();
 
-        $headers[] = 'Content-Type: text/' . $settings[ 'email_format' ];
-        $headers[] = 'charset=UTF-8';
+        $headers[  ] = 'Content-Type: text/' . $settings[ 'email_format' ];
+        $headers[  ] = 'charset=UTF-8';
 
-        $headers[] = $this->_format_from( $settings );
+        $headers[  ] = $this->_format_from( $settings );
 
         $headers = array_merge( $headers, $this->_format_recipients( $settings ) );
 
@@ -85,7 +85,7 @@ final class NF_Actions_Email extends NF_Abstracts_Action
         $attachments = array();
 
         if( $settings[ 'attach_csv' ] ){
-            $attachments[] = $this->_create_csv( $data[ 'fields' ] );
+            $attachments[  ] = $this->_create_csv( $data[ 'fields' ] );
         }
 
         if( ! isset( $settings[ 'id' ] ) ) $settings[ 'id' ] = '';
@@ -126,7 +126,7 @@ final class NF_Actions_Email extends NF_Abstracts_Action
 
                 if( ! $email ) continue;
 
-                $headers[] = $this->_format_recipient( $type, $email );
+                $headers[  ] = $this->_format_recipient( $type, $email );
             }
         }
 
@@ -152,8 +152,8 @@ final class NF_Actions_Email extends NF_Abstracts_Action
 
             if( ! isset( $field[ 'label' ] ) ) continue;
 
-            $csv_array[ 0 ][] = $field[ 'label' ];
-            $csv_array[ 1 ][] = WPN_Helper::stripslashes( $field[ 'value' ] );
+            $csv_array[ 0 ][  ] = $field[ 'label' ];
+            $csv_array[ 1 ][  ] = WPN_Helper::stripslashes( $field[ 'value' ] );
         }
 
         $csv_content = WPN_Helper::str_putcsv( $csv_array,
@@ -163,7 +163,7 @@ final class NF_Actions_Email extends NF_Abstracts_Action
         );
 
         $upload_dir = wp_upload_dir();
-        $path       = trailingslashit( $upload_dir['path'] );
+        $path       = trailingslashit( $upload_dir[ 'path' ] );
 
         // create temporary file
         $path      = tempnam( $path, 'Sub' );
@@ -175,8 +175,8 @@ final class NF_Actions_Email extends NF_Abstracts_Action
 
         // find the directory we will be using for the final file
         $path     = pathinfo( $path );
-        $dir      = $path['dirname'];
-        $basename = $path['basename'];
+        $dir      = $path[ 'dirname' ];
+        $basename = $path[ 'basename' ];
 
         // create name for file
         $new_name = apply_filters( 'ninja_forms_submission_csv_name', 'ninja-forms-submission' );
