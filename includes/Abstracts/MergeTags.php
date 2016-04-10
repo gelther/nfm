@@ -11,7 +11,7 @@ abstract class NF_Abstracts_MergeTags
 
     protected $merge_tags = array();
 
-    protected $_default_group = TRUE;
+    protected $_default_group = true;
 
     public function __construct()
     {
@@ -37,7 +37,7 @@ abstract class NF_Abstracts_MergeTags
                 foreach( $subject as $i => $s ){
                     $subject[ $i ] = $this->replace( $s );
                 }
-            } elseif( FALSE !== strpos( $subject, $merge_tag[ 'tag' ] ) ){
+            } elseif( false !== strpos( $subject, $merge_tag[ 'tag' ] ) ){
 
                 $replace = ( is_callable( array( $this, $merge_tag[ 'callback' ] ) ) ) ? $this->{$merge_tag[ 'callback' ]}() : '';
 
