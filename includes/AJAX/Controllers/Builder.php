@@ -11,7 +11,7 @@ class NF_AJAX_Controllers_Builder extends NF_Abstracts_Controller
     {
         check_ajax_referer( 'ninja_forms_ajax_nonce', 'builder' );
 
-        if( ! isset( $_POST[ 'form' ] ) ){
+        if( ! isset( $_POST[ 'form' ] ) ) {
             $this->_errors[] = 'Form Not Found';
             $this->_respond();
         }
@@ -35,11 +35,11 @@ class NF_AJAX_Controllers_Builder extends NF_Abstracts_Controller
 
         $fields_settings = array();
 
-        foreach( $fields as $field ){
+        foreach( $fields as $field ) {
             $settings         = $field->get_settings();
             $settings[ 'id' ] = $field->get_id();
 
-            foreach( $settings as $key => $setting ){
+            foreach( $settings as $key => $setting ) {
                 if( is_numeric( $setting ) ) $settings[ $key ] = floatval( $setting );
             }
 
@@ -48,7 +48,7 @@ class NF_AJAX_Controllers_Builder extends NF_Abstracts_Controller
 
         $actions_settings = array();
 
-        foreach( $actions as $action ){
+        foreach( $actions as $action ) {
 
             $settings         = $action->get_settings();
             $settings[ 'id' ] = $action->get_id();
@@ -74,7 +74,7 @@ class NF_AJAX_Controllers_Builder extends NF_Abstracts_Controller
 
         $setting_defaults = array();
 
-        foreach( Ninja_Forms()->fields as $field ){
+        foreach( Ninja_Forms()->fields as $field ) {
 
             $name     = $field->get_name();
             $settings = $field->get_settings();
@@ -111,7 +111,7 @@ class NF_AJAX_Controllers_Builder extends NF_Abstracts_Controller
 
         $master_settings_list = array();
 
-        foreach( Ninja_Forms()->actions as $action ){
+        foreach( Ninja_Forms()->actions as $action ) {
 
             $name     = $action->get_name();
             $settings = $action->get_settings();
@@ -133,7 +133,7 @@ class NF_AJAX_Controllers_Builder extends NF_Abstracts_Controller
 
         $external_actions = $this->_fetch_action_feed();
 
-        foreach( $external_actions as $action ){
+        foreach( $external_actions as $action ) {
 
             if( ! isset( $action[ 'name' ] ) || ! $action[ 'name' ] ) continue;
 
@@ -199,7 +199,7 @@ class NF_AJAX_Controllers_Builder extends NF_Abstracts_Controller
             )
         );
 
-        foreach( Ninja_Forms()->merge_tags as $key => $group ){
+        foreach( Ninja_Forms()->merge_tags as $key => $group ) {
 
             $merge_tags[ $key ] = array(
                 'id'    => $group->get_id(),
@@ -213,11 +213,11 @@ class NF_AJAX_Controllers_Builder extends NF_Abstracts_Controller
 
     protected function _group_settings( $settings, $groups )
     {
-        foreach( $settings as $setting ){
+        foreach( $settings as $setting ) {
 
             $group = ( isset( $setting[ 'group' ] ) ) ? $setting[ 'group' ] : '';
 
-            if( isset( $setting[ 'type' ] ) && 'fieldset' == $setting[ 'type' ] ){
+            if( isset( $setting[ 'type' ] ) && 'fieldset' == $setting[ 'type' ] ) {
                 $setting[ 'settings' ] = array_values( $setting[ 'settings' ] );
             }
 
@@ -239,9 +239,9 @@ class NF_AJAX_Controllers_Builder extends NF_Abstracts_Controller
     {
         $unique_settings = array();
 
-        foreach( $settings as $setting ){
+        foreach( $settings as $setting ) {
 
-            if( 'fieldset' == $setting[ 'type' ] ){
+            if( 'fieldset' == $setting[ 'type' ] ) {
 
                 $unique_settings = array_merge( $unique_settings, $this->_unique_settings( $setting[ 'settings' ] ) );
             } else {
@@ -259,7 +259,7 @@ class NF_AJAX_Controllers_Builder extends NF_Abstracts_Controller
     {
         $setting_defaults = array();
 
-        foreach( $settings as $setting ){
+        foreach( $settings as $setting ) {
 
             $name                      = ( isset( $setting[ 'name' ] ) ) ? $setting[ 'name' ] : '';
             $default                   = ( isset( $setting[ 'value' ] ) ) ? $setting[ 'value' ] : '';
