@@ -9,7 +9,7 @@ return apply_filters( 'ninja_forms_field_settings', array(
     |
     | The most commonly used settings for a field.
     |
-    */
+     */
 
     /**
      * LABEL
@@ -188,7 +188,7 @@ return apply_filters( 'ninja_forms_field_settings', array(
     |
     | Limit the behavior or validation of an input.
     |
-    */
+     */
 
     /**
      * MASK
@@ -299,7 +299,7 @@ return apply_filters( 'ninja_forms_field_settings', array(
     | The least commonly used settings for a field.
     | These settings should only be used for specific reasons.
     |
-    */
+     */
 
     /**
      * INPUT PLACEHOLDER
@@ -336,8 +336,8 @@ return apply_filters( 'ninja_forms_field_settings', array(
      ),
 
     /**
-    * CLASSES
-    */
+     * CLASSES
+     */
     'classes'                        => array(
         'name'     => 'classes',
         'type'     => 'fieldset',
@@ -570,7 +570,7 @@ return apply_filters( 'ninja_forms_field_settings', array(
     |
     | Hidden from grouped listings, but still searchable.
     |
-    */
+     */
 
     'manual_key'                     => array(
         'name'  => 'manual_key',
@@ -759,7 +759,7 @@ return apply_filters( 'ninja_forms_field_settings', array(
     |--------------------------------------------------------------------------
     | Textarea Settings
     |--------------------------------------------------------------------------
-    */
+     */
 
     'textarea_rte'                   => array(
         'name'  => 'textarea_rte',
@@ -799,7 +799,7 @@ return apply_filters( 'ninja_forms_field_settings', array(
     |--------------------------------------------------------------------------
     | Submit Button Settings
     |--------------------------------------------------------------------------
-    */
+     */
 
     'processing_label'               => array(
         'name'  => 'processing_label',
@@ -814,7 +814,7 @@ return apply_filters( 'ninja_forms_field_settings', array(
     |--------------------------------------------------------------------------
     | Calc Value that is used for checkbox fields
     |--------------------------------------------------------------------------
-    */
+     */
 
     'checked_calc_value'             => array(
         'name'  => 'checked_calc_value',
@@ -838,7 +838,7 @@ return apply_filters( 'ninja_forms_field_settings', array(
     |--------------------------------------------------------------------------
     | DISPLAY CALCULATION SETTINGS
     |--------------------------------------------------------------------------
-    */
+     */
     'calc_var'                       => array(
         'name'           => 'calc_var',
         'type'           => 'select',
@@ -856,7 +856,7 @@ return apply_filters( 'ninja_forms_field_settings', array(
     |--------------------------------------------------------------------------
     | Pricing Fields Settings
     |--------------------------------------------------------------------------
-    */
+     */
 
     'product_price'                  => array(
         'name'  => 'product_price',
@@ -997,7 +997,7 @@ return apply_filters( 'ninja_forms_field_settings', array(
     |--------------------------------------------------------------------------
     | Anti-Spam Field Settings
     |--------------------------------------------------------------------------
-    */
+     */
 
     /**
      * Spam Answer
@@ -1017,7 +1017,7 @@ return apply_filters( 'ninja_forms_field_settings', array(
     |--------------------------------------------------------------------------
     | Backwards Compatibility Field Settings
     |--------------------------------------------------------------------------
-    */
+     */
 
     'user_state'                     => array(
         'name'  => 'user_state',
