@@ -212,7 +212,7 @@ final class NF_Database_Models_Submission
 
         $return = array();
         foreach( $subs as $sub ){
-            $return[] = new $class( $sub->ID, $this->_form_id );
+            $return[  ] = new $class( $sub->ID, $this->_form_id );
         }
 
         return $return;
@@ -308,7 +308,7 @@ final class NF_Database_Models_Submission
                 $value[ $field_id ] = $sub->get_field_value( $field_id );
             }
 
-            $value_array[] = $value;
+            $value_array[  ] = $value;
         }
 
         $value_array = WPN_Helper::stripslashes( $value_array );
@@ -316,8 +316,8 @@ final class NF_Database_Models_Submission
         // Legacy Filter from 2.9.*
         $value_array = apply_filters( 'nf_subs_csv_value_array', $value_array, $sub_ids );
 
-        $csv_array[ 0 ][] = $field_labels;
-        $csv_array[ 1 ][] = $value_array;
+        $csv_array[ 0 ][  ] = $field_labels;
+        $csv_array[ 1 ][  ] = $value_array;
 
         $today    = date( $date_format, current_time( 'timestamp' ) );
         $filename = apply_filters( 'nf_subs_csv_filename', 'nf_subs_' . $today );
@@ -413,7 +413,7 @@ final class NF_Database_Models_Submission
         if( ! empty( $where ) ) {
             foreach ( $where as $key => $value ) {
 
-                $return[] = (is_array( $value )) ? $value : array( 'key' => $key, 'value' => $value );
+                $return[  ] = (is_array( $value )) ? $value : array( 'key' => $key, 'value' => $value );
             }
         }
 
