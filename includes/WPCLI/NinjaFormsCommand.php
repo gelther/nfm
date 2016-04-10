@@ -12,8 +12,7 @@ class NF_WPCLI_NinjaFormsCommand extends WP_CLI_Command
      *
      * @subcommand info
      */
-    function info()
-    {
+    function info() {
         $this->peeking_ninja();
         WP_CLI::success( 'Welcome to the Ninja Forms WP-CLI Extension!' );
         WP_CLI::line( '' );
@@ -39,8 +38,7 @@ class NF_WPCLI_NinjaFormsCommand extends WP_CLI_Command
      * @subcommand form
      * @alias create-form
      */
-    public function create_form( $args, $assoc_args )
-    {
+    public function create_form( $args, $assoc_args ) {
         list( $title ) = $args;
 
         $form = Ninja_Forms()->form()->get();
@@ -52,8 +50,7 @@ class NF_WPCLI_NinjaFormsCommand extends WP_CLI_Command
      * @subcommand list
      * @alias list-forms
      */
-    public function list_forms( $args, $assoc_args )
-    {
+    public function list_forms( $args, $assoc_args ) {
         foreach ( Ninja_Forms()->form()->get_forms() as $form ) {
             WP_CLI::line( '#' . $form->get_id() . ' - ' . $form->get_setting( 'title' ) );
         }
@@ -64,8 +61,7 @@ class NF_WPCLI_NinjaFormsCommand extends WP_CLI_Command
      * @subcommand get
      * @alias get-form
      */
-    public function get_form( $args, $assoc_args )
-    {
+    public function get_form( $args, $assoc_args ) {
         list( $id ) = $args;
 
         $form = Ninja_Forms()->form( $id )->get();
@@ -86,8 +82,7 @@ class NF_WPCLI_NinjaFormsCommand extends WP_CLI_Command
     /**
      * Installs mock form data
      */
-    public function mock()
-    {
+    public function mock() {
         $mock_data = new NF_Database_MockData();
 
         $mock_data->form_contact_form_1();
@@ -96,8 +91,7 @@ class NF_WPCLI_NinjaFormsCommand extends WP_CLI_Command
         $mock_data->form_long_form();
     }
 
-    private function peeking_ninja()
-    {
+    private function peeking_ninja() {
         $output = file_get_contents( Ninja_Forms::$dir . 'includes/Templates/wpcli-header-art.txt' );
         WP_CLI::line( $output );
     }
