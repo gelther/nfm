@@ -17,8 +17,7 @@ class NF_Fields_ListRadio extends NF_Abstracts_List
 
     protected $_old_classname = 'list-radio';
 
-    public function __construct()
-    {
+    public function __construct() {
         parent::__construct();
 
         $this->_nicename = __( 'Radio List', 'ninja-forms' );
