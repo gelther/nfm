@@ -28,7 +28,7 @@ class NF_Fields_ListMultiselect extends NF_Abstracts_List
 
         $options = '';
         foreach ( $field->get_setting( 'options' ) as $option ) {
-            $selected  = ( in_array( $option[ 'value' ], $value ) ) ? 'selected' : '';
+            $selected  = ( in_array( $option['value'], $value ) ) ? 'selected' : '';
             $options  .= "<option value='{$option[ 'value' ]}' $selected>{$option[ 'label' ]}</option>";
         }
 
