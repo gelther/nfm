@@ -52,4 +52,5 @@ abstract class NF_Abstracts_Metabox
     protected function save_post( $post_id ) {
         // This section intentionally left blank.
     }
+
 }
