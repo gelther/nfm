@@ -21,7 +21,7 @@ php:
     # static_array_index_whitespace: whitespace
     string_operator_whitespace: whitespace
     trailing_whitespace: remove
-    true_false_casing: lower
+    true_false_casing: upper
     type_cast_casing: lower
     type_cast_inner_whitespace: no_space
     # use_quotes: single_quotes
