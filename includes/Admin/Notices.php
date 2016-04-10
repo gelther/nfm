@@ -134,7 +134,7 @@ class NF_Admin_Notices
                     $output_css         = true;
                 }
                 if ( $output_css ) {
-                    wp_enqueue_style( 'nf-admin-notices', Ninja_Forms::$url .'assets/css/admin-notices.css?nf_ver=' . Ninja_Forms::VERSION );
+                    wp_enqueue_style( 'nf-admin-notices', Ninja_Forms::$url . 'assets/css/admin-notices.css?nf_ver=' . Ninja_Forms::VERSION );
                 }
             }
         }
