@@ -328,7 +328,7 @@ final class NF_Database_Models_Submission
                 apply_filters( 'nf_sub_csv_enclosure', '"' ),
                 apply_filters( 'nf_sub_csv_terminator', "\n" )
             );
-        }else {
+        } else {
             header( 'Content-type: application/csv' );
             header( 'Content-Disposition: attachment; filename="' . $filename . '"' );
             header( 'Pragma: no-cache' );

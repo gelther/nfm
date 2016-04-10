@@ -28,7 +28,7 @@ final class WPN_Helper
     public static function utf8_encode( $input ){
         if ( is_array( $input ) ) {
             return array_map( array( 'self', 'utf8_encode' ), $input );
-        }else {
+        } else {
             return utf8_encode( $input );
         }
     }

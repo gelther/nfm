@@ -66,13 +66,13 @@ class NF_Widget extends WP_Widget {
     public function form( $instance ) {
         if ( isset( $instance[ 'form_id' ] ) ) {
             $form_id = $instance[ 'form_id' ];
-        }else {
+        } else {
             $form_id = '';
         }
 
         if ( isset( $instance[ 'display_title' ] ) ) {
             $display_title = $instance[ 'display_title' ];
-        }else {
+        } else {
             $display_title = 0;
         }
 
