@@ -301,8 +301,8 @@ final class NF_Admin_Menus_Forms extends NF_Abstracts_Menu
         }
 
         $external_actions = $this->_fetch_action_feed();
-        $u_id             = get_option( 'nf_aff', false );
-        if ( ! $u_id ) $u_id = apply_filters( 'ninja_forms_affiliate_id', false );
+        $u_id             = get_option( 'nf_aff', FALSE );
+        if ( ! $u_id ) $u_id = apply_filters( 'ninja_forms_affiliate_id', FALSE );
         foreach( $external_actions as $action ){
 
             if( ! isset( $action[ 'name' ] ) || ! $action[ 'name' ] ) continue;
@@ -467,7 +467,7 @@ final class NF_Admin_Menus_Forms extends NF_Abstracts_Menu
         if( $bust || ! $actions ) {
             $actions = wp_remote_get( 'https://ninjaforms.com/?action_feed=true' );
             $actions = wp_remote_retrieve_body( $actions );
-            $actions = json_decode( $actions, true );
+            $actions = json_decode( $actions, TRUE );
 
             set_transient( 'ninja-forms-builder-actions-feed', $actions, WEEK_IN_SECONDS );
         }
