@@ -157,23 +157,23 @@ final class WPN_Helper
 
         for ( $i=0; $i<$arraySize; $i++ ) {
             // Nested array, process nest item
-            if ( is_array( $workArray[$i] ) ) {
-                $returnString .= self::str_putcsv( $workArray[$i], $delimiter, $enclosure, $terminator );
+            if ( is_array( $workArray[ $i ] ) ) {
+                $returnString .= self::str_putcsv( $workArray[ $i ], $delimiter, $enclosure, $terminator );
             } else {
-                switch ( gettype( $workArray[$i] ) ) {
+                switch ( gettype( $workArray[ $i ] ) ) {
                     // Manually set some strings
                     case 'NULL':     $_spFormat = ''; break;
-                    case 'boolean':  $_spFormat = ($workArray[$i] == true) ? 'true': 'false'; break;
+                    case 'boolean':  $_spFormat = ($workArray[ $i ] == true) ? 'true': 'false'; break;
                     // Make sure sprintf has a good datatype to work with
                     case 'integer':  $_spFormat = '%i'; break;
                     case 'double':   $_spFormat = '%0.2f'; break;
-                    case 'string':   $_spFormat = '%s'; $workArray[$i] = str_replace( "$enclosure", "$enclosure$enclosure", $workArray[$i] ); break;
+                    case 'string':   $_spFormat = '%s'; $workArray[ $i ] = str_replace( "$enclosure", "$enclosure$enclosure", $workArray[ $i ] ); break;
                     // Unknown or invalid items for a csv - note: the datatype of array is already handled above, assuming the data is nested
                     case 'object':
                     case 'resource':
                     default:         $_spFormat = ''; break;
                 }
-                $returnString .= sprintf( '%2$s' . $_spFormat . '%2$s', $workArray[$i], $enclosure );
+                $returnString .= sprintf( '%2$s' . $_spFormat . '%2$s', $workArray[ $i ], $enclosure );
                 $returnString .= ($i < ($arraySize-1)) ? $delimiter : $terminator;
             }
         }
