@@ -6,7 +6,7 @@
  */
 
 class NF_Admin_AddFormModal {
-    
+
     function __construct() {
         // Add a tinyMCE button to our post and page editor
         add_filter( 'media_buttons_context', array( $this, 'insert_form_tinymce_buttons' ) );
