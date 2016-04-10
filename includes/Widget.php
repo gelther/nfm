@@ -24,10 +24,10 @@ class NF_Widget extends WP_Widget {
      * @param array $instance Saved values from database.
      */
     public function widget( $args, $instance ) {
-        $form = Ninja_Forms()->form( $instance['form_id'] )->get();
+        $form  = Ninja_Forms()->form( $instance['form_id'] )->get();
         $title = $form->get_setting( 'title' );
 
-        $title = apply_filters( 'widget_title', $title );
+        $title         = apply_filters( 'widget_title', $title );
         $display_title = $instance['display_title'];
 
         echo $args[ 'before_widget' ];
@@ -49,8 +49,8 @@ class NF_Widget extends WP_Widget {
      */
     public function update( $new_instance, $old_instance ) {
 
-        $instance = array();
-        $instance['form_id'] = $new_instance['form_id'];
+        $instance                  = array();
+        $instance['form_id']       = $new_instance['form_id'];
         $instance['display_title'] = $new_instance['display_title'];
 
         return $instance;
