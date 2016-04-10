@@ -52,7 +52,7 @@ class NF_Fields_Spam extends NF_Abstracts_Input
 
         if( 
             ( isset( $field[ 'spam_answer' ] ) && isset( $field[ 'value' ] ) )
-            && ( $field[ 'spam_answer' ] != $field[ 'value' ] )  
+            && ( $field[ 'spam_answer' ] != $field[ 'value' ] )   
         ){
             $errors[] = __( 'Incorrect Answer', 'ninja-forms' );
         }
