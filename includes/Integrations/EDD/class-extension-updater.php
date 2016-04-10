@@ -78,7 +78,7 @@ class NF_Extension_Updater
 
         // make sure the response came back okay
         if ( is_wp_error( $response ) ) {
-            return false;
+            return FALSE;
         }
 
         // decode the license data
@@ -113,13 +113,13 @@ class NF_Extension_Updater
         );
 
         // Call the custom API.
-        $response = wp_remote_post( esc_url_raw( add_query_arg( $api_params, $this->store_url ) ), array( 'timeout' => 15, 'sslverify' => false ) );
+        $response = wp_remote_post( esc_url_raw( add_query_arg( $api_params, $this->store_url ) ), array( 'timeout' => 15, 'sslverify' => FALSE ) );
 
         $this->maybe_debug( $response );
 
         // make sure the response came back okay
         if ( is_wp_error( $response ) ) {
-            return false;
+            return FALSE;
         }
 
         Ninja_Forms()->update_setting( $this->product_name . '_license_error', '' );
