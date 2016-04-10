@@ -29,4 +29,5 @@ class NF_Fields_CreditCardCVC extends NF_Abstracts_Input
 
         return $field_types;
     }
+
 }
