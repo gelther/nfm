@@ -117,7 +117,7 @@ abstract class NF_Abstracts_Field
         // Translate the nicename property.
         $this->_nicename = __( $this->_nicename, 'ninja-forms' );
 
-        if( ! empty( $this->_settings_only ) ) {
+        if ( ! empty( $this->_settings_only ) ) {
 
             $this->_settings = array_merge( $this->_settings, $this->_settings_only );
         } else {
@@ -144,7 +144,7 @@ abstract class NF_Abstracts_Field
     {
         $errors = array();
         // Required check.
-        if( isset( $field[ 'required' ] ) && $field[ 'required' ] && ! trim( $field[ 'value' ] ) ) {
+        if ( isset( $field[ 'required' ] ) && $field[ 'required' ] && ! trim( $field[ 'value' ] ) ) {
             $errors[] = 'Field is required.';
         }
         return $errors;
@@ -201,7 +201,7 @@ abstract class NF_Abstracts_Field
 
     public function get_parent_type()
     {
-        if( $this->_parent_type ) {
+        if ( $this->_parent_type ) {
             return $this->_parent_type;
         }
         // If a type is not set, return 'textbox'
@@ -243,7 +243,7 @@ abstract class NF_Abstracts_Field
 
         $parent_class_name = strtolower( str_replace( 'NF_Fields_', '', $parent_class->getName() ) );
 
-        if( ! isset( Ninja_Forms()->fields[ $parent_class_name ] ) ) return $templates;
+        if ( ! isset( Ninja_Forms()->fields[ $parent_class_name ] ) ) return $templates;
 
         $parent = Ninja_Forms()->fields[ $parent_class_name ];
         return array_merge( $templates, $parent->get_templates() );
@@ -267,9 +267,9 @@ abstract class NF_Abstracts_Field
         // Loads a settings array from the FieldSettings configuration file.
         $all_settings = Ninja_Forms::config( 'FieldSettings' );
 
-        foreach( $only_settings as $setting ) {
+        foreach ( $only_settings as $setting ) {
 
-            if( isset( $all_settings[ $setting ] ) ) {
+            if ( isset( $all_settings[ $setting ] ) ) {
 
                 $settings[ $setting ] = $all_settings[ $setting ];
             }
