@@ -81,7 +81,7 @@ final class NF_Admin_Menus_Submissions extends NF_Abstracts_Submenu
 
         $hidden_field_types = apply_filters( 'ninja_forms_sub_hidden_field_types', array() );
 
-        foreach( $fields as $field ){
+        foreach( $fields as $field ) {
 
             if( in_array( $field->get_setting( 'type' ), $hidden_field_types ) ) continue;
 
@@ -104,7 +104,7 @@ final class NF_Admin_Menus_Submissions extends NF_Abstracts_Submenu
     {
         $sub = Ninja_Forms()->form()->get_sub( $sub_id );
 
-        switch( $column ){
+        switch( $column ) {
             case 'seq_num':
                 echo $this->custom_columns_seq_num( $sub );
                 break;
@@ -145,7 +145,7 @@ final class NF_Admin_Menus_Submissions extends NF_Abstracts_Submenu
         $forms = Ninja_Forms()->form()->get_forms();
 
         $form_options = array();
-        foreach( $forms as $form ){
+        foreach( $forms as $form ) {
             $form_options[ $form->get_id() ] = $form->get_setting( 'title' );
         }
         $form_options = apply_filters( 'ninja_forms_submission_filter_form_options', $form_options );
@@ -333,7 +333,7 @@ final class NF_Admin_Menus_Submissions extends NF_Abstracts_Submenu
         if(
             ( isset( $_GET[ 'post_type' ] ) && 'nf_sub' == $_GET[ 'post_type' ] ) ||
             'nf_sub' == get_post_type()
-        ){
+        ) {
             echo '<style type="text/css">.page-title-action{display: none;}</style>';
         }
     }
@@ -402,7 +402,7 @@ final class NF_Admin_Menus_Submissions extends NF_Abstracts_Submenu
         $begin_date = $_GET[ 'begin_date' ];
         $end_date   = $_GET[ 'end_date' ];
 
-        if( $begin_date > $end_date ){
+        if( $begin_date > $end_date ) {
             $temp_date  = $begin_date;
             $begin_date = $end_date;
             $end_date   = $temp_date;
