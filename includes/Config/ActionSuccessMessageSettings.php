@@ -3,8 +3,8 @@
 return array(
 
     /**
-    * Message
-    */
+     * Message
+     */
 
     'success_msg' => array(
         'name'        => 'success_msg',
