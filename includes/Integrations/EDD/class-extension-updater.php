@@ -78,8 +78,9 @@ class NF_Extension_Updater
         $this->maybe_debug( $response );
 
         // make sure the response came back okay
-        if ( is_wp_error( $response ) )
+        if ( is_wp_error( $response ) ) {
             return false;
+        }
 
         // decode the license data
         $license_data = json_decode( wp_remote_retrieve_body( $response ) );
@@ -119,8 +120,9 @@ class NF_Extension_Updater
         $this->maybe_debug( $response );
 
         // make sure the response came back okay
-        if ( is_wp_error( $response ) )
+        if ( is_wp_error( $response ) ) {
             return false;
+        }
 
         Ninja_Forms()->update_setting( $this->product_name.'_license_error', '' );
         Ninja_Forms()->update_setting( $this->product_name.'_license_status', 'invalid' );
