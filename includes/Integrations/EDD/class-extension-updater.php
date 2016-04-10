@@ -57,7 +57,6 @@ class NF_Extension_Updater
     }
 
     /**
-     *
      * Function that activates our license
      *
      * @since 2.2.47
@@ -97,7 +96,6 @@ class NF_Extension_Updater
     }
 
     /**
-     *
      * Function that deactivates our license if the user clicks the "Deactivate License" button.
      *
      * @since 2.2.47
