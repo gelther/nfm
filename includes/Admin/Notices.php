@@ -154,7 +154,7 @@ class NF_Admin_Notices
     public function admin_notice_ignore() {
 
         // If user clicks to ignore the notice, update the option to not show it again
-        if ( isset($_GET['nf_admin_notice_ignore']) && current_user_can( apply_filters( 'ninja_forms_admin_parent_menu_capabilities', 'manage_options' ) ) ) {
+        if ( isset( $_GET['nf_admin_notice_ignore'] ) && current_user_can( apply_filters( 'ninja_forms_admin_parent_menu_capabilities', 'manage_options' ) ) ) {
 
             $admin_notices_option                                                     = get_option( 'nf_admin_notice', array() );
             $admin_notices_option[ $_GET[ 'nf_admin_notice_ignore' ] ][ 'dismissed' ] = 1;
@@ -169,7 +169,7 @@ class NF_Admin_Notices
     public function admin_notice_temp_ignore() {
 
         // If user clicks to temp ignore the notice, update the option to change the start date - default interval of 14 days
-        if ( isset($_GET['nf_admin_notice_temp_ignore']) && current_user_can( apply_filters( 'ninja_forms_admin_parent_menu_capabilities', 'manage_options' ) ) ) {
+        if ( isset( $_GET['nf_admin_notice_temp_ignore'] ) && current_user_can( apply_filters( 'ninja_forms_admin_parent_menu_capabilities', 'manage_options' ) ) ) {
 
             $admin_notices_option = get_option( 'nf_admin_notice', array() );
 
