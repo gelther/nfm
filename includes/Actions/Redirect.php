@@ -39,7 +39,7 @@ final class NF_Actions_Redirect extends NF_Abstracts_Action
         $this->_settings = array_merge( $this->_settings, $settings );
     }
 
-    /*
+    /**
     * PUBLIC METHODS
     */
     public function save( $action_settings )
