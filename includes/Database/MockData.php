@@ -444,7 +444,7 @@ final class NF_Database_MockData
         foreach( array( 'above', 'right', 'below', 'left', 'hidden' ) as $label_pos ) {
 
 
-            foreach ($fields as $settings) {
+            foreach ( $fields as $settings ) {
 
                 unset($settings['id']);
 
@@ -591,7 +591,7 @@ final class NF_Database_MockData
         );
 
         $order = 1;
-        foreach ($fields as $settings) {
+        foreach ( $fields as $settings ) {
 
             unset($settings['id']);
 
@@ -957,7 +957,7 @@ final class NF_Database_MockData
         $migrations->nuke(TRUE, TRUE);
 
         $posts = get_posts('post_type=nf_sub&numberposts=-1');
-        foreach ($posts as $post) {
+        foreach ( $posts as $post ) {
             wp_delete_post($post->ID, TRUE);
         }
 
