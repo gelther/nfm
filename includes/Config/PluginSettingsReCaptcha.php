@@ -2,7 +2,7 @@
 
 return apply_filters( 'ninja_forms_plugin_settings_recaptcha', array(
 
-    /*
+    /**
     |--------------------------------------------------------------------------
     | Site Key
     |--------------------------------------------------------------------------
@@ -15,7 +15,7 @@ return apply_filters( 'ninja_forms_plugin_settings_recaptcha', array(
         'desc'  => sprintf( __( 'Get a site key for your domain by registering  %shere%s', 'ninja-forms' ), '<a href="https://www.google.com/recaptcha/intro/index.html" target="_blank">', '</a>' )
     ),
 
-    /*
+    /**
     |--------------------------------------------------------------------------
     | Secret Key
     |--------------------------------------------------------------------------
@@ -28,7 +28,7 @@ return apply_filters( 'ninja_forms_plugin_settings_recaptcha', array(
         'desc'  => '',
     ),
 
-    /*
+    /**
     |--------------------------------------------------------------------------
     | Language
     |--------------------------------------------------------------------------
@@ -41,7 +41,7 @@ return apply_filters( 'ninja_forms_plugin_settings_recaptcha', array(
         'desc'  => 'e.g. en, da - ' . sprintf( __( 'Language used by reCAPTCHA. To get the code for your language click %shere%s', 'ninja-forms' ), '<a href="https://developers.google.com/recaptcha/docs/language" target="_blank">', '</a>' )
     ),
 
-    /*
+    /**
     |--------------------------------------------------------------------------
     | Theme
     |--------------------------------------------------------------------------
