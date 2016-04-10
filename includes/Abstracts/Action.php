@@ -201,8 +201,9 @@ abstract class NF_Abstracts_Action
         $b->priority = Ninja_Forms()->actions[ $b->get_setting( 'type' ) ]->get_priority();
 
         // Compare Priority if Timing is the same
-        if( $a->timing == $b->timing )
+        if( $a->timing == $b->timing ) {
             return $a->priority > $b->priority ? 1 : -1;
+        }
 
         // Compare Timing
         return $a->timing < $b->timing ? 1 : -1;

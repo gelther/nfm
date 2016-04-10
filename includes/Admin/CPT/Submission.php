@@ -133,26 +133,31 @@ class NF_Admin_CPT_Submission
     {
         global $pagenow;
 
-        if ( ! isset ( $_POST['nf_edit_sub'] ) || $_POST['nf_edit_sub'] != 1 )
+        if ( ! isset ( $_POST['nf_edit_sub'] ) || $_POST['nf_edit_sub'] != 1 ) {
             return $nf_sub_id;
+        }
 
         // verify if this is an auto save routine.
         // If it is our form has not been submitted, so we dont want to do anything
-        if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE )
+        if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
             return $nf_sub_id;
+        }
 
-        if ( $pagenow != 'post.php' )
+        if ( $pagenow != 'post.php' ) {
             return $nf_sub_id;
+        }
 
-        if ( $nf_sub->post_type != 'nf_sub' )
+        if ( $nf_sub->post_type != 'nf_sub' ) {
             return $nf_sub_id;
+        }
 
         /* Get the post type object. */
         $post_type = get_post_type_object( $nf_sub->post_type );
 
         /* Check if the current user has permission to edit the post. */
-        if ( ! current_user_can( $post_type->cap->edit_post, $nf_sub_id ) )
+        if ( ! current_user_can( $post_type->cap->edit_post, $nf_sub_id ) ) {
             return $nf_sub_id;
+        }
 
         $sub = Ninja_Forms()->form()->sub( $nf_sub_id )->get();
 

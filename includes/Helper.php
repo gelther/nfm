@@ -41,8 +41,9 @@ final class WPN_Helper
      */
     public static function str_replace( $search, $replace, $subject ){
         if( is_array( $subject ) ){
-            foreach( $subject as &$oneSubject )
+            foreach( $subject as &$oneSubject ) {
                 $oneSubject = WPN_Helper::str_replace($search, $replace, $oneSubject);
+            }
             unset($oneSubject);
             return $subject;
         } else {

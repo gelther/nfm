@@ -59,8 +59,9 @@ class NF_Admin_AddFormModal {
                     // $form = Ninja_Forms()->form( $form_id )->get();
                     $label   = $form->get_setting( 'title' );
                     $form_id = $form->get_id();
-                    if ( strlen( $label ) > 30 )
+                    if ( strlen( $label ) > 30 ) {
                         $label = substr( $label, 0, 30 ) . '...';
+                    }
 
                     echo '<option value="' . $form_id . '">' . $label . ' - ID: ' . $form_id . '</option>';
                 }
