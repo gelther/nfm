@@ -28,8 +28,7 @@ final class NF_Actions_Save extends NF_Abstracts_Action
     /**
      * Constructor
      */
-    public function __construct()
-    {
+    public function __construct() {
         parent::__construct();
 
         $this->_nicename = __( 'Save', 'ninja-forms' );
@@ -42,8 +41,7 @@ final class NF_Actions_Save extends NF_Abstracts_Action
     {
     }
 
-    public function process( $action_settings, $form_id, $data )
-    {
+    public function process( $action_settings, $form_id, $data ) {
         $data[ 'extra' ][ 'foo' ] = 'bar';
 
         if ( isset( $data[ 'settings' ][ 'is_preview' ] ) && $data[ 'settings' ][ 'is_preview' ] ) {
