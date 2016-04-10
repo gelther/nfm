@@ -38,7 +38,7 @@ abstract class NF_Abstracts_List extends NF_Abstracts_Field
         $field = Ninja_Forms()->form()->get_field( $id );
 
         $options = '<option>--</option>';
-        foreach( $field->get_setting( 'options' ) as $option ) {
+        foreach ( $field->get_setting( 'options' ) as $option ) {
             $selected  = ( $value == $option[ 'value' ] ) ? 'selected' : '';
             $options  .= "<option value='{$option[ 'value' ]}' $selected>{$option[ 'label' ]}</option>";
         }
@@ -48,15 +48,15 @@ abstract class NF_Abstracts_List extends NF_Abstracts_Field
 
     public function custom_columns( $value, $field )
     {
-        if( $this->_name != $field->get_setting( 'type' ) ) return $value;
+        if ( $this->_name != $field->get_setting( 'type' ) ) return $value;
 
-        if( ! is_array( $value ) ) $value = array( $value );
+        if ( ! is_array( $value ) ) $value = array( $value );
 
         $output  = '';
         $options = $field->get_setting( 'options' );
-        foreach( $options as $option ) {
+        foreach ( $options as $option ) {
 
-            if( ! in_array( $option[ 'value' ], $value ) ) continue;
+            if ( ! in_array( $option[ 'value' ], $value ) ) continue;
 
             $output .= $option[ 'label' ] . '<br />';
         }
@@ -66,17 +66,17 @@ abstract class NF_Abstracts_List extends NF_Abstracts_Field
 
     public function query_string_default( $options, $settings )
     {
-        if( ! isset( $settings[ 'key' ] ) ) return $options;
+        if ( ! isset( $settings[ 'key' ] ) ) return $options;
 
         $field_key = $settings[ 'key' ];
 
-        if( ! isset( $_GET[ $field_key ] ) ) return $options;
+        if ( ! isset( $_GET[ $field_key ] ) ) return $options;
 
-        foreach( $options as $key => $option ) {
+        foreach ( $options as $key => $option ) {
 
-            if( ! isset( $option[ 'value' ] ) ) continue;
+            if ( ! isset( $option[ 'value' ] ) ) continue;
 
-            if( $option[ 'value' ] != $_GET[ $field_key ] ) continue;
+            if ( $option[ 'value' ] != $_GET[ $field_key ] ) continue;
 
             $options[ $key ][ 'selected' ] = 1;
         }
