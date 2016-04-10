@@ -27,37 +27,37 @@ final class NF_Display_Render
 
     public static function localize( $form_id )
     {
-        if( isset( $_GET[ 'ninja_forms_test_values' ] ) ) {
+        if ( isset( $_GET[ 'ninja_forms_test_values' ] ) ) {
             self::$use_test_values = true;
         }
 
-        if( ! has_action( 'wp_footer', 'NF_Display_Render::output_templates', 9999 ) ) {
+        if ( ! has_action( 'wp_footer', 'NF_Display_Render::output_templates', 9999 ) ) {
             add_action( 'wp_footer', 'NF_Display_Render::output_templates', 9999 );
         }
         $form = Ninja_Forms()->form( $form_id )->get();
 
-        if( $form->get_setting( 'lock' ) ) {
+        if ( $form->get_setting( 'lock' ) ) {
             echo __( 'This form is not available.', 'ninja-forms' );
             return;
         }
 
-        if( $form->get_setting( 'logged_in' ) && ! is_user_logged_in() ) {
+        if ( $form->get_setting( 'logged_in' ) && ! is_user_logged_in() ) {
             echo $form->get_setting( 'not_logged_in_msg' );
             return;
         }
 
-        if( $form->get_setting( 'sub_limit_number' ) ) {
+        if ( $form->get_setting( 'sub_limit_number' ) ) {
             $subs = Ninja_Forms()->form( $form_id )->get_subs();
 
             // TODO: Optimize Query
             global $wpdb;
             $count = 0;
             $subs  = $wpdb->get_results( "SELECT post_id FROM wp_postmeta WHERE `meta_key` = '_form_id' AND `meta_value` = $form_id" );
-            foreach( $subs as $sub ) {
-                if( 'publish' == get_post_status( $sub->post_id ) ) $count++;
+            foreach ( $subs as $sub ) {
+                if ( 'publish' == get_post_status( $sub->post_id ) ) $count++;
             }
 
-            if( $count >= $form->get_setting( 'sub_limit_number' ) ) {
+            if ( $count >= $form->get_setting( 'sub_limit_number' ) ) {
                 echo $form->get_setting( 'sub_limit_msg' );
                 return;
             }
@@ -79,14 +79,14 @@ final class NF_Display_Render
 
         $fields = array();
 
-        if( empty( $form_fields ) ) {
+        if ( empty( $form_fields ) ) {
             echo __( 'No Fields Found.', 'ninja-forms' );
         } else {
             foreach ( $form_fields as $field ) {
 
                 $field_type = $field->get_settings( 'type' );
 
-                if( ! isset( Ninja_Forms()->fields[ $field_type ] ) ) continue;
+                if ( ! isset( Ninja_Forms()->fields[ $field_type ] ) ) continue;
 
                 $field = apply_filters( 'ninja_forms_localize_fields', $field );
 
@@ -128,7 +128,7 @@ final class NF_Display_Render
 
                 $settings[ 'parentType' ] = $field_class->get_parent_type();
 
-                if( 'list' == $settings[ 'parentType' ] && isset( $settings[ 'options' ] ) && is_array( $settings[ 'options' ] ) ) {
+                if ( 'list' == $settings[ 'parentType' ] && isset( $settings[ 'options' ] ) && is_array( $settings[ 'options' ] ) ) {
                     $settings[ 'options' ] = apply_filters( 'ninja_forms_render_options', $settings[ 'options' ], $settings );
                 }
 
@@ -144,7 +144,7 @@ final class NF_Display_Render
                         do_shortcode( $settings[ 'value' ] );
                         $ob = ob_get_clean();
 
-                        if( $ob ) {
+                        if ( $ob ) {
                             $settings[ 'value' ] = $ob;
                         }
                     }
@@ -203,7 +203,7 @@ final class NF_Display_Render
 
     public static function localize_preview( $form_id )
     {
-        if( isset( $_GET[ 'ninja_forms_test_values' ] ) ) {
+        if ( isset( $_GET[ 'ninja_forms_test_values' ] ) ) {
             self::$use_test_values = true;
         }
 
@@ -211,12 +211,12 @@ final class NF_Display_Render
 
         $form = get_user_option( 'nf_form_preview_' . $form_id );
 
-        if( ! $form ) {
+        if ( ! $form ) {
             self::localize( $form_id );
             return;
         }
 
-        if( isset( $form[ 'settings' ][ 'logged_in' ] ) && $form[ 'settings' ][ 'logged_in' ] && ! is_user_logged_in() ) {
+        if ( isset( $form[ 'settings' ][ 'logged_in' ] ) && $form[ 'settings' ][ 'logged_in' ] && ! is_user_logged_in() ) {
             echo $form[ 'settings' ][ 'not_logged_in_msg' ];
             return;
         }
@@ -237,14 +237,14 @@ final class NF_Display_Render
 
         $fields = array();
 
-        if( empty( $form[ 'fields' ] ) ) {
+        if ( empty( $form[ 'fields' ] ) ) {
             echo __( 'No Fields Found.', 'ninja-forms' );
         } else {
             foreach ( $form[ 'fields' ] as $field_id => $field ) {
 
                 $field_type = $field[ 'settings' ][ 'type' ];
 
-                if( ! isset( Ninja_Forms()->fields[ $field_type ] ) ) continue;
+                if ( ! isset( Ninja_Forms()->fields[ $field_type ] ) ) continue;
 
                 $field[ 'settings' ][ 'id' ] = $field_id;
 
@@ -280,7 +280,7 @@ final class NF_Display_Render
 
                 $field[ 'settings' ][ 'parentType' ] = $field_class->get_parent_type();
 
-                if( 'list' == $field[ 'settings' ][ 'parentType' ] && isset( $field[ 'settings' ][ 'options' ] ) && is_array( $field[ 'settings' ][ 'options' ] ) ) {
+                if ( 'list' == $field[ 'settings' ][ 'parentType' ] && isset( $field[ 'settings' ][ 'options' ] ) && is_array( $field[ 'settings' ][ 'options' ] ) ) {
                     $field[ 'settings' ][ 'options' ] = apply_filters( 'ninja_forms_render_options', $field[ 'settings' ][ 'options' ], $field[ 'settings' ] );
                 }
 
@@ -296,7 +296,7 @@ final class NF_Display_Render
                         do_shortcode( $field[ 'settings' ][ 'value' ] );
                         $ob = ob_get_clean();
 
-                        if( $ob ) {
+                        if ( $ob ) {
                             $field[ 'settings' ][ 'value' ] = $ob;
                         }
                     }
@@ -313,7 +313,7 @@ final class NF_Display_Render
                     $field[ 'settings' ][ 'product_price' ] = str_replace( Ninja_Forms()->get_setting( 'currency_symbol' ), '', $field[ 'settings' ][ 'product_price' ] );
                     $field[ 'settings' ][ 'product_price' ] = number_format( $field[ 'settings' ][ 'product_price' ], 2 );
                 } elseif ( 'total' == $field[ 'settings' ][ 'type' ] ) {
-                    if( ! isset( $field[ 'settings' ][ 'value' ] ) ) $field[ 'settings' ][ 'value' ] = 0;
+                    if ( ! isset( $field[ 'settings' ][ 'value' ] ) ) $field[ 'settings' ][ 'value' ] = 0;
                     $field[ 'settings' ][ 'value' ] = number_format( $field[ 'settings' ][ 'value' ], 2 );
                 }
 
@@ -362,7 +362,7 @@ final class NF_Display_Render
         wp_enqueue_style( 'rating', Ninja_Forms::$url . 'assets/css/rating.css' );
 
 
-        if( ! Ninja_Forms()->get_setting( 'disable_opinionated_styles' ) ) {
+        if ( ! Ninja_Forms()->get_setting( 'disable_opinionated_styles' ) ) {
             wp_enqueue_style( 'nf-display-opinions', Ninja_Forms::$url . 'assets/css/display-opinions.css' );
         }
 
@@ -397,8 +397,8 @@ final class NF_Display_Render
             'use_merge_tags' => array()
         ) );
 
-        foreach( Ninja_Forms()->fields as $field ) {
-            foreach( $field->use_merge_tags() as $merge_tag ) {
+        foreach ( Ninja_Forms()->fields as $field ) {
+            foreach ( $field->use_merge_tags() as $merge_tag ) {
                 $data[ 'use_merge_tags' ][ $merge_tag ][ $field->get_type() ] = $field->get_type();
             }
         }
@@ -422,9 +422,9 @@ final class NF_Display_Render
 
     protected static function load_template( $file_name = '' )
     {
-        if( ! $file_name ) return;
+        if ( ! $file_name ) return;
 
-        if( self::is_template_loaded( $file_name ) ) return;
+        if ( self::is_template_loaded( $file_name ) ) return;
 
         self::$loaded_templates[] = $file_name;
     }
@@ -439,11 +439,11 @@ final class NF_Display_Render
         $file_paths[] = Ninja_Forms::$dir . 'includes/Templates/';
 
         // Search for and Output File Templates
-        foreach( self::$loaded_templates as $file_name ) {
+        foreach ( self::$loaded_templates as $file_name ) {
 
-            foreach( $file_paths as $path ) {
+            foreach ( $file_paths as $path ) {
 
-                if( file_exists( $path . "$file_name.html" ) ) {
+                if ( file_exists( $path . "$file_name.html" ) ) {
                     echo file_get_contents( $path . "$file_name.html" );
                     break;
                 }

@@ -50,7 +50,7 @@ class NF_Fields_Shipping extends NF_Abstracts_Input
 
         $value = $field->get_setting( 'shipping_cost' );
 
-        switch( $field->get_setting( 'shipping_type' ) ) {
+        switch ( $field->get_setting( 'shipping_type' ) ) {
             case 'single':
 
                 return "<input class='widefat' name='fields[$id]' value='$value' />";
@@ -58,7 +58,7 @@ class NF_Fields_Shipping extends NF_Abstracts_Input
             case 'select':
 
                 $options = '<option>--</option>';
-                foreach( $field->get_setting( 'shipping_options' ) as $option ) {
+                foreach ( $field->get_setting( 'shipping_options' ) as $option ) {
                     $selected  = ( $value == $option[ 'value' ] ) ? 'selected' : '';
                     $options  .= "<option value='{$option[ 'value' ]}' $selected>{$option[ 'label' ]}</option>";
                 }
@@ -72,9 +72,9 @@ class NF_Fields_Shipping extends NF_Abstracts_Input
 
     public function merge_tag_value( $value, $field )
     {
-        if( isset( $field[ 'shipping_type' ] ) ) {
+        if ( isset( $field[ 'shipping_type' ] ) ) {
 
-            switch( $field[ 'shipping_type' ] ) {
+            switch ( $field[ 'shipping_type' ] ) {
                 case 'single':
                     $value = $field[ 'shipping_cost' ];
                     break;

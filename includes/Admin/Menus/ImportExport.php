@@ -21,7 +21,7 @@ final class NF_Admin_Menus_ImportExport extends NF_Abstracts_Submenu
 
     public function import_form_listener()
     {
-        if( ! isset( $_FILES[ 'nf_import_form' ] ) || ! $_FILES[ 'nf_import_form' ] ) return;
+        if ( ! isset( $_FILES[ 'nf_import_form' ] ) || ! $_FILES[ 'nf_import_form' ] ) return;
 
         $this->upload_error_check( $_FILES[ 'nf_import_form' ] );
 
@@ -29,7 +29,7 @@ final class NF_Admin_Menus_ImportExport extends NF_Abstracts_Submenu
 
         $data = unserialize( base64_decode( $import ) );
 
-        if( ! $data ) {
+        if ( ! $data ) {
             $data = unserialize( $import );
         }
 
@@ -38,7 +38,7 @@ final class NF_Admin_Menus_ImportExport extends NF_Abstracts_Submenu
 
     public function export_form_listener()
     {
-        if( isset( $_REQUEST[ 'nf_export_form' ] ) && $_REQUEST[ 'nf_export_form' ] ) {
+        if ( isset( $_REQUEST[ 'nf_export_form' ] ) && $_REQUEST[ 'nf_export_form' ] ) {
             $form_id = $_REQUEST[ 'nf_export_form' ];
             Ninja_Forms()->form( $form_id )->export_form();
         }
@@ -46,7 +46,7 @@ final class NF_Admin_Menus_ImportExport extends NF_Abstracts_Submenu
 
     public function import_fields_listener()
     {
-        if( ! isset( $_FILES[ 'nf_import_fields' ] ) || ! $_FILES[ 'nf_import_fields' ] ) return;
+        if ( ! isset( $_FILES[ 'nf_import_fields' ] ) || ! $_FILES[ 'nf_import_fields' ] ) return;
 
         $this->upload_error_check( $_FILES[ 'nf_import_fields' ] );
 
@@ -54,18 +54,18 @@ final class NF_Admin_Menus_ImportExport extends NF_Abstracts_Submenu
 
         $fields = unserialize( $import );
 
-        foreach( $fields as $settings ) {
+        foreach ( $fields as $settings ) {
             Ninja_Forms()->form()->import_field( $settings );
         }
     }
 
     public function export_fields_listener()
     {
-        if( isset( $_REQUEST[ 'nf_export_fields' ] ) && $_REQUEST[ 'nf_export_fields' ] ) {
+        if ( isset( $_REQUEST[ 'nf_export_fields' ] ) && $_REQUEST[ 'nf_export_fields' ] ) {
             $field_ids = $_REQUEST[ 'nf_export_fields' ];
 
             $fields = array();
-            foreach( $field_ids as $field_id ) {
+            foreach ( $field_ids as $field_id ) {
                 $field = Ninja_Forms()->form()->field( $field_id )->get();
 
                 $fields[] = $field->get_settings();
@@ -173,13 +173,13 @@ final class NF_Admin_Menus_ImportExport extends NF_Abstracts_Submenu
     {
         //TODO: This was copied over. Instead need to abstract backwards compatibility for re-use.
         // Flatten field settings array
-        if( isset( $field[ 'data' ] ) ) {
+        if ( isset( $field[ 'data' ] ) ) {
             $field = array_merge( $field, $field[ 'data' ] );
             unset( $field[ 'data' ] );
         }
 
         // Drop form_id in favor of parent_id, which is set by the form.
-        if( isset( $field[ 'form_id' ] ) ) {
+        if ( isset( $field[ 'form_id' ] ) ) {
             unset( $field[ 'form_id' ] );
         }
 
@@ -187,20 +187,20 @@ final class NF_Admin_Menus_ImportExport extends NF_Abstracts_Submenu
         $field[ 'type' ] = ltrim( $field[ 'type' ], '_' );
 
         // Type: `text` -> `textbox`
-        if( 'text' == $field[ 'type' ] ) {
+        if ( 'text' == $field[ 'type' ] ) {
             $field[ 'type' ] = 'textbox';
         }
 
-        if( 'submit' == $field[ 'type' ] ) {
+        if ( 'submit' == $field[ 'type' ] ) {
             $field[ 'processing_label' ] = 'Processing';
         }
 
-        if( 'calc' == $field[ 'type' ] ) {
+        if ( 'calc' == $field[ 'type' ] ) {
             $field[ 'type' ] = 'note';
 
-            if( isset( $field[ 'calc_method' ] ) ) {
+            if ( isset( $field[ 'calc_method' ] ) ) {
 
-                switch( $field[ 'calc_method' ] ) {
+                switch ( $field[ 'calc_method' ] ) {
                     case 'eq':
                         $method = __( 'Equation (Advanced)', 'ninja-forms' );
                         break;
@@ -233,46 +233,46 @@ final class NF_Admin_Menus_ImportExport extends NF_Abstracts_Submenu
             unset( $field[ 'calc_method' ] );
         }
 
-        if( isset( $field[ 'email' ] ) ) {
+        if ( isset( $field[ 'email' ] ) ) {
 
-            if( 'textbox' == $field[ 'type' ] && $field[ 'email' ] ) {
+            if ( 'textbox' == $field[ 'type' ] && $field[ 'email' ] ) {
                 $field[ 'type' ] = 'email';
             }
             unset( $field[ 'email' ] );
         }
 
-        if( isset( $field[ 'class' ] ) ) {
+        if ( isset( $field[ 'class' ] ) ) {
             $field[ 'element_class' ] = $field[ 'class' ];
             unset( $field[ 'class' ] );
         }
 
-        if( isset( $field[ 'req' ] ) ) {
+        if ( isset( $field[ 'req' ] ) ) {
             $field[ 'required' ] = $field[ 'req' ];
             unset( $field[ 'req' ] );
         }
 
-        if( isset( $field[ 'default_value_type' ] ) ) {
+        if ( isset( $field[ 'default_value_type' ] ) ) {
 
             /* User Data */
-            if( '_user_id' == $field[ 'default_value_type' ] )           $field[ 'default' ] = '{user:id}';
-            if( '_user_email' == $field[ 'default_value_type' ] )        $field[ 'default' ] = '{user:email}';
-            if( '_user_lastname' == $field[ 'default_value_type' ] )     $field[ 'default' ] = '{user:last_name}';
-            if( '_user_firstname' == $field[ 'default_value_type' ] )    $field[ 'default' ] = '{user:first_name}';
-            if( '_user_display_name' == $field[ 'default_value_type' ] ) $field[ 'default' ] = '{user:display_name}';
+            if ( '_user_id' == $field[ 'default_value_type' ] )           $field[ 'default' ] = '{user:id}';
+            if ( '_user_email' == $field[ 'default_value_type' ] )        $field[ 'default' ] = '{user:email}';
+            if ( '_user_lastname' == $field[ 'default_value_type' ] )     $field[ 'default' ] = '{user:last_name}';
+            if ( '_user_firstname' == $field[ 'default_value_type' ] )    $field[ 'default' ] = '{user:first_name}';
+            if ( '_user_display_name' == $field[ 'default_value_type' ] ) $field[ 'default' ] = '{user:display_name}';
 
             /* Post Data */
-            if( 'post_id' == $field[ 'default_value_type' ] )    $field[ 'default' ] = '{post:id}';
-            if( 'post_url' == $field[ 'default_value_type' ] )   $field[ 'default' ] = '{post:url}';
-            if( 'post_title' == $field[ 'default_value_type' ] ) $field[ 'default' ] = '{post:title}';
+            if ( 'post_id' == $field[ 'default_value_type' ] )    $field[ 'default' ] = '{post:id}';
+            if ( 'post_url' == $field[ 'default_value_type' ] )   $field[ 'default' ] = '{post:url}';
+            if ( 'post_title' == $field[ 'default_value_type' ] ) $field[ 'default' ] = '{post:title}';
 
             /* System Data */
-            if( 'today' == $field[ 'default_value_type' ] ) $field[ 'default' ] = '{system:date}';
+            if ( 'today' == $field[ 'default_value_type' ] ) $field[ 'default' ] = '{system:date}';
 
             /* Miscellaneous */
-            if( '_custom' == $field[ 'default_value_type' ] && isset( $field[ 'default_value' ] ) ) {
+            if ( '_custom' == $field[ 'default_value_type' ] && isset( $field[ 'default_value' ] ) ) {
                 $field[ 'default' ] = $field[ 'default_value' ];
             }
-            if( 'querystring' == $field[ 'default_value_type' ] && isset( $field[ 'default_value' ] ) ) {
+            if ( 'querystring' == $field[ 'default_value_type' ] && isset( $field[ 'default_value' ] ) ) {
                 $field[ 'default' ] = '{' . $field[ 'default_value' ] . '}';
             }
 
@@ -280,7 +280,7 @@ final class NF_Admin_Menus_ImportExport extends NF_Abstracts_Submenu
             unset( $field[ 'default_value_type' ] );
         }
 
-        if( 'list' == $field[ 'type' ] ) {
+        if ( 'list' == $field[ 'type' ] ) {
 
             if ( isset( $field[ 'list_type' ] ) ) {
 
@@ -298,14 +298,14 @@ final class NF_Admin_Menus_ImportExport extends NF_Abstracts_Submenu
                 }
             }
 
-            if( isset( $field[ 'list' ][ 'options' ] ) ) {
+            if ( isset( $field[ 'list' ][ 'options' ] ) ) {
                 $field[ 'options' ] = $field[ 'list' ][ 'options' ];
                 unset( $field[ 'list' ][ 'options' ] );
             }
         }
 
         // Convert `textbox` to other field types
-        foreach( array( 'fist_name', 'last_name', 'user_zip', 'user_city', 'user_phone', 'user_email', 'user_address_1', 'user_address_2', 'datepicker' ) as $item ) {
+        foreach ( array( 'fist_name', 'last_name', 'user_zip', 'user_city', 'user_phone', 'user_email', 'user_address_1', 'user_address_2', 'datepicker' ) as $item ) {
             if ( isset( $field[ $item ] ) && $field[ $item ] ) {
                 $field[ 'type' ] = str_replace( array( '_', 'user', '1', '2', 'picker' ), '', $item );
 
@@ -313,7 +313,7 @@ final class NF_Admin_Menus_ImportExport extends NF_Abstracts_Submenu
             }
         }
 
-        if( 'timed_submit' == $field[ 'type' ] ) {
+        if ( 'timed_submit' == $field[ 'type' ] ) {
             $field[ 'type' ] = 'submit';
         }
 
@@ -322,7 +322,7 @@ final class NF_Admin_Menus_ImportExport extends NF_Abstracts_Submenu
 
     private function upload_error_check( $file )
     {
-        if( ! $file[ 'error' ] ) return;
+        if ( ! $file[ 'error' ] ) return;
 
         switch ( $file[ 'error' ] ) {
             case UPLOAD_ERR_INI_SIZE:

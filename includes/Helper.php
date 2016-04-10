@@ -40,8 +40,8 @@ final class WPN_Helper
      * @return mixed
      */
     public static function str_replace( $search, $replace, $subject ){
-        if( is_array( $subject ) ) {
-            foreach( $subject as &$oneSubject ) {
+        if ( is_array( $subject ) ) {
+            foreach ( $subject as &$oneSubject ) {
                 $oneSubject = WPN_Helper::str_replace( $search, $replace, $oneSubject );
             }
             unset( $oneSubject );
@@ -183,11 +183,11 @@ final class WPN_Helper
 
     public static function get_query_string( $key )
     {
-        if( ! isset( $_GET[ $key ] ) ) return '';
+        if ( ! isset( $_GET[ $key ] ) ) return '';
 
         $value = self::htmlspecialchars( $_GET[ $key ] );
 
-        if( is_array( $value ) ) $value = $value[ 0 ];
+        if ( is_array( $value ) ) $value = $value[ 0 ];
 
         return $value;
     }

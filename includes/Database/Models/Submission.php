@@ -28,7 +28,7 @@ final class NF_Database_Models_Submission
         $this->_id      = $id;
         $this->_form_id = $form_id;
 
-        if( $this->_id ) {
+        if ( $this->_id ) {
             $sub             = get_post( $this->_id );
             $this->_status   = $sub->post_status;
             $this->_user_id  = $sub->post_author;
@@ -36,11 +36,11 @@ final class NF_Database_Models_Submission
             $this->_mod_date = $sub->post_modified;
         }
 
-        if( $this->_id && ! $this->_form_id ) {
+        if ( $this->_id && ! $this->_form_id ) {
             $this->_form_id = get_post_meta( $this->_id, '_form_id', true );
         }
 
-        if( $this->_id && $this->_form_id ) {
+        if ( $this->_id && $this->_form_id ) {
             $this->_seq_num = get_post_meta( $this->_id, '_seq_num', true );
         }
     }
@@ -105,7 +105,7 @@ final class NF_Database_Models_Submission
 
         $field = '_field_' . $field_id;
 
-        if( isset( $this->_field_values[ $field ] ) ) return $this->_field_values[ $field ];
+        if ( isset( $this->_field_values[ $field ] ) ) return $this->_field_values[ $field ];
 
         return $this->_field_values[ $field ] = get_post_meta( $this->_id, $field, true );
     }
@@ -117,7 +117,7 @@ final class NF_Database_Models_Submission
      */
     public function get_field_values()
     {
-        if( ! empty( $this->_field_values ) ) return $this->_field_values;
+        if ( ! empty( $this->_field_values ) ) return $this->_field_values;
 
         return $this->_field_values = get_post_meta( $this->_id );
     }
@@ -146,7 +146,7 @@ final class NF_Database_Models_Submission
      */
     public function update_field_values( $data )
     {
-        foreach( $data as $field_ref => $value ) {
+        foreach ( $data as $field_ref => $value ) {
             $this->update_field_value( $field_ref, $value );
         }
 
@@ -155,7 +155,7 @@ final class NF_Database_Models_Submission
 
     public function get_extra_value( $key )
     {
-        if( ! isset( $this->_extra_values[ $key ] ) ||  ! $this->_extra_values[ $key ] ) {
+        if ( ! isset( $this->_extra_values[ $key ] ) ||  ! $this->_extra_values[ $key ] ) {
             $id                          = ( $this->_id ) ? $this->_id : 0;
             $this->_extra_values[ $key ] = get_post_meta( $id, $key, true );
         }
@@ -167,7 +167,7 @@ final class NF_Database_Models_Submission
     {
         $values = array();
 
-        foreach( $keys as $key ) {
+        foreach ( $keys as $key ) {
             $values[ $key ] = $this->get_extra_value( $key );
         }
 
@@ -176,14 +176,14 @@ final class NF_Database_Models_Submission
 
     public function update_extra_value( $key, $value )
     {
-        if( property_exists( $this, $key ) ) return false;
+        if ( property_exists( $this, $key ) ) return false;
 
         return $this->_extra_values[ $key ] = $value;
     }
 
     public function update_extra_values( $values )
     {
-        foreach( $values as $key => $value ) {
+        foreach ( $values as $key => $value ) {
             $this->update_extra_value( $key, $value );
         }
     }
@@ -210,7 +210,7 @@ final class NF_Database_Models_Submission
         $class = get_class( $this );
 
         $return = array();
-        foreach( $subs as $sub ) {
+        foreach ( $subs as $sub ) {
             $return[] = new $class( $sub->ID, $this->_form_id );
         }
 
@@ -222,7 +222,7 @@ final class NF_Database_Models_Submission
      */
     public function delete()
     {
-        if( ! $this->_id ) return;
+        if ( ! $this->_id ) return;
 
         wp_delete_post( $this->_id );
     }
@@ -234,7 +234,7 @@ final class NF_Database_Models_Submission
      */
     public function save()
     {
-        if( ! $this->_id ) {
+        if ( ! $this->_id ) {
 
             $sub = array(
                 'post_type'   => 'nf_sub',
@@ -244,10 +244,10 @@ final class NF_Database_Models_Submission
             $this->_id = wp_insert_post( $sub );
 
             // Log Error
-            if( ! $this->_id ) return;
+            if ( ! $this->_id ) return;
         }
 
-        if( ! $this->_seq_num && $this->_form_id ) {
+        if ( ! $this->_seq_num && $this->_form_id ) {
 
             $this->_seq_num = NF_Database_Models_Form::get_next_sub_seq( $this->_form_id );
         }
@@ -277,9 +277,9 @@ final class NF_Database_Models_Submission
 
         $hidden_field_types = apply_filters( 'nf_sub_hidden_field_types', array() );
 
-        foreach( $fields as $field ) {
+        foreach ( $fields as $field ) {
 
-            if( in_array( $field->get_setting( 'type' ), $hidden_field_types ) ) continue;
+            if ( in_array( $field->get_setting( 'type' ), $hidden_field_types ) ) continue;
 
             $field_labels[ $field->get_id() ] = $field->get_setting( 'label' );
         }
@@ -293,16 +293,16 @@ final class NF_Database_Models_Submission
 
         $subs = Ninja_Forms()->form( $form_id )->get_subs();
 
-        foreach( $subs as $sub ) {
+        foreach ( $subs as $sub ) {
 
-            if( ! in_array( $sub->get_id(), $sub_ids ) ) continue;
+            if ( ! in_array( $sub->get_id(), $sub_ids ) ) continue;
 
             $value[ '_seq_num' ]        = $sub->get_seq_num();
             $value[ '_date_submitted' ] = $sub->get_sub_date( $date_format );
 
-            foreach( $field_labels as $field_id => $label ) {
+            foreach ( $field_labels as $field_id => $label ) {
 
-                if( ! is_int( $field_id ) ) continue;
+                if ( ! is_int( $field_id ) ) continue;
 
                 $value[ $field_id ] = $sub->get_field_value( $field_id );
             }
@@ -322,7 +322,7 @@ final class NF_Database_Models_Submission
         $filename = apply_filters( 'nf_subs_csv_filename', 'nf_subs_' . $today );
         $filename = $filename . '.csv';
 
-        if( $return ) {
+        if ( $return ) {
             return WPN_Helper::str_putcsv( $csv_array,
                 apply_filters( 'nf_sub_csv_delimiter', ',' ),
                 apply_filters( 'nf_sub_csv_enclosure', '"' ),
@@ -369,14 +369,14 @@ final class NF_Database_Models_Submission
      */
     protected function _save_field_values()
     {
-        if( ! $this->_field_values ) return false;
+        if ( ! $this->_field_values ) return false;
 
-        foreach( $this->_field_values as $field_id => $value ) {
+        foreach ( $this->_field_values as $field_id => $value ) {
             $this->_save_field_value( $field_id, $value );
         }
 
-        foreach( $this->_extra_values as $key => $value ) {
-            if( property_exists( $this, $key ) ) continue;
+        foreach ( $this->_extra_values as $key => $value ) {
+            if ( property_exists( $this, $key ) ) continue;
 
             update_post_meta( $this->_id, $key, $value );
         }
@@ -407,7 +407,7 @@ final class NF_Database_Models_Submission
             )
         );
 
-        if( ! empty( $where ) ) {
+        if ( ! empty( $where ) ) {
             foreach ( $where as $key => $value ) {
 
                 $return[] = (is_array( $value )) ? $value : array( 'key' => $key, 'value' => $value );

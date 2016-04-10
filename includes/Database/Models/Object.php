@@ -25,7 +25,7 @@ final class NF_Database_Models_Object extends NF_Abstracts_Model
 
     public function save()
     {
-        if( ! $this->_id ) {
+        if ( ! $this->_id ) {
 
             $data = array( 'created_at' => time() );
 

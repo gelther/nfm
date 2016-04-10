@@ -55,7 +55,7 @@ class NF_Admin_AddFormModal {
                 $first_option = __( 'Select a form or type to search', 'ninja-forms' );
                 echo '<select class="nf-forms-combobox" id="nf-form-select" data-first-option="">';
                 echo '<option value=""></option>';
-                foreach( $all_forms as $form ) {
+                foreach ( $all_forms as $form ) {
                     // $form = Ninja_Forms()->form( $form_id )->get();
                     $label   = $form->get_setting( 'title' );
                     $form_id = $form->get_id();

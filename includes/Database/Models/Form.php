@@ -33,13 +33,13 @@ final class NF_Database_Models_Form extends NF_Abstracts_Model
 
         $fields = Ninja_Forms()->form( $this->_id )->get_fields();
 
-        foreach( $fields as $field ) {
+        foreach ( $fields as $field ) {
             $field->delete();
         }
 
         $actions = Ninja_Forms()->form( $this->_id )->get_actions();
 
-        foreach( $actions as $action ) {
+        foreach ( $actions as $action ) {
             $action->delete();
         }
     }
@@ -67,9 +67,9 @@ final class NF_Database_Models_Form extends NF_Abstracts_Model
         $form->save();
         $form_id = $form->get_id();
 
-        foreach( $import[ 'fields' ] as $settings ) {
+        foreach ( $import[ 'fields' ] as $settings ) {
 
-            if( $is_conversion ) {
+            if ( $is_conversion ) {
 
                 $field_id = $settings[ 'id' ];
 
@@ -83,7 +83,7 @@ final class NF_Database_Models_Form extends NF_Abstracts_Model
             $field->update_settings( $settings )->save();
         }
 
-        foreach( $import[ 'actions' ] as $settings ) {
+        foreach ( $import[ 'actions' ] as $settings ) {
 
             $action = Ninja_Forms()->form( $form_id )->action()->get();
 
@@ -122,7 +122,7 @@ final class NF_Database_Models_Form extends NF_Abstracts_Model
 
         $fields = Ninja_Forms()->form( $form_id )->get_fields();
 
-        foreach( $fields as $field ) {
+        foreach ( $fields as $field ) {
 
             $field_settings = $field->get_settings();
 
@@ -134,7 +134,7 @@ final class NF_Database_Models_Form extends NF_Abstracts_Model
 
         $actions = Ninja_Forms()->form( $form_id )->get_actions();
 
-        foreach( $actions as $action ) {
+        foreach ( $actions as $action ) {
 
             $action_settings = $action->get_settings();
 
@@ -160,17 +160,17 @@ final class NF_Database_Models_Form extends NF_Abstracts_Model
 
         $fields = Ninja_Forms()->form( $form_id )->get_fields();
 
-        foreach( $fields as $field ) {
+        foreach ( $fields as $field ) {
             $export[ 'fields' ][] = $field->get_settings();
         }
 
         $actions = Ninja_Forms()->form( $form_id )->get_actions();
 
-        foreach( $actions as $action ) {
+        foreach ( $actions as $action ) {
             $export[ 'actions' ][] = $action->get_settings();
         }
 
-        if( $return ) {
+        if ( $return ) {
             return $export;
         } else {
 
@@ -197,30 +197,30 @@ final class NF_Database_Models_Form extends NF_Abstracts_Model
     public function import_form_backwards_compatibility( $import )
     {
         // Rename `data` to `settings`
-        if( isset( $import[ 'data' ] ) ) {
+        if ( isset( $import[ 'data' ] ) ) {
             $import[ 'settings' ] = $import[ 'data' ];
             unset( $import[ 'data' ] );
         }
 
         // Rename `notifications` to `actions`
-        if( isset( $import[ 'notifications' ] ) ) {
+        if ( isset( $import[ 'notifications' ] ) ) {
             $import[ 'actions' ] = $import[ 'notifications' ];
             unset( $import[ 'notifications' ] );
         }
 
         // Rename `form_title` to `title`
-        if( isset( $import[ 'settings' ][ 'form_title' ] ) ) {
+        if ( isset( $import[ 'settings' ][ 'form_title' ] ) ) {
             $import[ 'settings' ][ 'title' ] = $import[ 'settings' ][ 'form_title' ];
             unset( $import[ 'settings' ][ 'form_title' ] );
         }
 
         // Make sure
-        if( ! isset( $import[ 'fields' ] ) ) {
+        if ( ! isset( $import[ 'fields' ] ) ) {
             $import[ 'fields' ] = array();
         }
 
         // `Field` to `Fields`
-        if( isset( $import[ 'field' ] ) ) {
+        if ( isset( $import[ 'field' ] ) ) {
             $import[ 'fields' ] = $import[ 'field' ];
             unset( $import[ 'field' ] );
         }
@@ -228,21 +228,21 @@ final class NF_Database_Models_Form extends NF_Abstracts_Model
         $import = apply_filters( 'ninja_forms_upgrade_settings', $import );
 
         // Combine Field and Field Data
-        foreach( $import[ 'fields' ] as $key => $field ) {
+        foreach ( $import[ 'fields' ] as $key => $field ) {
             // TODO: Split Credit Card field into multiple fields.
             $field                      = $this->import_field_backwards_compatibility( $field );
             $import[ 'fields' ][ $key ] = $field;
         }
 
         $has_save_action = false;
-        foreach( $import[ 'actions' ] as $key => $action ) {
+        foreach ( $import[ 'actions' ] as $key => $action ) {
             $action                      = $this->import_action_backwards_compatibility( $action );
             $import[ 'actions' ][ $key ] = $action;
 
-            if( 'save' == $action[ 'type' ] ) $has_save_action = true;
+            if ( 'save' == $action[ 'type' ] ) $has_save_action = true;
         }
 
-        if( ! $has_save_action ) {
+        if ( ! $has_save_action ) {
             $import[ 'actions' ][] = array(
                 'type'   => 'save',
                 'label'  => 'Save Form',
@@ -259,30 +259,30 @@ final class NF_Database_Models_Form extends NF_Abstracts_Model
     {
         $field_lookup = array();
 
-        foreach( $import[ 'fields' ] as $key => $field ) {
+        foreach ( $import[ 'fields' ] as $key => $field ) {
             $field_id                  = $field[ 'id' ];
             $field_key                 = $field[ 'type' ] . '_' . $field_id;
             $field_lookup[ $field_id ] = $import[ 'fields' ][ $key ][ 'key' ] = $field_key;
         }
 
-        foreach( $import[ 'actions' ] as $key => $action_settings ) {
-            foreach( $action_settings as $setting => $value ) {
-                foreach( $field_lookup as $field_id => $field_key ) {
+        foreach ( $import[ 'actions' ] as $key => $action_settings ) {
+            foreach ( $action_settings as $setting => $value ) {
+                foreach ( $field_lookup as $field_id => $field_key ) {
 
                     // Convert Tokenizer
                     $token = 'field_' . $field_id;
-                    if( false !== strpos( $value, $token ) ) {
+                    if ( false !== strpos( $value, $token ) ) {
                         $value = str_replace( $token, '{field:' . $field_key . '}', $value );
                     }
 
                     // Convert Shortcodes
                     $shortcode = "[ninja_forms_field id=$field_id]";
-                    if( false !== strpos( $value, $shortcode ) ) {
+                    if ( false !== strpos( $value, $shortcode ) ) {
                         $value = str_replace( $shortcode, '{field:' . $field_key . '}', $value );
                     }
                 }
 
-                if( false !== strpos( $value, '[ninja_forms_all_fields]' ) ) {
+                if ( false !== strpos( $value, '[ninja_forms_all_fields]' ) ) {
                     $value = str_replace( '[ninja_forms_all_fields]', '{field:all_fields}', $value );
                 }
                 $action_settings[ $setting ] = $value;
@@ -296,12 +296,12 @@ final class NF_Database_Models_Form extends NF_Abstracts_Model
     public function import_action_backwards_compatibility( $action )
     {
         // Remove `_` from type
-        if( isset( $action[ 'type' ] ) ) {
+        if ( isset( $action[ 'type' ] ) ) {
             $action[ 'type' ] = str_replace( '_', '', $action[ 'type' ] );
         }
 
         // Convert `name` to `label`
-        if( isset( $action[ 'name' ] ) ) {
+        if ( isset( $action[ 'name' ] ) ) {
             $action[ 'label' ] = $action[ 'name' ];
             unset( $action[ 'name' ] );
         }
@@ -312,13 +312,13 @@ final class NF_Database_Models_Form extends NF_Abstracts_Model
     public function import_field_backwards_compatibility( $field )
     {
         // Flatten field settings array
-        if( isset( $field[ 'data' ] ) && is_array( $field[ 'data' ] ) ) {
+        if ( isset( $field[ 'data' ] ) && is_array( $field[ 'data' ] ) ) {
             $field = array_merge( $field, $field[ 'data' ] );
         }
         unset( $field[ 'data' ] );
 
         // Drop form_id in favor of parent_id, which is set by the form.
-        if( isset( $field[ 'form_id' ] ) ) {
+        if ( isset( $field[ 'form_id' ] ) ) {
             unset( $field[ 'form_id' ] );
         }
 
@@ -326,20 +326,20 @@ final class NF_Database_Models_Form extends NF_Abstracts_Model
         $field[ 'type' ] = ltrim( $field[ 'type' ], '_' );
 
         // Type: `text` -> `textbox`
-        if( 'text' == $field[ 'type' ] ) {
+        if ( 'text' == $field[ 'type' ] ) {
             $field[ 'type' ] = 'textbox';
         }
 
-        if( 'submit' == $field[ 'type' ] ) {
+        if ( 'submit' == $field[ 'type' ] ) {
             $field[ 'processing_label' ] = 'Processing';
         }
 
-        if( 'calc' == $field[ 'type' ] ) {
+        if ( 'calc' == $field[ 'type' ] ) {
             $field[ 'type' ] = 'note';
 
-            if( isset( $field[ 'calc_method' ] ) ) {
+            if ( isset( $field[ 'calc_method' ] ) ) {
 
-                switch( $field[ 'calc_method' ] ) {
+                switch ( $field[ 'calc_method' ] ) {
                     case 'eq':
                         $method = __( 'Equation (Advanced)', 'ninja-forms' );
                         break;
@@ -372,46 +372,46 @@ final class NF_Database_Models_Form extends NF_Abstracts_Model
             unset( $field[ 'calc_method' ] );
         }
 
-        if( isset( $field[ 'email' ] ) ) {
+        if ( isset( $field[ 'email' ] ) ) {
 
-            if( 'textbox' == $field[ 'type' ] && $field[ 'email' ] ) {
+            if ( 'textbox' == $field[ 'type' ] && $field[ 'email' ] ) {
                 $field[ 'type' ] = 'email';
             }
             unset( $field[ 'email' ] );
         }
 
-        if( isset( $field[ 'class' ] ) ) {
+        if ( isset( $field[ 'class' ] ) ) {
             $field[ 'element_class' ] = $field[ 'class' ];
             unset( $field[ 'class' ] );
         }
 
-        if( isset( $field[ 'req' ] ) ) {
+        if ( isset( $field[ 'req' ] ) ) {
             $field[ 'required' ] = $field[ 'req' ];
             unset( $field[ 'req' ] );
         }
 
-        if( isset( $field[ 'default_value_type' ] ) ) {
+        if ( isset( $field[ 'default_value_type' ] ) ) {
 
             /* User Data */
-            if( '_user_id' == $field[ 'default_value_type' ] )           $field[ 'default' ] = '{user:id}';
-            if( '_user_email' == $field[ 'default_value_type' ] )        $field[ 'default' ] = '{user:email}';
-            if( '_user_lastname' == $field[ 'default_value_type' ] )     $field[ 'default' ] = '{user:last_name}';
-            if( '_user_firstname' == $field[ 'default_value_type' ] )    $field[ 'default' ] = '{user:first_name}';
-            if( '_user_display_name' == $field[ 'default_value_type' ] ) $field[ 'default' ] = '{user:display_name}';
+            if ( '_user_id' == $field[ 'default_value_type' ] )           $field[ 'default' ] = '{user:id}';
+            if ( '_user_email' == $field[ 'default_value_type' ] )        $field[ 'default' ] = '{user:email}';
+            if ( '_user_lastname' == $field[ 'default_value_type' ] )     $field[ 'default' ] = '{user:last_name}';
+            if ( '_user_firstname' == $field[ 'default_value_type' ] )    $field[ 'default' ] = '{user:first_name}';
+            if ( '_user_display_name' == $field[ 'default_value_type' ] ) $field[ 'default' ] = '{user:display_name}';
 
             /* Post Data */
-            if( 'post_id' == $field[ 'default_value_type' ] )    $field[ 'default' ] = '{post:id}';
-            if( 'post_url' == $field[ 'default_value_type' ] )   $field[ 'default' ] = '{post:url}';
-            if( 'post_title' == $field[ 'default_value_type' ] ) $field[ 'default' ] = '{post:title}';
+            if ( 'post_id' == $field[ 'default_value_type' ] )    $field[ 'default' ] = '{post:id}';
+            if ( 'post_url' == $field[ 'default_value_type' ] )   $field[ 'default' ] = '{post:url}';
+            if ( 'post_title' == $field[ 'default_value_type' ] ) $field[ 'default' ] = '{post:title}';
 
             /* System Data */
-            if( 'today' == $field[ 'default_value_type' ] ) $field[ 'default' ] = '{system:date}';
+            if ( 'today' == $field[ 'default_value_type' ] ) $field[ 'default' ] = '{system:date}';
 
             /* Miscellaneous */
-            if( '_custom' == $field[ 'default_value_type' ] && isset( $field[ 'default_value' ] ) ) {
+            if ( '_custom' == $field[ 'default_value_type' ] && isset( $field[ 'default_value' ] ) ) {
                 $field[ 'default' ] = $field[ 'default_value' ];
             }
-            if( 'querystring' == $field[ 'default_value_type' ] && isset( $field[ 'default_value' ] ) ) {
+            if ( 'querystring' == $field[ 'default_value_type' ] && isset( $field[ 'default_value' ] ) ) {
                 $field[ 'default' ] = '{' . $field[ 'default_value' ] . '}';
             }
 
@@ -419,7 +419,7 @@ final class NF_Database_Models_Form extends NF_Abstracts_Model
             unset( $field[ 'default_value_type' ] );
         }
 
-        if( 'list' == $field[ 'type' ] ) {
+        if ( 'list' == $field[ 'type' ] ) {
 
             if ( isset( $field[ 'list_type' ] ) ) {
 
@@ -437,14 +437,14 @@ final class NF_Database_Models_Form extends NF_Abstracts_Model
                 }
             }
 
-            if( isset( $field[ 'list' ][ 'options' ] ) ) {
+            if ( isset( $field[ 'list' ][ 'options' ] ) ) {
                 $field[ 'options' ] = $field[ 'list' ][ 'options' ];
                 unset( $field[ 'list' ][ 'options' ] );
             }
         }
 
         // Convert `textbox` to other field types
-        foreach( array( 'fist_name', 'last_name', 'user_zip', 'user_city', 'user_phone', 'user_email', 'user_address_1', 'user_address_2', 'datepicker' ) as $item ) {
+        foreach ( array( 'fist_name', 'last_name', 'user_zip', 'user_city', 'user_phone', 'user_email', 'user_address_1', 'user_address_2', 'datepicker' ) as $item ) {
             if ( isset( $field[ $item ] ) && $field[ $item ] ) {
                 $field[ 'type' ] = str_replace( array( '_', 'user', '1', '2', 'picker' ), '', $item );
 
@@ -452,29 +452,29 @@ final class NF_Database_Models_Form extends NF_Abstracts_Model
             }
         }
 
-        if( 'timed_submit' == $field[ 'type' ] ) {
+        if ( 'timed_submit' == $field[ 'type' ] ) {
             $field[ 'type' ] = 'submit';
         }
 
-        if( 'checkbox' == $field[ 'type' ] ) {
+        if ( 'checkbox' == $field[ 'type' ] ) {
 
-            if( isset( $field[ 'calc_value' ] ) ) {
+            if ( isset( $field[ 'calc_value' ] ) ) {
 
-                if( isset( $field[ 'calc_value' ][ 'checked' ] ) ) {
+                if ( isset( $field[ 'calc_value' ][ 'checked' ] ) ) {
                     $field[ 'checked_calc_value' ] = $field[ 'calc_value' ][ 'checked' ];
                     unset( $field[ 'calc_value' ][ 'checked' ] );
                 }
-                if( isset( $field[ 'calc_value' ][ 'unchecked' ] ) ) {
+                if ( isset( $field[ 'calc_value' ][ 'unchecked' ] ) ) {
                     $field[ 'unchecked_calc_value' ] = $field[ 'calc_value' ][ 'unchecked' ];
                     unset( $field[ 'calc_value' ][ 'unchecked' ] );
                 }
             }
         }
 
-        if( 'rating' == $field[ 'type' ] ) {
+        if ( 'rating' == $field[ 'type' ] ) {
             $field[ 'type' ] = 'starrating';
 
-            if( isset( $field[ 'rating_stars' ] ) ) {
+            if ( isset( $field[ 'rating_stars' ] ) ) {
                 $field[ 'default' ] = $field[ 'rating_stars' ];
                 unset( $field[ 'rating_stars' ] );
             }

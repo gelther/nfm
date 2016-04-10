@@ -75,7 +75,7 @@ class NF_Admin_CPT_Submission
 
     public function post_row_actions( $actions )
     {
-        if( $this->cpt_slug == get_post_type() ) {
+        if ( $this->cpt_slug == get_post_type() ) {
             unset( $actions[ 'view' ] );
             unset( $actions[ 'inline hide-if-no-js' ] );
         }
@@ -84,7 +84,7 @@ class NF_Admin_CPT_Submission
 
     public function change_columns( $columns )
     {
-        if( ! isset( $_GET[ 'form_id' ] ) ) return $columns;
+        if ( ! isset( $_GET[ 'form_id' ] ) ) return $columns;
 
         $columns = array(
             'cb' => '<input type="checkbox" />',
@@ -95,10 +95,10 @@ class NF_Admin_CPT_Submission
 
         $fields = Ninja_Forms()->form( $form_id )->get_fields();
 
-        foreach( $fields as $field ) {
+        foreach ( $fields as $field ) {
 
             $hidden_field_types = apply_filters( 'nf_sub_hidden_field_types', array() );
-            if( in_array( $field->get_setting( 'type' ), array_values( $hidden_field_types ) ) ) continue;
+            if ( in_array( $field->get_setting( 'type' ), array_values( $hidden_field_types ) ) ) continue;
 
             $id          = $field->get_id();
             $label       = $field->get_setting( 'label' );
@@ -116,11 +116,11 @@ class NF_Admin_CPT_Submission
     {
         $sub = Ninja_Forms()->form()->get_sub( $sub_id );
 
-        if( 'id' == $column ) {
+        if ( 'id' == $column ) {
             echo $sub->get_seq_num();
         }
 
-        if( is_numeric( $column ) ) {
+        if ( is_numeric( $column ) ) {
             $value = $sub->get_field_value( $column );
             $field = Ninja_Forms()->form()->get_field( $column );
             echo apply_filters( 'ninja_forms_custom_columns', $value, $field );

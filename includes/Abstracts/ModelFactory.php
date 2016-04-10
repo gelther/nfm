@@ -85,7 +85,7 @@ class NF_Abstracts_ModelFactory
      */
     public function get_forms( array $where = array() )
     {
-        if( 'form' != $this->_object->get_type() ) return false;
+        if ( 'form' != $this->_object->get_type() ) return false;
 
         return $this->_object->find( NULL, $where );
     }
@@ -159,7 +159,7 @@ class NF_Abstracts_ModelFactory
      */
     public function get_fields( $where = array(), $fresh = false )
     {
-        if( $where || $fresh || ! $this->_fields ) {
+        if ( $where || $fresh || ! $this->_fields ) {
 
             $form_id = $this->_object->get_id();
 
@@ -167,7 +167,7 @@ class NF_Abstracts_ModelFactory
 
             $fields = $model_shell->find( $form_id, $where );
 
-            foreach( $fields as $field ) {
+            foreach ( $fields as $field ) {
                 $this->_fields[ $field->get_id() ] = $field;
             }
         }
@@ -232,7 +232,7 @@ class NF_Abstracts_ModelFactory
      */
     public function get_actions( $where = array(), $fresh = false )
     {
-        if( $where || $fresh || ! $this->_actions ) {
+        if ( $where || $fresh || ! $this->_actions ) {
 
             $form_id = $this->_object->get_id();
 
@@ -240,7 +240,7 @@ class NF_Abstracts_ModelFactory
 
             $actions = $model_shell->find( $form_id, $where );
 
-            foreach( $actions as $action ) {
+            foreach ( $actions as $action ) {
                 $this->_actions[ $action->get_id() ] = $action;
             }
         }
@@ -290,7 +290,7 @@ class NF_Abstracts_ModelFactory
      */
     public function get_objects( $where = array(), $fresh = false )
     {
-        if( $where || $fresh || ! $this->_objects ) {
+        if ( $where || $fresh || ! $this->_objects ) {
 
             $form_id = $this->_object->get_id();
 
@@ -298,7 +298,7 @@ class NF_Abstracts_ModelFactory
 
             $objects = $model_shell->find( $form_id, $where );
 
-            foreach( $objects as $object ) {
+            foreach ( $objects as $object ) {
                 $this->_objects[ $object->get_id() ] = $object;
             }
         }
@@ -354,7 +354,7 @@ class NF_Abstracts_ModelFactory
      */
     public function get_subs( $where = array(), $fresh = false )
     {
-        if( $where || $fresh || ! $this->_objects ) {
+        if ( $where || $fresh || ! $this->_objects ) {
 
             $form_id = $this->_object->get_id();
 
@@ -362,7 +362,7 @@ class NF_Abstracts_ModelFactory
 
             $objects = $model_shell->find( $form_id, $where );
 
-            foreach( $objects as $object ) {
+            foreach ( $objects as $object ) {
                 $this->_objects[ $object->get_id() ] = $object;
             }
         }
@@ -403,7 +403,7 @@ class NF_Abstracts_ModelFactory
     {
         global $wpdb;
 
-        switch( $type ) {
+        switch ( $type ) {
             case 'form':
                 return new NF_Database_Models_Form( $wpdb, $id );
                 break;

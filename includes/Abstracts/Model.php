@@ -149,7 +149,7 @@ class NF_Abstracts_Model
          * Set the object ID
          * Check if the ID is Permanent (int) or Temporary (string)
          */
-        if( is_numeric( $id ) ) {
+        if ( is_numeric( $id ) ) {
             $this->_id = absint( $id );
         } elseif( $id ) {
 
@@ -161,7 +161,7 @@ class NF_Abstracts_Model
                 "
             );
 
-            if( $field ) {
+            if ( $field ) {
                 $this->_id = $field->id;
             } else {
                 $this->_tmp_id = $id;
@@ -233,10 +233,10 @@ class NF_Abstracts_Model
     public function get_settings()
     {
         // If the ID is not set, then we cannot pull settings from the Database.
-        if( ! $this->_id ) return $this->_settings;
+        if ( ! $this->_id ) return $this->_settings;
 
         // Only query if settings haven't been already queried or cache is FALSE.
-        if( ! $this->_settings || ! $this->_cache ) {
+        if ( ! $this->_settings || ! $this->_cache ) {
 
             // Build query syntax from the columns property.
             $columns = '`' . implode( '`, `', $this->_columns ) . '`';
@@ -254,7 +254,7 @@ class NF_Abstracts_Model
              * If the query returns results then
              * assign settings using the column name as the setting key.
              */
-            if( $results ) {
+            if ( $results ) {
                 foreach ( $this->_columns as $column ) {
                     $this->_settings[ $column ] = $results->$column;
                 }
@@ -276,7 +276,7 @@ class NF_Abstracts_Model
         }
 
         // Un-serialize queried settings results.
-        foreach( $this->_settings as $key => $value ) {
+        foreach ( $this->_settings as $key => $value ) {
             $this->_settings[ $key ] = maybe_unserialize( $value );
         }
 
@@ -287,9 +287,9 @@ class NF_Abstracts_Model
             && (count( $only ) == count( $only, COUNT_RECURSIVE )) ) {
 
             // If only one setting, return a single value
-            if( 1 == count( $only ) ) {
+            if ( 1 == count( $only ) ) {
 
-                if( isset( $this->_settings[ $only[ 0 ] ] ) ) {
+                if ( isset( $this->_settings[ $only[ 0 ] ] ) ) {
                     return $this->_settings[ $only[ 0 ] ];
                 } else {
                     return NULL;
@@ -329,7 +329,7 @@ class NF_Abstracts_Model
      */
     public function update_settings( $data )
     {
-        foreach( $data as $key => $value ) {
+        foreach ( $data as $key => $value ) {
             $this->update_setting( $key, $value );
         }
 
@@ -345,7 +345,7 @@ class NF_Abstracts_Model
      */
     public function delete()
     {
-        if( ! $this->get_id() ) return;
+        if ( ! $this->get_id() ) return;
 
         $results = array();
 
@@ -377,7 +377,7 @@ class NF_Abstracts_Model
         );
 
         // Delete each child model
-        foreach( $children as $child ) {
+        foreach ( $children as $child ) {
             $model = Ninja_Forms()->form()->get_model( $child->child_id, $child->child_type );
             $model->delete();
         }
@@ -414,7 +414,7 @@ class NF_Abstracts_Model
         $class = get_class( $this );
 
         $results = array();
-        foreach( $ids as $id ) {
+        foreach ( $ids as $id ) {
 
             // Instantiate a new object for each ID
             $results[] = $object = new $class( $this->_db, $id, $parent_id );
@@ -434,11 +434,11 @@ class NF_Abstracts_Model
     public function save()
     {
         // If the ID is not set, assign an ID
-        if( ! $this->_id ) {
+        if ( ! $this->_id ) {
 
             $data = array( 'created_at' => time() );
 
-            if( $this->_parent_id ) {
+            if ( $this->_parent_id ) {
                 $data[ 'parent_id' ] = $this->_parent_id;
             }
 
@@ -454,7 +454,7 @@ class NF_Abstracts_Model
 
             $result = $this->_db->get_row( "SELECT * FROM $this->_table_name WHERE id = $this->_id" );
 
-            if( ! $result ) {
+            if ( ! $result ) {
                 $this->_insert_row( array( 'id' => $this->_id ) );
             }
         }
@@ -462,7 +462,7 @@ class NF_Abstracts_Model
         $this->_save_settings();
 
         // If a Temporary ID is set, return it along with the newly assigned ID.
-        if( $this->_tmp_id ) {
+        if ( $this->_tmp_id ) {
             return array( $this->_tmp_id => $this->_id );
         }
     }
@@ -471,7 +471,7 @@ class NF_Abstracts_Model
     {
         $data[ 'created_at' ] = time();
 
-        if( $this->_parent_id ) {
+        if ( $this->_parent_id ) {
             $data[ 'parent_id' ] = $this->_parent_id;
         }
 
@@ -491,7 +491,7 @@ class NF_Abstracts_Model
     public function cache( $cache = '' )
     {
         // Set the Cache Flag Property.
-        if( $cache !== '' ) {
+        if ( $cache !== '' ) {
             $this->_cache = $cache;
         }
 
@@ -534,7 +534,7 @@ class NF_Abstracts_Model
     protected function _save_setting( $key, $value )
     {
         // If the setting is a column, save the settings to the model's table.
-        if( in_array( $key, $this->_columns ) ) {
+        if ( in_array( $key, $this->_columns ) ) {
 
             return $this->_db->update(
                 $this->_table_name,
@@ -556,7 +556,7 @@ class NF_Abstracts_Model
                 "
         );
 
-        if( $meta_row ) {
+        if ( $meta_row ) {
 
             $result = $this->_db->update(
                 $this->_meta_table_name,
@@ -599,9 +599,9 @@ class NF_Abstracts_Model
      */
     protected function _save_settings()
     {
-        if( ! $this->_settings ) return;
+        if ( ! $this->_settings ) return;
 
-        foreach( $this->_settings as $key => $value ) {
+        foreach ( $this->_settings as $key => $value ) {
             $value            = maybe_serialize( $value );
             $this->_results[] = $this->_save_setting( $key, $value );
         }
@@ -619,7 +619,7 @@ class NF_Abstracts_Model
     protected function _save_parent_relationship()
     {
         // ID, Type, Parent ID, and Parent Type are required for creating a relationship.
-        if( ! $this->_id || ! $this->_type || ! $this->_parent_id || ! $this->_parent_type ) return $this;
+        if ( ! $this->_id || ! $this->_type || ! $this->_parent_id || ! $this->_parent_type ) return $this;
 
         // Check to see if a relationship exists.
         $this->_db->get_results(
@@ -632,7 +632,7 @@ class NF_Abstracts_Model
         );
 
         // If a relationship does not exists, then create one.
-        if( 0 == $this->_db->num_rows ) {
+        if ( 0 == $this->_db->num_rows ) {
 
             $this->_db->insert(
                 $this->_relationships_table,
@@ -667,7 +667,7 @@ class NF_Abstracts_Model
         $join_statement  = array();
         $where_statement = array();
 
-        if( $where AND is_array( $where ) ) {
+        if ( $where AND is_array( $where ) ) {
 
             $where_conditions = array();
             foreach ( $where as $key => $value ) {
@@ -693,11 +693,11 @@ class NF_Abstracts_Model
         // TODO: Breaks SQL. Needs more testing.
         // if( $where_statement ) $where_statement = "AND " . $where_statement;
 
-        if( $parent_id ) {
+        if ( $parent_id ) {
             $where_statement = "$this->_table_name.parent_id = $parent_id $where_statement";
         }
 
-        if( ! empty( $where_statement ) ) {
+        if ( ! empty( $where_statement ) ) {
             $where_statement = "WHERE $where_statement";
         }
 

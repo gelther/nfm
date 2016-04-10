@@ -16,13 +16,13 @@ final class NF_Admin_Menus_Licenses
 
     public function submit_listener()
     {
-        if( ! isset( $_POST[ 'ninja_forms_license' ] ) || ! $_POST[ 'ninja_forms_license' ] ) return;
+        if ( ! isset( $_POST[ 'ninja_forms_license' ] ) || ! $_POST[ 'ninja_forms_license' ] ) return;
 
         $key    = sanitize_text_field( $_POST[ 'ninja_forms_license' ][ 'key' ] );
         $name   = sanitize_text_field( $_POST[ 'ninja_forms_license' ][ 'name' ] );
         $action = sanitize_text_field( $_POST[ 'ninja_forms_license' ][ 'action' ] );
 
-        switch( $action ) {
+        switch ( $action ) {
             case 'activate':
                 $this->activate_license( $name, $key );
                 break;
@@ -50,7 +50,7 @@ final class NF_Admin_Menus_Licenses
     public function display()
     {
         $data = array();
-        foreach( $this->licenses as $license ) {
+        foreach ( $this->licenses as $license ) {
             $data[] = array(
                 'id'       => $license->product_name,
                 'name'     => $license->product_nice_name,
@@ -71,9 +71,9 @@ final class NF_Admin_Menus_Licenses
 
     private function activate_license( $name, $key )
     {
-        foreach( $this->licenses as $license ) {
+        foreach ( $this->licenses as $license ) {
 
-            if( ! $name == $license->product_name ) continue;
+            if ( ! $name == $license->product_name ) continue;
 
             $license->activate_license( $key );
         }
@@ -81,9 +81,9 @@ final class NF_Admin_Menus_Licenses
 
     private function deactivate_license( $name )
     {
-        foreach( $this->licenses as $license ) {
+        foreach ( $this->licenses as $license ) {
 
-            if( ! $name == $license->product_name ) continue;
+            if ( ! $name == $license->product_name ) continue;
 
             $license->deactivate_license();
         }
