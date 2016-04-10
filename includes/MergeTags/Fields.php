@@ -22,10 +22,10 @@ final class NF_MergeTags_Fields extends NF_Abstracts_MergeTags
     public function all_fields()
     {
         $return = '<table>';
-        foreach( $this->merge_tags[ 'all_fields' ][ 'fields' ] as $field ) {
+        foreach ( $this->merge_tags[ 'all_fields' ][ 'fields' ] as $field ) {
             $field[ 'value' ] = apply_filters( 'ninja_forms_merge_tag_value_' . $field[ 'type' ], $field[ 'value' ], $field );
 
-            if( is_array( $field[ 'value' ] ) ) $field[ 'value' ] = implode( ', ', $field[ 'value' ] );
+            if ( is_array( $field[ 'value' ] ) ) $field[ 'value' ] = implode( ', ', $field[ 'value' ] );
 
             $return .= '<tr id="ninja_forms_field_' . $field[ 'id' ] . '"><td>' . $field[ 'label' ] . ':</td><td>' . $field[ 'value' ] . '</td></tr>';
         }
@@ -36,13 +36,13 @@ final class NF_MergeTags_Fields extends NF_Abstracts_MergeTags
     public function add_field( $field )
     {
         $hidden_field_types = apply_filters( 'nf_sub_hidden_field_types', array() );
-        if( in_array( $field[ 'type' ], $hidden_field_types ) ) return;
+        if ( in_array( $field[ 'type' ], $hidden_field_types ) ) return;
 
         $callback = 'field_' . $field[ 'id' ];
 
         $this->merge_tags[ 'all_fields' ][ 'fields' ][ $callback ] = $field;
 
-        if( is_array( $field[ 'value' ] ) ) $field[ 'value' ] = implode( ', ', $field[ 'value' ] );
+        if ( is_array( $field[ 'value' ] ) ) $field[ 'value' ] = implode( ', ', $field[ 'value' ] );
 
         $this->merge_tags[ $callback ] = array(
             'id'          => $field[ 'id' ],
@@ -51,7 +51,7 @@ final class NF_MergeTags_Fields extends NF_Abstracts_MergeTags
             'field_value' => apply_filters( 'ninja_forms_merge_tag_value_' . $field[ 'type' ], $field[ 'value' ], $field )
         );
 
-        if( ! isset( $field[ 'key' ] ) ) return;
+        if ( ! isset( $field[ 'key' ] ) ) return;
 
         $callback = 'field_' . $field[ 'key' ];
 
