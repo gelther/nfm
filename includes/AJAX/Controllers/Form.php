@@ -32,7 +32,7 @@ class NF_AJAX_Controllers_Form extends NF_Abstracts_Controller
         $form->update_settings( $form_data[ 'settings' ] )->save();
 
         if( isset( $form_data[ 'fields' ] ) ) {
-            foreach ($form_data['fields'] as $field_data) {
+            foreach ( $form_data['fields'] as $field_data ) {
 
                 $id = $field_data['id'];
 
@@ -40,7 +40,7 @@ class NF_AJAX_Controllers_Form extends NF_Abstracts_Controller
 
                 $field->update_settings($field_data['settings'])->save();
 
-                if ($field->get_tmp_id()) {
+                if ( $field->get_tmp_id() ) {
 
                     $tmp_id                                    = $field->get_tmp_id();
                     $this->_data['new_ids']['fields'][$tmp_id] = $field->get_id();
@@ -64,7 +64,7 @@ class NF_AJAX_Controllers_Form extends NF_Abstracts_Controller
             /*
              * Loop Actions and fire Save() hooks.
              */
-            foreach ($form_data['actions'] as $action_data) {
+            foreach ( $form_data['actions'] as $action_data ) {
 
                 $id = $action_data['id'];
 
@@ -84,7 +84,7 @@ class NF_AJAX_Controllers_Form extends NF_Abstracts_Controller
                     }
                 }
 
-                if ($action->get_tmp_id()) {
+                if ( $action->get_tmp_id() ) {
 
                     $tmp_id                                     = $action->get_tmp_id();
                     $this->_data['new_ids']['actions'][$tmp_id] = $action->get_id();
@@ -97,7 +97,7 @@ class NF_AJAX_Controllers_Form extends NF_Abstracts_Controller
         /*
          * Loop Actions and fire Publish() hooks.
          */
-        foreach ($form_data['actions'] as $action_data) {
+        foreach ( $form_data['actions'] as $action_data ) {
 
             $action = Ninja_Forms()->form( $form_data[ 'id' ] )->get_action( $action_data['id'] );
 
@@ -108,7 +108,7 @@ class NF_AJAX_Controllers_Form extends NF_Abstracts_Controller
 
                 if( $action->get_setting( 'active' ) && method_exists( $action_class, 'publish' ) ) {
                     $data = $action_class->publish( $this->_data );
-                    if ($data) {
+                    if ( $data ) {
                         $this->_data = $data;
                     }
                 }
