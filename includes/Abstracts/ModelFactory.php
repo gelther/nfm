@@ -118,7 +118,7 @@ class NF_Abstracts_ModelFactory
         NF_Database_Models_Form::import( $import, $id, $is_conversion );
     }
 
-    /*
+    /**
      * FIELDS
      */
 
@@ -191,7 +191,7 @@ class NF_Abstracts_ModelFactory
     }
 
 
-    /*
+    /**
      * ACTIONS
      */
 
@@ -250,7 +250,7 @@ class NF_Abstracts_ModelFactory
         return $this->_actions;
     }
 
-    /*
+    /**
      * OBJECTS
      */
 
@@ -306,7 +306,7 @@ class NF_Abstracts_ModelFactory
         return $this->_objects;
     }
 
-    /*
+    /**
      * SUBMISSIONS
      */
 
@@ -386,7 +386,7 @@ class NF_Abstracts_ModelFactory
         return NF_Database_Models_Submission::export( $form_id, $sub_ids, $return );
     }
 
-    /*
+    /**
      * GENERIC
      */
 
