@@ -46,10 +46,10 @@ final class NF_Actions_Custom extends NF_Abstracts_Action
     }
 
     public function process( $action_settings, $form_id, $data ) {
-        if ( isset( $action_settings[ 'tag' ] ) ) {
+        if ( isset( $action_settings['tag'] ) ) {
             ob_start(); // Use the Output Buffer to suppress output
 
-            do_action( $action_settings[ 'tag' ], $data );
+            do_action( $action_settings['tag'], $data );
 
             ob_end_clean();
         }
