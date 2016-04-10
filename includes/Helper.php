@@ -162,15 +162,15 @@ final class WPN_Helper
             } else {
                 switch ( gettype( $workArray[$i] ) ) {
                     // Manually set some strings
-                    case "NULL":     $_spFormat = ''; break;
-                    case "boolean":  $_spFormat = ($workArray[$i] == true) ? 'true': 'false'; break;
+                    case 'NULL':     $_spFormat = ''; break;
+                    case 'boolean':  $_spFormat = ($workArray[$i] == true) ? 'true': 'false'; break;
                     // Make sure sprintf has a good datatype to work with
-                    case "integer":  $_spFormat = '%i'; break;
-                    case "double":   $_spFormat = '%0.2f'; break;
-                    case "string":   $_spFormat = '%s'; $workArray[$i] = str_replace( "$enclosure", "$enclosure$enclosure", $workArray[$i] ); break;
+                    case 'integer':  $_spFormat = '%i'; break;
+                    case 'double':   $_spFormat = '%0.2f'; break;
+                    case 'string':   $_spFormat = '%s'; $workArray[$i] = str_replace( "$enclosure", "$enclosure$enclosure", $workArray[$i] ); break;
                     // Unknown or invalid items for a csv - note: the datatype of array is already handled above, assuming the data is nested
-                    case "object":
-                    case "resource":
+                    case 'object':
+                    case 'resource':
                     default:         $_spFormat = ''; break;
                 }
                 $returnString .= sprintf( '%2$s' . $_spFormat . '%2$s', $workArray[$i], $enclosure );
