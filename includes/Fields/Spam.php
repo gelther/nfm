@@ -42,8 +42,8 @@ class NF_Fields_Spam extends NF_Abstracts_Input
     /**
      * Validate
      *
-     * @param $field
-     * @param $data
+     * @param        $field
+     * @param        $data
      * @return array $errors
      */
     public function validate( $field, $data )
