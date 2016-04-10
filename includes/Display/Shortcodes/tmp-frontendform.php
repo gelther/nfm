@@ -232,12 +232,12 @@ function nf_tmp_output_templates() {
 			 * Note that must have ONE top-level, wrapping element. i.e. a div/span/etc that wraps all of the template.
 			 *
 			 * <div>
-			 * 	 <div>
-			 *   	Cool Stuff
-			 * 	 </div>
-			 *   <span>
+			 * <div>
+			 * Cool Stuff
+			 * </div>
+			 * <span>
 			 * 		Hello World!
-			 *   </span>
+			 * </span>
 			 * </div>
 			 *
 			 * is OK.
