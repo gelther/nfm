@@ -709,7 +709,7 @@ return apply_filters( 'ninja_forms_field_settings', array(
 
     //TODO: Ask about the list of states and countries.
    /**
-    *  Country - Use Custom First Option
+    * Country - Use Custom First Option
     */
 
     'use_custom_first_option'        => array(
