@@ -27,7 +27,7 @@ final class NF_Database_Models_Field extends NF_Abstracts_Model
 
     public static function import( array $settings, $field_id = '', $is_conversion = FALSE )
     {
-        $settings = apply_filters( 'ninja_forms_before_import_fields', $settings );
+        $settings            = apply_filters( 'ninja_forms_before_import_fields', $settings );
         $settings[ 'saved' ] = 1;
 
         if( $field_id && $is_conversion ) {
