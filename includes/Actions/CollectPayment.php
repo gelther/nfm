@@ -33,8 +33,7 @@ final class NF_Actions_CollectPayment extends NF_Abstracts_Action
     /**
      * Constructor
      */
-    public function __construct()
-    {
+    public function __construct() {
         parent::__construct();
 
         $this->_nicename = __( 'Collect Payment', 'ninja-forms' );
@@ -52,8 +51,7 @@ final class NF_Actions_CollectPayment extends NF_Abstracts_Action
     {
     }
 
-    public function process( $action_settings, $form_id, $data )
-    {
+    public function process( $action_settings, $form_id, $data ) {
         $payment_gateway = $action_settings[ 'payment_gateways' ];
 
         $payment_gateway_class = $this->payment_gateways[ $payment_gateway ];
@@ -61,8 +59,7 @@ final class NF_Actions_CollectPayment extends NF_Abstracts_Action
         return $payment_gateway_class->process( $action_settings, $form_id, $data );
     }
 
-    public function register_payment_gateways()
-    {
+    public function register_payment_gateways() {
         $this->payment_gateways = apply_filters( 'ninja_forms_register_payment_gateways', array() );
 
         foreach ( $this->payment_gateways as $gateway ) {
@@ -80,8 +77,7 @@ final class NF_Actions_CollectPayment extends NF_Abstracts_Action
         }
     }
 
-    public function maybe_remove_action( $action_type_settings )
-    {
+    public function maybe_remove_action( $action_type_settings ) {
         if ( empty( $this->payment_gateways ) ) {
             unset( $action_type_settings[ $this->_name ] );
         }
