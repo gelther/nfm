@@ -1,148 +1,148 @@
 <?php
 
 function nf_tmp_frontendform( $atts = array() ) {
-	$form_id = $atts['id'];
+    $form_id = $atts['id'];
 
-	wp_enqueue_script( 'backbone-marionette', Ninja_Forms::$url . 'assets/js/lib/backbone.marionette.min.js', array( 'jquery', 'backbone' ) );
-	wp_enqueue_script( 'backbone-radio', Ninja_Forms::$url . 'assets/js/lib/backbone.radio.min.js', array( 'jquery', 'backbone' ) );
+    wp_enqueue_script( 'backbone-marionette', Ninja_Forms::$url . 'assets/js/lib/backbone.marionette.min.js', array( 'jquery', 'backbone' ) );
+    wp_enqueue_script( 'backbone-radio', Ninja_Forms::$url . 'assets/js/lib/backbone.radio.min.js', array( 'jquery', 'backbone' ) );
 
     wp_enqueue_script( 'requirejs', Ninja_Forms::$url . 'assets/js/lib/require.js', array( 'jquery', 'backbone' ) );
-	wp_enqueue_script( 'nf-front-end', Ninja_Forms::$url . 'assets/js/front-end/main.js', array( 'jquery', 'backbone', 'requirejs', 'jquery-form' ) );
+    wp_enqueue_script( 'nf-front-end', Ninja_Forms::$url . 'assets/js/front-end/main.js', array( 'jquery', 'backbone', 'requirejs', 'jquery-form' ) );
 
-	wp_localize_script( 'nf-front-end', 'nfFrontEnd', array( 'ajaxNonce' => wp_create_nonce( 'ninja_forms_ajax_nonce' ), 'adminAjax' => admin_url( 'admin-ajax.php' ), 'requireBaseUrl' => Ninja_Forms::$url . 'assets/js/' ) );
+    wp_localize_script( 'nf-front-end', 'nfFrontEnd', array( 'ajaxNonce' => wp_create_nonce( 'ninja_forms_ajax_nonce' ), 'adminAjax' => admin_url( 'admin-ajax.php' ), 'requireBaseUrl' => Ninja_Forms::$url . 'assets/js/' ) );
 
-	switch( $form_id ) {
-		case 1:
-			$title  = 'Contact Me';
-			$fields = array(
-				array(
-					'id'        => 1,
-					'type'      => 'text',
-					'label'     => 'Name',
-					'label_pos' => 'before',
-					'required'  => 1,
-				),
-				array(
-					'id'        => 8,
-					'type'      => 'email',
-					'label'     => 'Email',
-					'label_pos' => 'before',
-					'required'  => 1,
-				),
-				array(
-					'id'            => 11,
-					'type'          => 'text',
-					'label'         => 'Confirm Email',
-					'label_pos'     => 'before',
-					'confirm_field' => 8,
-					'required'      => 1,
-				),
-				array(
-					'id'           => 13,
-					'type'         => 'file',
-					'label'        => 'Attachment',
-					'button_label' => 'Upload',
-					'label_pos'    => 'before',
-					'required'     => 0,
-				),
-				array(
-					'id'        => 2,
-					'type'      => 'textarea',
-					'label'     => 'Message',
-					'label_pos' => 'before',
-					'required'  => 1,
-				),
-				array(
-					'id'           => 10,
-					'type'         => 'text',
-					'label'        => 'Mirror Name',
-					'label_pos'    => 'before',
-					'mirror_field' => 1
-				),
-				array(
-					'id'    => 3,
-					'type'  => 'submit',
-					'label' => 'Go!',
-				),
-			);
-			break;
-		case 2:
-			$title  = 'Get Help';
-			$fields = array(
-				array(
-					'id'        => 4,
-					'type'      => 'text',
-					'label'     => 'Name',
-					'label_pos' => 'before',
-					'required'  => 1,
-				),
-				array(
-					'id'        => 12,
-					'type'      => 'email',
-					'label'     => 'Email',
-					'label_pos' => 'before',
-					'required'  => 1,
-				),
-				array(
-					'id'        => 5,
-					'type'      => 'textarea',
-					'label'     => 'What Can We Help You With?',
-					'label_pos' => 'before',
-					'required'  => 1,
-				),
-				array(
-					'id'        => 6,
-					'type'      => 'checkbox',
-					'label'     => 'Agree?',
-					'label_pos' => 'after',
-					'required'  => 1,
-				),
-				array(
-					'id'         => 9,
-					'type'       => 'radio',
-					'label'      => 'Best Contact Method?',
-					'label_pos'  => 'before',
-					'options'    => array(
-						array(
-							'label' => 'Phone',
-							'value' => 'phone',
-						),
-						array(
-							'label' => 'Email',
-							'value' => 'email',
-						),
-						array(
-							'label' => 'Snail Mail',
-							'value' => 'snail-mail',
-						),
-					),
-					'show_other' => 1,
-					'required'   => 1,
-				),
-				array(
-					'id'    => 7,
-					'type'  => 'submit',
-					'label' => 'Send',
-				),
-			);
-			break;
-	}
+    switch( $form_id ) {
+        case 1:
+            $title  = 'Contact Me';
+            $fields = array(
+                array(
+                    'id'        => 1,
+                    'type'      => 'text',
+                    'label'     => 'Name',
+                    'label_pos' => 'before',
+                    'required'  => 1,
+                ),
+                array(
+                    'id'        => 8,
+                    'type'      => 'email',
+                    'label'     => 'Email',
+                    'label_pos' => 'before',
+                    'required'  => 1,
+                ),
+                array(
+                    'id'            => 11,
+                    'type'          => 'text',
+                    'label'         => 'Confirm Email',
+                    'label_pos'     => 'before',
+                    'confirm_field' => 8,
+                    'required'      => 1,
+                ),
+                array(
+                    'id'           => 13,
+                    'type'         => 'file',
+                    'label'        => 'Attachment',
+                    'button_label' => 'Upload',
+                    'label_pos'    => 'before',
+                    'required'     => 0,
+                ),
+                array(
+                    'id'        => 2,
+                    'type'      => 'textarea',
+                    'label'     => 'Message',
+                    'label_pos' => 'before',
+                    'required'  => 1,
+                ),
+                array(
+                    'id'           => 10,
+                    'type'         => 'text',
+                    'label'        => 'Mirror Name',
+                    'label_pos'    => 'before',
+                    'mirror_field' => 1
+                ),
+                array(
+                    'id'    => 3,
+                    'type'  => 'submit',
+                    'label' => 'Go!',
+                ),
+            );
+            break;
+        case 2:
+            $title  = 'Get Help';
+            $fields = array(
+                array(
+                    'id'        => 4,
+                    'type'      => 'text',
+                    'label'     => 'Name',
+                    'label_pos' => 'before',
+                    'required'  => 1,
+                ),
+                array(
+                    'id'        => 12,
+                    'type'      => 'email',
+                    'label'     => 'Email',
+                    'label_pos' => 'before',
+                    'required'  => 1,
+                ),
+                array(
+                    'id'        => 5,
+                    'type'      => 'textarea',
+                    'label'     => 'What Can We Help You With?',
+                    'label_pos' => 'before',
+                    'required'  => 1,
+                ),
+                array(
+                    'id'        => 6,
+                    'type'      => 'checkbox',
+                    'label'     => 'Agree?',
+                    'label_pos' => 'after',
+                    'required'  => 1,
+                ),
+                array(
+                    'id'         => 9,
+                    'type'       => 'radio',
+                    'label'      => 'Best Contact Method?',
+                    'label_pos'  => 'before',
+                    'options'    => array(
+                        array(
+                            'label' => 'Phone',
+                            'value' => 'phone',
+                        ),
+                        array(
+                            'label' => 'Email',
+                            'value' => 'email',
+                        ),
+                        array(
+                            'label' => 'Snail Mail',
+                            'value' => 'snail-mail',
+                        ),
+                    ),
+                    'show_other' => 1,
+                    'required'   => 1,
+                ),
+                array(
+                    'id'    => 7,
+                    'type'  => 'submit',
+                    'label' => 'Send',
+                ),
+            );
+            break;
+    }
 
-	$form = array(
-		array(
-			'id'       => $form_id,
-			'settings' => array(
-				'title' => $title,
-			),
-			// 'beforeForm' 			=> 'Before Form ' . $form_id,
-			// 'afterForm' 				=> 'After Form ' . $form_id,
-			// 'beforeFields' 			=> 'Before Fields ' . $form_id,
-			// 'afterFields' 			=> 'After Fields ' . $form_id,
-			'fields'   => $fields,
-		)
-	);
+    $form = array(
+        array(
+            'id'       => $form_id,
+            'settings' => array(
+                'title' => $title,
+            ),
+            // 'beforeForm' 			=> 'Before Form ' . $form_id,
+            // 'afterForm' 				=> 'After Form ' . $form_id,
+            // 'beforeFields' 			=> 'Before Fields ' . $form_id,
+            // 'afterFields' 			=> 'After Fields ' . $form_id,
+            'fields'   => $fields,
+        )
+    );
 
-	?>
+    ?>
 	<script type="text/javascript">
 		var nfForms = nfForms || [];
 		nfForms.push( <?php echo wp_json_encode( $form ); ?> );
@@ -160,7 +160,7 @@ function nf_tmp_frontendform( $atts = array() ) {
 add_shortcode( 'nf_tmp_frontendform', 'nf_tmp_frontendform' );
 
 function nf_tmp_output_templates() {
-	?>
+    ?>
 
 	<style>
 		.nf-error input {
