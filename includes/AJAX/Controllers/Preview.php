@@ -38,7 +38,7 @@ class NF_AJAX_Controllers_Preview extends NF_Abstracts_Controller
 
         if( isset( $form[ 'fields' ] ) && is_array( $form[ 'fields' ] ) ) {
 
-            foreach( $form[ 'fields' ] as $field ){
+            foreach( $form[ 'fields' ] as $field ) {
 
                 $id = $field[ 'id' ];
 
@@ -52,7 +52,7 @@ class NF_AJAX_Controllers_Preview extends NF_Abstracts_Controller
 
         if( isset( $form[ 'deleted_fields' ] ) ) {
 
-            foreach( $form[ 'deleted_fields' ] as $deleted_field ){
+            foreach( $form[ 'deleted_fields' ] as $deleted_field ) {
 
                 unset( $form_data[ 'fields' ][ $deleted_field ] );
             }
@@ -64,7 +64,7 @@ class NF_AJAX_Controllers_Preview extends NF_Abstracts_Controller
 
         if( isset( $form[ 'actions' ] ) && is_array( $form[ 'actions' ] ) ) {
 
-            foreach( $form[ 'actions' ] as $action ){
+            foreach( $form[ 'actions' ] as $action ) {
 
                 $id = $action[ 'id' ];
 
@@ -84,7 +84,7 @@ class NF_AJAX_Controllers_Preview extends NF_Abstracts_Controller
 
         if( isset( $form[ 'deleted_actions' ] ) ) {
 
-            foreach( $form[ 'deleted_actions' ] as $deleted_action ){
+            foreach( $form[ 'deleted_actions' ] as $deleted_action ) {
 
                 unset( $form_data[ 'actions' ][ $deleted_action ] );
             }
@@ -105,7 +105,7 @@ class NF_AJAX_Controllers_Preview extends NF_Abstracts_Controller
 
         $form_data = $this->get_form_data( $form_id );
 
-        if( isset( $form_data[ 'actions' ][ $action_id ] ) ){
+        if( isset( $form_data[ 'actions' ][ $action_id ] ) ) {
 
             $settings        = $form_data[ 'actions' ][ $action_id ][ 'settings' ];
             $action_settings = array_merge( $action_settings, $settings );
@@ -118,9 +118,9 @@ class NF_AJAX_Controllers_Preview extends NF_Abstracts_Controller
     {
         $form_data = get_user_option( self::$transient_prefix . $form_id, false );
 
-        if( ! $form_data ){
+        if( ! $form_data ) {
 
-            if( is_string( $form_id ) ){
+            if( is_string( $form_id ) ) {
                 $form                    = Ninja_Forms()->form()->get();
                 $form_data[ 'id' ]       = $form_id;
                 $form_data[ 'settings' ] = array();
@@ -133,14 +133,14 @@ class NF_AJAX_Controllers_Preview extends NF_Abstracts_Controller
                 $form_data[ 'settings' ] = $form->get_settings();
 
                 $fields = Ninja_Forms()->form( $form_id )->get_fields();
-                foreach( $fields as $field ){
+                foreach( $fields as $field ) {
 
                     $field_id                                         = $field->get_id();
                     $form_data[ 'fields' ][ $field_id ][ 'settings' ] = $field->get_settings();
                 }
 
                 $actions = Ninja_Forms()->form( $form_id )->get_actions();
-                foreach( $actions as $action ){
+                foreach( $actions as $action ) {
 
                     $action_id                                          = $action->get_id();
                     $form_data[ 'actions' ][ $action_id ][ 'settings' ] = $action->get_settings();
@@ -157,7 +157,7 @@ class NF_AJAX_Controllers_Preview extends NF_Abstracts_Controller
 
         $this->_data[ 'updated' ] = $update;
 
-        if( ! $update ){
+        if( ! $update ) {
             $this->_errors[ 'Form Preview Not Updated' ] = $form_data;
             $this->_errors[ 'Current User' ]             = get_current_user_id();
             $this->_errors[ 'Option' ]                   = self::$transient_prefix . $form_data[ 'id' ];
