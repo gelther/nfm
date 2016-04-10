@@ -31,8 +31,9 @@ class NF_Widget extends WP_Widget {
         $display_title = $instance['display_title'];
 
         echo $args[ 'before_widget' ];
-        if ( ! empty( $title ) AND $display_title == 1 )
+        if ( ! empty( $title ) AND $display_title == 1 ) {
             echo $args[ 'before_title' ] . $title . $args[ 'after_title' ];
+        }
         Ninja_Forms()->display( $instance['form_id'] );
         echo $args[ 'after_widget' ];
     }
