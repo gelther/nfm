@@ -16,7 +16,7 @@ abstract class NF_Abstracts_SubmissionMetabox extends NF_Abstracts_Metabox
     {
         parent::__construct();
 
-        if( ! isset( $_GET[ 'post' ] ) ) return;
+        if ( ! isset( $_GET[ 'post' ] ) ) return;
 
         $this->_title = __( 'Submission Metabox', 'ninja-forms' );
 
