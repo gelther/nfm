@@ -8,9 +8,9 @@ final class NF_Display_Preview
     protected $form_id = '';
 
     public function __construct() {
-        if ( ! isset( $_GET[ 'nf_preview_form' ] ) ) return;
+        if ( ! isset( $_GET['nf_preview_form'] ) ) return;
 
-        $this->_form_id = $_GET[ 'nf_preview_form' ];
+        $this->_form_id = $_GET['nf_preview_form'];
 
         add_action( 'pre_get_posts', array( $this, 'pre_get_posts' ) );
 
