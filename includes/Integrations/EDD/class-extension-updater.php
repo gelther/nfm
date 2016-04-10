@@ -40,7 +40,7 @@ class NF_Extension_Updater
         $this->author  = $author;
 
         $this->auto_update();
-        
+
         add_filter( 'ninja_forms_settings_licenses_addons', array( $this, 'register' ) );
     }
 
