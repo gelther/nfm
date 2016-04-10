@@ -176,7 +176,6 @@ class NF_Abstracts_Model
          * With the ID set, query settings from the database
          */
         $this->_settings = $this->get_settings();
-
     }
 
     /**
@@ -684,8 +683,6 @@ class NF_Abstracts_Model
         }
 
         return "SELECT DISTINCT $this->_table_name.id FROM $this->_table_name $join_statement $where_statement";
-
     }
-
 
 }
