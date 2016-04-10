@@ -313,7 +313,7 @@ final class NF_Database_MockData
             )
         );
 
-        foreach( $fields as $settings ){
+        foreach( $fields as $settings ) {
 
             $field = Ninja_Forms()->form( $form_id )->field()->get();
             $field->update_settings( $settings )->save();
