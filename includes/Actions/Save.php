@@ -35,7 +35,7 @@ final class NF_Actions_Save extends NF_Abstracts_Action
         $this->_nicename = __( 'Save', 'ninja-forms' );
     }
 
-    /*
+    /**
     * PUBLIC METHODS
     */
     public function save( $action_settings )

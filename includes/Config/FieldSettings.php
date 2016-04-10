@@ -2,7 +2,7 @@
 
 return apply_filters( 'ninja_forms_field_settings', array(
 
-    /*
+    /**
     |--------------------------------------------------------------------------
     | Primary Settings
     |--------------------------------------------------------------------------
@@ -11,7 +11,7 @@ return apply_filters( 'ninja_forms_field_settings', array(
     |
     */
 
-    /*
+    /**
      * LABEL
      */
 
@@ -25,7 +25,7 @@ return apply_filters( 'ninja_forms_field_settings', array(
         'help'  => __( 'Enter the label of the form field. This is how users will identify individual fields.', 'ninja-forms' ),
     ),
 
-    /*
+    /**
      * LABEL POSITION
      */
 
@@ -66,7 +66,7 @@ return apply_filters( 'ninja_forms_field_settings', array(
 
     ),
 
-    /*
+    /**
      * REQUIRED
      */
 
@@ -80,7 +80,7 @@ return apply_filters( 'ninja_forms_field_settings', array(
         'help'  => __( 'Ensure that this field is completed before allowing the form to be submitted.', 'ninja-forms' ),
     ),
 
-    /*
+    /**
      * NUMBER
      */
 
@@ -119,7 +119,7 @@ return apply_filters( 'ninja_forms_field_settings', array(
 
     ),
 
-    /*
+    /**
      * Checkbox Default Value
      */
 
@@ -143,7 +143,7 @@ return apply_filters( 'ninja_forms_field_settings', array(
 
     ),
 
-    /*
+    /**
      * OPTIONS
      */
 
@@ -181,7 +181,7 @@ return apply_filters( 'ninja_forms_field_settings', array(
 
     ),
 
-    /*
+    /**
     |--------------------------------------------------------------------------
     | Restriction Settings
     |--------------------------------------------------------------------------
@@ -190,7 +190,7 @@ return apply_filters( 'ninja_forms_field_settings', array(
     |
     */
 
-    /*
+    /**
      * MASK
      */
 
@@ -221,7 +221,7 @@ return apply_filters( 'ninja_forms_field_settings', array(
         ),
         'value'   => '',
     ),
-    /*
+    /**
      * CUSTOM MASK
      */
 
@@ -245,7 +245,7 @@ return apply_filters( 'ninja_forms_field_settings', array(
                         </ul>', 'ninja-forms' ),
     ),
 
-    /*
+    /**
      * INPUT LIMIT SET
      */
 
@@ -291,7 +291,7 @@ return apply_filters( 'ninja_forms_field_settings', array(
 
     ),
 
-    /*
+    /**
     |--------------------------------------------------------------------------
     | Advanced Settings
     |--------------------------------------------------------------------------
@@ -301,7 +301,7 @@ return apply_filters( 'ninja_forms_field_settings', array(
     |
     */
 
-    /*
+    /**
      * INPUT PLACEHOLDER
      */
 
@@ -317,7 +317,7 @@ return apply_filters( 'ninja_forms_field_settings', array(
     ),
 
 
-    /*
+    /**
      * DEFAULT VALUE
      */
 
@@ -335,7 +335,7 @@ return apply_filters( 'ninja_forms_field_settings', array(
          ),
      ),
 
-    /*
+    /**
     * CLASSES
     */
     'classes'                        => array(
@@ -368,7 +368,7 @@ return apply_filters( 'ninja_forms_field_settings', array(
         ),
     ),
 
-    /*
+    /**
      * DATE FORMAT
      */
 
@@ -411,7 +411,7 @@ return apply_filters( 'ninja_forms_field_settings', array(
         'value'   => 'DD/MM/YYYY',
     ),
 
-    /*
+    /**
      * DATE DEFAULT
      */
 
@@ -423,7 +423,7 @@ return apply_filters( 'ninja_forms_field_settings', array(
         'group' => 'primary'
     ),
 
-    /*
+    /**
      * TIME SETTING
      */
 
@@ -437,7 +437,7 @@ return apply_filters( 'ninja_forms_field_settings', array(
 
     ),
 
-    /*
+    /**
      * KEY
      */
 
@@ -451,7 +451,7 @@ return apply_filters( 'ninja_forms_field_settings', array(
         'help'  => __( 'Creates a unique key to identify and target your field for custom development.', 'ninja-forms' ),
     ),
 
-    /*
+    /**
      * ADMIN LABEL
      */
 
@@ -465,7 +465,7 @@ return apply_filters( 'ninja_forms_field_settings', array(
         'help'  => __( 'Label used when viewing and exporting submissions.', 'ninja-forms' ),
     ),
 
-    /*
+    /**
      * HELP
      */
 
@@ -476,7 +476,7 @@ return apply_filters( 'ninja_forms_field_settings', array(
         'group'    => 'display',
         'help'     => __( 'Shown to users as a hover.', 'ninja-forms' ),
         'settings' => array(
-            /*
+            /**
              * HELP TEXT
              */
 
@@ -492,7 +492,7 @@ return apply_filters( 'ninja_forms_field_settings', array(
     ),
 
 
-    /*
+    /**
      * DESCRIPTION
      */
     'description'                    => array(
@@ -501,7 +501,7 @@ return apply_filters( 'ninja_forms_field_settings', array(
         'label'    => __( 'Description', 'ninja-forms' ),
         'group'    => 'display',
         'settings' => array(
-            /*
+            /**
              * DESCRIPTION TEXT
              */
 
@@ -512,7 +512,7 @@ return apply_filters( 'ninja_forms_field_settings', array(
                 'width' => 'full',
             ),
 
-            /*
+            /**
              * DESCRIPTION POSITION
              */
 
@@ -549,7 +549,7 @@ return apply_filters( 'ninja_forms_field_settings', array(
         ),
     ),
 
-    /*
+    /**
      * NUMERIC SORT
      */
 
@@ -563,7 +563,7 @@ return apply_filters( 'ninja_forms_field_settings', array(
         'help'  => __( 'This column in the submissions table will sort by number.', 'ninja-forms' ),
     ),
 
-    /*
+    /**
     |--------------------------------------------------------------------------
     | Un-Grouped Settings
     |--------------------------------------------------------------------------
@@ -578,7 +578,7 @@ return apply_filters( 'ninja_forms_field_settings', array(
         'value' => FALSE,
     ),
 
-   /*
+   /**
     * Timed Submit Label
     */
 
@@ -622,7 +622,7 @@ return apply_filters( 'ninja_forms_field_settings', array(
                     'use_merge_tags' => TRUE,
                 ),
 
-               /*
+               /**
                 * Timed Submit Timer
                 */
 
@@ -637,7 +637,7 @@ return apply_filters( 'ninja_forms_field_settings', array(
 
                 ),
 
-               /*
+               /**
                 * Timed Submit Countdown
                 */
 
@@ -653,7 +653,7 @@ return apply_filters( 'ninja_forms_field_settings', array(
 
                 ),
 
-   /*
+   /**
     * Password Registration checkbox
     */
 
@@ -669,7 +669,7 @@ return apply_filters( 'ninja_forms_field_settings', array(
     ),
 
 
-   /*
+   /**
     * Number of Stars Textbox
     */
 
@@ -683,7 +683,7 @@ return apply_filters( 'ninja_forms_field_settings', array(
 
     ),
 
-   /*
+   /**
     * Disable Browser Autocomplete
     */
 
@@ -695,7 +695,7 @@ return apply_filters( 'ninja_forms_field_settings', array(
         'group' => 'restrictions',
     ),
 
-    /*
+    /**
      * Disable input
      */
 
@@ -708,7 +708,7 @@ return apply_filters( 'ninja_forms_field_settings', array(
     ),
 
     //TODO: Ask about the list of states and countries.
-   /*
+   /**
     *  Country - Use Custom First Option
     */
 
@@ -722,7 +722,7 @@ return apply_filters( 'ninja_forms_field_settings', array(
 
     ),
 
-   /*
+   /**
     * Country - Custom first option
     */
 
@@ -755,7 +755,7 @@ return apply_filters( 'ninja_forms_field_settings', array(
         'settings' => array(),
     ),
 
-    /*
+    /**
     |--------------------------------------------------------------------------
     | Textarea Settings
     |--------------------------------------------------------------------------
@@ -795,7 +795,7 @@ return apply_filters( 'ninja_forms_field_settings', array(
         )
     ),
 
-    /*
+    /**
     |--------------------------------------------------------------------------
     | Submit Button Settings
     |--------------------------------------------------------------------------
@@ -810,7 +810,7 @@ return apply_filters( 'ninja_forms_field_settings', array(
         'value' => __( 'Processing', 'ninja-forms' )
     ),
 
-    /*
+    /**
     |--------------------------------------------------------------------------
     | Calc Value that is used for checkbox fields
     |--------------------------------------------------------------------------
@@ -834,7 +834,7 @@ return apply_filters( 'ninja_forms_field_settings', array(
         'help'  => __( 'This number will be used in calculations if the box is unchecked.', 'ninja-forms' ),
     ),
 
-    /*
+    /**
     |--------------------------------------------------------------------------
     | DISPLAY CALCULATION SETTINGS
     |--------------------------------------------------------------------------
@@ -852,7 +852,7 @@ return apply_filters( 'ninja_forms_field_settings', array(
         ),
     ),
 
-    /*
+    /**
     |--------------------------------------------------------------------------
     | Pricing Fields Settings
     |--------------------------------------------------------------------------
@@ -993,13 +993,13 @@ return apply_filters( 'ninja_forms_field_settings', array(
         ),
     ),
 
-    /*
+    /**
     |--------------------------------------------------------------------------
     | Anti-Spam Field Settings
     |--------------------------------------------------------------------------
     */
 
-    /*
+    /**
      * Spam Answer
      */
 
@@ -1013,7 +1013,7 @@ return apply_filters( 'ninja_forms_field_settings', array(
         'help'  => __( 'A case sensitive answer to help prevent spam submissions of your form.', 'ninja-forms' ),
     ),
 
-    /*
+    /**
     |--------------------------------------------------------------------------
     | Backwards Compatibility Field Settings
     |--------------------------------------------------------------------------

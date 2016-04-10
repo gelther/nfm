@@ -2,7 +2,7 @@
 
 return apply_filters( 'ninja_forms_example_settings', array(
 
-    /*
+    /**
     |--------------------------------------------------------------------------
     | Section Settings
     |--------------------------------------------------------------------------
@@ -11,7 +11,7 @@ return apply_filters( 'ninja_forms_example_settings', array(
     |
     */
 
-    /*
+    /**
      * SETTING NAME
      */
 

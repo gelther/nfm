@@ -10,7 +10,7 @@ return apply_filters( 'ninja_forms_from_restriction_settings', array(
         'group'    => 'primary',
         'settings' => array(
 
-            /*
+            /**
              * REQUIRE USER TO BE LOGGED IN TO VIEW FORM?
              */
 
@@ -24,7 +24,7 @@ return apply_filters( 'ninja_forms_from_restriction_settings', array(
                 'help'  => __( 'Does apply to form preview.', 'ninja-forms' )
             ),
 
-            /*
+            /**
              * NOT LOGGED-IN MESSAGE
              */
 
@@ -47,7 +47,7 @@ return apply_filters( 'ninja_forms_from_restriction_settings', array(
         'group'    => 'primary',
         'settings' => array(
 
-            /*
+            /**
              * LIMIT SUBMISSIONS
              */
 
@@ -64,7 +64,7 @@ return apply_filters( 'ninja_forms_from_restriction_settings', array(
                 //Select the number of submissions that this form will accept. Leave empty for no limit.
             ),
 
-            /*
+            /**
              * LIMIT REACHED MESSAGE
              */
 

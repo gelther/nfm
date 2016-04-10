@@ -133,19 +133,19 @@ class NF_Abstracts_Model
      */
     public function __construct( $db, $id = NULL, $parent_id = '' )
     {
-        /*
+        /**
          * Injected the Database Dependency
          */
         $this->_db = $db;
 
-        /*
+        /**
          * Assign Database Tables using the DB prefix
          */
         $this->_table_name          = $this->_db->prefix . $this->_table_name;
         $this->_meta_table_name     = $this->_db->prefix . $this->_meta_table_name;
         $this->_relationships_table = $this->_db->prefix . $this->_relationships_table;
 
-        /*
+        /**
          * Set the object ID
          *   Check if the ID is Permanent (int) or Temporary (string)
          */
@@ -168,12 +168,12 @@ class NF_Abstracts_Model
             }
         }
 
-        /*
+        /**
          * Set the Parent ID for context
          */
         $this->_parent_id = $parent_id;
 
-        /*
+        /**
          * With the ID set, query settings from the database
          */
         $this->_settings = $this->get_settings();
@@ -250,7 +250,7 @@ class NF_Abstracts_Model
                 "
             );
 
-            /*
+            /**
              * If the query returns results then
              *   assign settings using the column name as the setting key.
              */
@@ -424,7 +424,7 @@ class NF_Abstracts_Model
         return $results;
     }
 
-    /*
+    /**
      * UTILITY METHODS
      */
 

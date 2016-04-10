@@ -79,7 +79,7 @@ final class NF_Abstracts_Extension
 
             self::$url = plugin_dir_url( __FILE__ );
 
-            /*
+            /**
              * Register our autoloader
              */
             spl_autoload_register( array( self::$instance, 'autoloader' ) );

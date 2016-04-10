@@ -41,7 +41,7 @@ final class NF_Actions_Email extends NF_Abstracts_Action
         $this->_backwards_compatibility();
     }
 
-    /*
+    /**
     * PUBLIC METHODS
     */
     public function process( $action_settings, $form_id, $data )
@@ -191,7 +191,7 @@ final class NF_Actions_Email extends NF_Abstracts_Action
         return $dir.'/'.$new_name.'.csv';
     }
 
-    /*
+    /**
      * Backwards Compatibility
      */
     private function _backwards_compatibility()

@@ -34,7 +34,7 @@ final class NF_Database_MockData
 
     public function form_blank_form()
     {
-        /*
+        /**
          * FORM
          */
 
@@ -45,7 +45,7 @@ final class NF_Database_MockData
 
     public function form_contact_form_1()
     {
-        /*
+        /**
          * FORM
          */
 
@@ -55,7 +55,7 @@ final class NF_Database_MockData
 
         $form_id = $form->get_id();
 
-        /*
+        /**
          * FIELDS
          */
 
@@ -165,7 +165,7 @@ final class NF_Database_MockData
             ->update_setting( 'order', 5 )
             ->save();
 
-        /*
+        /**
          * ACTIONS
          */
 
@@ -205,7 +205,7 @@ final class NF_Database_MockData
             ->update_setting( 'active', TRUE )
             ->save();
 
-        /*
+        /**
          * SUBMISSIONS
          */
 
@@ -231,7 +231,7 @@ final class NF_Database_MockData
 
     public function form_contact_form_2()
     {
-        /*
+        /**
          * FORM
          */
 
@@ -241,7 +241,7 @@ final class NF_Database_MockData
 
         $form_id = $form->get_id();
 
-        /*
+        /**
          * FIELDS
          */
 
@@ -319,7 +319,7 @@ final class NF_Database_MockData
             $field->update_settings( $settings )->save();
         }
 
-        /*
+        /**
          * ACTIONS
          */
 
@@ -331,7 +331,7 @@ final class NF_Database_MockData
 
     public function form_kitchen_sink()
     {
-        /*
+        /**
          * FORM
          */
         $form = Ninja_Forms()->form()->get();
@@ -340,7 +340,7 @@ final class NF_Database_MockData
 
         $form_id = $form->get_id();
 
-        /*
+        /**
          * FIELDS
          */
 
@@ -482,7 +482,7 @@ final class NF_Database_MockData
 
     public function form_bathroom_sink()
     {
-        /*
+        /**
          * FORM
          */
         $form = Ninja_Forms()->form()->get();
@@ -491,7 +491,7 @@ final class NF_Database_MockData
 
         $form_id = $form->get_id();
 
-        /*
+        /**
          * FIELDS
          */
 
@@ -621,7 +621,7 @@ final class NF_Database_MockData
 
     public function form_long_form( $num_fields = 500 )
     {
-        /*
+        /**
         * FORM
         */
 
@@ -631,7 +631,7 @@ final class NF_Database_MockData
 
         $form_id = $form->get_id();
 
-        /*
+        /**
          * FIELDS
          */
 
@@ -649,7 +649,7 @@ final class NF_Database_MockData
 
     public function form_email_submission()
     {
-        /*
+        /**
          * FORM
          */
 
@@ -659,7 +659,7 @@ final class NF_Database_MockData
 
         $form_id = $form->get_id();
 
-        /*
+        /**
          * FIELDS
          */
 
@@ -747,7 +747,7 @@ final class NF_Database_MockData
             ->update_setting( 'order', 1000 )
             ->save();
 
-        /*
+        /**
          * ACTIONS
          */
 
@@ -805,7 +805,7 @@ final class NF_Database_MockData
             ->update_setting( 'order', 1000 )
             ->save();
 
-        /*
+        /**
          * ACTIONS
          */
 
@@ -905,7 +905,7 @@ final class NF_Database_MockData
             ->update_setting( 'order', 1000 )
             ->save();
 
-        /*
+        /**
          * ACTIONS
          */
 
@@ -918,7 +918,7 @@ final class NF_Database_MockData
 
     public function form_calc_form()
     {
-        /*
+        /**
          * FORM
          */
 

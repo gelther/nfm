@@ -2,7 +2,7 @@
 
 return apply_filters( 'ninja_forms_plugin_settings_advanced', array(
 
-    /*
+    /**
     |--------------------------------------------------------------------------
     | Delete on Uninstall
     |--------------------------------------------------------------------------
@@ -15,7 +15,7 @@ return apply_filters( 'ninja_forms_plugin_settings_advanced', array(
         'desc'  => sprintf( __( 'If this box is checked, ALL Ninja Forms data will be removed from the database upon deletion. %sAll form and submission data will be unrecoverable.%s', 'ninja-forms' ), '<span class="nf-nuke-warning">', '</span>' ),
     ),
 
-    /*
+    /**
     |--------------------------------------------------------------------------
     | Delete Prompt for Delete on Uninstall
     |--------------------------------------------------------------------------
@@ -30,7 +30,7 @@ return apply_filters( 'ninja_forms_plugin_settings_advanced', array(
         )
     ),
 
-    /*
+    /**
     |--------------------------------------------------------------------------
     | Disable Admin Notices
     |--------------------------------------------------------------------------
@@ -43,7 +43,7 @@ return apply_filters( 'ninja_forms_plugin_settings_advanced', array(
         'desc'  => __( 'Never see an admin notice on the dashboard from Ninja Forms. Uncheck to see them again.', 'ninja-forms' ),
     ),
 
-    /*
+    /**
     |--------------------------------------------------------------------------
     | Disable Opinionated Styles
     |--------------------------------------------------------------------------
@@ -56,7 +56,7 @@ return apply_filters( 'ninja_forms_plugin_settings_advanced', array(
         'desc'  => __( 'Do not use default Ninja Forms styling conventions.', 'ninja-forms' ),
     ),
 
-    /*
+    /**
     |--------------------------------------------------------------------------
     | Rollback to v2.9.x
     |--------------------------------------------------------------------------

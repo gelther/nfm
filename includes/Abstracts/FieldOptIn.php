@@ -31,7 +31,7 @@ abstract class NF_Abstracts_FieldOptIn extends NF_Abstracts_Input
     {
         parent::__construct();
 
-        /*
+        /**
          * Setup 'type' options for the opt-in field.
          */
         $this->_settings[ 'type' ][ 'options' ] = array(
@@ -45,13 +45,13 @@ abstract class NF_Abstracts_FieldOptIn extends NF_Abstracts_Input
             ),
         );
 
-        /*
+        /**
          * Add a refresh extra for the groups fieldset.
          */
         $this->_settings[ 'fieldset' ][ 'label' ] = __( 'Lists', 'ninja-forms' ) . ' <a href="#"><small>' . __( 'refresh', 'ninja-forms' ) . '</small></a>';
         $this->_settings[ 'fieldset' ][ 'deps' ]  = array( 'type' => 'multiple' );
 
-        /*
+        /**
          * Hide the 'type' and 'fieldset' ('groups') settings until they are ready for use.
          */
         $this->_settings[ 'type' ][ 'group' ]     = '';

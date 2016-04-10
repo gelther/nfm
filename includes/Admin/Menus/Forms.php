@@ -31,7 +31,7 @@ final class NF_Admin_Menus_Forms extends NF_Abstracts_Menu
                 $form_id = (is_numeric( $_GET['form_id'] )) ? absint( $_GET['form_id'] ) : '';
             }
 
-            /*
+            /**
              * FORM BUILDER
              */
 
@@ -54,7 +54,7 @@ final class NF_Admin_Menus_Forms extends NF_Abstracts_Menu
             }
         } else {
 
-            /*
+            /**
              * ALL FORMS TABLE
              */
 

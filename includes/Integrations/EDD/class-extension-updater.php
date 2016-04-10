@@ -56,7 +56,7 @@ class NF_Extension_Updater
         return $licenses;
     }
 
-    /*
+    /**
      *
      * Function that activates our license
      *
@@ -96,7 +96,7 @@ class NF_Extension_Updater
         Ninja_Forms()->update_setting( $this->product_name . '_license_status', $license_data->license );
     }
 
-    /*
+    /**
      *
      * Function that deactivates our license if the user clicks the "Deactivate License" button.
      *

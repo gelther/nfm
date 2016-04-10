@@ -61,7 +61,7 @@ class NF_AJAX_Controllers_Form extends NF_Abstracts_Controller
 
         if( isset( $form_data[ 'actions' ] ) ) {
 
-            /*
+            /**
              * Loop Actions and fire Save() hooks.
              */
             foreach ( $form_data['actions'] as $action_data ) {
@@ -94,7 +94,7 @@ class NF_AJAX_Controllers_Form extends NF_Abstracts_Controller
             }
         }
 
-        /*
+        /**
          * Loop Actions and fire Publish() hooks.
          */
         foreach ( $form_data['actions'] as $action_data ) {
