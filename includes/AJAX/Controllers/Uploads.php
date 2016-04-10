@@ -21,7 +21,7 @@ class NF_AJAX_Controllers_Uploads extends NF_Abstracts_Controller
     public function upload() {
         check_ajax_referer( 'ninja_forms_ajax_nonce', 'security' );
 
-        $this->_data[ 'files' ] = $_FILES;
+        $this->_data['files'] = $_FILES;
 
         $this->validate();
 
@@ -36,23 +36,23 @@ class NF_AJAX_Controllers_Uploads extends NF_Abstracts_Controller
      * PROTECTED METHODS
      */
     protected function validate() {
-        foreach ( $this->_data[ 'files' ] as $key => $file ) {
+        foreach ( $this->_data['files'] as $key => $file ) {
 
-            if ( $file[ 'error' ] ) {
-                $this->_errors[] = $this->code_to_message( $file[ 'error' ] );
+            if ( $file['error'] ) {
+                $this->_errors[] = $this->code_to_message( $file['error'] );
             } else {
 
                 $upload_dir = wp_upload_dir();
 
-                $new_tmp_name = $this->i_like_clean_slugs_and_i_cannot_lie( $file[ 'name' ] );
+                $new_tmp_name = $this->i_like_clean_slugs_and_i_cannot_lie( $file['name'] );
 
-                $file_path = $upload_dir[ 'basedir' ] . '/' . $new_tmp_name;
+                $file_path = $upload_dir['basedir'] . '/' . $new_tmp_name;
 
-                move_uploaded_file( $file[ 'tmp_name' ], $file_path );
+                move_uploaded_file( $file['tmp_name'], $file_path );
 
                 wp_schedule_single_event( time() + 3600, 'nf_uploads_delete_temporary_file', array( $file_path ) );
 
-                $this->_data[ 'files' ][ $key ][ 'tmp_name' ] = $new_tmp_name;
+                $this->_data['files'][ $key ]['tmp_name'] = $new_tmp_name;
             }
         }
     }

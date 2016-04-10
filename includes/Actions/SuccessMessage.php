@@ -48,21 +48,21 @@ final class NF_Actions_SuccessMessage extends NF_Abstracts_Action
     }
 
     public function process( $action_settings, $form_id, $data ) {
-        if ( isset( $action_settings[ 'success_msg' ] ) ) {
-            $data[ 'actions' ][ 'success_message' ] = $action_settings[ 'success_msg' ];
+        if ( isset( $action_settings['success_msg'] ) ) {
+            $data['actions']['success_message'] = $action_settings['success_msg'];
         }
 
         return $data;
     }
 
     public function import_form_action_success_message( $import ) {
-        if ( ! isset( $import[ 'actions' ] ) ) return $import;
+        if ( ! isset( $import['actions'] ) ) return $import;
 
-        foreach ( $import[ 'actions' ] as &$action ) {
+        foreach ( $import['actions'] as &$action ) {
 
-            if ( 'success_message' == $action[ 'type' ] ) {
+            if ( 'success_message' == $action['type'] ) {
 
-                $action[ 'type' ] = 'successmessage';
+                $action['type'] = 'successmessage';
             }
         }
 

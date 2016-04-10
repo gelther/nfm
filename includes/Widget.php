@@ -24,18 +24,18 @@ class NF_Widget extends WP_Widget {
      * @param array $instance Saved values from database.
      */
     public function widget( $args, $instance ) {
-        $form  = Ninja_Forms()->form( $instance[ 'form_id' ] )->get();
+        $form  = Ninja_Forms()->form( $instance['form_id'] )->get();
         $title = $form->get_setting( 'title' );
 
         $title         = apply_filters( 'widget_title', $title );
-        $display_title = $instance[ 'display_title' ];
+        $display_title = $instance['display_title'];
 
-        echo $args[ 'before_widget' ];
+        echo $args['before_widget'];
         if ( ! empty( $title ) AND $display_title == 1 ) {
-            echo $args[ 'before_title' ] . $title . $args[ 'after_title' ];
+            echo $args['before_title'] . $title . $args['after_title'];
         }
-        Ninja_Forms()->display( $instance[ 'form_id' ] );
-        echo $args[ 'after_widget' ];
+        Ninja_Forms()->display( $instance['form_id'] );
+        echo $args['after_widget'];
     }
 
     /**
@@ -49,9 +49,9 @@ class NF_Widget extends WP_Widget {
      * @return array               Updated safe values to be saved.
      */
     public function update( $new_instance, $old_instance ) {
-        $instance                    = array();
-        $instance[ 'form_id' ]       = $new_instance[ 'form_id' ];
-        $instance[ 'display_title' ] = $new_instance[ 'display_title' ];
+        $instance                  = array();
+        $instance['form_id']       = $new_instance['form_id'];
+        $instance['display_title'] = $new_instance['display_title'];
 
         return $instance;
     }
@@ -64,14 +64,14 @@ class NF_Widget extends WP_Widget {
      * @param array $instance Previously saved values from database.
      */
     public function form( $instance ) {
-        if ( isset( $instance[ 'form_id' ] ) ) {
-            $form_id = $instance[ 'form_id' ];
+        if ( isset( $instance['form_id'] ) ) {
+            $form_id = $instance['form_id'];
         } else {
             $form_id = '';
         }
 
-        if ( isset( $instance[ 'display_title' ] ) ) {
-            $display_title = $instance[ 'display_title' ];
+        if ( isset( $instance['display_title'] ) ) {
+            $display_title = $instance['display_title'];
         } else {
             $display_title = 0;
         }

@@ -15,7 +15,7 @@ final class NF_MergeTags_Calcs extends NF_Abstracts_MergeTags
     }
 
     public function __call( $name, $arguments ) {
-        return $this->merge_tags[ $name ][ 'calc_value' ];
+        return $this->merge_tags[ $name ]['calc_value'];
     }
 
     public function set_merge_tags( $key, $value ) {

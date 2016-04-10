@@ -46,7 +46,7 @@ final class NF_Actions_Redirect extends NF_Abstracts_Action
     }
 
     public function process( $action_settings, $form_id, $data ) {
-        $data[ 'actions' ][ 'redirect' ] = $action_settings[ 'redirect_url' ];
+        $data['actions']['redirect'] = $action_settings['redirect_url'];
 
         return $data;
     }

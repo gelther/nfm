@@ -30,22 +30,22 @@ class NF_Fields_Total extends NF_Abstracts_Input
     public function process( $total, $data ) {
         $subtotal = 0;
 
-        foreach ( $data[ 'fields' ] as $key => $field ) {
+        foreach ( $data['fields'] as $key => $field ) {
 
-            if ( 'shipping' == $field[ 'type' ] ) {
-                $subtotal += $field[ 'shipping_cost' ];
+            if ( 'shipping' == $field['type'] ) {
+                $subtotal += $field['shipping_cost'];
             }
         }
 
-        if ( isset( $data[ 'product_totals' ] ) ) {
+        if ( isset( $data['product_totals'] ) ) {
 
-            foreach ( $data[ 'product_totals' ] as $product_total ) {
+            foreach ( $data['product_totals'] as $product_total ) {
 
                 $subtotal += $product_total;
             }
         }
 
-        $data[ 'new_total' ] = number_format( $subtotal, 2 );
+        $data['new_total'] = number_format( $subtotal, 2 );
 
         return $data;
     }

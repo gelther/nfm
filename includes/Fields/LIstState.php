@@ -24,7 +24,7 @@ class NF_Fields_ListState extends NF_Abstracts_List
 
         $this->_nicename = __( 'State', 'ninja-forms' );
 
-        $this->_settings[ 'options' ][ 'value' ] = $this->get_options();
+        $this->_settings['options']['value'] = $this->get_options();
     }
 
     private function get_options() {

@@ -28,7 +28,7 @@ abstract class NF_Abstracts_PaymentGateway
     }
 
     public function _process( $action_settings, $form_id, $data ) {
-        if ( $this->_slug == $action_settings[ 'payment_gateway' ] ) {
+        if ( $this->_slug == $action_settings['payment_gateway'] ) {
             return $this->process( $action_settings, $form_id, $data );
         }
     }
