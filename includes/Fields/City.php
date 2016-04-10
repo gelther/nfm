@@ -23,4 +23,5 @@ class NF_Fields_City extends NF_Fields_Textbox
 
         $this->_nicename = __( 'City', 'ninja-forms' );
     }
+
 }
