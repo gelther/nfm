@@ -36,7 +36,7 @@ class NF_Fields_Shipping extends NF_Abstracts_Input
 
     public function add_setting_group( $groups )
     {
-        $groups[ 'advanced_shipping' ] = array(
+        $groups['advanced_shipping'] = array(
             'id'    => 'advanced_shipping',
             'label' => __( 'Advanced Shipping', 'ninja-forms' ),
         );
@@ -59,7 +59,7 @@ class NF_Fields_Shipping extends NF_Abstracts_Input
 
                 $options = '<option>--</option>';
                 foreach( $field->get_setting( 'shipping_options' ) as $option ){
-                    $selected  = ( $value == $option[ 'value' ] ) ? "selected" : '';
+                    $selected  = ( $value == $option['value'] ) ? "selected" : '';
                     $options  .= "<option value='{$option[ 'value' ]}' $selected>{$option[ 'label' ]}</option>";
                 }
 
@@ -72,14 +72,14 @@ class NF_Fields_Shipping extends NF_Abstracts_Input
 
     public function merge_tag_value( $value, $field )
     {
-        if( isset( $field[ 'shipping_type' ] ) ){
+        if( isset( $field['shipping_type'] ) ){
 
-            switch( $field[ 'shipping_type' ] ){
+            switch( $field['shipping_type'] ){
                 case 'single':
-                    $value = $field[ 'shipping_cost' ];
+                    $value = $field['shipping_cost'];
                     break;
                 case 'select':
-                    $value = $field[ 'shipping_options' ];
+                    $value = $field['shipping_options'];
                     break;
             }
         }
