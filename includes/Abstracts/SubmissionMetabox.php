@@ -23,7 +23,7 @@ abstract class NF_Abstracts_SubmissionMetabox extends NF_Abstracts_Metabox
         $post_id = absint( $_GET[ 'post' ] );
 
         $this->sub = Ninja_Forms()->form()->get_sub( $post_id );
-        
+
         add_action( 'add_meta_boxes', array( $this, 'add_meta_boxes' ) );
         add_action( 'save_post', array( $this, '_save_post' ) );
     }

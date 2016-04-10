@@ -16,5 +16,5 @@ return array(
         'width'          => 'full',
         'use_merge_tags' => TRUE,
     ),
-    
+
 );
