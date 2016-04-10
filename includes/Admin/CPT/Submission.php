@@ -9,8 +9,7 @@ class NF_Admin_CPT_Submission
     /**
      * Constructor
      */
-    public function __construct()
-    {
+    public function __construct() {
         // Register our submission custom post type.
         add_action( 'init', array( $this, 'custom_post_type' ), 5 );
 
@@ -73,8 +72,7 @@ class NF_Admin_CPT_Submission
         register_post_type( $this->cpt_slug, $args );
     }
 
-    public function post_row_actions( $actions )
-    {
+    public function post_row_actions( $actions ) {
         if ( $this->cpt_slug == get_post_type() ) {
             unset( $actions[ 'view' ] );
             unset( $actions[ 'inline hide-if-no-js' ] );
@@ -82,8 +80,7 @@ class NF_Admin_CPT_Submission
         return $actions;
     }
 
-    public function change_columns( $columns )
-    {
+    public function change_columns( $columns ) {
         if ( ! isset( $_GET[ 'form_id' ] ) ) return $columns;
 
         $columns = array(
@@ -112,8 +109,7 @@ class NF_Admin_CPT_Submission
         return $columns;
     }
 
-    public function custom_columns( $column, $sub_id )
-    {
+    public function custom_columns( $column, $sub_id ) {
         $sub = Ninja_Forms()->form()->get_sub( $sub_id );
 
         if ( 'id' == $column ) {
@@ -128,8 +124,7 @@ class NF_Admin_CPT_Submission
 
     }
 
-    public function save_nf_sub( $nf_sub_id, $nf_sub )
-    {
+    public function save_nf_sub( $nf_sub_id, $nf_sub ) {
         global $pagenow;
 
         if ( ! isset ( $_POST[ 'nf_edit_sub' ] ) || $_POST[ 'nf_edit_sub' ] != 1 ) {
@@ -173,8 +168,7 @@ class NF_Admin_CPT_Submission
     /**
      * Meta Boxes
      */
-    public function add_meta_boxes( $post_type, $post )
-    {
+    public function add_meta_boxes( $post_type, $post ) {
         add_meta_box(
             'nf_sub_fields',
             __( 'User Submitted Values', 'ninja-forms' ),
@@ -199,8 +193,7 @@ class NF_Admin_CPT_Submission
      *
      * @param $post
      */
-    public function fields_meta_box( $post )
-    {
+    public function fields_meta_box( $post ) {
         $form_id = get_post_meta( $post->ID, '_form_id', true );
 
         $sub = Ninja_Forms()->form()->get_sub( $post->ID );
@@ -217,8 +210,7 @@ class NF_Admin_CPT_Submission
      *
      * @param $post
      */
-    public function info_meta_box( $post )
-    {
+    public function info_meta_box( $post ) {
         $sub = Ninja_Forms()->form()->sub( $post->ID )->get();
 
         $seq_num = $sub->get_seq_num();
@@ -239,8 +231,7 @@ class NF_Admin_CPT_Submission
     /**
      * Remove Meta Boxes
      */
-    public function remove_meta_boxes()
-    {
+    public function remove_meta_boxes() {
         // Remove the default Publish metabox
         remove_meta_box( 'submitdiv', 'nf_sub', 'side' );
     }
@@ -248,8 +239,7 @@ class NF_Admin_CPT_Submission
     /**
      * PRIVATE METHODS
      */
-    private function not_found_message()
-    {
+    private function not_found_message() {
         if ( ! isset ( $_REQUEST[ 'form_id' ] ) || empty( $_REQUEST[ 'form_id' ] ) ) {
             return __( 'Please select a form to view submissions', 'ninja-forms' );
         } else {
