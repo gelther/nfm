@@ -14,7 +14,7 @@ final class NF_Admin_Menus_MockData extends NF_Abstracts_Submenu
 
         parent::__construct();
 
-        if( isset( $_GET[ 'page' ] ) && 'nf-mock-data' == $_GET[ 'page' ] ) {
+        if( isset( $_GET['page'] ) && 'nf-mock-data' == $_GET['page'] ) {
             add_action( 'admin_init', array( $this, 'mock_and_redirect' ) );
         }
     }
