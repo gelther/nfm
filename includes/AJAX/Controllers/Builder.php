@@ -11,12 +11,12 @@ class NF_AJAX_Controllers_Builder extends NF_Abstracts_Controller
     {
         check_ajax_referer( 'ninja_forms_ajax_nonce', 'builder' );
 
-        if( ! isset( $_POST[ 'form' ] ) ){
+        if( ! isset( $_POST['form'] ) ){
             $this->_errors[] = 'Form Not Found';
             $this->_respond();
         }
 
-        $form_id = $_POST[ 'form' ];
+        $form_id = $_POST['form'];
 
         $this->_form_data( $form_id );
         $this->_field_type_data();
@@ -36,8 +36,8 @@ class NF_AJAX_Controllers_Builder extends NF_Abstracts_Controller
         $fields_settings = array();
 
         foreach( $fields as $field ){
-            $settings         = $field->get_settings();
-            $settings[ 'id' ] = $field->get_id();
+            $settings       = $field->get_settings();
+            $settings['id'] = $field->get_id();
 
             foreach( $settings as $key => $setting ){
                 if( is_numeric( $setting ) ) $settings[ $key ] = floatval( $setting );
@@ -50,8 +50,8 @@ class NF_AJAX_Controllers_Builder extends NF_Abstracts_Controller
 
         foreach( $actions as $action ){
 
-            $settings         = $action->get_settings();
-            $settings[ 'id' ] = $action->get_id();
+            $settings       = $action->get_settings();
+            $settings['id'] = $action->get_id();
 
             $actions_settings[] = $settings;
         }
@@ -62,7 +62,7 @@ class NF_AJAX_Controllers_Builder extends NF_Abstracts_Controller
         $form_data['fields']   = $fields_settings;
         $form_data['actions']  = $actions_settings;
 
-        $this->_data[ 'preloadedFormData' ] = wp_json_encode( $form_data );
+        $this->_data['preloadedFormData'] = wp_json_encode( $form_data );
     }
 
     private function _field_type_data()
@@ -100,9 +100,9 @@ class NF_AJAX_Controllers_Builder extends NF_Abstracts_Controller
             );
         }
 
-        $this->_data[ 'fieldTypeData' ]     = wp_json_encode( $field_type_settings );
-        $this->_data[ 'fieldSettings' ]     = wp_json_encode( array_values( $master_settings ) );
-        $this->_data[ 'fieldTypeSections' ] = wp_json_encode( $field_type_sections );
+        $this->_data['fieldTypeData']     = wp_json_encode( $field_type_settings );
+        $this->_data['fieldSettings']     = wp_json_encode( array_values( $master_settings ) );
+        $this->_data['fieldTypeSections'] = wp_json_encode( $field_type_sections );
     }
 
     private function _action_type_data()
@@ -135,12 +135,12 @@ class NF_AJAX_Controllers_Builder extends NF_Abstracts_Controller
 
         foreach( $external_actions as $action ){
 
-            if( ! isset( $action[ 'name' ] ) || ! $action[ 'name' ] ) continue;
+            if( ! isset( $action['name'] ) || ! $action['name'] ) continue;
 
-            $name     = $action[ 'name' ];
-            $nicename = ( isset( $action[ 'nicename' ] ) ) ? $action[ 'nicename' ] : '';
-            $image    = ( isset( $action[ 'image' ] ) ) ? $action[ 'image' ] : '';
-            $link     = ( isset( $action[ 'link' ] ) ) ? $action[ 'link' ] : '';
+            $name     = $action['name'];
+            $nicename = ( isset( $action['nicename'] ) ) ? $action['nicename'] : '';
+            $image    = ( isset( $action['image'] ) ) ? $action['image'] : '';
+            $link     = ( isset( $action['link'] ) ) ? $action['link'] : '';
 
             $action_type_settings[ $name ] = array(
                 'id'              => $name,
@@ -166,9 +166,9 @@ class NF_AJAX_Controllers_Builder extends NF_Abstracts_Controller
     {
         $form_settings_types = Ninja_Forms::config( 'FormSettingsTypes' );
 
-        $form_settings[ 'display' ]      = Ninja_Forms::config( 'FormDisplaySettings' );
-        $form_settings[ 'restrictions' ] = Ninja_Forms::config( 'FormRestrictionSettings' );
-        $form_settings                   = apply_filters( 'ninja_forms_localize_forms_settings', $form_settings );
+        $form_settings['display']      = Ninja_Forms::config( 'FormDisplaySettings' );
+        $form_settings['restrictions'] = Ninja_Forms::config( 'FormRestrictionSettings' );
+        $form_settings                 = apply_filters( 'ninja_forms_localize_forms_settings', $form_settings );
 
         $groups = Ninja_Forms::config( 'SettingsGroups' );
 
@@ -208,29 +208,29 @@ class NF_AJAX_Controllers_Builder extends NF_Abstracts_Controller
             );
         }
 
-        $this->_data[ 'merge_tags' ] = wp_json_encode( array_values( $merge_tags ) );
+        $this->_data['merge_tags'] = wp_json_encode( array_values( $merge_tags ) );
     }
 
     protected function _group_settings( $settings, $groups )
     {
         foreach( $settings as $setting ){
 
-            $group = ( isset( $setting[ 'group' ] ) ) ? $setting[ 'group' ] : '';
+            $group = ( isset( $setting['group'] ) ) ? $setting['group'] : '';
 
-            if( isset( $setting[ 'type'] ) && 'fieldset' == $setting[ 'type' ] ){
-                $setting[ 'settings' ] = array_values( $setting[ 'settings' ] );
+            if( isset( $setting['type'] ) && 'fieldset' == $setting['type'] ){
+                $setting['settings'] = array_values( $setting['settings'] );
             }
 
-            $groups[ $group ][ 'settings'][] = $setting;
+            $groups[ $group ]['settings'][] = $setting;
         }
 
         foreach( $groups as $id => $group ) {
-            if ( empty( $group[ 'settings' ] ) ) {
+            if ( empty( $group['settings'] ) ) {
                 unset( $groups[ $id ] );
             }
         }
 
-        unset( $groups[ "" ] );
+        unset( $groups[""] );
 
         return $groups;
     }
@@ -241,12 +241,12 @@ class NF_AJAX_Controllers_Builder extends NF_Abstracts_Controller
 
         foreach( $settings as $setting ){
 
-            if( 'fieldset' == $setting[ 'type' ] ){
+            if( 'fieldset' == $setting['type'] ){
 
-                $unique_settings = array_merge( $unique_settings, $this->_unique_settings( $setting[ 'settings' ] ) );
+                $unique_settings = array_merge( $unique_settings, $this->_unique_settings( $setting['settings'] ) );
             } else {
 
-                $name                     = $setting[ 'name' ];
+                $name                     = $setting['name'];
                 $unique_settings[ $name ] = $setting;
             }
 
@@ -261,8 +261,8 @@ class NF_AJAX_Controllers_Builder extends NF_Abstracts_Controller
 
         foreach( $settings as $setting ){
 
-            $name                      = ( isset( $setting[ 'name' ] ) ) ? $setting[ 'name' ] : '';
-            $default                   = ( isset( $setting[ 'value' ] ) ) ? $setting[ 'value' ] : '';
+            $name                      = ( isset( $setting['name'] ) ) ? $setting['name'] : '';
+            $default                   = ( isset( $setting['value'] ) ) ? $setting['value'] : '';
             $setting_defaults[ $name ] = $default;
         }
 
@@ -273,7 +273,7 @@ class NF_AJAX_Controllers_Builder extends NF_Abstracts_Controller
     {
         $actions = get_transient( 'ninja-forms-builder-actions-feed' );
 
-        $bust = ( isset( $_GET[ 'nf-bust-actions-feed' ] ) );
+        $bust = ( isset( $_GET['nf-bust-actions-feed'] ) );
 
         if( $bust || ! $actions ) {
             $actions = wp_remote_get( 'https://ninjaforms.com/?action_feed=true' );

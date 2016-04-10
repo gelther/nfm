@@ -27,7 +27,7 @@ final class NF_Display_Render
 
     public static function localize( $form_id )
     {
-        if( isset( $_GET[ 'ninja_forms_test_values' ] ) ){
+        if( isset( $_GET['ninja_forms_test_values'] ) ){
             self::$use_test_values = TRUE;
         }
 
@@ -126,10 +126,10 @@ final class NF_Display_Render
                     if ( is_numeric( $setting ) ) $settings[$key] = floatval( $setting );
                 }
 
-                $settings[ 'parentType' ] = $field_class->get_parent_type();
+                $settings['parentType'] = $field_class->get_parent_type();
 
-                if( 'list' == $settings[ 'parentType' ] && isset( $settings[ 'options' ] ) && is_array( $settings[ 'options' ] ) ){
-                    $settings[ 'options' ] = apply_filters( 'ninja_forms_render_options', $settings[ 'options' ], $settings );
+                if( 'list' == $settings['parentType'] && isset( $settings['options'] ) && is_array( $settings['options'] ) ){
+                    $settings['options'] = apply_filters( 'ninja_forms_render_options', $settings['options'], $settings );
                 }
 
                 if ( isset( $settings['default'] ) ) {
@@ -203,7 +203,7 @@ final class NF_Display_Render
 
     public static function localize_preview( $form_id )
     {
-        if( isset( $_GET[ 'ninja_forms_test_values' ] ) ){
+        if( isset( $_GET['ninja_forms_test_values'] ) ){
             self::$use_test_values = TRUE;
         }
 
@@ -216,24 +216,24 @@ final class NF_Display_Render
             return;
         }
 
-        if( isset( $form[ 'settings' ][ 'logged_in' ] ) && $form[ 'settings' ][ 'logged_in' ] && ! is_user_logged_in() ){
-            echo $form[ 'settings' ][ 'not_logged_in_msg' ];
+        if( isset( $form['settings']['logged_in'] ) && $form['settings']['logged_in'] && ! is_user_logged_in() ){
+            echo $form['settings']['not_logged_in_msg'];
             return;
         }
 
-        $form[ 'settings' ][ 'is_preview' ] = TRUE;
+        $form['settings']['is_preview'] = TRUE;
 
-        $before_form                       = apply_filters( 'ninja_forms_display_before_form', '', $form_id, TRUE );
-        $form[ 'settings' ][ 'beforeForm'] = $before_form;
+        $before_form                    = apply_filters( 'ninja_forms_display_before_form', '', $form_id, TRUE );
+        $form['settings']['beforeForm'] = $before_form;
 
-        $before_fields                       = apply_filters( 'ninja_forms_display_before_fields', '', $form_id, TRUE );
-        $form[ 'settings' ][ 'beforeFields'] = $before_fields;
+        $before_fields                    = apply_filters( 'ninja_forms_display_before_fields', '', $form_id, TRUE );
+        $form['settings']['beforeFields'] = $before_fields;
 
-        $after_fields                       = apply_filters( 'ninja_forms_display_after_fields', '', $form_id, TRUE );
-        $form[ 'settings' ][ 'afterFields'] = $after_fields;
+        $after_fields                    = apply_filters( 'ninja_forms_display_after_fields', '', $form_id, TRUE );
+        $form['settings']['afterFields'] = $after_fields;
 
-        $after_form                       = apply_filters( 'ninja_forms_display_after_form', '', $form_id, TRUE );
-        $form[ 'settings' ][ 'afterForm'] = $after_form;
+        $after_form                    = apply_filters( 'ninja_forms_display_after_form', '', $form_id, TRUE );
+        $form['settings']['afterForm'] = $after_form;
 
         $fields = array();
 
@@ -250,13 +250,13 @@ final class NF_Display_Render
 
                 $field = apply_filters( 'ninja_forms_localize_fields_preview', $field );
 
-                $display_before                     = apply_filters( 'ninja_forms_display_before_field_type_' . $field['settings'][ 'type' ], '' );
-                $display_before                     = apply_filters( 'ninja_forms_display_before_field_key_' . $field['settings'][ 'key' ], $display_before );
-                $field['settings'][ 'beforeField' ] = $display_before;
+                $display_before                   = apply_filters( 'ninja_forms_display_before_field_type_' . $field['settings']['type'], '' );
+                $display_before                   = apply_filters( 'ninja_forms_display_before_field_key_' . $field['settings']['key'], $display_before );
+                $field['settings']['beforeField'] = $display_before;
 
-                $display_after                     = apply_filters( 'ninja_forms_display_after_field_type_' . $field['settings'][ 'type' ], '' );
-                $display_after                     = apply_filters( 'ninja_forms_display_after_field_key_' . $field['settings'][ 'key' ], $display_after );
-                $field['settings'][ 'afterField' ] = $display_after;
+                $display_after                   = apply_filters( 'ninja_forms_display_after_field_type_' . $field['settings']['type'], '' );
+                $display_after                   = apply_filters( 'ninja_forms_display_after_field_key_' . $field['settings']['key'], $display_after );
+                $field['settings']['afterField'] = $display_after;
 
                 foreach ( $field['settings'] as $key => $setting ) {
                     if ( is_numeric( $setting ) ) $field['settings'][$key] = floatval( $setting );
@@ -278,10 +278,10 @@ final class NF_Display_Render
                     $field['settings']['value'] = $field_class->get_test_value();
                 }
 
-                $field[ 'settings' ][ 'parentType' ] = $field_class->get_parent_type();
+                $field['settings']['parentType'] = $field_class->get_parent_type();
 
-                if( 'list' == $field[ 'settings' ][ 'parentType' ] && isset( $field['settings'][ 'options' ] ) && is_array( $field['settings'][ 'options' ] ) ){
-                    $field['settings'][ 'options' ] = apply_filters( 'ninja_forms_render_options', $field['settings'][ 'options' ], $field['settings'] );
+                if( 'list' == $field['settings']['parentType'] && isset( $field['settings']['options'] ) && is_array( $field['settings']['options'] ) ){
+                    $field['settings']['options'] = apply_filters( 'ninja_forms_render_options', $field['settings']['options'], $field['settings'] );
                 }
 
                 if ( isset( $field['settings']['default'] ) ) {
@@ -313,7 +313,7 @@ final class NF_Display_Render
                     $field['settings']['product_price'] = str_replace( Ninja_Forms()->get_setting( 'currency_symbol' ), '', $field['settings']['product_price'] );
                     $field['settings']['product_price'] = number_format( $field['settings']['product_price'], 2 );
                 } elseif ( 'total' == $field['settings']['type'] ) {
-                    if( ! isset( $field[ 'settings' ][ 'value' ] ) ) $field[ 'settings' ][ 'value' ] = 0;
+                    if( ! isset( $field['settings']['value'] ) ) $field['settings']['value'] = 0;
                     $field['settings']['value'] = number_format( $field['settings']['value'], 2 );
                 }
 
@@ -399,7 +399,7 @@ final class NF_Display_Render
 
         foreach( Ninja_Forms()->fields as $field ){
             foreach( $field->use_merge_tags() as $merge_tag ){
-                $data[ 'use_merge_tags' ][ $merge_tag ][ $field->get_type() ] = $field->get_type();
+                $data['use_merge_tags'][ $merge_tag ][ $field->get_type() ] = $field->get_type();
             }
         }
 

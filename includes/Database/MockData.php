@@ -448,7 +448,7 @@ final class NF_Database_MockData
 
                 unset( $settings['id'] );
 
-                $settings[ 'key' ] = $settings[ 'key' ] . '-' . $i;
+                $settings['key'] = $settings['key'] . '-' . $i;
 
                 if ( ! isset( $settings['label_pos'] ) ) $settings['label_pos'] = $label_pos;
 
@@ -458,7 +458,7 @@ final class NF_Database_MockData
 
                 $field = Ninja_Forms()->form( $form_id )->field()->get();
 
-                $settings[ 'order' ] = $order;
+                $settings['order'] = $order;
 
                 $field->update_settings( $settings )->save();
 
@@ -597,9 +597,9 @@ final class NF_Database_MockData
 
             $field = Ninja_Forms()->form( $form_id )->field()->get();
 
-            $settings[ 'order' ] = $order;
+            $settings['order'] = $order;
 
-            $settings[ 'label_pos' ] = 'above';
+            $settings['label_pos'] = 'above';
 
             $field->update_settings( $settings )->save();
 

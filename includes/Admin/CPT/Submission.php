@@ -77,22 +77,22 @@ class NF_Admin_CPT_Submission
     public function post_row_actions( $actions )
     {
         if( $this->cpt_slug == get_post_type() ){
-            unset( $actions[ 'view' ] );
-            unset( $actions[ 'inline hide-if-no-js' ] );
+            unset( $actions['view'] );
+            unset( $actions['inline hide-if-no-js'] );
         }
         return $actions;
     }
 
     public function change_columns( $columns )
     {
-        if( ! isset( $_GET[ 'form_id' ] ) ) return $columns;
+        if( ! isset( $_GET['form_id'] ) ) return $columns;
 
         $columns = array(
             'cb' => '<input type="checkbox" />',
             'id' => __( '#', 'ninja-forms' ),
         );
 
-        $form_id = absint( $_GET[ 'form_id' ] );
+        $form_id = absint( $_GET['form_id'] );
 
         $fields = Ninja_Forms()->form( $form_id )->get_fields();
 

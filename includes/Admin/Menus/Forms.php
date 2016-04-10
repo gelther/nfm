@@ -22,10 +22,10 @@ final class NF_Admin_Menus_Forms extends NF_Abstracts_Menu
 
     public function display()
     {
-        if( isset( $_GET[ 'form_id' ] ) ){
+        if( isset( $_GET['form_id'] ) ){
 
 
-            if( 'new' == $_GET[ 'form_id' ] ){
+            if( 'new' == $_GET['form_id'] ){
                 $form_id = 'tmp-' . time();
             } else {
                 $form_id = (is_numeric( $_GET['form_id'] )) ? absint( $_GET['form_id'] ) : '';
@@ -41,7 +41,7 @@ final class NF_Admin_Menus_Forms extends NF_Abstracts_Menu
 
             delete_user_option( get_current_user_id(), 'nf_form_preview_' . $form_id );
 
-            if( ! isset( $_GET[ 'ajax' ] ) ) {
+            if( ! isset( $_GET['ajax'] ) ) {
                 $this->_localize_form_data( $form_id );
 
                 $this->_localize_field_type_data();
@@ -248,20 +248,20 @@ final class NF_Admin_Menus_Forms extends NF_Abstracts_Menu
             $settings = $saved_field->get_settings();
 
             $id    = $saved_field->get_id();
-            $type  = $settings[ 'type' ];
-            $label = $settings[ 'label' ];
+            $type  = $settings['type'];
+            $label = $settings['label'];
 
-            $field_type_settings[ $id ]               = $field_type_settings[ $type ];
-            $field_type_settings[ $id ][ 'id' ]       = $id;
-            $field_type_settings[ $id ][ 'type' ]     = $type;
-            $field_type_settings[ $id ][ 'nicename' ] = $label;
-            $field_type_settings[ $id ][ 'section' ]  = 'saved';
+            $field_type_settings[ $id ]             = $field_type_settings[ $type ];
+            $field_type_settings[ $id ]['id']       = $id;
+            $field_type_settings[ $id ]['type']     = $type;
+            $field_type_settings[ $id ]['nicename'] = $label;
+            $field_type_settings[ $id ]['section']  = 'saved';
 
-            $defaults              = $field_type_settings[ $id ][ 'settingDefaults' ];
-            $defaults              = array_merge( $defaults, $settings );
-            $defaults[ 'isSaved' ] = TRUE;
+            $defaults            = $field_type_settings[ $id ]['settingDefaults'];
+            $defaults            = array_merge( $defaults, $settings );
+            $defaults['isSaved'] = TRUE;
 
-            $field_type_settings[ $id ][ 'settingDefaults' ] = $defaults;
+            $field_type_settings[ $id ]['settingDefaults'] = $defaults;
         }
 
         ?>
@@ -305,12 +305,12 @@ final class NF_Admin_Menus_Forms extends NF_Abstracts_Menu
         if ( ! $u_id ) $u_id = apply_filters( 'ninja_forms_affiliate_id', false );
         foreach( $external_actions as $action ){
 
-            if( ! isset( $action[ 'name' ] ) || ! $action[ 'name' ] ) continue;
+            if( ! isset( $action['name'] ) || ! $action['name'] ) continue;
 
-            $name     = $action[ 'name' ];
-            $nicename = ( isset( $action[ 'nicename' ] ) ) ? $action[ 'nicename' ] : '';
-            $image    = ( isset( $action[ 'image' ] ) ) ? $action[ 'image' ] : '';
-            $link     = ( isset( $action[ 'link' ] ) ) ? $action[ 'link' ] : '';
+            $name     = $action['name'];
+            $nicename = ( isset( $action['nicename'] ) ) ? $action['nicename'] : '';
+            $image    = ( isset( $action['image'] ) ) ? $action['image'] : '';
+            $link     = ( isset( $action['link'] ) ) ? $action['link'] : '';
 
             if ( $u_id ) {
                 $last_slash = strripos( $link, '/' );
@@ -347,10 +347,10 @@ final class NF_Admin_Menus_Forms extends NF_Abstracts_Menu
     {
         $form_settings_types = Ninja_Forms::config( 'FormSettingsTypes' );
 
-        $form_settings[ 'display' ]      = Ninja_Forms::config( 'FormDisplaySettings' );
-        $form_settings[ 'restrictions' ] = Ninja_Forms::config( 'FormRestrictionSettings' );
-        $form_settings[ 'calculations' ] = Ninja_Forms::config( 'FormCalculationSettings' );
-        $form_settings                   = apply_filters( 'ninja_forms_localize_forms_settings', $form_settings );
+        $form_settings['display']      = Ninja_Forms::config( 'FormDisplaySettings' );
+        $form_settings['restrictions'] = Ninja_Forms::config( 'FormRestrictionSettings' );
+        $form_settings['calculations'] = Ninja_Forms::config( 'FormCalculationSettings' );
+        $form_settings                 = apply_filters( 'ninja_forms_localize_forms_settings', $form_settings );
 
         $groups = Ninja_Forms::config( 'SettingsGroups' );
 
@@ -402,22 +402,22 @@ final class NF_Admin_Menus_Forms extends NF_Abstracts_Menu
     {
         foreach( $settings as $setting ){
 
-            $group = ( isset( $setting[ 'group' ] ) ) ? $setting[ 'group' ] : '';
+            $group = ( isset( $setting['group'] ) ) ? $setting['group'] : '';
 
-            if( isset( $setting[ 'type'] ) && 'fieldset' == $setting[ 'type' ] ){
-                $setting[ 'settings' ] = array_values( $setting[ 'settings' ] );
+            if( isset( $setting['type'] ) && 'fieldset' == $setting['type'] ){
+                $setting['settings'] = array_values( $setting['settings'] );
             }
 
-            $groups[ $group ][ 'settings'][] = $setting;
+            $groups[ $group ]['settings'][] = $setting;
         }
 
         foreach( $groups as $id => $group ) {
-            if ( empty( $group[ 'settings' ] ) ) {
+            if ( empty( $group['settings'] ) ) {
                 unset( $groups[ $id ] );
             }
         }
 
-        unset( $groups[ "" ] );
+        unset( $groups[""] );
 
         usort( $groups, array( $this, 'setting_group_priority' ) );
 
@@ -430,12 +430,12 @@ final class NF_Admin_Menus_Forms extends NF_Abstracts_Menu
 
         foreach( $settings as $setting ){
 
-            if( 'fieldset' == $setting[ 'type' ] ){
+            if( 'fieldset' == $setting['type'] ){
 
-                $unique_settings = array_merge( $unique_settings, $this->_unique_settings( $setting[ 'settings' ] ) );
+                $unique_settings = array_merge( $unique_settings, $this->_unique_settings( $setting['settings'] ) );
             } else {
 
-                $name                     = $setting[ 'name' ];
+                $name                     = $setting['name'];
                 $unique_settings[ $name ] = $setting;
             }
 
@@ -450,8 +450,8 @@ final class NF_Admin_Menus_Forms extends NF_Abstracts_Menu
 
         foreach( $settings as $setting ){
 
-            $name                      = ( isset( $setting[ 'name' ] ) ) ? $setting[ 'name' ] : '';
-            $default                   = ( isset( $setting[ 'value' ] ) ) ? $setting[ 'value' ] : '';
+            $name                      = ( isset( $setting['name'] ) ) ? $setting['name'] : '';
+            $default                   = ( isset( $setting['value'] ) ) ? $setting['value'] : '';
             $setting_defaults[ $name ] = $default;
         }
 
@@ -462,7 +462,7 @@ final class NF_Admin_Menus_Forms extends NF_Abstracts_Menu
     {
         $actions = get_transient( 'ninja-forms-builder-actions-feed' );
 
-        $bust = ( isset( $_GET[ 'nf-bust-actions-feed' ] ) );
+        $bust = ( isset( $_GET['nf-bust-actions-feed'] ) );
 
         if( $bust || ! $actions ) {
             $actions = wp_remote_get( 'https://ninjaforms.com/?action_feed=true' );
@@ -477,10 +477,10 @@ final class NF_Admin_Menus_Forms extends NF_Abstracts_Menu
 
     protected function setting_group_priority( $a, $b )
     {
-        $priority[ 0 ] = ( isset( $a[ 'priority' ] ) ) ? $a[ 'priority' ] : 500;
-        $priority[ 1 ] = ( isset( $b[ 'priority' ] ) ) ? $b[ 'priority' ] : 500;
+        $priority[0] = ( isset( $a['priority'] ) ) ? $a['priority'] : 500;
+        $priority[1] = ( isset( $b['priority'] ) ) ? $b['priority'] : 500;
 
-        return $priority[ 0 ] - $priority[ 1 ];
+        return $priority[0] - $priority[1];
     }
 
 

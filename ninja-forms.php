@@ -18,7 +18,7 @@ if( version_compare( get_option( 'ninja_forms_version', '0.0.0' ), '3', '<' ) ) 
     update_option( 'ninja_forms_load_deprecated', TRUE );
 }
 
-if( get_option( 'ninja_forms_load_deprecated', FALSE )  && ! isset( $_POST[ 'nf2to3' ] ) ) {
+if( get_option( 'ninja_forms_load_deprecated', FALSE )  && ! isset( $_POST['nf2to3'] ) ) {
 
     include 'deprecated/ninja-forms.php';
 
@@ -46,32 +46,32 @@ if( get_option( 'ninja_forms_load_deprecated', FALSE )  && ! isset( $_POST[ 'nf2
 
     add_action( 'wp_ajax_ninja_forms_ajax_import_form', 'ninja_forms_ajax_import_form' );
     function ninja_forms_ajax_import_form(){
-        $import  = stripslashes( $_POST[ 'import' ] ); // TODO: How to sanitize serialized string?
-        $form_id = ( isset( $_POST[ 'formID' ] ) ) ? absint( $_POST[ 'formID' ] ) : '';
+        $import  = stripslashes( $_POST['import'] ); // TODO: How to sanitize serialized string?
+        $form_id = ( isset( $_POST['formID'] ) ) ? absint( $_POST['formID'] ) : '';
 
         Ninja_Forms()->form()->import_form( $import, $form_id, TRUE );
 
-        if( isset( $_POST[ 'flagged' ] ) && $_POST[ 'flagged' ] ){
+        if( isset( $_POST['flagged'] ) && $_POST['flagged'] ){
             $form = Ninja_Forms()->form( $form_id )->get();
             $form->update_setting( 'lock', TRUE );
             $form->save();
         }
 
 
-        echo json_encode( array( 'export' => $_POST[ 'import' ], 'import' => $import ) );
+        echo json_encode( array( 'export' => $_POST['import'], 'import' => $import ) );
         wp_die();
     }
 
     add_action( 'wp_ajax_ninja_forms_ajax_import_fields', 'ninja_forms_ajax_import_fields' );
     function ninja_forms_ajax_import_fields(){
-        $fields = stripslashes( $_POST[ 'fields' ] ); // TODO: How to sanitize serialized string?
+        $fields = stripslashes( $_POST['fields'] ); // TODO: How to sanitize serialized string?
         $fields = maybe_unserialize( $fields );
 
         foreach( $fields as $field ) {
-            Ninja_Forms()->form()->import_field( $field, $field[ 'id' ], TRUE );
+            Ninja_Forms()->form()->import_field( $field, $field['id'], TRUE );
         }
 
-        echo json_encode( array( 'export' => $_POST[ 'fields' ], 'import' => $fields ) );
+        echo json_encode( array( 'export' => $_POST['fields'], 'import' => $fields ) );
         wp_die();
     }
 
@@ -214,15 +214,15 @@ if( get_option( 'ninja_forms_load_deprecated', FALSE )  && ! isset( $_POST[ 'nf2
                 /**
                  * Admin Menus
                  */
-                self::$instance->menus[ 'forms' ]        = new NF_Admin_Menus_Forms();
-                self::$instance->menus[ 'all-forms' ]    = new NF_Admin_Menus_AllForms();
-                self::$instance->menus[ 'add-new' ]      = new NF_Admin_Menus_AddNew();
-                self::$instance->menus[ 'settings' ]     = new NF_Admin_Menus_Settings();
-                self::$instance->menus[ 'add-ons' ]      = new NF_Admin_Menus_Addons();
-                self::$instance->menus[ 'system_status'] = new NF_Admin_Menus_SystemStatus();
-                self::$instance->menus[ 'submissions']   = new NF_Admin_Menus_Submissions();
-                self::$instance->menus[ 'import-export'] = new NF_Admin_Menus_ImportExport();
-                self::$instance->menus[ 'licenses']      = new NF_Admin_Menus_Licenses();
+                self::$instance->menus['forms']         = new NF_Admin_Menus_Forms();
+                self::$instance->menus['all-forms']     = new NF_Admin_Menus_AllForms();
+                self::$instance->menus['add-new']       = new NF_Admin_Menus_AddNew();
+                self::$instance->menus['settings']      = new NF_Admin_Menus_Settings();
+                self::$instance->menus['add-ons']       = new NF_Admin_Menus_Addons();
+                self::$instance->menus['system_status'] = new NF_Admin_Menus_SystemStatus();
+                self::$instance->menus['submissions']   = new NF_Admin_Menus_Submissions();
+                self::$instance->menus['import-export'] = new NF_Admin_Menus_ImportExport();
+                self::$instance->menus['licenses']      = new NF_Admin_Menus_Licenses();
 
                 /**
                  * Admin menus used for building out the admin UI
@@ -235,17 +235,17 @@ if( get_option( 'ninja_forms_load_deprecated', FALSE )  && ! isset( $_POST[ 'nf2
                 // self::$instance->menus[ 'edit-action']      = new NF_Admin_Menus_EditAction();
                 // self::$instance->menus[ 'edit-settings']    = new NF_Admin_Menus_EditSettings();
                 // self::$instance->menus[ 'fields-layout']    = new NF_Admin_Menus_FieldsLayout();
-                self::$instance->menus[ 'mock-data'] = new NF_Admin_Menus_MockData();
+                self::$instance->menus['mock-data'] = new NF_Admin_Menus_MockData();
                 // self::$instance->menus[ 'preview']          = new NF_Admin_Menus_Preview();
 
                 /**
                  * AJAX Controllers
                  */
-                self::$instance->controllers[ 'form' ]        = new NF_AJAX_Controllers_Form();
-                self::$instance->controllers[ 'preview' ]     = new NF_AJAX_Controllers_Preview();
-                self::$instance->controllers[ 'uploads' ]     = new NF_AJAX_Controllers_Uploads();
-                self::$instance->controllers[ 'submission' ]  = new NF_AJAX_Controllers_Submission();
-                self::$instance->controllers[ 'savedfields' ] = new NF_AJAX_Controllers_SavedFields();
+                self::$instance->controllers['form']        = new NF_AJAX_Controllers_Form();
+                self::$instance->controllers['preview']     = new NF_AJAX_Controllers_Preview();
+                self::$instance->controllers['uploads']     = new NF_AJAX_Controllers_Uploads();
+                self::$instance->controllers['submission']  = new NF_AJAX_Controllers_Submission();
+                self::$instance->controllers['savedfields'] = new NF_AJAX_Controllers_SavedFields();
 
                 /**
                  * WP-CLI Commands
@@ -287,12 +287,12 @@ if( get_option( 'ninja_forms_load_deprecated', FALSE )  && ! isset( $_POST[ 'nf2
                 /**
                  * Merge Tags
                  */
-                self::$instance->merge_tags[ 'user' ]         = new NF_MergeTags_User();
-                self::$instance->merge_tags[ 'post' ]         = new NF_MergeTags_Post();
-                self::$instance->merge_tags[ 'system' ]       = new NF_MergeTags_System();
-                self::$instance->merge_tags[ 'fields' ]       = new NF_MergeTags_Fields();
-                self::$instance->merge_tags[ 'calcs' ]        = new NF_MergeTags_Calcs();
-                self::$instance->merge_tags[ 'querystrings' ] = new NF_MergeTags_QueryStrings();
+                self::$instance->merge_tags['user']         = new NF_MergeTags_User();
+                self::$instance->merge_tags['post']         = new NF_MergeTags_Post();
+                self::$instance->merge_tags['system']       = new NF_MergeTags_System();
+                self::$instance->merge_tags['fields']       = new NF_MergeTags_Fields();
+                self::$instance->merge_tags['calcs']        = new NF_MergeTags_Calcs();
+                self::$instance->merge_tags['querystrings'] = new NF_MergeTags_QueryStrings();
 
                 /**
                  * Add Form Modal
@@ -302,7 +302,7 @@ if( get_option( 'ninja_forms_load_deprecated', FALSE )  && ! isset( $_POST[ 'nf2
                 /**
                  * EOS Parser
                  */
-                self::$instance->_eos[ 'parser' ] = require_once 'includes/Libraries/EOS/Parser.php';
+                self::$instance->_eos['parser'] = require_once 'includes/Libraries/EOS/Parser.php';
 
                 self::$instance->session = new NF_Session();
 

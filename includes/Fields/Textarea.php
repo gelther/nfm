@@ -25,8 +25,8 @@ class NF_Fields_Textarea extends NF_Abstracts_Input
 
         $this->_nicename = __( 'Paragraph Text', 'ninja-forms' );
 
-        $this->_settings[ 'default' ][ 'type' ]     = 'textarea';
-        $this->_settings[ 'placeholder' ][ 'type' ] = 'textarea';
+        $this->_settings['default']['type']     = 'textarea';
+        $this->_settings['placeholder']['type'] = 'textarea';
     }
 
     public function admin_form_element( $id, $value )

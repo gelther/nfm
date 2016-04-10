@@ -23,15 +23,15 @@ class NF_Fields_StarRating extends NF_Abstracts_Input
     {
         parent::__construct();
 
-        $this->_settings[ 'default' ][ 'group' ] = 'primary';
+        $this->_settings['default']['group'] = 'primary';
 
-        $this->_settings[ 'default' ][ 'label' ] = __( 'Number of Stars', 'ninja-forms' );
+        $this->_settings['default']['label'] = __( 'Number of Stars', 'ninja-forms' );
 
-        $this->_settings[ 'default' ][ 'width' ] = 'one-half';
+        $this->_settings['default']['width'] = 'one-half';
 
-        $this->_settings[ 'default' ][ 'use_merge_tags' ] = FALSE;
+        $this->_settings['default']['use_merge_tags'] = FALSE;
 
-        $this->_settings[ 'default' ][ 'value' ] = 5;
+        $this->_settings['default']['value'] = 5;
 
         $this->_nicename = __( 'Star Rating', 'ninja-forms' );
     }
