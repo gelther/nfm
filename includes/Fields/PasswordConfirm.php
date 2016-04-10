@@ -62,4 +62,5 @@ class NF_Fields_PasswordConfirm extends NF_Fields_Password
 
         return $this->_error_message = $error_message;
     }
+
 }
