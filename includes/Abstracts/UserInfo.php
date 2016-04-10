@@ -20,12 +20,12 @@ abstract class NF_Abstracts_UserInfo extends NF_Fields_Textbox
             array( 'key', 'label', 'label_pos', 'required', 'default', 'placeholder', 'classes', 'admin_label', 'help', 'description' )
         );
 
-        $this->_settings[ 'default' ][ 'settings' ][ 'default_type' ][ 'options' ][] = array(
+        $this->_settings['default']['settings']['default_type']['options'][] = array(
             'label' => __( 'User Meta (if logged in)', 'ninja-forms' ),
             'value' => 'user-meta'
         );
 
-        $this->_settings[ 'default' ][ 'settings' ][ 'default_type' ][ 'value' ] = 'user-meta';
+        $this->_settings['default']['settings']['default_type']['value'] = 'user-meta';
 
         add_filter( 'ninja_forms_render_default_value', array( $this, 'filter_default_value' ), 10, 3 );
     }
