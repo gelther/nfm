@@ -12,7 +12,7 @@ class NF_AJAX_Controllers_Form extends NF_Abstracts_Controller
     {
         check_ajax_referer( 'ninja_forms_ajax_nonce', 'security' );
 
-        if( ! isset( $_POST[ 'form' ] ) ){
+        if( ! isset( $_POST[ 'form' ] ) ) {
             $this->_errors[] = 'Form Not Found';
             $this->_respond();
         }
@@ -50,9 +50,9 @@ class NF_AJAX_Controllers_Form extends NF_Abstracts_Controller
             }
         }
 
-        if( isset( $form_data[ 'deleted_fields' ] ) ){
+        if( isset( $form_data[ 'deleted_fields' ] ) ) {
 
-            foreach( $form_data[ 'deleted_fields' ] as  $deleted_field_id ){
+            foreach( $form_data[ 'deleted_fields' ] as  $deleted_field_id ) {
 
                 $field = Ninja_Forms()->form()->get_field( $deleted_field_id );
                 $field->delete();
@@ -78,7 +78,7 @@ class NF_AJAX_Controllers_Form extends NF_Abstracts_Controller
                     $action_class = Ninja_Forms()->actions[ $action_type ];
 
                     $action_settings = $action_class->save( $action_data[ 'settings' ] );
-                    if( $action_settings ){
+                    if( $action_settings ) {
                         $action_data[ 'settings' ] = $action_settings;
                         $action->update_settings( $action_settings )->save();
                     }
@@ -115,9 +115,9 @@ class NF_AJAX_Controllers_Form extends NF_Abstracts_Controller
             }
         }
 
-        if( isset( $form_data[ 'deleted_actions' ] ) ){
+        if( isset( $form_data[ 'deleted_actions' ] ) ) {
 
-            foreach( $form_data[ 'deleted_actions' ] as  $deleted_action_id ){
+            foreach( $form_data[ 'deleted_actions' ] as  $deleted_action_id ) {
 
                 $action = Ninja_Forms()->form()->get_action( $deleted_action_id );
                 $action->delete();
