@@ -107,7 +107,7 @@ class NF_AJAX_Controllers_Preview extends NF_Abstracts_Controller
 
         if( isset( $form_data[ 'actions' ][ $action_id ] ) ){
 
-            $settings        = $form_data[ 'actions' ][$action_id][ 'settings' ];
+            $settings        = $form_data[ 'actions' ][ $action_id ][ 'settings' ];
             $action_settings = array_merge( $action_settings, $settings );
         }
 
