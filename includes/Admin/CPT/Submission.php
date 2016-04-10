@@ -108,7 +108,7 @@ class NF_Admin_CPT_Submission
             $columns[ $id ] = ( $admin_label ) ? $admin_label : $label;
         }
 
-        $columns['sub_date'] = __( 'Date', 'ninja-forms' );
+        $columns[ 'sub_date' ] = __( 'Date', 'ninja-forms' );
 
         return $columns;
     }
@@ -133,7 +133,7 @@ class NF_Admin_CPT_Submission
     {
         global $pagenow;
 
-        if ( ! isset ( $_POST['nf_edit_sub'] ) || $_POST['nf_edit_sub'] != 1 ) {
+        if ( ! isset ( $_POST[ 'nf_edit_sub' ] ) || $_POST[ 'nf_edit_sub' ] != 1 ) {
             return $nf_sub_id;
         }
 
@@ -161,14 +161,14 @@ class NF_Admin_CPT_Submission
 
         $sub = Ninja_Forms()->form()->sub( $nf_sub_id )->get();
 
-        foreach ( $_POST['fields'] as $field_id => $user_value ) {
+        foreach ( $_POST[ 'fields' ] as $field_id => $user_value ) {
             $user_value = apply_filters( 'nf_edit_sub_user_value', $user_value, $field_id, $nf_sub_id );
             $sub->update_field_value( $field_id, $user_value );
         }
 
         $sub->save();
 
-        set_transient( 'nf_sub_edit_ref', esc_url_raw( $_REQUEST['ref'] ) );
+        set_transient( 'nf_sub_edit_ref', esc_url_raw( $_REQUEST[ 'ref' ] ) );
     }
 
     /**
@@ -251,7 +251,7 @@ class NF_Admin_CPT_Submission
      */
     private function not_found_message()
     {
-        if ( ! isset ( $_REQUEST['form_id'] ) || empty( $_REQUEST['form_id'] ) ) {
+        if ( ! isset ( $_REQUEST[ 'form_id' ] ) || empty( $_REQUEST[ 'form_id' ] ) ) {
             return __( 'Please select a form to view submissions', 'ninja-forms' );
         } else {
             return __( 'No Submissions Found', 'ninja-forms' );
