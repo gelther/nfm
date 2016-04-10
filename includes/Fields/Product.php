@@ -73,4 +73,5 @@ class NF_Fields_Product extends NF_Abstracts_Input
 
         return $value;
     }
+
 }

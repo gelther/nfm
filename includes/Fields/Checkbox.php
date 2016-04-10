@@ -45,4 +45,5 @@ class NF_Fields_Checkbox extends NF_Abstracts_Input
         }
         return $value;
     }
+
 }

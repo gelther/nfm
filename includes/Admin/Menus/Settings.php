@@ -86,7 +86,6 @@ final class NF_Admin_Menus_Settings extends NF_Abstracts_Submenu
         }
 
         Ninja_Forms::template( 'admin-menu-settings.html.php', compact( 'tabs', 'active_tab', 'groups', 'grouped_settings', 'save_button_text', 'errors' ) );
-
     }
 
     public function add_saved_field_javascript() {

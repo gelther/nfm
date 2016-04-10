@@ -15,4 +15,5 @@ class NF_Database_Migrations_Settings extends NF_Abstracts_Migration
 
         Ninja_Forms()->update_settings( $settings );
     }
+
 }

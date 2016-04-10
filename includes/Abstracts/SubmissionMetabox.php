@@ -26,4 +26,5 @@ abstract class NF_Abstracts_SubmissionMetabox extends NF_Abstracts_Metabox
         add_action( 'add_meta_boxes', array( $this, 'add_meta_boxes' ) );
         add_action( 'save_post', array( $this, '_save_post' ) );
     }
+
 }

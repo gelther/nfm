@@ -27,4 +27,5 @@ class NF_Fields_CreditCardZip extends NF_Fields_Zip
 
         return $field_types;
     }
+
 }

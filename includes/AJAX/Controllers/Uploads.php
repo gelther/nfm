@@ -108,5 +108,4 @@ class NF_AJAX_Controllers_Uploads extends NF_Abstracts_Controller
         return $message;
     }
 
-
 }

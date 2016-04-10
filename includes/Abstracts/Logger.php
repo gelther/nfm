@@ -118,4 +118,5 @@ abstract class NF_Abstracts_Logger implements LoggerInterface
     public function debug( $message, array $context = array() ) {
         $this->log( LogLevel::DEBUG, $message, $context );
     }
+
 }

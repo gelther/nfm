@@ -82,4 +82,5 @@ class NF_Fields_Shipping extends NF_Abstracts_Input
 
         return $value;
     }
+
 }

@@ -21,4 +21,5 @@ class NF_Fields_Address2 extends NF_Fields_Textbox
 
         $this->_nicename = __( 'Address 2', 'ninja-forms' );
     }
+
 }

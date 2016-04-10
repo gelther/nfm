@@ -193,4 +193,5 @@ class NF_AJAX_Controllers_Submission extends NF_Abstracts_Controller
             $this->_respond();
         }
     }
+
 }

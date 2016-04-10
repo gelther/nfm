@@ -673,7 +673,6 @@ final class NF_Database_MockData
             ->update_setting( 'order', 5 )
             ->update_setting( 'wrapper_class', 'one-fourth' )
             ->save();
-
     }
 
     public function form_product_1() {

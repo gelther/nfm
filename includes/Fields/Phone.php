@@ -22,4 +22,5 @@ class NF_Fields_Phone extends NF_Fields_Textbox
 
         $this->_nicename = __( 'Phone', 'ninja-forms' );
     }
+
 }

@@ -69,4 +69,5 @@ final class NF_Database_Logger extends NF_Abstracts_Logger
         // interpolate replacement values into the message and return
         return strtr( $message, $replace );
     }
+
 }

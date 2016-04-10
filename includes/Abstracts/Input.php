@@ -22,4 +22,5 @@ abstract class NF_Abstracts_Input extends NF_Abstracts_Field
     public function get_parent_type() {
         return parent::get_type();
     }
+
 }

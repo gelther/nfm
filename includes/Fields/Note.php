@@ -35,4 +35,5 @@ class NF_Fields_Note extends NF_Fields_Hidden
         $field_types[] = $this->_name;
         return $field_types;
     }
+
 }

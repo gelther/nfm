@@ -164,7 +164,7 @@ class NF_Extension_Updater
     }
 
     private function maybe_debug( $data, $key = 'debug' ) {
-        if ( isset ( $_GET[ $key ] ) && 'true' == $_GET[ $key ] ) {
+        if ( isset( $_GET[ $key ] ) && 'true' == $_GET[ $key ] ) {
             echo '<pre>'; var_dump( $data ); echo '</pre>';
             die();
         }

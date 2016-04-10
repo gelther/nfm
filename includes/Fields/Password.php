@@ -20,4 +20,5 @@ class NF_Fields_Password extends NF_Abstracts_Input
 
         $this->_nicename = __( 'Password', 'ninja-forms' );
     }
+
 }

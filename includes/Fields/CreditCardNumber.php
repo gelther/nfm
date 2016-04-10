@@ -31,4 +31,5 @@ class NF_Fields_CreditCardNumber extends NF_Abstracts_Input
 
         return $field_types;
     }
+
 }

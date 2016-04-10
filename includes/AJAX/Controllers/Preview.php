@@ -72,7 +72,7 @@ class NF_AJAX_Controllers_Preview extends NF_Abstracts_Controller
                     continue;
                 }
 
-                $old_settings = ( isset ( $form_data[ 'actions' ][ $id ][ 'settings' ] ) ) ? $form_data[ 'actions' ][ $id ][ 'settings' ]: array();
+                $old_settings = ( isset( $form_data[ 'actions' ][ $id ][ 'settings' ] ) ) ? $form_data[ 'actions' ][ $id ][ 'settings' ]: array();
 
                 $new_settings = array_merge( $old_settings, $action[ 'settings' ] );
 
@@ -158,4 +158,5 @@ class NF_AJAX_Controllers_Preview extends NF_Abstracts_Controller
             $this->_errors[ 'Option' ]                   = self::$transient_prefix . $form_data[ 'id' ];
         }
     }
+
 }

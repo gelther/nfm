@@ -68,4 +68,5 @@ final class NF_Actions_SuccessMessage extends NF_Abstracts_Action
 
         return $import;
     }
+
 }

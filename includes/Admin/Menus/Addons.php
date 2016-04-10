@@ -27,9 +27,9 @@ final class NF_Admin_Menus_Addons extends NF_Abstracts_Submenu
                 $plugin_data = get_plugin_data( WP_PLUGIN_DIR . '/' . $item[ 'plugin' ], false, true );
             }
 
-            $version = isset ( $plugin_data[ 'Version' ] ) ? $plugin_data[ 'Version' ] : '';
+            $version = isset( $plugin_data[ 'Version' ] ) ? $plugin_data[ 'Version' ] : '';
 
-            if ( ! empty ( $version ) && $version < $item[ 'version' ] ) {
+            if ( ! empty( $version ) && $version < $item[ 'version' ] ) {
 
                 $notices[] = array(
                     'title'       => $item[ 'title' ],

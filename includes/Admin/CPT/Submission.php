@@ -27,7 +27,6 @@ class NF_Admin_CPT_Submission
 
         add_action( 'add_meta_boxes', array( $this, 'add_meta_boxes' ), 10, 2 );
         add_action( 'add_meta_boxes', array( $this, 'remove_meta_boxes' ) );
-
     }
 
     /**
@@ -121,13 +120,12 @@ class NF_Admin_CPT_Submission
             $field = Ninja_Forms()->form()->get_field( $column );
             echo apply_filters( 'ninja_forms_custom_columns', $value, $field );
         }
-
     }
 
     public function save_nf_sub( $nf_sub_id, $nf_sub ) {
         global $pagenow;
 
-        if ( ! isset ( $_POST[ 'nf_edit_sub' ] ) || $_POST[ 'nf_edit_sub' ] != 1 ) {
+        if ( ! isset( $_POST[ 'nf_edit_sub' ] ) || $_POST[ 'nf_edit_sub' ] != 1 ) {
             return $nf_sub_id;
         }
 
@@ -240,7 +238,7 @@ class NF_Admin_CPT_Submission
      * PRIVATE METHODS
      */
     private function not_found_message() {
-        if ( ! isset ( $_REQUEST[ 'form_id' ] ) || empty( $_REQUEST[ 'form_id' ] ) ) {
+        if ( ! isset( $_REQUEST[ 'form_id' ] ) || empty( $_REQUEST[ 'form_id' ] ) ) {
             return __( 'Please select a form to view submissions', 'ninja-forms' );
         } else {
             return __( 'No Submissions Found', 'ninja-forms' );

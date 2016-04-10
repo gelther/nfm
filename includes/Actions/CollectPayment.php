@@ -84,4 +84,5 @@ final class NF_Actions_CollectPayment extends NF_Abstracts_Action
 
         return $action_type_settings;
     }
+
 }

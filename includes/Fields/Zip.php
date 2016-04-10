@@ -23,4 +23,5 @@ class NF_Fields_Zip extends NF_Fields_Textbox
 
         $this->_nicename = __( 'Zip', 'ninja-forms' );
     }
+
 }

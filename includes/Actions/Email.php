@@ -208,4 +208,5 @@ final class NF_Actions_Email extends NF_Abstracts_Action
     public function ninja_forms_action_email_attachments( $attachments, $form_data, $action_settings ) {
         return apply_filters( 'nf_email_notification_attachments', $attachments, $action_settings[ 'id' ] );
     }
+
 }

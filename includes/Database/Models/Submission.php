@@ -403,5 +403,4 @@ final class NF_Database_Models_Submission
         return $field_key;
     }
 
-
 } // End NF_Database_Models_Submission

@@ -59,4 +59,5 @@ class NF_Fields_Recaptcha extends NF_Abstracts_Field
         $field_types[] = $this->_name;
         return $field_types;
     }
+
 }

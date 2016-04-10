@@ -140,4 +140,5 @@ final class NF_Admin_Menus_SystemStatus extends NF_Abstracts_Submenu
 
         Ninja_Forms::template( 'admin-menu-system-status.html.php', compact( 'environment', 'site_wide_plugins' ) );
     }
+
 } // End Class NF_Admin_SystemStatus

@@ -181,7 +181,6 @@ class NF_Abstracts_ModelFactory
         NF_Database_Models_Field::import( $settings, $field_id, $is_conversion );
     }
 
-
     /**
      * ACTIONS
      */

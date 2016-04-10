@@ -232,7 +232,6 @@ abstract class NF_Abstracts_Field
 
         $parent = Ninja_Forms()->fields[ $parent_class_name ];
         return array_merge( $templates, $parent->get_templates() );
-
     }
 
     public function get_wrap_template() {

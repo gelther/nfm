@@ -29,4 +29,5 @@ class NF_Fields_CreditCardExpiration extends NF_Abstracts_Input
 
         return $field_types;
     }
+
 }
