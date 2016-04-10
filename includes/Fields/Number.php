@@ -30,4 +30,5 @@ class NF_Fields_Number extends NF_Abstracts_Input
     public function get_parent_type() {
         return parent::get_type();
     }
+
 }
