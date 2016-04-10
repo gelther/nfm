@@ -18,8 +18,7 @@ class NF_Fields_Zip extends NF_Fields_Textbox
 
     protected $_test_value = '37312';
 
-    public function __construct()
-    {
+    public function __construct() {
         parent::__construct();
 
         $this->_nicename = __( 'Zip', 'ninja-forms' );
