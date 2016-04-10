@@ -3,8 +3,8 @@
 return array(
 
     /**
-    * Redirect URL
-    */
+     * Redirect URL
+     */
 
     'redirect_url' => array(
         'name'           => 'redirect_url',
