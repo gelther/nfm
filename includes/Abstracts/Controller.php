@@ -16,7 +16,7 @@ abstract class NF_Abstracts_Controller
      */
     protected $_data = array();
 
-    /*
+    /**
      * PUBLIC METHODS
      */
 
@@ -29,7 +29,7 @@ abstract class NF_Abstracts_Controller
     }
 
 
-    /*
+    /**
      * PROTECTED METHODS
      */
 
