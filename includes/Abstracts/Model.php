@@ -161,7 +161,7 @@ class NF_Abstracts_Model
                 "
             );
 
-            if( $field ){
+            if( $field ) {
                 $this->_id = $field->id;
             } else {
                 $this->_tmp_id = $id;
@@ -276,7 +276,7 @@ class NF_Abstracts_Model
         }
 
         // Un-serialize queried settings results.
-        foreach( $this->_settings as $key => $value ){
+        foreach( $this->_settings as $key => $value ) {
             $this->_settings[ $key ] = maybe_unserialize( $value );
         }
 
@@ -287,7 +287,7 @@ class NF_Abstracts_Model
             && (count( $only ) == count( $only, COUNT_RECURSIVE )) ) {
 
             // If only one setting, return a single value
-            if( 1 == count( $only ) ){
+            if( 1 == count( $only ) ) {
 
                 if( isset( $this->_settings[ $only[ 0 ] ] ) ) {
                     return $this->_settings[ $only[ 0 ] ];
@@ -329,7 +329,7 @@ class NF_Abstracts_Model
      */
     public function update_settings( $data )
     {
-        foreach( $data as $key => $value ){
+        foreach( $data as $key => $value ) {
             $this->update_setting( $key, $value );
         }
 
@@ -414,7 +414,7 @@ class NF_Abstracts_Model
         $class = get_class( $this );
 
         $results = array();
-        foreach( $ids as $id ){
+        foreach( $ids as $id ) {
 
             // Instantiate a new object for each ID
             $results[] = $object = new $class( $this->_db, $id, $parent_id );
@@ -434,11 +434,11 @@ class NF_Abstracts_Model
     public function save()
     {
         // If the ID is not set, assign an ID
-        if( ! $this->_id ){
+        if( ! $this->_id ) {
 
             $data = array( 'created_at' => time() );
 
-            if( $this->_parent_id ){
+            if( $this->_parent_id ) {
                 $data[ 'parent_id' ] = $this->_parent_id;
             }
 
@@ -454,7 +454,7 @@ class NF_Abstracts_Model
 
             $result = $this->_db->get_row( "SELECT * FROM $this->_table_name WHERE id = $this->_id" );
 
-            if( ! $result ){
+            if( ! $result ) {
                 $this->_insert_row( array( 'id' => $this->_id ) );
             }
         }
@@ -462,7 +462,7 @@ class NF_Abstracts_Model
         $this->_save_settings();
 
         // If a Temporary ID is set, return it along with the newly assigned ID.
-        if( $this->_tmp_id ){
+        if( $this->_tmp_id ) {
             return array( $this->_tmp_id => $this->_id );
         }
     }
@@ -471,7 +471,7 @@ class NF_Abstracts_Model
     {
         $data[ 'created_at' ] = time();
 
-        if( $this->_parent_id ){
+        if( $this->_parent_id ) {
             $data[ 'parent_id' ] = $this->_parent_id;
         }
 
@@ -534,7 +534,7 @@ class NF_Abstracts_Model
     protected function _save_setting( $key, $value )
     {
         // If the setting is a column, save the settings to the model's table.
-        if( in_array( $key, $this->_columns ) ){
+        if( in_array( $key, $this->_columns ) ) {
 
             return $this->_db->update(
                 $this->_table_name,
@@ -556,7 +556,7 @@ class NF_Abstracts_Model
                 "
         );
 
-        if( $meta_row ){
+        if( $meta_row ) {
 
             $result = $this->_db->update(
                 $this->_meta_table_name,
@@ -601,7 +601,7 @@ class NF_Abstracts_Model
     {
         if( ! $this->_settings ) return;
 
-        foreach( $this->_settings as $key => $value ){
+        foreach( $this->_settings as $key => $value ) {
             $value            = maybe_serialize( $value );
             $this->_results[] = $this->_save_setting( $key, $value );
         }
@@ -632,7 +632,7 @@ class NF_Abstracts_Model
         );
 
         // If a relationship does not exists, then create one.
-        if( 0 == $this->_db->num_rows ){
+        if( 0 == $this->_db->num_rows ) {
 
             $this->_db->insert(
                 $this->_relationships_table,
@@ -693,7 +693,7 @@ class NF_Abstracts_Model
         // TODO: Breaks SQL. Needs more testing.
         // if( $where_statement ) $where_statement = "AND " . $where_statement;
 
-        if( $parent_id ){
+        if( $parent_id ) {
             $where_statement = "$this->_table_name.parent_id = $parent_id $where_statement";
         }
 
