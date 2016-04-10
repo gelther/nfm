@@ -19,8 +19,7 @@ abstract class NF_Abstracts_List extends NF_Abstracts_Field
 
     public static $_base_template = 'list';
 
-    public function __construct()
-    {
+    public function __construct() {
         parent::__construct();
 
         add_filter( 'ninja_forms_custom_columns', array( $this, 'custom_columns' ), 10, 2 );
@@ -28,13 +27,11 @@ abstract class NF_Abstracts_List extends NF_Abstracts_Field
         add_filter( 'ninja_forms_render_options', array( $this, 'query_string_default' ), 10, 2 );
     }
 
-    public function get_parent_type()
-    {
+    public function get_parent_type() {
         return parent::get_type();
     }
 
-    public function admin_form_element( $id, $value )
-    {
+    public function admin_form_element( $id, $value ) {
         $field = Ninja_Forms()->form()->get_field( $id );
 
         $options = '<option>--</option>';
@@ -46,8 +43,7 @@ abstract class NF_Abstracts_List extends NF_Abstracts_Field
         return "<select class='widefat' name='fields[$id]' id=''>$options</select>";
     }
 
-    public function custom_columns( $value, $field )
-    {
+    public function custom_columns( $value, $field ) {
         if ( $this->_name != $field->get_setting( 'type' ) ) return $value;
 
         if ( ! is_array( $value ) ) $value = array( $value );
@@ -64,8 +60,7 @@ abstract class NF_Abstracts_List extends NF_Abstracts_Field
         return $output;
     }
 
-    public function query_string_default( $options, $settings )
-    {
+    public function query_string_default( $options, $settings ) {
         if ( ! isset( $settings[ 'key' ] ) ) return $options;
 
         $field_key = $settings[ 'key' ];
