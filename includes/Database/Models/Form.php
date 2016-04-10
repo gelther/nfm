@@ -21,14 +21,12 @@ final class NF_Database_Models_Form extends NF_Abstracts_Model
 
     protected static $imported_form_id;
 
-    public function __construct( $db, $id = '' )
-    {
+    public function __construct( $db, $id = '' ) {
         add_action( 'ninja_forms_before_import_form', array( $this, 'import_form_backwards_compatibility' ) );
         parent::__construct( $db, $id );
     }
 
-    public function delete()
-    {
+    public function delete() {
         parent::delete();
 
         $fields = Ninja_Forms()->form( $this->_id )->get_fields();
@@ -44,8 +42,7 @@ final class NF_Database_Models_Form extends NF_Abstracts_Model
         }
     }
 
-    public static function get_next_sub_seq( $form_id )
-    {
+    public static function get_next_sub_seq( $form_id ) {
         $form = Ninja_Forms()->form( $form_id )->get();
 
         $last_seq_num = $form->get_setting( '_seq_num', 1 );
@@ -55,8 +52,7 @@ final class NF_Database_Models_Form extends NF_Abstracts_Model
         return $last_seq_num;
     }
 
-    public static function import( array $import, $id = '', $is_conversion )
-    {
+    public static function import( array $import, $id = '', $is_conversion ) {
         $import = apply_filters( 'ninja_forms_before_import_form', $import );
 
         /**
@@ -94,13 +90,11 @@ final class NF_Database_Models_Form extends NF_Abstracts_Model
         add_action( 'admin_notices', array( 'NF_Database_Models_Form', 'import_admin_notice' ) );
     }
 
-    public static function import_admin_notice()
-    {
+    public static function import_admin_notice() {
         Ninja_Forms()->template( 'admin-notice-form-import.html.php', array( 'form_id'=> self::$imported_form_id ) );
     }
 
-    public static function duplicate( $form_id )
-    {
+    public static function duplicate( $form_id ) {
         $form = Ninja_Forms()->form( $form_id )->get();
 
         $settings = $form->get_settings();
@@ -145,8 +139,7 @@ final class NF_Database_Models_Form extends NF_Abstracts_Model
         return $new_form_id;
     }
 
-    public static function export( $form_id, $return = false )
-    {
+    public static function export( $form_id, $return = false ) {
         //TODO: Set Date Format from Plugin Settings
         $date_format = 'm/d/Y';
 
@@ -194,8 +187,7 @@ final class NF_Database_Models_Form extends NF_Abstracts_Model
     | Backwards Compatibility
     |--------------------------------------------------------------------------
      */
-    public function import_form_backwards_compatibility( $import )
-    {
+    public function import_form_backwards_compatibility( $import ) {
         // Rename `data` to `settings`
         if ( isset( $import[ 'data' ] ) ) {
             $import[ 'settings' ] = $import[ 'data' ];
@@ -255,8 +247,7 @@ final class NF_Database_Models_Form extends NF_Abstracts_Model
         return $import;
     }
 
-    public function import_merge_tags_backwards_compatibility( $import )
-    {
+    public function import_merge_tags_backwards_compatibility( $import ) {
         $field_lookup = array();
 
         foreach ( $import[ 'fields' ] as $key => $field ) {
@@ -293,8 +284,7 @@ final class NF_Database_Models_Form extends NF_Abstracts_Model
         return $import;
     }
 
-    public function import_action_backwards_compatibility( $action )
-    {
+    public function import_action_backwards_compatibility( $action ) {
         // Remove `_` from type
         if ( isset( $action[ 'type' ] ) ) {
             $action[ 'type' ] = str_replace( '_', '', $action[ 'type' ] );
@@ -309,8 +299,7 @@ final class NF_Database_Models_Form extends NF_Abstracts_Model
         return apply_filters( 'ninja_forms_upgrade_action_' . $action[ 'type' ], $action );
     }
 
-    public function import_field_backwards_compatibility( $field )
-    {
+    public function import_field_backwards_compatibility( $field ) {
         // Flatten field settings array
         if ( isset( $field[ 'data' ] ) && is_array( $field[ 'data' ] ) ) {
             $field = array_merge( $field, $field[ 'data' ] );
