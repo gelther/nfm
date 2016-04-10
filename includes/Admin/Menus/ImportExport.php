@@ -99,8 +99,8 @@ final class NF_Admin_Menus_ImportExport extends NF_Abstracts_Submenu
         wp_enqueue_script( 'postbox' );
         wp_enqueue_script( 'jquery-ui-draggable' );
 
-        wp_nonce_field( 'closedpostboxes', 'closedpostboxesnonce', false );
-        wp_nonce_field( 'meta-box-order', 'meta-box-order-nonce', false );
+        wp_nonce_field( 'closedpostboxes', 'closedpostboxesnonce', FALSE );
+        wp_nonce_field( 'meta-box-order', 'meta-box-order-nonce', FALSE );
 
         Ninja_Forms::template( 'admin-menu-import-export.html.php', compact( 'tabs', 'active_tab' ) );
     }
