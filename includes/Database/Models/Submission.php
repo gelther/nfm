@@ -96,7 +96,7 @@ final class NF_Database_Models_Submission
      *
      * Returns a single submission value by field ID or field key.
      *
-     * @param int|string $field_ref
+     * @param  int|string $field_ref
      * @return string
      */
     public function get_field_value( $field_ref )
@@ -125,8 +125,8 @@ final class NF_Database_Models_Submission
     /**
      * Update Field Value
      *
-     * @param $field_ref
-     * @param $value
+     * @param  $field_ref
+     * @param  $value
      * @return $this
      */
     public function update_field_value( $field_ref, $value )
@@ -141,7 +141,7 @@ final class NF_Database_Models_Submission
     /**
      * Update Field Values
      *
-     * @param $data
+     * @param  $data
      * @return $this
      */
     public function update_field_values( $data )
@@ -192,8 +192,8 @@ final class NF_Database_Models_Submission
     /**
      * Find Submissions
      *
-     * @param $form_id
-     * @param array $where
+     * @param        $form_id
+     * @param  array $where
      * @return array
      */
     public function find( $form_id, array $where = array() )
@@ -231,7 +231,7 @@ final class NF_Database_Models_Submission
     /**
      * Save Submission
      *
-     * @return $this|NF_Database_Models_Submission|void
+     * @return $this |NF_Database_Models_Submission|void
      */
     public function save()
     {
@@ -352,8 +352,8 @@ final class NF_Database_Models_Submission
     /**
      * Save Field Value
      *
-     * @param $field_id
-     * @param $value
+     * @param  $field_id
+     * @param  $value
      * @return $this
      */
     protected function _save_field_value( $field_id, $value )
@@ -366,7 +366,7 @@ final class NF_Database_Models_Submission
     /**
      * Save Field Values
      *
-     * @return $this|void
+     * @return $this |void
      */
     protected function _save_field_values()
     {
@@ -398,7 +398,7 @@ final class NF_Database_Models_Submission
     /**
      * Format Meta Query
      *
-     * @param array $where
+     * @param  array $where
      * @return array
      */
     protected function format_meta_query( array $where = array() )
@@ -423,7 +423,7 @@ final class NF_Database_Models_Submission
     /**
      * Get Field ID By Key
      *
-     * @param $field_key
+     * @param        $field_key
      * @return mixed
      */
     protected function get_field_id_by_key( $field_key )
