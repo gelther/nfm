@@ -68,7 +68,7 @@ final class NF_Admin_Menus_ImportExport extends NF_Abstracts_Submenu
             foreach( $field_ids as $field_id ){
                 $field = Ninja_Forms()->form()->field( $field_id )->get();
 
-                $fields[] = $field->get_settings();
+                $fields[  ] = $field->get_settings();
             }
 
             header( "Content-type: application/csv" );
@@ -213,17 +213,17 @@ final class NF_Admin_Menus_ImportExport extends NF_Abstracts_Submenu
                     default:
                         $method = '';
                 }
-                $field['default'] = $method . "\r\n";
+                $field[ 'default' ] = $method . "\r\n";
 
-                if ( 'eq' == $field['calc_method'] && isset( $field['calc_eq'] ) ) {
-                    $field['default'] .= $field['calc_eq'];
+                if ( 'eq' == $field[ 'calc_method' ] && isset( $field[ 'calc_eq' ] ) ) {
+                    $field[ 'default' ] .= $field[ 'calc_eq' ];
                 }
 
-                if ( 'fields' == $field['calc_method'] && isset( $field['calc'] ) ) {
+                if ( 'fields' == $field[ 'calc_method' ] && isset( $field[ 'calc' ] ) ) {
                     // TODO: Support 'operations and fields (advanced)' calculations.
                 }
 
-                if ( 'auto' == $field['calc_method'] && isset( $field['calc'] ) ) {
+                if ( 'auto' == $field[ 'calc_method' ] && isset( $field[ 'calc' ] ) ) {
                     // TODO: Support 'auto-totaling' calculations.
                 }
             }
@@ -236,7 +236,7 @@ final class NF_Admin_Menus_ImportExport extends NF_Abstracts_Submenu
         if( isset( $field[ 'email' ] ) ){
 
             if( 'textbox' == $field[ 'type' ] && $field[ 'email' ] ) {
-                $field['type'] = 'email';
+                $field[ 'type' ] = 'email';
             }
             unset( $field[ 'email' ] );
         }
@@ -284,17 +284,17 @@ final class NF_Admin_Menus_ImportExport extends NF_Abstracts_Submenu
 
             if ( isset( $field[ 'list_type' ] ) ) {
 
-                if ( 'dropdown' == $field['list_type'] ) {
-                    $field['type'] = 'listselect';
+                if ( 'dropdown' == $field[ 'list_type' ] ) {
+                    $field[ 'type' ] = 'listselect';
                 }
-                if ( 'radio' == $field['list_type'] ) {
-                    $field['type'] = 'listradio';
+                if ( 'radio' == $field[ 'list_type' ] ) {
+                    $field[ 'type' ] = 'listradio';
                 }
-                if ( 'checkbox' == $field['list_type'] ) {
-                    $field['type'] = 'listcheckbox';
+                if ( 'checkbox' == $field[ 'list_type' ] ) {
+                    $field[ 'type' ] = 'listcheckbox';
                 }
-                if ( 'multi' == $field['list_type'] ) {
-                    $field['type'] = 'listmultiselect';
+                if ( 'multi' == $field[ 'list_type' ] ) {
+                    $field[ 'type' ] = 'listmultiselect';
                 }
             }
 
