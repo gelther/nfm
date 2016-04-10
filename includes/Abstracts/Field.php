@@ -6,8 +6,8 @@
 abstract class NF_Abstracts_Field
 {
     /**
-    * @var string
-    */
+     * @var string
+     */
     protected $_name  = '';
 
     /**
@@ -16,13 +16,13 @@ abstract class NF_Abstracts_Field
     protected $_nicename = '';
 
     /**
-    * @var string
-    */
+     * @var string
+     */
     protected $_section = '';
 
     /**
-    * @var string
-    */
+     * @var string
+     */
     protected $_icon = 'square-o';
 
     /**
