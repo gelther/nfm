@@ -134,7 +134,7 @@ final class WPN_Helper
 
         if ( $unit && is_array( $unit ) ) {
             // Find the position of the unit in the ordered string which is the power of magnitude to multiply a kilobyte by.
-            $size *= pow( 1024, stripos( 'bkmgtpezy', $unit[ 0 ] ) );
+            $size *= pow( 1024, stripos( 'bkmgtpezy', $unit[0] ) );
         }
 
         return round( $size );
@@ -181,7 +181,7 @@ final class WPN_Helper
 
         $value = self::htmlspecialchars( $_GET[ $key ] );
 
-        if ( is_array( $value ) ) $value = $value[ 0 ];
+        if ( is_array( $value ) ) $value = $value[0];
 
         return $value;
     }
