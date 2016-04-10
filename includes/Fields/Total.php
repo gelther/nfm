@@ -49,4 +49,5 @@ class NF_Fields_Total extends NF_Abstracts_Input
 
         return $data;
     }
+
 }
