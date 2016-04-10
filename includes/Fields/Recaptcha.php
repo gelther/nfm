@@ -49,7 +49,7 @@ class NF_Fields_Recaptcha extends NF_Abstracts_Field
             if ( $response->success === false ) {
                 if ( ! empty( $response->{'error-codes'} ) && $response->{'error-codes'} != 'missing-input-response' ) {
                     return array( __( 'Please make sure you have entered your Site & Secret keys correctly', 'ninja-forms' ) );
-                }else {
+                } else {
                     return array( __( 'Captcha mismatch. Please enter the correct value in captcha field', 'ninja-forms' ) );
                 }
             }
