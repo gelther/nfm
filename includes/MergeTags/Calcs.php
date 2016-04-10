@@ -9,19 +9,16 @@ final class NF_MergeTags_Calcs extends NF_Abstracts_MergeTags
 
     protected $_default_group = false;
 
-    public function __construct()
-    {
+    public function __construct() {
         parent::__construct();
         $this->title = __( 'Calculations', 'ninja-forms' );
     }
 
-    public function __call( $name, $arguments )
-    {
+    public function __call( $name, $arguments ) {
         return $this->merge_tags[ $name ][ 'calc_value' ];
     }
 
-    public function set_merge_tags( $key, $value )
-    {
+    public function set_merge_tags( $key, $value ) {
         $callback = ( is_numeric( $key ) ) ? 'calc_' . $key : $key;
 
         try {
