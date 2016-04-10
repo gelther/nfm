@@ -145,13 +145,13 @@ class NF_Admin_AllFormsTable extends WP_List_Table
         $order   = 'asc';
 
         // If orderby is set, use this as the sort column
-        if ( ! empty( $_GET[ 'orderby' ] ) ) {
-            $orderby = $_GET[ 'orderby' ];
+        if ( ! empty( $_GET['orderby'] ) ) {
+            $orderby = $_GET['orderby'];
         }
 
         // If order is set use this as the order
-        if ( ! empty( $_GET[ 'order' ] ) ) {
-            $order = $_GET[ 'order' ];
+        if ( ! empty( $_GET['order'] ) ) {
+            $order = $_GET['order'];
         }
 
 
@@ -166,26 +166,26 @@ class NF_Admin_AllFormsTable extends WP_List_Table
 
     function column_cb( $item ) {
         return sprintf(
-            '<input type="checkbox" name="bulk-delete[]" value="%s" />', $item[ 'id' ]
+            '<input type="checkbox" name="bulk-delete[]" value="%s" />', $item['id']
         );
     }
 
     function column_title( $item ) {
-        $title           = $item[ 'title' ];
-        $edit_url        = add_query_arg( 'form_id', $item[ 'id' ], admin_url( 'admin.php?page=ninja-forms' ) );
-        $delete_url      = add_query_arg( array( 'action' => 'delete', 'id' => $item[ 'id' ], '_wpnonce' => wp_create_nonce( 'nf_delete_form' ) ) );
-        $duplicate_url   = add_query_arg( array( 'action' => 'duplicate', 'id' => $item[ 'id' ], '_wpnonce' => wp_create_nonce( 'nf_duplicate_form' ) ) );
-        $preview_url     = add_query_arg( 'nf_preview_form', $item[ 'id' ], site_url() );
-        $submissions_url = add_query_arg( 'form_id', $item[ 'id' ], admin_url( 'edit.php?post_type=nf_sub' ) );
+        $title           = $item['title'];
+        $edit_url        = add_query_arg( 'form_id', $item['id'], admin_url( 'admin.php?page=ninja-forms' ) );
+        $delete_url      = add_query_arg( array( 'action' => 'delete', 'id' => $item['id'], '_wpnonce' => wp_create_nonce( 'nf_delete_form' ) ) );
+        $duplicate_url   = add_query_arg( array( 'action' => 'duplicate', 'id' => $item['id'], '_wpnonce' => wp_create_nonce( 'nf_duplicate_form' ) ) );
+        $preview_url     = add_query_arg( 'nf_preview_form', $item['id'], site_url() );
+        $submissions_url = add_query_arg( 'form_id', $item['id'], admin_url( 'edit.php?post_type=nf_sub' ) );
 
-        $form   = Ninja_Forms()->form( $item[ 'id' ] )->get();
+        $form   = Ninja_Forms()->form( $item['id'] )->get();
         $locked = $form->get_setting( 'lock' );
 
         Ninja_Forms::template( 'admin-menu-all-forms-column-title.html.php', compact( 'title', 'edit_url', 'delete_url', 'duplicate_url', 'preview_url', 'submissions_url', 'locked' ) );
     }
 
     public function single_row( $item ) {
-        $form   = Ninja_Forms()->form( $item[ 'id' ] )->get();
+        $form   = Ninja_Forms()->form( $item['id'] )->get();
         $locked = $form->get_setting( 'lock' );
 
         if ( $locked ) {
@@ -211,30 +211,30 @@ class NF_Admin_AllFormsTable extends WP_List_Table
     }
 
     public static function process_bulk_action() {
-        if ( isset( $_REQUEST[ 'action' ] ) && 'duplicate' === $_REQUEST[ 'action' ] ) {
+        if ( isset( $_REQUEST['action'] ) && 'duplicate' === $_REQUEST['action'] ) {
 
             // In our file that handles the request, verify the nonce.
-            $nonce = esc_attr( $_REQUEST[ '_wpnonce' ] );
+            $nonce = esc_attr( $_REQUEST['_wpnonce'] );
 
             if ( ! wp_verify_nonce( $nonce, 'nf_duplicate_form' ) ) {
                 die( 'Go get a life, script kiddies' );
             } else {
-                NF_Database_Models_Form::duplicate( absint( $_GET[ 'id' ] ) );
+                NF_Database_Models_Form::duplicate( absint( $_GET['id'] ) );
             }
 
             wp_redirect( admin_url( 'admin.php?page=ninja-forms' ) );
             exit;
         }
 
-        if ( isset( $_REQUEST[ 'action' ] ) && 'delete' === $_REQUEST[ 'action' ] ) {
+        if ( isset( $_REQUEST['action'] ) && 'delete' === $_REQUEST['action'] ) {
 
             // In our file that handles the request, verify the nonce.
-            $nonce = esc_attr( $_REQUEST[ '_wpnonce' ] );
+            $nonce = esc_attr( $_REQUEST['_wpnonce'] );
 
             if ( ! wp_verify_nonce( $nonce, 'nf_delete_form' ) ) {
                 die( 'Go get a life, script kiddies' );
             } else {
-                self::delete_item( absint( $_GET[ 'id' ] ) );
+                self::delete_item( absint( $_GET['id'] ) );
             }
 
             wp_redirect( admin_url( 'admin.php?page=ninja-forms' ) );
@@ -242,11 +242,11 @@ class NF_Admin_AllFormsTable extends WP_List_Table
         }
 
         // If the delete bulk action is triggered
-        if ( ( isset( $_POST[ 'action' ] ) && $_POST[ 'action' ] == 'bulk-delete' )
-            || ( isset( $_POST[ 'action2' ] ) && $_POST[ 'action2' ] == 'bulk-delete' )
+        if ( ( isset( $_POST['action'] ) && $_POST['action'] == 'bulk-delete' )
+            || ( isset( $_POST['action2'] ) && $_POST['action2'] == 'bulk-delete' )
         ) {
 
-            $delete_ids = esc_sql( $_POST[ 'bulk-delete' ] );
+            $delete_ids = esc_sql( $_POST['bulk-delete'] );
 
             // loop over the array of record IDs and delete them
             foreach ( $delete_ids as $id ) {
