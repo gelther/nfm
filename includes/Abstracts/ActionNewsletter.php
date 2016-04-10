@@ -145,4 +145,5 @@ abstract class NF_Abstracts_ActionNewsletter extends NF_Abstracts_Action
     private function cache_lists( $lists ) {
         set_transient( $this->_transient, $lists, $this->_transient_expiration );
     }
+
 }
