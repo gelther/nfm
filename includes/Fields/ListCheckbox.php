@@ -36,4 +36,5 @@ class NF_Fields_ListCheckbox extends NF_Abstracts_List
 
         return "<ul>$list</ul>";
     }
+
 }
