@@ -16,7 +16,7 @@ class NF_AJAX_Controllers_Uploads extends NF_Abstracts_Controller
         add_action( 'nf_uploads_delete_temporary_file', array( $this, 'delete_temporary_file' ), 10, 1 );
     }
 
-    /*
+    /**
      * PUBLIC METHODS
      */
     public function upload()
@@ -35,7 +35,7 @@ class NF_AJAX_Controllers_Uploads extends NF_Abstracts_Controller
         unlink( $file_path );
     }
 
-    /*
+    /**
      * PROTECTED METHODS
      */
     protected function validate()
@@ -70,7 +70,7 @@ class NF_AJAX_Controllers_Uploads extends NF_Abstracts_Controller
         return 'nftmp-' . strtolower( trim( str_replace( ' ', '_', $string ) ) );
     }
 
-    /*
+    /**
      * PRIVATE METHODS
      */
 
