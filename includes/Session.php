@@ -58,7 +58,6 @@ class NF_Session {
         add_filter( 'wp_session_expiration', array( $this, 'set_expiration_time' ), 99999 );
 
         add_action( 'plugins_loaded', array( $this, 'init' ), -1 );
-
     }
 
     /**
