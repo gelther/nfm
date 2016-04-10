@@ -2,13 +2,13 @@
 
 return apply_filters( 'ninja_forms_action_email_settings', array(
 
-    /*
+    /**
     |--------------------------------------------------------------------------
     | Primary Settings
     |--------------------------------------------------------------------------
     */
 
-    /*
+    /**
      * To
      */
 
@@ -23,7 +23,7 @@ return apply_filters( 'ninja_forms_action_email_settings', array(
         'use_merge_tags' => TRUE,
     ),
 
-    /*
+    /**
      * Subject
      */
 
@@ -38,7 +38,7 @@ return apply_filters( 'ninja_forms_action_email_settings', array(
         'use_merge_tags' => TRUE,
     ),
 
-    /*
+    /**
      * Email Message
      */
 
@@ -53,13 +53,13 @@ return apply_filters( 'ninja_forms_action_email_settings', array(
         'use_merge_tags' => TRUE,
     ),
 
-    /*
+    /**
     |--------------------------------------------------------------------------
     | Advanced Settings
     |--------------------------------------------------------------------------
     */
 
-    /*
+    /**
      * From Name
      */
 
@@ -74,7 +74,7 @@ return apply_filters( 'ninja_forms_action_email_settings', array(
         'use_merge_tags' => TRUE,
     ),
 
-    /*
+    /**
      * From Address
      */
 
@@ -88,7 +88,7 @@ return apply_filters( 'ninja_forms_action_email_settings', array(
         'use_merge_tags' => TRUE,
     ),
 
-    /*
+    /**
      * Reply To
      */
 
@@ -102,7 +102,7 @@ return apply_filters( 'ninja_forms_action_email_settings', array(
         'use_merge_tags' => TRUE,
     ),
 
-    /*
+    /**
      * Format
      */
 
@@ -119,7 +119,7 @@ return apply_filters( 'ninja_forms_action_email_settings', array(
 
     ),
 
-    /*
+    /**
      * Cc
      */
 
@@ -133,7 +133,7 @@ return apply_filters( 'ninja_forms_action_email_settings', array(
         'use_merge_tags' => TRUE,
     ),
 
-    /*
+    /**
      * Bcc
      */
 
@@ -147,7 +147,7 @@ return apply_filters( 'ninja_forms_action_email_settings', array(
         'use_merge_tags' => TRUE,
     ),
 
-    /*
+    /**
      * Attach CSV
      */
 
