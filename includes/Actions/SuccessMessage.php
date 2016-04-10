@@ -28,8 +28,7 @@ final class NF_Actions_SuccessMessage extends NF_Abstracts_Action
     /**
      * Constructor
      */
-    public function __construct()
-    {
+    public function __construct() {
         parent::__construct();
 
         $this->_nicename = __( 'Success Message', 'ninja-forms' );
@@ -48,8 +47,7 @@ final class NF_Actions_SuccessMessage extends NF_Abstracts_Action
     {
     }
 
-    public function process( $action_settings, $form_id, $data )
-    {
+    public function process( $action_settings, $form_id, $data ) {
         if ( isset( $action_settings[ 'success_msg' ] ) ) {
             $data[ 'actions' ][ 'success_message' ] = $action_settings[ 'success_msg' ];
         }
@@ -57,8 +55,7 @@ final class NF_Actions_SuccessMessage extends NF_Abstracts_Action
         return $data;
     }
 
-    public function import_form_action_success_message( $import )
-    {
+    public function import_form_action_success_message( $import ) {
         if ( ! isset( $import[ 'actions' ] ) ) return $import;
 
         foreach ( $import[ 'actions' ] as &$action ) {
