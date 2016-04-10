@@ -172,7 +172,7 @@ class NF_Abstracts_ModelFactory
             }
         }
 
-        usort( $this->_fields, "NF_Abstracts_Field::sort_by_order" );
+        usort( $this->_fields, 'NF_Abstracts_Field::sort_by_order' );
 
         return $this->_fields;
     }
