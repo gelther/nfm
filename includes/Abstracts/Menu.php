@@ -61,11 +61,11 @@ abstract class NF_Abstracts_Menu
      */
     public function __construct()
     {
-        if( ! $this->menu_title ) {
+        if ( ! $this->menu_title ) {
             $this->menu_title = $this->page_title;
         }
 
-        if( ! $this->menu_slug ) {
+        if ( ! $this->menu_slug ) {
             $this->menu_slug = strtolower( preg_replace( '/[^A-Za-z0-9-]+/', '-', $this->menu_title ) );
         }
 
@@ -94,7 +94,7 @@ abstract class NF_Abstracts_Menu
 
     public function body_class( $classes )
     {
-        if( isset( $_GET[ 'page' ] ) && $_GET[ 'page' ] == $this->menu_slug ) {
+        if ( isset( $_GET[ 'page' ] ) && $_GET[ 'page' ] == $this->menu_slug ) {
             $classes = "$classes ninja-forms-app";
         }
 
