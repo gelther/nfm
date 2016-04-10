@@ -127,7 +127,7 @@ class NF_AJAX_Controllers_Preview extends NF_Abstracts_Controller
                 $form_data[ 'fields' ]   = array();
                 $form_data[ 'actions' ]  = array();
             } else {
-                $form            = Ninja_Forms()->form($form_id)->get();
+                $form            = Ninja_Forms()->form( $form_id )->get();
                 $form_data['id'] = $form_id;
 
                 $form_data[ 'settings' ] = $form->get_settings();
