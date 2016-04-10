@@ -13,8 +13,8 @@ return apply_filters( 'ninja_forms_from_settings_types', array(
     ),
 
     'calculations' => array(
-    	'id'       => 'calculations',
-    	'nicename' => __( 'Calculations', 'ninja-forms' )
+        'id'       => 'calculations',
+        'nicename' => __( 'Calculations', 'ninja-forms' )
     ),
 
 ) );
