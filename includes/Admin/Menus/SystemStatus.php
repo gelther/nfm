@@ -88,15 +88,15 @@ final class NF_Admin_Menus_SystemStatus extends NF_Abstracts_Submenu
             $dirname        = dirname( $plugin );
             $version_string = '';
 
-            if ( ! empty( $plugin_data[ 'Name' ] ) ) {
+            if ( ! empty( $plugin_data['Name'] ) ) {
 
                 // link the plugin name to the plugin url if available
-                $plugin_name = $plugin_data[ 'Name' ];
-                if ( ! empty( $plugin_data[ 'PluginURI' ] ) ) {
-                    $plugin_name = '<a href="' . $plugin_data[ 'PluginURI' ] . '" title="' . __( 'Visit plugin homepage', 'ninja-forms' ) . '">' . $plugin_name . '</a>';
+                $plugin_name = $plugin_data['Name'];
+                if ( ! empty( $plugin_data['PluginURI'] ) ) {
+                    $plugin_name = '<a href="' . $plugin_data['PluginURI'] . '" title="' . __( 'Visit plugin homepage', 'ninja-forms' ) . '">' . $plugin_name . '</a>';
                 }
 
-                $all_plugins[] = $plugin_name . ' ' . __( 'by', 'ninja-forms' ) . ' ' . $plugin_data[ 'Author' ] . ' ' . __( 'version', 'ninja-forms' ) . ' ' . $plugin_data[ 'Version' ] . $version_string;
+                $all_plugins[] = $plugin_name . ' ' . __( 'by', 'ninja-forms' ) . ' ' . $plugin_data['Author'] . ' ' . __( 'version', 'ninja-forms' ) . ' ' . $plugin_data['Version'] . $version_string;
             }
         }
 
@@ -106,7 +106,7 @@ final class NF_Admin_Menus_SystemStatus extends NF_Abstracts_Submenu
             $site_wide_plugins = implode( ', <br/>', $all_plugins );
         }
 
-        $server_ip = $_SERVER[ 'SERVER_ADDR' ];
+        $server_ip = $_SERVER['SERVER_ADDR'];
         $host_name = gethostbyaddr( $server_ip );
 
         //Output array
@@ -116,7 +116,7 @@ final class NF_Admin_Menus_SystemStatus extends NF_Abstracts_Submenu
             __( 'Ninja Forms Version', 'ninja-forms' ) => esc_html( Ninja_Forms::VERSION ),
             __( 'WP Version', 'ninja-forms' ) => get_bloginfo( 'version' ),
             __( 'WP Multisite Enabled', 'ninja-forms' ) => $multisite,
-            __( 'Web Server Info', 'ninja-forms' ) => esc_html( $_SERVER[ 'SERVER_SOFTWARE' ] ),
+            __( 'Web Server Info', 'ninja-forms' ) => esc_html( $_SERVER['SERVER_SOFTWARE'] ),
             __( 'PHP Version', 'ninja-forms' ) => esc_html( phpversion() ),
             //TODO: Possibly Refactor with Ninja forms global $_db?
             __( 'MySQL Version', 'ninja-forms' ) => $wpdb->db_version(),
