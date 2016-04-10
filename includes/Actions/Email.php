@@ -84,11 +84,11 @@ final class NF_Actions_Email extends NF_Abstracts_Action
     {
         $attachments = array();
 
-        if( $settings[ 'attach_csv' ] ) {
+        if ( $settings[ 'attach_csv' ] ) {
             $attachments[] = $this->_create_csv( $data[ 'fields' ] );
         }
 
-        if( ! isset( $settings[ 'id' ] ) ) $settings[ 'id' ] = '';
+        if ( ! isset( $settings[ 'id' ] ) ) $settings[ 'id' ] = '';
 
         $attachments = apply_filters( 'ninja_forms_action_email_attachments', $attachments, $data, $settings );
 
@@ -118,13 +118,13 @@ final class NF_Actions_Email extends NF_Abstracts_Action
             'Reply-to' => $settings[ 'reply_to' ],
         );
 
-        foreach( $recipient_settings as $type => $emails ) {
+        foreach ( $recipient_settings as $type => $emails ) {
 
             $emails = explode( ',', $emails );
 
-            foreach( $emails as $email ) {
+            foreach ( $emails as $email ) {
 
-                if( ! $email ) continue;
+                if ( ! $email ) continue;
 
                 $headers[] = $this->_format_recipient( $type, $email );
             }
@@ -137,7 +137,7 @@ final class NF_Actions_Email extends NF_Abstracts_Action
     {
         $type = ucfirst( $type );
 
-        if( ! $name ) $name = $email;
+        if ( ! $name ) $name = $email;
 
         $recipient = "$type: $name <$email>";
 
@@ -148,9 +148,9 @@ final class NF_Actions_Email extends NF_Abstracts_Action
     {
         $csv_array = array();
 
-        foreach( $fields as $field ) {
+        foreach ( $fields as $field ) {
 
-            if( ! isset( $field[ 'label' ] ) ) continue;
+            if ( ! isset( $field[ 'label' ] ) ) continue;
 
             $csv_array[ 0 ][] = $field[ 'label' ];
             $csv_array[ 1 ][] = WPN_Helper::stripslashes( $field[ 'value' ] );
@@ -182,7 +182,7 @@ final class NF_Actions_Email extends NF_Abstracts_Action
         $new_name = apply_filters( 'ninja_forms_submission_csv_name', 'ninja-forms-submission' );
 
         // remove a file if it already exists
-        if( file_exists( $dir . '/' . $new_name . '.csv' ) ) {
+        if ( file_exists( $dir . '/' . $new_name . '.csv' ) ) {
             unlink( $dir . '/' . $new_name . '.csv' );
         }
 
