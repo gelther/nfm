@@ -194,7 +194,6 @@ final class NF_Database_Models_Form extends NF_Abstracts_Model
     | Backwards Compatibility
     |--------------------------------------------------------------------------
     */
-
     public function import_form_backwards_compatibility( $import )
     {
         // Rename `data` to `settings`
