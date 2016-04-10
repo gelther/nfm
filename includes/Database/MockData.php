@@ -170,7 +170,7 @@ final class NF_Database_MockData
          */
 
         $action = Ninja_Forms()->form( $form_id )->action()->get();
-        $action->update_setting( 'label',  'Mock Success Message Action' )
+        $action->update_setting( 'label', 'Mock Success Message Action' )
             ->update_setting( 'type', 'successmessage' )
             ->update_setting( 'message', 'Thank you {field:name} for filling out my form!' )
             ->update_setting( 'active', TRUE )
@@ -184,7 +184,7 @@ final class NF_Database_MockData
 //            ->save();
 
         $action = Ninja_Forms()->form( $form_id )->action()->get();
-        $action->update_setting( 'label',  'Mock Email Action' )
+        $action->update_setting( 'label', 'Mock Email Action' )
             ->update_setting( 'type', 'email' )
             ->update_setting( 'to', 'myformbuildingbringsallthedeveloperstotheyard@wpninjas.com' )
             ->update_setting( 'subject', 'This is an email action.' )
@@ -200,7 +200,7 @@ final class NF_Database_MockData
 //            ->save();
 
         $action = Ninja_Forms()->form( $form_id )->action()->get();
-        $action->update_setting( 'label',  'Mock Save Action' )
+        $action->update_setting( 'label', 'Mock Save Action' )
             ->update_setting( 'type', 'save' )
             ->update_setting( 'active', TRUE )
             ->save();
@@ -324,7 +324,7 @@ final class NF_Database_MockData
          */
 
         $action = Ninja_Forms()->form( $form_id )->action()->get();
-        $action->update_setting( 'label',  'Mock Save Action' )
+        $action->update_setting( 'label', 'Mock Save Action' )
             ->update_setting( 'type', 'save' )
             ->save();
     }
@@ -475,7 +475,7 @@ final class NF_Database_MockData
                 ->save();
 
         $action = Ninja_Forms()->form( $form_id )->action()->get();
-        $action->update_setting( 'label',  'Mock Save Action' )
+        $action->update_setting( 'label', 'Mock Save Action' )
             ->update_setting( 'type', 'save' )
             ->save();
     }
@@ -614,7 +614,7 @@ final class NF_Database_MockData
             ->save();
 
         $action = Ninja_Forms()->form( $form_id )->action()->get();
-        $action->update_setting( 'label',  'Mock Save Action' )
+        $action->update_setting( 'label', 'Mock Save Action' )
             ->update_setting( 'type', 'save' )
             ->save();
     }
@@ -752,7 +752,7 @@ final class NF_Database_MockData
          */
 
         $action = Ninja_Forms()->form( $form_id )->action()->get();
-        $action->update_setting( 'label',  'Success Message' )
+        $action->update_setting( 'label', 'Success Message' )
             ->update_setting( 'type', 'successmessage' )
             ->update_setting( 'message', '<div style="border: 2px solid green; padding: 10px; color: green;">You purchased {field:' . $quantity_field_id . '} product(s) for ${field:total}.</div>' )
             ->save();
@@ -810,7 +810,7 @@ final class NF_Database_MockData
          */
 
         $action = Ninja_Forms()->form( $form_id )->action()->get();
-        $action->update_setting( 'label',  'Success Message' )
+        $action->update_setting( 'label', 'Success Message' )
             ->update_setting( 'type', 'successmessage' )
             ->update_setting( 'message', '<div style="border: 2px solid green; padding: 10px; color: green;">You purchased {field:' . $product_field_id . '} product(s) for ${field:total}.</div>' )
             ->save();
@@ -910,7 +910,7 @@ final class NF_Database_MockData
          */
 
         $action = Ninja_Forms()->form( $form_id )->action()->get();
-        $action->update_setting( 'label',  'Success Message' )
+        $action->update_setting( 'label', 'Success Message' )
             ->update_setting( 'type', 'successmessage' )
             ->update_setting( 'message', '<div style="border: 2px solid green; padding: 10px; color: green;">You purchased {field:' . $quantity_field_A_id . '} of Product A and {field:' . $quantity_field_B_id . '} of Product B for ${field:total}.</div>' )
             ->save();
@@ -945,7 +945,7 @@ final class NF_Database_MockData
             ->save();
 
         $action = Ninja_Forms()->form( $form_id )->action()->get();
-        $action->update_setting( 'label',  'Success Message' )
+        $action->update_setting( 'label', 'Success Message' )
             ->update_setting( 'type', 'successmessage' )
             ->update_setting( 'message', 'Calculations are returned with the AJAX response ( response -> data -> calcs' )
             ->save();

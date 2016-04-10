@@ -4,7 +4,7 @@ class NF_AJAX_Controllers_Builder extends NF_Abstracts_Controller
 {
     public function __construct()
     {
-        add_action( 'wp_ajax_nf_builder',   array( $this, 'builder' )   );
+        add_action( 'wp_ajax_nf_builder', array( $this, 'builder' )   );
     }
 
     public function builder()

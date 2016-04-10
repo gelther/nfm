@@ -241,7 +241,7 @@ final class NF_Admin_Menus_Submissions extends NF_Abstracts_Submenu
                         jQuery( "select[name='action'" ).val( '-1' );
                         jQuery( "select[name='action2'" ).val( '-1' );
                         jQuery( '#posts-filter' ).submit();
-                    },5000);
+                    }, 5000);
                     <?php
                 }
 

@@ -182,7 +182,7 @@ final class NF_Database_Models_Form extends NF_Abstracts_Model
             header( 'Content-Disposition: attachment; filename="'.$filename .'"' );
             header( 'Pragma: no-cache');
             header( 'Expires: 0' );
-            echo apply_filters( 'ninja_forms_form_export_bom',"\xEF\xBB\xBF" ) ; // Byte Order Mark
+            echo apply_filters( 'ninja_forms_form_export_bom', "\xEF\xBB\xBF" ) ; // Byte Order Mark
             echo base64_encode( maybe_serialize( $export ) );
 
             die();

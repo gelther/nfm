@@ -70,7 +70,7 @@ return apply_filters( 'ninja_forms_from_restriction_settings', array(
 
             'sub_limit_msg'    => array(
                 'name'  => 'sub_limit_msg',
-                'type'  => 'rte',//TODO: Add WYSIWYG
+                'type'  => 'rte', //TODO: Add WYSIWYG
                 'label' => __( 'Limit Reached Message', 'ninja-forms' ),
                 'width' => 'full',
                 'group' => 'primary',
