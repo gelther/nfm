@@ -48,8 +48,8 @@ final class NF_Admin_Menus_Settings extends NF_Abstracts_Submenu
 
                 $value = ( isset( $setting_defaults[ $id ] ) ) ? $setting_defaults[$id] : '';
 
-                $grouped_settings[$group][$id]['id']    = $this->prefix( $grouped_settings[$group][$id]['id'] );
-                $grouped_settings[$group][$id]['value'] = $value;
+                $grouped_settings[$group][$id][ 'id' ]    = $this->prefix( $grouped_settings[$group][$id][ 'id' ] );
+                $grouped_settings[$group][$id][ 'value' ] = $value;
 
                 $grouped_settings[$group][$id] = apply_filters( 'ninja_forms_check_setting_' . $id, $grouped_settings[$group][$id] );
 
@@ -58,9 +58,9 @@ final class NF_Admin_Menus_Settings extends NF_Abstracts_Submenu
                 if( ! is_array( $grouped_settings[$group][$id][ 'errors' ] ) ) $grouped_settings[$group][$id][ 'errors' ] = array( $grouped_settings[$group][$id][ 'errors' ] );
 
                 foreach( $grouped_settings[$group][$id][ 'errors' ] as $old_key => $error ){
-                    $new_key                                              = $grouped_settings[$group][$id][ 'id' ] . "[" . $old_key . "]";
-                    $errors[ $new_key ]                                   = $error;
-                    $grouped_settings[$group][$id][ 'errors'][ $new_key ] = $error;
+                    $new_key                                               = $grouped_settings[$group][$id][ 'id' ] . "[" . $old_key . "]";
+                    $errors[ $new_key ]                                    = $error;
+                    $grouped_settings[$group][$id][ 'errors' ][ $new_key ] = $error;
                     unset( $grouped_settings[$group][$id][ 'errors' ][ $old_key ] );
                 }
             }
@@ -74,7 +74,7 @@ final class NF_Admin_Menus_Settings extends NF_Abstracts_Submenu
 
             $saved_field_id = $saved_field->get_id();
 
-            $grouped_settings[ 'saved_fields'][] = array(
+            $grouped_settings[ 'saved_fields' ][  ] = array(
                 'id'    => '',
                 'type'  => 'html',
                 'html'  => '<a class="js-delete-saved-field button button-secondary" data-id="' . $saved_field_id . '">' . __( 'Delete' ) . '</a>',
