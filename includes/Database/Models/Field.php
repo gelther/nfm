@@ -20,13 +20,11 @@ final class NF_Database_Models_Field extends NF_Abstracts_Model
         'type',
         'created_at'
     );
-    public function __construct( $db, $id, $parent_id = '' )
-    {
+    public function __construct( $db, $id, $parent_id = '' ) {
         parent::__construct( $db, $id, $parent_id );
     }
 
-    public static function import( array $settings, $field_id = '', $is_conversion = false )
-    {
+    public static function import( array $settings, $field_id = '', $is_conversion = false ) {
         $settings            = apply_filters( 'ninja_forms_before_import_fields', $settings );
         $settings[ 'saved' ] = 1;
 
