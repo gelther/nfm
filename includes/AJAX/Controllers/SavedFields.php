@@ -57,5 +57,4 @@ class NF_AJAX_Controllers_SavedFields extends NF_Abstracts_Controller
         $this->_respond();
     }
 
-
 }
